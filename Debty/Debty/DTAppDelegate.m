@@ -21,11 +21,13 @@
     
     [FBLoginView class];
     
-    DTTabBarController *tabBarController = [DTTabBarController newController];
-    
-    DTFacebookLoginVC *facebookLoginVC = [DTFacebookLoginVC newController];
-    
-    self.window.rootViewController = facebookLoginVC;
+    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
+        DTTabBarController *tabBarController = [DTTabBarController newController];
+        self.window.rootViewController = tabBarController;
+    } else {
+        DTFacebookLoginVC *facebookLoginVC = [DTFacebookLoginVC newController];
+        self.window.rootViewController = facebookLoginVC;
+    }
     
     [self.window makeKeyAndVisible];
     

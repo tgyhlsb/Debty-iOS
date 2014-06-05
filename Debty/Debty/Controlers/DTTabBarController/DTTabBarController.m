@@ -9,6 +9,7 @@
 #import "DTTabBarController.h"
 #import "DTNavigationController.h"
 #import "DTExpenseTableVC.h"
+#import "DTFacebookLoginVC.h"
 #import "DTTestVC.h"
 
 #define NIB_NAME @"DTTabBarController"
@@ -35,7 +36,7 @@
     DTNavigationController *navigationControllerThree = [DTNavigationController newControllerWithRootViewController:vc3];
     navigationControllerThree.title = @"Three";
     
-    DTTestVC *vc4 = [DTTestVC newController];
+    DTFacebookLoginVC *vc4 = [DTFacebookLoginVC newController];
     DTNavigationController *navigationControllerFour = [DTNavigationController newControllerWithRootViewController:vc4];
     navigationControllerFour.title = @"Four";
     
