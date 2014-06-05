@@ -8,6 +8,7 @@
 
 #import "DTFacebookLoginVC.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import "DTAppDelegate.h"
 
 #define NIB_NAME @"DTFacebookLoginVC"
 
@@ -51,11 +52,13 @@
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView
 {
     NSLog(@"loginViewShowingLoggedInUser:");
+    [DTAppDelegate setLoggedIn];
 }
 
 - (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView
 {
     NSLog(@"loginViewShowingLoggedOutUser:");
+    [DTAppDelegate setLoggedOut];
 }
 
 @end

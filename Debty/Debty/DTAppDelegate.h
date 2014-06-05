@@ -12,4 +12,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
++ (void)setLoggedIn;
++ (void)setLoggedOut;
+
 @end
