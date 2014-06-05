@@ -23,6 +23,9 @@
 		5A220ED7194117A100BDABCF /* DTTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A220ED5194117A100BDABCF /* DTTestVC.m */; };
 		5A220ED8194117A100BDABCF /* DTTestVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A220ED6194117A100BDABCF /* DTTestVC.xib */; };
 		5A220EE1194119AB00BDABCF /* DTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A220EE0194119AB00BDABCF /* DTNavigationController.m */; };
+		5A220EE919411E0C00BDABCF /* DTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A220EE819411E0C00BDABCF /* DTViewController.m */; };
+		5A220EEE19411E4900BDABCF /* DTExpenseTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A220EEC19411E4900BDABCF /* DTExpenseTableVC.m */; };
+		5A220EEF19411E4900BDABCF /* DTExpenseTableVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A220EED19411E4900BDABCF /* DTExpenseTableVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,11 @@
 		5A220ED6194117A100BDABCF /* DTTestVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DTTestVC.xib; path = Controlers/DTTestVC/DTTestVC.xib; sourceTree = "<group>"; };
 		5A220EDF194119AB00BDABCF /* DTNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTNavigationController.h; path = Debty/Controlers/DTNavigationController/DTNavigationController.h; sourceTree = "<group>"; };
 		5A220EE0194119AB00BDABCF /* DTNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTNavigationController.m; path = Debty/Controlers/DTNavigationController/DTNavigationController.m; sourceTree = "<group>"; };
+		5A220EE719411E0C00BDABCF /* DTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTViewController.h; path = Controlers/DTViewController/DTViewController.h; sourceTree = "<group>"; };
+		5A220EE819411E0C00BDABCF /* DTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTViewController.m; path = Controlers/DTViewController/DTViewController.m; sourceTree = "<group>"; };
+		5A220EEB19411E4900BDABCF /* DTExpenseTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTExpenseTableVC.h; path = Controlers/DTViewController/DTExpenseTableVC/DTExpenseTableVC.h; sourceTree = "<group>"; };
+		5A220EEC19411E4900BDABCF /* DTExpenseTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTExpenseTableVC.m; path = Controlers/DTViewController/DTExpenseTableVC/DTExpenseTableVC.m; sourceTree = "<group>"; };
+		5A220EED19411E4900BDABCF /* DTExpenseTableVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DTExpenseTableVC.xib; path = Controlers/DTViewController/DTExpenseTableVC/DTExpenseTableVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +189,7 @@
 				5A220ED9194117AB00BDABCF /* DTTestVC */,
 				5A220EE2194119B100BDABCF /* DTNavigationController */,
 				5A220ED11941123100BDABCF /* DTTabBarController */,
+				5A220EEA19411E0F00BDABCF /* DTViewController */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -193,6 +202,26 @@
 			);
 			name = DTNavigationController;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		5A220EEA19411E0F00BDABCF /* DTViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5A220EE719411E0C00BDABCF /* DTViewController.h */,
+				5A220EE819411E0C00BDABCF /* DTViewController.m */,
+				5A220EF019411E4D00BDABCF /* DTExpenseTableVC */,
+			);
+			name = DTViewController;
+			sourceTree = "<group>";
+		};
+		5A220EF019411E4D00BDABCF /* DTExpenseTableVC */ = {
+			isa = PBXGroup;
+			children = (
+				5A220EEB19411E4900BDABCF /* DTExpenseTableVC.h */,
+				5A220EEC19411E4900BDABCF /* DTExpenseTableVC.m */,
+				5A220EED19411E4900BDABCF /* DTExpenseTableVC.xib */,
+			);
+			name = DTExpenseTableVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +303,7 @@
 			files = (
 				5A220ED8194117A100BDABCF /* DTTestVC.xib in Resources */,
 				5A220EB21941103100BDABCF /* Images.xcassets in Resources */,
+				5A220EEF19411E4900BDABCF /* DTExpenseTableVC.xib in Resources */,
 				5A220EA41941103100BDABCF /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,10 +323,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A220EE919411E0C00BDABCF /* DTViewController.m in Sources */,
 				5A220ED01941122A00BDABCF /* DTTabBarController.m in Sources */,
 				5A220EAA1941103100BDABCF /* DTAppDelegate.m in Sources */,
 				5A220EE1194119AB00BDABCF /* DTNavigationController.m in Sources */,
 				5A220ED7194117A100BDABCF /* DTTestVC.m in Sources */,
+				5A220EEE19411E4900BDABCF /* DTExpenseTableVC.m in Sources */,
 				5A220EA61941103100BDABCF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

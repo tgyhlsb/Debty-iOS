@@ -8,6 +8,7 @@
 
 #import "DTTabBarController.h"
 #import "DTNavigationController.h"
+#import "DTExpenseTableVC.h"
 #import "DTTestVC.h"
 
 #define NIB_NAME @"DTTabBarController"
@@ -21,17 +22,24 @@
 + (DTTabBarController *)newController {
     DTTabBarController *tabBarController = [[DTTabBarController alloc] init];
     
-    DTTestVC *vc1 = [DTTestVC newController];
-    vc1.view.backgroundColor = [UIColor blueColor];
-    DTNavigationController *navigationControllerOne = [DTNavigationController newControllerWithRootViewController:vc1];
-    navigationControllerOne.title = @"One";
+    DTExpenseTableVC *expenseTableVC = [DTExpenseTableVC newController];
+    [expenseTableVC setAddExpenseButtonVisible:YES];
+    DTNavigationController *navigationControllerOne = [DTNavigationController newControllerWithRootViewController:expenseTableVC];
+    navigationControllerOne.title = @"Expenses";
     
     DTTestVC *vc2 = [DTTestVC newController];
-    vc2.view.backgroundColor = [UIColor redColor];
     DTNavigationController *navigationControllerTwo = [DTNavigationController newControllerWithRootViewController:vc2];
     navigationControllerTwo.title = @"Two";
     
-    [tabBarController setViewControllers:@[navigationControllerOne, navigationControllerTwo]];
+    DTTestVC *vc3 = [DTTestVC newController];
+    DTNavigationController *navigationControllerThree = [DTNavigationController newControllerWithRootViewController:vc3];
+    navigationControllerThree.title = @"Three";
+    
+    DTTestVC *vc4 = [DTTestVC newController];
+    DTNavigationController *navigationControllerFour = [DTNavigationController newControllerWithRootViewController:vc4];
+    navigationControllerFour.title = @"Four";
+    
+    [tabBarController setViewControllers:@[navigationControllerOne, navigationControllerTwo, navigationControllerThree, navigationControllerFour]];
     
     return tabBarController;
 }
