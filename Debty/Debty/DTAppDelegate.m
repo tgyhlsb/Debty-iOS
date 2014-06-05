@@ -8,6 +8,7 @@
 
 #import "DTAppDelegate.h"
 #import "DTTabBarController.h"
+#import "DTFacebookLoginVC.h"
 #import <FacebookSDK/FacebookSDK.h>
 
 @implementation DTAppDelegate
@@ -21,7 +22,10 @@
     [FBLoginView class];
     
     DTTabBarController *tabBarController = [DTTabBarController newController];
-    self.window.rootViewController = tabBarController;
+    
+    DTFacebookLoginVC *facebookLoginVC = [DTFacebookLoginVC newController];
+    
+    self.window.rootViewController = facebookLoginVC;
     
     [self.window makeKeyAndVisible];
     
