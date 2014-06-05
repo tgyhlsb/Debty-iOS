@@ -26,6 +26,9 @@
 		5A220EE919411E0C00BDABCF /* DTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A220EE819411E0C00BDABCF /* DTViewController.m */; };
 		5A220EEE19411E4900BDABCF /* DTExpenseTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A220EEC19411E4900BDABCF /* DTExpenseTableVC.m */; };
 		5A220EEF19411E4900BDABCF /* DTExpenseTableVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A220EED19411E4900BDABCF /* DTExpenseTableVC.xib */; };
+		5A220EF61941237C00BDABCF /* DTFacebookLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A220EF41941237C00BDABCF /* DTFacebookLoginVC.m */; };
+		5A220EF71941237C00BDABCF /* DTFacebookLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A220EF51941237C00BDABCF /* DTFacebookLoginVC.xib */; };
+		5A220EFA1941245700BDABCF /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A220EF91941245700BDABCF /* FacebookSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,10 @@
 		5A220EEB19411E4900BDABCF /* DTExpenseTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTExpenseTableVC.h; path = Controlers/DTViewController/DTExpenseTableVC/DTExpenseTableVC.h; sourceTree = "<group>"; };
 		5A220EEC19411E4900BDABCF /* DTExpenseTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTExpenseTableVC.m; path = Controlers/DTViewController/DTExpenseTableVC/DTExpenseTableVC.m; sourceTree = "<group>"; };
 		5A220EED19411E4900BDABCF /* DTExpenseTableVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DTExpenseTableVC.xib; path = Controlers/DTViewController/DTExpenseTableVC/DTExpenseTableVC.xib; sourceTree = "<group>"; };
+		5A220EF31941237C00BDABCF /* DTFacebookLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTFacebookLoginVC.h; path = Controlers/DTFacebookLoginVC/DTFacebookLoginVC.h; sourceTree = "<group>"; };
+		5A220EF41941237C00BDABCF /* DTFacebookLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTFacebookLoginVC.m; path = Controlers/DTFacebookLoginVC/DTFacebookLoginVC.m; sourceTree = "<group>"; };
+		5A220EF51941237C00BDABCF /* DTFacebookLoginVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DTFacebookLoginVC.xib; path = Controlers/DTFacebookLoginVC/DTFacebookLoginVC.xib; sourceTree = "<group>"; };
+		5A220EF91941245700BDABCF /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +82,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A220E9C1941103100BDABCF /* CoreGraphics.framework in Frameworks */,
+				5A220EFA1941245700BDABCF /* FacebookSDK.framework in Frameworks */,
 				5A220E9E1941103100BDABCF /* UIKit.framework in Frameworks */,
 				5A220E9A1941103100BDABCF /* Foundation.framework in Frameworks */,
 			);
@@ -115,6 +123,7 @@
 		5A220E981941103100BDABCF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5A220EF91941245700BDABCF /* FacebookSDK.framework */,
 				5A220E991941103100BDABCF /* Foundation.framework */,
 				5A220E9B1941103100BDABCF /* CoreGraphics.framework */,
 				5A220E9D1941103100BDABCF /* UIKit.framework */,
@@ -190,6 +199,7 @@
 				5A220EE2194119B100BDABCF /* DTNavigationController */,
 				5A220ED11941123100BDABCF /* DTTabBarController */,
 				5A220EEA19411E0F00BDABCF /* DTViewController */,
+				5A220EF81941238100BDABCF /* DTFacebookLoginVC */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -222,6 +232,16 @@
 				5A220EED19411E4900BDABCF /* DTExpenseTableVC.xib */,
 			);
 			name = DTExpenseTableVC;
+			sourceTree = "<group>";
+		};
+		5A220EF81941238100BDABCF /* DTFacebookLoginVC */ = {
+			isa = PBXGroup;
+			children = (
+				5A220EF31941237C00BDABCF /* DTFacebookLoginVC.h */,
+				5A220EF41941237C00BDABCF /* DTFacebookLoginVC.m */,
+				5A220EF51941237C00BDABCF /* DTFacebookLoginVC.xib */,
+			);
+			name = DTFacebookLoginVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,6 +324,7 @@
 				5A220ED8194117A100BDABCF /* DTTestVC.xib in Resources */,
 				5A220EB21941103100BDABCF /* Images.xcassets in Resources */,
 				5A220EEF19411E4900BDABCF /* DTExpenseTableVC.xib in Resources */,
+				5A220EF71941237C00BDABCF /* DTFacebookLoginVC.xib in Resources */,
 				5A220EA41941103100BDABCF /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,6 +346,7 @@
 			files = (
 				5A220EE919411E0C00BDABCF /* DTViewController.m in Sources */,
 				5A220ED01941122A00BDABCF /* DTTabBarController.m in Sources */,
+				5A220EF61941237C00BDABCF /* DTFacebookLoginVC.m in Sources */,
 				5A220EAA1941103100BDABCF /* DTAppDelegate.m in Sources */,
 				5A220EE1194119AB00BDABCF /* DTNavigationController.m in Sources */,
 				5A220ED7194117A100BDABCF /* DTTestVC.m in Sources */,
@@ -447,6 +469,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/tanguyhelesbeux/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Debty/Debty-Prefix.pch";
 				INFOPLIST_FILE = "Debty/Debty-Info.plist";
@@ -462,6 +488,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/tanguyhelesbeux/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Debty/Debty-Prefix.pch";
 				INFOPLIST_FILE = "Debty/Debty-Info.plist";
