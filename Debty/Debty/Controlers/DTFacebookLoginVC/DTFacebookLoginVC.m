@@ -39,22 +39,23 @@
 
 - (void)loginView:(FBLoginView *)loginView handleError:(NSError *)error
 {
-    
+    NSLog(@"loginView:handleError");
+    NSLog(@"%@", error);
 }
 
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user
 {
-    
+    NSLog(@"%@", user);
 }
 
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView
 {
-    
+    NSLog(@"loginViewShowingLoggedInUser:");
 }
 
 - (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView
 {
-    
+    NSLog(@"loginViewShowingLoggedOutUser:");
 }
 
 @end
