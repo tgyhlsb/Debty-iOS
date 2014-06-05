@@ -7,12 +7,22 @@
 //
 
 #import "DTAppDelegate.h"
+#import "DTTestVC.h"
+#import "DTTabBarController.h"
 
 @implementation DTAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
     // Override point for customization after application launch.
+    
+    DTTabBarController *tabBarController = [DTTabBarController newController];
+    self.window.rootViewController = tabBarController;
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 							

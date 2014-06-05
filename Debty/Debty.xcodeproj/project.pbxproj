@@ -19,6 +19,10 @@
 		5A220EBB1941103100BDABCF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A220E9D1941103100BDABCF /* UIKit.framework */; };
 		5A220EC31941103100BDABCF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5A220EC11941103100BDABCF /* InfoPlist.strings */; };
 		5A220EC51941103100BDABCF /* DebtyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A220EC41941103100BDABCF /* DebtyTests.m */; };
+		5A220ED01941122A00BDABCF /* DTTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A220ECF1941122A00BDABCF /* DTTabBarController.m */; };
+		5A220ED7194117A100BDABCF /* DTTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A220ED5194117A100BDABCF /* DTTestVC.m */; };
+		5A220ED8194117A100BDABCF /* DTTestVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A220ED6194117A100BDABCF /* DTTestVC.xib */; };
+		5A220EE1194119AB00BDABCF /* DTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A220EE0194119AB00BDABCF /* DTNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,13 @@
 		5A220EC01941103100BDABCF /* DebtyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DebtyTests-Info.plist"; sourceTree = "<group>"; };
 		5A220EC21941103100BDABCF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5A220EC41941103100BDABCF /* DebtyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DebtyTests.m; sourceTree = "<group>"; };
+		5A220ECE1941122A00BDABCF /* DTTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTabBarController.h; path = Controlers/DTTabBarController/DTTabBarController.h; sourceTree = "<group>"; };
+		5A220ECF1941122A00BDABCF /* DTTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTabBarController.m; path = Controlers/DTTabBarController/DTTabBarController.m; sourceTree = "<group>"; };
+		5A220ED4194117A100BDABCF /* DTTestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTestVC.h; path = Controlers/DTTestVC/DTTestVC.h; sourceTree = "<group>"; };
+		5A220ED5194117A100BDABCF /* DTTestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTestVC.m; path = Controlers/DTTestVC/DTTestVC.m; sourceTree = "<group>"; };
+		5A220ED6194117A100BDABCF /* DTTestVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DTTestVC.xib; path = Controlers/DTTestVC/DTTestVC.xib; sourceTree = "<group>"; };
+		5A220EDF194119AB00BDABCF /* DTNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTNavigationController.h; path = Debty/Controlers/DTNavigationController/DTNavigationController.h; sourceTree = "<group>"; };
+		5A220EE0194119AB00BDABCF /* DTNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTNavigationController.m; path = Debty/Controlers/DTNavigationController/DTNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +120,7 @@
 			children = (
 				5A220EA81941103100BDABCF /* DTAppDelegate.h */,
 				5A220EA91941103100BDABCF /* DTAppDelegate.m */,
+				5A220EDA194117B200BDABCF /* Controllers */,
 				5A220EB11941103100BDABCF /* Images.xcassets */,
 				5A220EA01941103100BDABCF /* Supporting Files */,
 			);
@@ -142,6 +154,45 @@
 				5A220EC11941103100BDABCF /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5A220ED11941123100BDABCF /* DTTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				5A220ECE1941122A00BDABCF /* DTTabBarController.h */,
+				5A220ECF1941122A00BDABCF /* DTTabBarController.m */,
+			);
+			name = DTTabBarController;
+			sourceTree = "<group>";
+		};
+		5A220ED9194117AB00BDABCF /* DTTestVC */ = {
+			isa = PBXGroup;
+			children = (
+				5A220ED4194117A100BDABCF /* DTTestVC.h */,
+				5A220ED5194117A100BDABCF /* DTTestVC.m */,
+				5A220ED6194117A100BDABCF /* DTTestVC.xib */,
+			);
+			name = DTTestVC;
+			sourceTree = "<group>";
+		};
+		5A220EDA194117B200BDABCF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5A220ED9194117AB00BDABCF /* DTTestVC */,
+				5A220EE2194119B100BDABCF /* DTNavigationController */,
+				5A220ED11941123100BDABCF /* DTTabBarController */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		5A220EE2194119B100BDABCF /* DTNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				5A220EDF194119AB00BDABCF /* DTNavigationController.h */,
+				5A220EE0194119AB00BDABCF /* DTNavigationController.m */,
+			);
+			name = DTNavigationController;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,6 +272,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A220ED8194117A100BDABCF /* DTTestVC.xib in Resources */,
 				5A220EB21941103100BDABCF /* Images.xcassets in Resources */,
 				5A220EA41941103100BDABCF /* InfoPlist.strings in Resources */,
 			);
@@ -241,7 +293,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A220ED01941122A00BDABCF /* DTTabBarController.m in Sources */,
 				5A220EAA1941103100BDABCF /* DTAppDelegate.m in Sources */,
+				5A220EE1194119AB00BDABCF /* DTNavigationController.m in Sources */,
+				5A220ED7194117A100BDABCF /* DTTestVC.m in Sources */,
 				5A220EA61941103100BDABCF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,9 +414,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Debty/Debty-Prefix.pch";
 				INFOPLIST_FILE = "Debty/Debty-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -372,9 +429,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Debty/Debty-Prefix.pch";
 				INFOPLIST_FILE = "Debty/Debty-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
