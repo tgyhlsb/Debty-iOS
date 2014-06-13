@@ -11,6 +11,7 @@
 		5A12DF9B194B7EC9006E942F /* DTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A12DF99194B7EC9006E942F /* DTTableViewCell.m */; };
 		5A12DFA1194B7F12006E942F /* DTExpenseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A12DFA0194B7F12006E942F /* DTExpenseTableViewCell.m */; };
 		5A12DFA4194B7F22006E942F /* DTExpenseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A12DFA3194B7F22006E942F /* DTExpenseTableViewCell.xib */; };
+		5A12DFAC194B8EB1006E942F /* DTGroupPictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A12DFAB194B8EB1006E942F /* DTGroupPictureView.m */; };
 		5A220E9A1941103100BDABCF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A220E991941103100BDABCF /* Foundation.framework */; };
 		5A220E9C1941103100BDABCF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A220E9B1941103100BDABCF /* CoreGraphics.framework */; };
 		5A220E9E1941103100BDABCF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A220E9D1941103100BDABCF /* UIKit.framework */; };
@@ -53,6 +54,8 @@
 		5A12DF9F194B7F12006E942F /* DTExpenseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTExpenseTableViewCell.h; path = Views/TableViewCells/DTExpenseTableViewCell/DTExpenseTableViewCell.h; sourceTree = "<group>"; };
 		5A12DFA0194B7F12006E942F /* DTExpenseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTExpenseTableViewCell.m; path = Views/TableViewCells/DTExpenseTableViewCell/DTExpenseTableViewCell.m; sourceTree = "<group>"; };
 		5A12DFA3194B7F22006E942F /* DTExpenseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DTExpenseTableViewCell.xib; path = Views/TableViewCells/DTExpenseTableViewCell/DTExpenseTableViewCell.xib; sourceTree = "<group>"; };
+		5A12DFAA194B8EB1006E942F /* DTGroupPictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTGroupPictureView.h; sourceTree = "<group>"; };
+		5A12DFAB194B8EB1006E942F /* DTGroupPictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTGroupPictureView.m; sourceTree = "<group>"; };
 		5A220E961941103100BDABCF /* Debty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Debty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A220E991941103100BDABCF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5A220E9B1941103100BDABCF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -142,6 +145,7 @@
 		5A12DF9E194B7EDA006E942F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5A12DFA9194B8EB1006E942F /* DTGroupPictureView */,
 				5A12DF9D194B7ECD006E942F /* TableViewCells */,
 			);
 			name = Views;
@@ -155,6 +159,16 @@
 				5A12DFA3194B7F22006E942F /* DTExpenseTableViewCell.xib */,
 			);
 			name = DTExpenseTableViewCell;
+			sourceTree = "<group>";
+		};
+		5A12DFA9194B8EB1006E942F /* DTGroupPictureView */ = {
+			isa = PBXGroup;
+			children = (
+				5A12DFAA194B8EB1006E942F /* DTGroupPictureView.h */,
+				5A12DFAB194B8EB1006E942F /* DTGroupPictureView.m */,
+			);
+			name = DTGroupPictureView;
+			path = Views/DTGroupPictureView;
 			sourceTree = "<group>";
 		};
 		5A220E8D1941103100BDABCF = {
@@ -410,6 +424,7 @@
 				5A12DFA1194B7F12006E942F /* DTExpenseTableViewCell.m in Sources */,
 				5A220EF61941237C00BDABCF /* DTFacebookLoginVC.m in Sources */,
 				5A220EAA1941103100BDABCF /* DTAppDelegate.m in Sources */,
+				5A12DFAC194B8EB1006E942F /* DTGroupPictureView.m in Sources */,
 				5A220EE1194119AB00BDABCF /* DTNavigationController.m in Sources */,
 				5A220ED7194117A100BDABCF /* DTTestVC.m in Sources */,
 				5A220EEE19411E4900BDABCF /* DTExpenseTableVC.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import "DTExpenseTableViewCell.h"
+#import "DTGroupPictureView.h"
 
 #define NIB_NAME @"DTExpenseTableViewCell"
 #define HEIGHT 50.0
@@ -15,6 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet DTGroupPictureView *pictureView;
 
 @end
 
@@ -26,6 +28,11 @@
 {
     self.userNameLabel.text = self.expense.userName;
     self.priceLabel.text = [NSString stringWithFormat:@"%@", self.expense.price];
+    
+    [self.pictureView reset];
+    [self.pictureView addUserID:self.expense.facebookID withName:self.expense.userName];
+    [self.pictureView addUserID:self.expense.facebookID withName:self.expense.userName];
+    [self.pictureView updateLayout];
 }
 
 #pragma mark - Setters

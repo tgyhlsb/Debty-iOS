@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSString *userName;
 @property (nonatomic, strong) NSNumber *price;
+@property (nonatomic, strong) NSString *facebookID;
 
 + (DTTempExpense *)randomExpense;
 
