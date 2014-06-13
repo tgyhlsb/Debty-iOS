@@ -8,24 +8,50 @@
 
 #import "DTExpenseTableViewCell.h"
 
+#define NIB_NAME @"DTExpenseTableViewCell"
+#define HEIGHT 50.0
+
+@interface DTExpenseTableViewCell()
+
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+
+@end
+
 @implementation DTExpenseTableViewCell
 
-- (id)initWithFrame:(CGRect)frame
+#pragma mark - View
+
+- (void)updateView
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+    self.userNameLabel.text = self.expense.userName;
+    self.priceLabel.text = [NSString stringWithFormat:@"%@", self.expense.price];
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+#pragma mark - Setters
+
+- (void)setExpense:(DTTempExpense *)expense
 {
-    // Drawing code
+    _expense = expense;
+    [self updateView];
 }
-*/
+
+#pragma mark - Subclass methods
+
++ (NSString *)reusableIdentifier
+{
+    return NIB_NAME;
+}
+
++ (void)registerToTableView:(UITableView *)tableView
+{
+    UINib *nib = [UINib nibWithNibName:NIB_NAME bundle:nil];
+    [tableView registerNib:nib forCellReuseIdentifier:[DTExpenseTableViewCell reusableIdentifier]];
+}
+
++ (CGFloat)height
+{
+    return HEIGHT;
+}
 
 @end

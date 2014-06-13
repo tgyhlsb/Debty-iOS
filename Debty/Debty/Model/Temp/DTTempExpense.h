@@ -10,4 +10,9 @@
 
 @interface DTTempExpense : NSObject
 
+@property (nonatomic, strong) NSString *userName;
+@property (nonatomic, strong) NSNumber *price;
+
++ (DTTempExpense *)randomExpense;
+
 @end

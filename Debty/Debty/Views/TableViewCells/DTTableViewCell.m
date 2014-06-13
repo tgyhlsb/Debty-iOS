@@ -10,16 +10,21 @@
 
 @implementation DTTableViewCell
 
-- (void)awakeFromNib
++ (void)registerToTableView:(UITableView *)tableView
 {
-    // Initialization code
+    [[[NSException alloc] initWithName:@"DTTableViewCell" reason:@"This is an abstract class, you can't use [DTTableViewCell registerToTableView:]" userInfo:nil] raise];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
++(NSString *)reusableIdentifier
 {
-    [super setSelected:selected animated:animated];
+    [[[NSException alloc] initWithName:@"DTTableViewCell" reason:@"This is an abstract class, you can't use [DTTableViewCell reusableIdentifier]" userInfo:nil] raise];
+    return nil;
+}
 
-    // Configure the view for the selected state
++ (CGFloat)height
+{
+    [[[NSException alloc] initWithName:@"DTTableViewCell" reason:@"This is an abstract class, you can't use [DTTableViewCell height]" userInfo:nil] raise];
+    return 0.0;
 }
 
 @end

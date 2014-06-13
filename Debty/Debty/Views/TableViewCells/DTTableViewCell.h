@@ -10,4 +10,8 @@
 
 @interface DTTableViewCell : UITableViewCell
 
++ (void)registerToTableView:(UITableView *)tableView;
++ (NSString *)reusableIdentifier;
++ (CGFloat)height;
+
 @end

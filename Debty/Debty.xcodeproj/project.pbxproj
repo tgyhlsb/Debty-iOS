@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A12DF95194B7E21006E942F /* DTTempExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A12DF94194B7E21006E942F /* DTTempExpense.m */; };
+		5A12DF9B194B7EC9006E942F /* DTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A12DF99194B7EC9006E942F /* DTTableViewCell.m */; };
+		5A12DFA1194B7F12006E942F /* DTExpenseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A12DFA0194B7F12006E942F /* DTExpenseTableViewCell.m */; };
+		5A12DFA4194B7F22006E942F /* DTExpenseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A12DFA3194B7F22006E942F /* DTExpenseTableViewCell.xib */; };
 		5A220E9A1941103100BDABCF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A220E991941103100BDABCF /* Foundation.framework */; };
 		5A220E9C1941103100BDABCF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A220E9B1941103100BDABCF /* CoreGraphics.framework */; };
 		5A220E9E1941103100BDABCF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A220E9D1941103100BDABCF /* UIKit.framework */; };
@@ -42,6 +46,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A12DF93194B7E21006E942F /* DTTempExpense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTempExpense.h; path = Model/Temp/DTTempExpense.h; sourceTree = "<group>"; };
+		5A12DF94194B7E21006E942F /* DTTempExpense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTempExpense.m; path = Model/Temp/DTTempExpense.m; sourceTree = "<group>"; };
+		5A12DF98194B7EC9006E942F /* DTTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTableViewCell.h; path = Views/TableViewCells/DTTableViewCell.h; sourceTree = "<group>"; };
+		5A12DF99194B7EC9006E942F /* DTTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTableViewCell.m; path = Views/TableViewCells/DTTableViewCell.m; sourceTree = "<group>"; };
+		5A12DF9F194B7F12006E942F /* DTExpenseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTExpenseTableViewCell.h; path = Views/TableViewCells/DTExpenseTableViewCell/DTExpenseTableViewCell.h; sourceTree = "<group>"; };
+		5A12DFA0194B7F12006E942F /* DTExpenseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTExpenseTableViewCell.m; path = Views/TableViewCells/DTExpenseTableViewCell/DTExpenseTableViewCell.m; sourceTree = "<group>"; };
+		5A12DFA3194B7F22006E942F /* DTExpenseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DTExpenseTableViewCell.xib; path = Views/TableViewCells/DTExpenseTableViewCell/DTExpenseTableViewCell.xib; sourceTree = "<group>"; };
 		5A220E961941103100BDABCF /* Debty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Debty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A220E991941103100BDABCF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5A220E9B1941103100BDABCF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -101,6 +112,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A12DF96194B7E25006E942F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5A12DF97194B7E2D006E942F /* Temp */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		5A12DF97194B7E2D006E942F /* Temp */ = {
+			isa = PBXGroup;
+			children = (
+				5A12DF93194B7E21006E942F /* DTTempExpense.h */,
+				5A12DF94194B7E21006E942F /* DTTempExpense.m */,
+			);
+			name = Temp;
+			sourceTree = "<group>";
+		};
+		5A12DF9D194B7ECD006E942F /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				5A12DF98194B7EC9006E942F /* DTTableViewCell.h */,
+				5A12DF99194B7EC9006E942F /* DTTableViewCell.m */,
+				5A12DFA2194B7F16006E942F /* DTExpenseTableViewCell */,
+			);
+			name = TableViewCells;
+			sourceTree = "<group>";
+		};
+		5A12DF9E194B7EDA006E942F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5A12DF9D194B7ECD006E942F /* TableViewCells */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		5A12DFA2194B7F16006E942F /* DTExpenseTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				5A12DF9F194B7F12006E942F /* DTExpenseTableViewCell.h */,
+				5A12DFA0194B7F12006E942F /* DTExpenseTableViewCell.m */,
+				5A12DFA3194B7F22006E942F /* DTExpenseTableViewCell.xib */,
+			);
+			name = DTExpenseTableViewCell;
+			sourceTree = "<group>";
+		};
 		5A220E8D1941103100BDABCF = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +194,8 @@
 				5A220EA81941103100BDABCF /* DTAppDelegate.h */,
 				5A220EA91941103100BDABCF /* DTAppDelegate.m */,
 				5A220EDA194117B200BDABCF /* Controllers */,
+				5A12DF96194B7E25006E942F /* Model */,
+				5A12DF9E194B7EDA006E942F /* Views */,
 				5A220EB11941103100BDABCF /* Images.xcassets */,
 				5A220EA01941103100BDABCF /* Supporting Files */,
 			);
@@ -325,6 +383,7 @@
 				5A220EB21941103100BDABCF /* Images.xcassets in Resources */,
 				5A220EEF19411E4900BDABCF /* DTExpenseTableVC.xib in Resources */,
 				5A220EF71941237C00BDABCF /* DTFacebookLoginVC.xib in Resources */,
+				5A12DFA4194B7F22006E942F /* DTExpenseTableViewCell.xib in Resources */,
 				5A220EA41941103100BDABCF /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,8 +403,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A12DF95194B7E21006E942F /* DTTempExpense.m in Sources */,
+				5A12DF9B194B7EC9006E942F /* DTTableViewCell.m in Sources */,
 				5A220EE919411E0C00BDABCF /* DTViewController.m in Sources */,
 				5A220ED01941122A00BDABCF /* DTTabBarController.m in Sources */,
+				5A12DFA1194B7F12006E942F /* DTExpenseTableViewCell.m in Sources */,
 				5A220EF61941237C00BDABCF /* DTFacebookLoginVC.m in Sources */,
 				5A220EAA1941103100BDABCF /* DTAppDelegate.m in Sources */,
 				5A220EE1194119AB00BDABCF /* DTNavigationController.m in Sources */,
@@ -560,6 +622,7 @@
 				5A220ECA1941103100BDABCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5A220ECB1941103100BDABCF /* Build configuration list for PBXNativeTarget "DebtyTests" */ = {
 			isa = XCConfigurationList;
@@ -568,6 +631,7 @@
 				5A220ECD1941103100BDABCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

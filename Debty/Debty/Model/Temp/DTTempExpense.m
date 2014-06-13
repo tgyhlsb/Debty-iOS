@@ -10,4 +10,12 @@
 
 @implementation DTTempExpense
 
++ (DTTempExpense *)randomExpense
+{
+    DTTempExpense *expense = [[DTTempExpense alloc] init];
+    expense.price = [NSNumber numberWithFloat:(arc4random() % 100)/3.7];
+    expense.userName = @"Manu";
+    return expense;
+}
+
 @end

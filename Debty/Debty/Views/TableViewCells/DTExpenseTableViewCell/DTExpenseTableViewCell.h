@@ -7,7 +7,10 @@
 //
 
 #import "DTTableViewCell.h"
+#import "DTTempExpense.h"
 
 @interface DTExpenseTableViewCell : DTTableViewCell
+
+@property (strong, nonatomic) DTTempExpense *expense;
 
 @end
