@@ -38,6 +38,7 @@
 		5A220EFA1941245700BDABCF /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A220EF91941245700BDABCF /* FacebookSDK.framework */; };
 		5A975D75194C48B800566A2A /* DTNewAccountNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D74194C48B800566A2A /* DTNewAccountNavigationController.m */; };
 		5A975D79194C50C100566A2A /* DTTempFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D78194C50C100566A2A /* DTTempFriend.m */; };
+		5A975D7C194C558000566A2A /* DTTempUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D7B194C558000566A2A /* DTTempUser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,8 @@
 		5A975D74194C48B800566A2A /* DTNewAccountNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTNewAccountNavigationController.m; path = Debty/Controlers/DTNavigationController/DTNewAccountNavigationController/DTNewAccountNavigationController.m; sourceTree = "<group>"; };
 		5A975D77194C50C100566A2A /* DTTempFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTempFriend.h; path = Model/Temp/DTTempFriend.h; sourceTree = "<group>"; };
 		5A975D78194C50C100566A2A /* DTTempFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTempFriend.m; path = Model/Temp/DTTempFriend.m; sourceTree = "<group>"; };
+		5A975D7A194C558000566A2A /* DTTempUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTempUser.h; path = Model/Temp/DTTempUser.h; sourceTree = "<group>"; };
+		5A975D7B194C558000566A2A /* DTTempUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTempUser.m; path = Model/Temp/DTTempUser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +144,8 @@
 				5A12DF94194B7E21006E942F /* DTTempExpense.m */,
 				5A975D77194C50C100566A2A /* DTTempFriend.h */,
 				5A975D78194C50C100566A2A /* DTTempFriend.m */,
+				5A975D7A194C558000566A2A /* DTTempUser.h */,
+				5A975D7B194C558000566A2A /* DTTempUser.m */,
 			);
 			name = Temp;
 			sourceTree = "<group>";
@@ -456,6 +461,7 @@
 				5A12DFB0194C465C006E942F /* DTFriendsPickerVC.m in Sources */,
 				5A975D75194C48B800566A2A /* DTNewAccountNavigationController.m in Sources */,
 				5A12DF9B194B7EC9006E942F /* DTTableViewCell.m in Sources */,
+				5A975D7C194C558000566A2A /* DTTempUser.m in Sources */,
 				5A220EE919411E0C00BDABCF /* DTViewController.m in Sources */,
 				5A220ED01941122A00BDABCF /* DTTabBarController.m in Sources */,
 				5A12DFA1194B7F12006E942F /* DTExpenseTableViewCell.m in Sources */,

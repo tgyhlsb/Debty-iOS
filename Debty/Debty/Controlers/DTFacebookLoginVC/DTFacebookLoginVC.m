@@ -9,6 +9,7 @@
 #import "DTFacebookLoginVC.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import "DTAppDelegate.h"
+#import "DTTempUser.h"
 
 #define NIB_NAME @"DTFacebookLoginVC"
 
@@ -48,6 +49,7 @@
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user
 {
     NSLog(@"%@", user);
+    [DTTempUser setWithFacebookUser:user];
 }
 
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView
