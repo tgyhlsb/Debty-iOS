@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ejk-LN-Xag" customClass="DTExpenseTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ejk-LN-Xag" id="blR-ei-kLw">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbo-Cm-XGh">
+                        <rect key="frame" x="70" y="11" width="42" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5c-wV-5fI">
+                        <rect key="frame" x="258" y="11" width="42" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aRB-Ue-fpB" customClass="DTGroupPictureView">
+                        <rect key="frame" x="15" y="2" width="40" height="40"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="CmV-uE-5AJ"/>
+                            <constraint firstAttribute="width" constant="40" id="PYJ-ad-p4B"/>
+                        </constraints>
+                        <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="centerY" secondItem="Jbo-Cm-XGh" secondAttribute="centerY" id="6r5-ck-lit"/>
+                    <constraint firstAttribute="trailing" secondItem="p5c-wV-5fI" secondAttribute="trailing" constant="20" id="8w2-yY-Rvh"/>
+                    <constraint firstAttribute="centerY" secondItem="aRB-Ue-fpB" secondAttribute="centerY" id="Mfc-GC-uYE"/>
+                    <constraint firstItem="aRB-Ue-fpB" firstAttribute="leading" secondItem="blR-ei-kLw" secondAttribute="leading" constant="15" id="UvB-i5-Owh"/>
+                    <constraint firstItem="Jbo-Cm-XGh" firstAttribute="leading" secondItem="blR-ei-kLw" secondAttribute="leading" constant="70" id="hIv-vW-CaI"/>
+                    <constraint firstAttribute="centerY" secondItem="p5c-wV-5fI" secondAttribute="centerY" id="nTN-IS-AxL"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="pictureView" destination="aRB-Ue-fpB" id="d0W-WA-roY"/>
+                <outlet property="priceLabel" destination="p5c-wV-5fI" id="buf-Gl-3aO"/>
+                <outlet property="userNameLabel" destination="Jbo-Cm-XGh" id="nGF-DU-o3z"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

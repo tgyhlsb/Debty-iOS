@@ -7,10 +7,61 @@
 //
 
 #import "DTAppDelegate.h"
-#import "DTTestVC.h"
 #import "DTTabBarController.h"
+#import "DTFacebookLoginVC.h"
+#import <FacebookSDK/FacebookSDK.h>
+
+@interface DTAppDelegate()
+
+@property (nonatomic, strong) DTTabBarController *tabBarController;
+@property (nonatomic, strong) DTFacebookLoginVC *facebookLoginVC;
+
+@end
 
 @implementation DTAppDelegate
+
+
+
++ (DTAppDelegate *)sharedDelegate
+{
+    return (DTAppDelegate *)[[UIApplication sharedApplication] delegate];
+}
+
+- (void)setRootViewControllerAnimated:(UIViewController *)viewController
+{
+    if (![self.window.rootViewController isEqual:viewController]) {
+        
+        [UIView transitionWithView:self.window
+                          duration:0.5
+                           options:UIViewAnimationOptionTransitionFlipFromRight
+                        animations:^{
+                            self.window.rootViewController = viewController;
+                        }
+                        completion:nil];
+    }
+}
+
+- (void)setLoggedIn
+{
+    [self setRootViewControllerAnimated:self.tabBarController];
+}
+
++ (void)setLoggedIn
+{
+    [[DTAppDelegate sharedDelegate] setLoggedIn];
+}
+
+- (void)setLoggedOut
+{
+    [self setRootViewControllerAnimated:self.facebookLoginVC];
+}
+
++(void)setLoggedOut
+{
+    [[DTAppDelegate sharedDelegate] setLoggedOut];
+}
+
+#pragma mark - Default methods
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -18,8 +69,13 @@
     
     // Override point for customization after application launch.
     
-    DTTabBarController *tabBarController = [DTTabBarController newController];
-    self.window.rootViewController = tabBarController;
+    [FBLoginView class];
+    
+    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
+        self.window.rootViewController = self.tabBarController;
+    } else {
+        self.window.rootViewController = self.facebookLoginVC;
+    }
     
     [self.window makeKeyAndVisible];
     
@@ -53,4 +109,34 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    
+    // Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
+    BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
+    
+    // You can add your app-specific url handling code here if needed
+    
+    return wasHandled;
+}
+
+#pragma mark - Getters
+
+- (DTFacebookLoginVC *)facebookLoginVC
+{
+    if (!_facebookLoginVC) {
+        _facebookLoginVC = [DTFacebookLoginVC newController];
+    }
+    return _facebookLoginVC;
+}
+
+- (DTTabBarController *)tabBarController
+{
+    if (!_tabBarController) {
+        _tabBarController = [DTTabBarController newController];
+    }
+    return _tabBarController;
+}
 @end
