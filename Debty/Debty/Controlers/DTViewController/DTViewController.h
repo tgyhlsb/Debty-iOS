@@ -10,4 +10,10 @@
 
 @interface DTViewController : UIViewController
 
+@property (nonatomic, strong) void (^closeBlock)(void);
+@property (nonatomic, strong) void (^nextBlock)(void);
+
+- (void)setCloseButtonVisible:(BOOL)visible;
+- (void)setNextButtonVisible:(BOOL)visible;
+
 @end

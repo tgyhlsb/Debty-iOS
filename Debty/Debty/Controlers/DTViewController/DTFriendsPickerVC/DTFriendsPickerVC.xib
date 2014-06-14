@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DTFriendsPickerVC">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cuJ-FJ-86i">
+                    <rect key="frame" x="0.0" y="64" width="320" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter friend name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lLJ-79-RMY">
+                            <rect key="frame" x="20" y="10" width="270" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" red="0.47843137250000001" green="0.75686274509999996" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="lLJ-79-RMY" secondAttribute="bottom" constant="10" id="Di0-yd-gYZ"/>
+                        <constraint firstItem="lLJ-79-RMY" firstAttribute="leading" secondItem="cuJ-FJ-86i" secondAttribute="leading" constant="20" id="SoD-70-s3m"/>
+                        <constraint firstAttribute="height" constant="50" id="fm6-1E-kn0"/>
+                        <constraint firstItem="lLJ-79-RMY" firstAttribute="top" secondItem="cuJ-FJ-86i" secondAttribute="top" constant="10" id="l8E-cU-m3B"/>
+                        <constraint firstAttribute="trailing" secondItem="lLJ-79-RMY" secondAttribute="trailing" constant="30" id="sGZ-we-ulm"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="vSG-5z-sWQ">
+                    <rect key="frame" x="0.0" y="114" width="320" height="454"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="cuJ-FJ-86i" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0iP-JS-oUy"/>
+                <constraint firstItem="vSG-5z-sWQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Gtj-ZI-knM"/>
+                <constraint firstAttribute="bottom" secondItem="vSG-5z-sWQ" secondAttribute="bottom" id="OuB-QA-ndK"/>
+                <constraint firstItem="vSG-5z-sWQ" firstAttribute="top" secondItem="cuJ-FJ-86i" secondAttribute="bottom" id="SjG-DX-JCL"/>
+                <constraint firstItem="cuJ-FJ-86i" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="chQ-wC-kVM"/>
+                <constraint firstAttribute="trailing" secondItem="vSG-5z-sWQ" secondAttribute="trailing" id="nul-rs-QJM"/>
+                <constraint firstAttribute="trailing" secondItem="cuJ-FJ-86i" secondAttribute="trailing" id="zwe-wS-bNe"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+</document>

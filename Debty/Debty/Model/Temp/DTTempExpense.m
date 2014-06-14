@@ -14,8 +14,7 @@
 {
     DTTempExpense *expense = [[DTTempExpense alloc] init];
     expense.price = [NSNumber numberWithFloat:(arc4random() % 100)/3.7];
-    expense.userName = @"Manu";
-    expense.facebookID = @"10204237736842333";
+    expense.friend = [DTTempFriend randomFriend];
     return expense;
 }
 

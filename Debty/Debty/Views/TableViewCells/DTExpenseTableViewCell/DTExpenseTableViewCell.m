@@ -26,12 +26,12 @@
 
 - (void)updateView
 {
-    self.userNameLabel.text = self.expense.userName;
+    self.userNameLabel.text = self.expense.friend.name;
     self.priceLabel.text = [NSString stringWithFormat:@"%@", self.expense.price];
     
     [self.pictureView reset];
-    [self.pictureView addUserID:self.expense.facebookID withName:self.expense.userName];
-    [self.pictureView addUserID:self.expense.facebookID withName:self.expense.userName];
+    [self.pictureView addUserID:self.expense.friend.facebookID withName:self.expense.friend.name];
+    [self.pictureView addUserID:self.expense.friend.facebookID withName:self.expense.friend.name];
     [self.pictureView updateLayout];
 }
 

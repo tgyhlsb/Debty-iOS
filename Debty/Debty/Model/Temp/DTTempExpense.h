@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DTTempFriend.h"
 
 @interface DTTempExpense : NSObject
 
-@property (nonatomic, strong) NSString *userName;
+@property (nonatomic, strong) DTTempFriend *friend;
 @property (nonatomic, strong) NSNumber *price;
-@property (nonatomic, strong) NSString *facebookID;
 
 + (DTTempExpense *)randomExpense;
 

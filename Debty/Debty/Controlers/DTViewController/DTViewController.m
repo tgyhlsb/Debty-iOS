@@ -10,40 +10,70 @@
 
 @interface DTViewController ()
 
+@property (nonatomic, strong) UIBarButtonItem *closeButton;
+@property (nonatomic, strong) UIBarButtonItem *nextButton;
+
 @end
 
 @implementation DTViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+#pragma mark - View methods
+
+- (void)setCloseButtonVisible:(BOOL)visible
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    if (visible) {
+        self.navigationItem.leftBarButtonItem = self.closeButton;
+    } else {
+        self.navigationItem.leftBarButtonItem = nil;
     }
-    return self;
 }
 
-- (void)viewDidLoad
+- (void)setNextButtonVisible:(BOOL)visible
 {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    if (visible) {
+        self.navigationItem.rightBarButtonItem = self.nextButton;
+    } else {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
 }
 
-- (void)didReceiveMemoryWarning
+#pragma mark - Getters
+
+- (UIBarButtonItem *)closeButton
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    if (!_closeButton) {
+        _closeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(closeButtonHandler)];
+    }
+    return _closeButton;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (UIBarButtonItem *)nextButton
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if (!_nextButton) {
+        _nextButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(nextButtonHandler)];
+    }
+    return _nextButton;
 }
-*/
+
+#pragma mark - Handlers
+
+- (void)closeButtonHandler
+{
+    NSLog(@"[DTViewController closeButtonHandler]");
+    if (self.closeBlock) {
+        self.closeBlock();
+        self.closeBlock = nil;
+    }
+}
+
+- (void)nextButtonHandler
+{
+    NSLog(@"[DTViewController nextButtonHandler]");
+    if (self.nextBlock) {
+        self.nextBlock();
+    }
+}
+
+
 
 @end
