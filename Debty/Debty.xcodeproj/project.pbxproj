@@ -39,6 +39,7 @@
 		5A975D75194C48B800566A2A /* DTNewAccountNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D74194C48B800566A2A /* DTNewAccountNavigationController.m */; };
 		5A975D79194C50C100566A2A /* DTTempFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D78194C50C100566A2A /* DTTempFriend.m */; };
 		5A975D7C194C558000566A2A /* DTTempUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D7B194C558000566A2A /* DTTempUser.m */; };
+		5A975D7F194C7C2000566A2A /* debty.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D7D194C7C2000566A2A /* debty.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		5A975D78194C50C100566A2A /* DTTempFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTempFriend.m; path = Model/Temp/DTTempFriend.m; sourceTree = "<group>"; };
 		5A975D7A194C558000566A2A /* DTTempUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTempUser.h; path = Model/Temp/DTTempUser.h; sourceTree = "<group>"; };
 		5A975D7B194C558000566A2A /* DTTempUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTempUser.m; path = Model/Temp/DTTempUser.m; sourceTree = "<group>"; };
+		5A975D7E194C7C2000566A2A /* debty.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = debty.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				5A12DF97194B7E2D006E942F /* Temp */,
+				5A975D7D194C7C2000566A2A /* debty.xcdatamodeld */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -235,9 +238,9 @@
 			children = (
 				5A220EA81941103100BDABCF /* DTAppDelegate.h */,
 				5A220EA91941103100BDABCF /* DTAppDelegate.m */,
-				5A220EDA194117B200BDABCF /* Controllers */,
 				5A12DF96194B7E25006E942F /* Model */,
 				5A12DF9E194B7EDA006E942F /* Views */,
+				5A220EDA194117B200BDABCF /* Controllers */,
 				5A220EB11941103100BDABCF /* Images.xcassets */,
 				5A220EA01941103100BDABCF /* Supporting Files */,
 			);
@@ -465,6 +468,7 @@
 				5A220EE919411E0C00BDABCF /* DTViewController.m in Sources */,
 				5A220ED01941122A00BDABCF /* DTTabBarController.m in Sources */,
 				5A12DFA1194B7F12006E942F /* DTExpenseTableViewCell.m in Sources */,
+				5A975D7F194C7C2000566A2A /* debty.xcdatamodeld in Sources */,
 				5A220EF61941237C00BDABCF /* DTFacebookLoginVC.m in Sources */,
 				5A220EAA1941103100BDABCF /* DTAppDelegate.m in Sources */,
 				5A12DFAC194B8EB1006E942F /* DTGroupPictureView.m in Sources */,
@@ -693,6 +697,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5A975D7D194C7C2000566A2A /* debty.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5A975D7E194C7C2000566A2A /* debty.xcdatamodel */,
+			);
+			currentVersion = 5A975D7E194C7C2000566A2A /* debty.xcdatamodel */;
+			name = debty.xcdatamodeld;
+			path = Model/debty.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5A220E8E1941103100BDABCF /* Project object */;
 }

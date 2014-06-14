@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="DTAccount" isAbstract="YES" syncable="YES">
+        <relationship name="expenses" toMany="YES" deletionRule="Cascade" destinationEntity="DTExpense" inverseName="account" inverseEntity="DTExpense" syncable="YES"/>
+    </entity>
+    <entity name="DTExpense" isAbstract="YES" syncable="YES">
+        <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DTAccount" inverseName="expenses" inverseEntity="DTAccount" syncable="YES"/>
+    </entity>
+    <entity name="DTGroupAccount" parentEntity="DTAccount" syncable="YES">
+        <relationship name="friends" toMany="YES" deletionRule="Nullify" destinationEntity="DTPerson" inverseName="groupAccounts" inverseEntity="DTPerson" syncable="YES"/>
+        <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" syncable="YES"/>
+    </entity>
+    <entity name="DTGroupExpense" parentEntity="DTExpense" syncable="YES"/>
+    <entity name="DTIndividualAccount" representedClassName="DTAccount" parentEntity="DTAccount" syncable="YES">
+        <relationship name="expenses" toMany="YES" deletionRule="Cascade" syncable="YES"/>
+        <relationship name="friend" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DTPerson" inverseName="individualAccount" inverseEntity="DTPerson" syncable="YES"/>
+    </entity>
+    <entity name="DTIndividualExpense" parentEntity="DTExpense" syncable="YES">
+        <relationship name="debtor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DTPerson" inverseName="debtList" inverseEntity="DTPerson" syncable="YES"/>
+    </entity>
+    <entity name="DTPerson" syncable="YES">
+        <attribute name="birthdate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facebookID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="debtList" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DTIndividualExpense" inverseName="debtor" inverseEntity="DTIndividualExpense" syncable="YES"/>
+        <relationship name="groupAccounts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DTGroupAccount" inverseName="friends" inverseEntity="DTGroupAccount" syncable="YES"/>
+        <relationship name="individualAccount" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DTIndividualAccount" inverseName="friend" inverseEntity="DTIndividualAccount" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="DTPerson" positionX="106" positionY="27" width="128" height="193"/>
+        <element name="DTAccount" positionX="79" positionY="-99" width="128" height="58"/>
+        <element name="DTIndividualAccount" positionX="-144" positionY="-108" width="128" height="73"/>
+        <element name="DTGroupAccount" positionX="306" positionY="-108" width="128" height="75"/>
+        <element name="DTExpense" positionX="70" positionY="-306" width="128" height="58"/>
+        <element name="DTIndividualExpense" positionX="-119" positionY="-295" width="128" height="58"/>
+        <element name="DTGroupExpense" positionX="313" positionY="-306" width="128" height="43"/>
+    </elements>
+</model>
