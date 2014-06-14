@@ -34,6 +34,7 @@
     
     self.loginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
     self.loginView.delegate = self;
+    self.loginView.loginBehavior = FBSessionLoginBehaviorUseSystemAccountIfPresent;
 }
 
 #pragma mark - FBLoginViewDelegate
