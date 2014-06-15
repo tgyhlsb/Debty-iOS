@@ -8,6 +8,7 @@
 
 #import "DTNewAccountNavigationController.h"
 #import "DTFriendsPickerVC.h"
+#import "DTCreateAccountVC.h"
 
 @interface DTNewAccountNavigationController ()
 
@@ -27,7 +28,7 @@
         [((DTNewAccountNavigationController *)weakRootVC.navigationController) selfDissmiss];
     }];
     [rootViewController setNextBlock:^{
-        [((DTNewAccountNavigationController *)weakRootVC.navigationController) pushNextVC];
+        [((DTNewAccountNavigationController *)weakRootVC.navigationController) pushToCreateAccountVC];
     }];
     return navigationController;
 }
@@ -41,9 +42,10 @@
     }];
 }
 
-- (void)pushNextVC
+- (void)pushToCreateAccountVC
 {
-    [self pushViewController:[[DTViewController alloc] init] animated:YES];
+    DTCreateAccountVC *destination = [DTCreateAccountVC newController];
+    [self pushViewController:destination animated:YES];
 }
 
 @end

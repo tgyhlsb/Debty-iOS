@@ -40,12 +40,15 @@
 		5A975D79194C50C100566A2A /* DTTempFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D78194C50C100566A2A /* DTTempFriend.m */; };
 		5A975D7C194C558000566A2A /* DTTempUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D7B194C558000566A2A /* DTTempUser.m */; };
 		5A975D7F194C7C2000566A2A /* debty.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D7D194C7C2000566A2A /* debty.xcdatamodeld */; };
-		5A975D85194C87CE00566A2A /* DTAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D84194C87CE00566A2A /* DTAccount.m */; };
 		5A975D88194C87CE00566A2A /* DTGroupAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D87194C87CE00566A2A /* DTGroupAccount.m */; };
 		5A975D8B194C87CE00566A2A /* DTIndividualExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D8A194C87CE00566A2A /* DTIndividualExpense.m */; };
 		5A975D8E194C87CE00566A2A /* DTGroupExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D8D194C87CE00566A2A /* DTGroupExpense.m */; };
 		5A975D91194C87CE00566A2A /* DTPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D90194C87CE00566A2A /* DTPerson.m */; };
 		5A975D94194C87CE00566A2A /* DTExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D93194C87CE00566A2A /* DTExpense.m */; };
+		5A975D98194C899D00566A2A /* DTIndividualAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D97194C899D00566A2A /* DTIndividualAccount.m */; };
+		5A975D9B194C899E00566A2A /* DTAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D9A194C899E00566A2A /* DTAccount.m */; };
+		5A975D9F194DCF4200566A2A /* DTCreateAccountVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D9D194DCF4200566A2A /* DTCreateAccountVC.m */; };
+		5A975DA0194DCF4200566A2A /* DTCreateAccountVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A975D9E194DCF4200566A2A /* DTCreateAccountVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,8 +113,6 @@
 		5A975D7A194C558000566A2A /* DTTempUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTempUser.h; path = Model/Temp/DTTempUser.h; sourceTree = "<group>"; };
 		5A975D7B194C558000566A2A /* DTTempUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTempUser.m; path = Model/Temp/DTTempUser.m; sourceTree = "<group>"; };
 		5A975D7E194C7C2000566A2A /* debty.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = debty.xcdatamodel; sourceTree = "<group>"; };
-		5A975D83194C87CE00566A2A /* DTAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTAccount.h; path = Model/Generated/DTAccount.h; sourceTree = "<group>"; };
-		5A975D84194C87CE00566A2A /* DTAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTAccount.m; path = Model/Generated/DTAccount.m; sourceTree = "<group>"; };
 		5A975D86194C87CE00566A2A /* DTGroupAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTGroupAccount.h; path = Model/Generated/DTGroupAccount.h; sourceTree = "<group>"; };
 		5A975D87194C87CE00566A2A /* DTGroupAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTGroupAccount.m; path = Model/Generated/DTGroupAccount.m; sourceTree = "<group>"; };
 		5A975D89194C87CE00566A2A /* DTIndividualExpense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTIndividualExpense.h; path = Model/Generated/DTIndividualExpense.h; sourceTree = "<group>"; };
@@ -122,6 +123,13 @@
 		5A975D90194C87CE00566A2A /* DTPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTPerson.m; path = Model/Generated/DTPerson.m; sourceTree = "<group>"; };
 		5A975D92194C87CE00566A2A /* DTExpense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTExpense.h; path = Model/Generated/DTExpense.h; sourceTree = "<group>"; };
 		5A975D93194C87CE00566A2A /* DTExpense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTExpense.m; path = Model/Generated/DTExpense.m; sourceTree = "<group>"; };
+		5A975D96194C899D00566A2A /* DTIndividualAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTIndividualAccount.h; path = Model/Generated/DTIndividualAccount.h; sourceTree = "<group>"; };
+		5A975D97194C899D00566A2A /* DTIndividualAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTIndividualAccount.m; path = Model/Generated/DTIndividualAccount.m; sourceTree = "<group>"; };
+		5A975D99194C899E00566A2A /* DTAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTAccount.h; path = Model/Generated/DTAccount.h; sourceTree = "<group>"; };
+		5A975D9A194C899E00566A2A /* DTAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTAccount.m; path = Model/Generated/DTAccount.m; sourceTree = "<group>"; };
+		5A975D9C194DCF4200566A2A /* DTCreateAccountVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTCreateAccountVC.h; path = Controlers/DTViewController/DTCreateAccountVC/DTCreateAccountVC.h; sourceTree = "<group>"; };
+		5A975D9D194DCF4200566A2A /* DTCreateAccountVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTCreateAccountVC.m; path = Controlers/DTViewController/DTCreateAccountVC/DTCreateAccountVC.m; sourceTree = "<group>"; };
+		5A975D9E194DCF4200566A2A /* DTCreateAccountVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DTCreateAccountVC.xib; path = Controlers/DTViewController/DTCreateAccountVC/DTCreateAccountVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -344,6 +352,7 @@
 				5A220EE819411E0C00BDABCF /* DTViewController.m */,
 				5A220EF019411E4D00BDABCF /* DTExpenseTableVC */,
 				5A12DFB2194C4660006E942F /* DTFriendsPickerVC */,
+				5A975DA1194DCF4B00566A2A /* DTCreateAccountVC */,
 			);
 			name = DTViewController;
 			sourceTree = "<group>";
@@ -380,7 +389,10 @@
 		5A975D95194C87D700566A2A /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				5A975D83194C87CE00566A2A /* DTAccount.h */,
+				5A975D99194C899E00566A2A /* DTAccount.h */,
+				5A975D9A194C899E00566A2A /* DTAccount.m */,
+				5A975D96194C899D00566A2A /* DTIndividualAccount.h */,
+				5A975D97194C899D00566A2A /* DTIndividualAccount.m */,
 				5A975D92194C87CE00566A2A /* DTExpense.h */,
 				5A975D93194C87CE00566A2A /* DTExpense.m */,
 				5A975D8F194C87CE00566A2A /* DTPerson.h */,
@@ -391,9 +403,18 @@
 				5A975D8A194C87CE00566A2A /* DTIndividualExpense.m */,
 				5A975D86194C87CE00566A2A /* DTGroupAccount.h */,
 				5A975D87194C87CE00566A2A /* DTGroupAccount.m */,
-				5A975D84194C87CE00566A2A /* DTAccount.m */,
 			);
 			name = Generated;
+			sourceTree = "<group>";
+		};
+		5A975DA1194DCF4B00566A2A /* DTCreateAccountVC */ = {
+			isa = PBXGroup;
+			children = (
+				5A975D9C194DCF4200566A2A /* DTCreateAccountVC.h */,
+				5A975D9D194DCF4200566A2A /* DTCreateAccountVC.m */,
+				5A975D9E194DCF4200566A2A /* DTCreateAccountVC.xib */,
+			);
+			name = DTCreateAccountVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -473,6 +494,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A975DA0194DCF4200566A2A /* DTCreateAccountVC.xib in Resources */,
 				5A220ED8194117A100BDABCF /* DTTestVC.xib in Resources */,
 				5A12DFB1194C465C006E942F /* DTFriendsPickerVC.xib in Resources */,
 				5A220EB21941103100BDABCF /* Images.xcassets in Resources */,
@@ -504,10 +526,10 @@
 				5A12DF9B194B7EC9006E942F /* DTTableViewCell.m in Sources */,
 				5A975D7C194C558000566A2A /* DTTempUser.m in Sources */,
 				5A975D8E194C87CE00566A2A /* DTGroupExpense.m in Sources */,
+				5A975D98194C899D00566A2A /* DTIndividualAccount.m in Sources */,
 				5A975D8B194C87CE00566A2A /* DTIndividualExpense.m in Sources */,
 				5A220EE919411E0C00BDABCF /* DTViewController.m in Sources */,
 				5A220ED01941122A00BDABCF /* DTTabBarController.m in Sources */,
-				5A975D85194C87CE00566A2A /* DTAccount.m in Sources */,
 				5A12DFA1194B7F12006E942F /* DTExpenseTableViewCell.m in Sources */,
 				5A975D94194C87CE00566A2A /* DTExpense.m in Sources */,
 				5A975D7F194C7C2000566A2A /* debty.xcdatamodeld in Sources */,
@@ -517,6 +539,8 @@
 				5A220EAA1941103100BDABCF /* DTAppDelegate.m in Sources */,
 				5A12DFAC194B8EB1006E942F /* DTGroupPictureView.m in Sources */,
 				5A975D79194C50C100566A2A /* DTTempFriend.m in Sources */,
+				5A975D9B194C899E00566A2A /* DTAccount.m in Sources */,
+				5A975D9F194DCF4200566A2A /* DTCreateAccountVC.m in Sources */,
 				5A220EE1194119AB00BDABCF /* DTNavigationController.m in Sources */,
 				5A220ED7194117A100BDABCF /* DTTestVC.m in Sources */,
 				5A220EEE19411E4900BDABCF /* DTExpenseTableVC.m in Sources */,

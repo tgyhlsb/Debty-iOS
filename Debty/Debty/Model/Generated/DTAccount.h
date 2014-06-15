@@ -8,11 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "DTAccount.h"
 
+@class DTExpense;
 
-@interface DTAccount : DTAccount
+@interface DTAccount : NSManagedObject
 
-@property (nonatomic, retain) NSManagedObject *otherPerson;
+@property (nonatomic, retain) NSSet *expenses;
+@end
+
+@interface DTAccount (CoreDataGeneratedAccessors)
+
+- (void)addExpensesObject:(DTExpense *)value;
+- (void)removeExpensesObject:(DTExpense *)value;
+- (void)addExpenses:(NSSet *)values;
+- (void)removeExpenses:(NSSet *)values;
 
 @end

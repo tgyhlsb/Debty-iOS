@@ -16,7 +16,7 @@
         <relationship name="creditor" maxCount="1" deletionRule="Nullify" destinationEntity="DTPerson" inverseName="creditorGroupExpenseList" inverseEntity="DTPerson" syncable="YES"/>
         <relationship name="debtors" toMany="YES" deletionRule="Nullify" destinationEntity="DTPerson" inverseName="debtorGroupExpenseList" inverseEntity="DTPerson" syncable="YES"/>
     </entity>
-    <entity name="DTIndividualAccount" representedClassName="DTAccount" parentEntity="DTAccount" syncable="YES">
+    <entity name="DTIndividualAccount" representedClassName="DTIndividualAccount" parentEntity="DTAccount" syncable="YES">
         <relationship name="otherPerson" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DTPerson" inverseName="individualAccount" inverseEntity="DTPerson" syncable="YES"/>
     </entity>
     <entity name="DTIndividualExpense" representedClassName="DTIndividualExpense" parentEntity="DTExpense" syncable="YES">

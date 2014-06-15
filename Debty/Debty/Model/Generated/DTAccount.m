@@ -7,10 +7,11 @@
 //
 
 #import "DTAccount.h"
+#import "DTExpense.h"
 
 
 @implementation DTAccount
 
-@dynamic otherPerson;
+@dynamic expenses;
 
 @end
