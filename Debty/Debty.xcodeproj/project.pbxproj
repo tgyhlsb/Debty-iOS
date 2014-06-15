@@ -38,6 +38,7 @@
 		5A220EFA1941245700BDABCF /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A220EF91941245700BDABCF /* FacebookSDK.framework */; };
 		5A8714C5194E0C7900D2111F /* DTModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8714C4194E0C7900D2111F /* DTModelManager.m */; };
 		5A8714C7194E0CA800D2111F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8714C6194E0CA800D2111F /* CoreData.framework */; };
+		5A8714CB194E0EA800D2111F /* DTURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8714CA194E0EA800D2111F /* DTURLConnection.m */; };
 		5A975D75194C48B800566A2A /* DTNewAccountNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D74194C48B800566A2A /* DTNewAccountNavigationController.m */; };
 		5A975D79194C50C100566A2A /* DTTempFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D78194C50C100566A2A /* DTTempFriend.m */; };
 		5A975D7C194C558000566A2A /* DTTempUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D7B194C558000566A2A /* DTTempUser.m */; };
@@ -112,6 +113,8 @@
 		5A8714C3194E0C7900D2111F /* DTModelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTModelManager.h; path = Model/DTModelManager.h; sourceTree = "<group>"; };
 		5A8714C4194E0C7900D2111F /* DTModelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTModelManager.m; path = Model/DTModelManager.m; sourceTree = "<group>"; };
 		5A8714C6194E0CA800D2111F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		5A8714C9194E0EA800D2111F /* DTURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTURLConnection.h; sourceTree = "<group>"; };
+		5A8714CA194E0EA800D2111F /* DTURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTURLConnection.m; sourceTree = "<group>"; };
 		5A975D73194C48B800566A2A /* DTNewAccountNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTNewAccountNavigationController.h; path = Debty/Controlers/DTNavigationController/DTNewAccountNavigationController/DTNewAccountNavigationController.h; sourceTree = "<group>"; };
 		5A975D74194C48B800566A2A /* DTNewAccountNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTNewAccountNavigationController.m; path = Debty/Controlers/DTNavigationController/DTNewAccountNavigationController/DTNewAccountNavigationController.m; sourceTree = "<group>"; };
 		5A975D77194C50C100566A2A /* DTTempFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTempFriend.h; path = Model/Temp/DTTempFriend.h; sourceTree = "<group>"; };
@@ -279,6 +282,7 @@
 			children = (
 				5A220EA81941103100BDABCF /* DTAppDelegate.h */,
 				5A220EA91941103100BDABCF /* DTAppDelegate.m */,
+				5A8714C8194E0EA800D2111F /* API */,
 				5A12DF96194B7E25006E942F /* Model */,
 				5A12DF9E194B7EDA006E942F /* Views */,
 				5A220EDA194117B200BDABCF /* Controllers */,
@@ -389,6 +393,15 @@
 				5A220EF51941237C00BDABCF /* DTFacebookLoginVC.xib */,
 			);
 			name = DTFacebookLoginVC;
+			sourceTree = "<group>";
+		};
+		5A8714C8194E0EA800D2111F /* API */ = {
+			isa = PBXGroup;
+			children = (
+				5A8714C9194E0EA800D2111F /* DTURLConnection.h */,
+				5A8714CA194E0EA800D2111F /* DTURLConnection.m */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		5A975D76194C48BD00566A2A /* DTNewAccountNavigationController */ = {
@@ -548,6 +561,7 @@
 				5A220ED01941122A00BDABCF /* DTTabBarController.m in Sources */,
 				5A12DFA1194B7F12006E942F /* DTExpenseTableViewCell.m in Sources */,
 				5A975D94194C87CE00566A2A /* DTExpense.m in Sources */,
+				5A8714CB194E0EA800D2111F /* DTURLConnection.m in Sources */,
 				5A975D7F194C7C2000566A2A /* debty.xcdatamodeld in Sources */,
 				5A220EF61941237C00BDABCF /* DTFacebookLoginVC.m in Sources */,
 				5A975D88194C87CE00566A2A /* DTGroupAccount.m in Sources */,
