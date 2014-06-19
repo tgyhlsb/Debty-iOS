@@ -33,6 +33,20 @@ static DTModelManager *sharedManager;
 }
 
 
+#pragma mark - FetchResultController factory -
+
++ (NSFetchedResultsController *)fetchResultControllerForPersons
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_PERSON];
+    
+    request.sortDescriptors = @[];
+    
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                               managedObjectContext:[DTModelManager sharedContext]
+                                                 sectionNameKeyPath:nil
+                                                          cacheName:nil];
+}
+
 #pragma mark - Singleton
 
 + (NSManagedObjectContext *)sharedContext
