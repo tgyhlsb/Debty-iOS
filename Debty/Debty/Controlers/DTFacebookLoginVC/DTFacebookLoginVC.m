@@ -10,6 +10,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "DTAppDelegate.h"
 #import "DTTempUser.h"
+#import "DTBackendManager.h"
 
 #define NIB_NAME @"DTFacebookLoginVC"
 
@@ -50,6 +51,12 @@
 {
     NSLog(@"%@", user);
     [DTTempUser setWithFacebookUser:user];
+    
+    [DTBackendManager identifyUserWithGraph:user success:^(NSURLSessionDataTask *task, NSDictionary *json) {
+        
+    } failure:^(NSURLSessionDataTask *operation, NSError *error) {
+        
+    }];
 }
 
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView

@@ -8,7 +8,7 @@
 
 #import "DTBackendManager.h"
 
-#define BASE_URL @"http://debty.herokuapp.com/"
+#define BASE_URL @"http://127.0.0.1:8000/"
 
 static DTBackendManager *sharedManager;
 
@@ -39,9 +39,12 @@ static DTBackendManager *sharedManager;
     return self;
 }
 
+#pragma mark - Services -
+#pragma mark Identify user
+
 + (void)identifyUserWithGraph:(id)userGraph
-                      success:(void (^)(AFHTTPRequestOperation *))success
-                      failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+                      success:(void (^)(NSURLSessionDataTask *, NSDictionary *))success
+                      failure:(void (^)(NSURLSessionDataTask *, NSError *))failure
 {
     [[DTBackendManager sharedManager] identifyUserWithGraph:userGraph
                                                     success:success
@@ -49,14 +52,10 @@ static DTBackendManager *sharedManager;
 }
 
 - (void)identifyUserWithGraph:(id)userGraph
-                      success:(void (^)(AFHTTPRequestOperation *))success
-                      failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+                      success:(void (^)(NSURLSessionDataTask *, NSDictionary *))success
+                      failure:(void (^)(NSURLSessionDataTask *, NSError *))failure
 {
-    [self GET:@"login/" parameters:userGraph success:^(NSURLSessionDataTask *task, id responseObject) {
-        
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
-    }];
+    [self POST:@"login/" parameters:userGraph success:success failure:failure];
 }
 
 @end

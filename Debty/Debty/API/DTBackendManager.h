@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Debty. All rights reserved.
 //
 
-#import "AFNetworking.h"
 #import <FacebookSDK/FacebookSDK.h>
 
 @interface DTBackendManager : AFHTTPSessionManager
@@ -14,7 +13,7 @@
 + (DTBackendManager *)sharedManager;
 
 + (void)identifyUserWithGraph:(id<FBGraphUser>)userGraph
-                      success:(void (^)(AFHTTPRequestOperation *operation))success
-                      failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+                      success:(void (^)(NSURLSessionDataTask *task, NSDictionary *json))success
+                      failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
 
 @end

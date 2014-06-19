@@ -10,6 +10,7 @@
 #import "DTTabBarController.h"
 #import "DTFacebookLoginVC.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import "AFNetworkActivityIndicatorManager.h"
 
 @interface DTAppDelegate()
 
@@ -65,6 +66,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // Override point for customization after application launch.
