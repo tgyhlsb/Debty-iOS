@@ -73,8 +73,6 @@ static DTBackendManager *sharedManager;
                  success:(void (^)(NSURLSessionDataTask *, NSDictionary *))success
                  failure:(void (^)(NSURLSessionDataTask *, NSError *))failure
 {
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-//    [params setObject:friendList forKey:@"friend_list"];
     [self GET:@"persons/" parameters:nil success:success failure:failure];
 }
 

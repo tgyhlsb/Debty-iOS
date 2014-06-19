@@ -38,6 +38,7 @@
 		5A220EF71941237C00BDABCF /* DTFacebookLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A220EF51941237C00BDABCF /* DTFacebookLoginVC.xib */; };
 		5A220EFA1941245700BDABCF /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A220EF91941245700BDABCF /* FacebookSDK.framework */; };
 		5A408432195382ED006146E5 /* DTBackendManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A408431195382ED006146E5 /* DTBackendManager.m */; };
+		5A40843619539962006146E5 /* DTCoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A40843519539962006146E5 /* DTCoreDataTableViewController.m */; };
 		5A8714C5194E0C7900D2111F /* DTModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8714C4194E0C7900D2111F /* DTModelManager.m */; };
 		5A8714C7194E0CA800D2111F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8714C6194E0CA800D2111F /* CoreData.framework */; };
 		5A8714CB194E0EA800D2111F /* DTURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8714CA194E0EA800D2111F /* DTURLConnection.m */; };
@@ -116,6 +117,8 @@
 		5A220EF91941245700BDABCF /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		5A408430195382ED006146E5 /* DTBackendManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTBackendManager.h; sourceTree = "<group>"; };
 		5A408431195382ED006146E5 /* DTBackendManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTBackendManager.m; sourceTree = "<group>"; };
+		5A40843419539962006146E5 /* DTCoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTCoreDataTableViewController.h; sourceTree = "<group>"; };
+		5A40843519539962006146E5 /* DTCoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTCoreDataTableViewController.m; sourceTree = "<group>"; };
 		5A8714C3194E0C7900D2111F /* DTModelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTModelManager.h; path = Model/DTModelManager.h; sourceTree = "<group>"; };
 		5A8714C4194E0C7900D2111F /* DTModelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTModelManager.m; path = Model/DTModelManager.m; sourceTree = "<group>"; };
 		5A8714C6194E0CA800D2111F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -377,7 +380,7 @@
 			children = (
 				5A220EE719411E0C00BDABCF /* DTViewController.h */,
 				5A220EE819411E0C00BDABCF /* DTViewController.m */,
-				5A220EF019411E4D00BDABCF /* DTExpenseTableVC */,
+				5A40843319539962006146E5 /* DTCoreDataTableViewController */,
 				5A12DFB2194C4660006E942F /* DTFriendsPickerVC */,
 				5A975DA1194DCF4B00566A2A /* DTCreateAccountVC */,
 			);
@@ -392,6 +395,7 @@
 				5A220EED19411E4900BDABCF /* DTExpenseTableVC.xib */,
 			);
 			name = DTExpenseTableVC;
+			path = ../../..;
 			sourceTree = "<group>";
 		};
 		5A220EF81941238100BDABCF /* DTFacebookLoginVC */ = {
@@ -402,6 +406,17 @@
 				5A220EF51941237C00BDABCF /* DTFacebookLoginVC.xib */,
 			);
 			name = DTFacebookLoginVC;
+			sourceTree = "<group>";
+		};
+		5A40843319539962006146E5 /* DTCoreDataTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5A40843419539962006146E5 /* DTCoreDataTableViewController.h */,
+				5A40843519539962006146E5 /* DTCoreDataTableViewController.m */,
+				5A220EF019411E4D00BDABCF /* DTExpenseTableVC */,
+			);
+			name = DTCoreDataTableViewController;
+			path = Controlers/DTViewController/DTCoreDataTableViewController;
 			sourceTree = "<group>";
 		};
 		5A8714C8194E0EA800D2111F /* API */ = {
@@ -607,6 +622,7 @@
 				5A220EE919411E0C00BDABCF /* DTViewController.m in Sources */,
 				5A220ED01941122A00BDABCF /* DTTabBarController.m in Sources */,
 				5A12DFA1194B7F12006E942F /* DTExpenseTableViewCell.m in Sources */,
+				5A40843619539962006146E5 /* DTCoreDataTableViewController.m in Sources */,
 				5A975D94194C87CE00566A2A /* DTExpense.m in Sources */,
 				5A8714CB194E0EA800D2111F /* DTURLConnection.m in Sources */,
 				5A975D7F194C7C2000566A2A /* debty.xcdatamodeld in Sources */,

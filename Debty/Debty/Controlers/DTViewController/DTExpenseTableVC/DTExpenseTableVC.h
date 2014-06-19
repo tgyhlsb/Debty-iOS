@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DTViewController.h"
+#import "DTCoreDataTableViewController.h"
 
-@interface DTExpenseTableVC : DTViewController
+@interface DTExpenseTableVC : DTCoreDataTableViewController
 
 + (DTExpenseTableVC *)newController;
 

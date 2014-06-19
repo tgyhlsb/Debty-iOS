@@ -17,7 +17,6 @@
 
 @property (nonatomic, strong) UIBarButtonItem *addExpenseButton;
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UISearchBar *searchBar;
 
 @property (strong, nonatomic) NSArray *expenses;
@@ -38,7 +37,7 @@
     [DTModelManager getPersonSample];
     
     NSMutableArray *tempExpenses = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 30; i++) {
+    for (int i = 0; i < 2; i++) {
         DTTempExpense *expense = [DTTempExpense randomExpense];
         [tempExpenses addObject:expense];
     }
@@ -61,10 +60,9 @@
     
     [self generateExpenses];
     
-    [DTExpenseTableViewCell registerToTableView:self.tableView];
+    [self setUpFetchRequest];
     
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
+    [DTExpenseTableViewCell registerToTableView:self.tableView];
     
     self.navigationItem.titleView = self.searchBar;
     
@@ -101,6 +99,13 @@
     }
 }
 
+#pragma mark - DTCoreDataTableViewController
+
+- (void)setUpFetchRequest
+{
+    self.fetchedResultsController = [DTModelManager fetchResultControllerForPersons];
+}
+
 #pragma mark - Handlers
 
 - (void)addExpenseButtonHandler
@@ -123,24 +128,19 @@
     
 }
 
-#pragma mark - UITableViewDataSource 
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.expenses count];
-}
+#pragma mark - UITableViewDataSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *identifier = [DTExpenseTableViewCell reusableIdentifier];
     DTExpenseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
-    cell.expense = [self.expenses objectAtIndex:indexPath.row];
+    DTTempExpense *expense = [self.expenses objectAtIndex:indexPath.row];
+    DTPerson *person = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    expense.friend.name = person.firstName;
+    expense.friend.facebookID = person.facebookID;
+    
+    cell.expense = expense;
     
     cell.layer.shouldRasterize = YES;
     cell.layer.rasterizationScale = [UIScreen mainScreen].scale;

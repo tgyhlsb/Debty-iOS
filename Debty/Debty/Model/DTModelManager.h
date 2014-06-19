@@ -15,4 +15,7 @@
 
 + (void)getPersonSample;
 
+
++ (NSFetchedResultsController *)fetchResultControllerForPersons;
+
 @end
