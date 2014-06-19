@@ -58,4 +58,24 @@ static DTBackendManager *sharedManager;
     [self POST:@"login/" parameters:userGraph success:success failure:failure];
 }
 
+#pragma mark Update friend list
+
++ (void)updateFirendList:(NSArray *)friendList
+                 success:(void (^)(NSURLSessionDataTask *, NSDictionary *))success
+                 failure:(void (^)(NSURLSessionDataTask *, NSError *))failure
+{
+    [[DTBackendManager sharedManager] updateFirendList:friendList
+                                               success:success
+                                               failure:failure];
+}
+
+- (void)updateFirendList:(NSArray *)friendList
+                 success:(void (^)(NSURLSessionDataTask *, NSDictionary *))success
+                 failure:(void (^)(NSURLSessionDataTask *, NSError *))failure
+{
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+//    [params setObject:friendList forKey:@"friend_list"];
+    [self GET:@"persons/" parameters:nil success:success failure:failure];
+}
+
 @end

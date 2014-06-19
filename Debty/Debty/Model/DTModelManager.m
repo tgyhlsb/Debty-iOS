@@ -8,6 +8,7 @@
 
 #import "DTModelManager.h"
 #import <CoreData/CoreData.h>
+#import "DTBackendManager.h"
 
 static DTModelManager *sharedManager;
 
@@ -18,6 +19,21 @@ static DTModelManager *sharedManager;
 @end
 
 @implementation DTModelManager
+
+
++ (void)getPersonSample
+{
+    [DTBackendManager updateFirendList:nil success:^(NSURLSessionDataTask *task, NSDictionary *json) {
+        NSArray *personArray = [json objectForKey:@"results"];
+        [DTPerson personsWithArray:personArray];
+        [DTModelManager save];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+
+
+#pragma mark - Singleton
 
 + (NSManagedObjectContext *)sharedContext
 {
@@ -86,7 +102,7 @@ static DTModelManager *sharedManager;
 - (NSManagedObjectModel *)createManagedObjectModel
 {
     NSManagedObjectModel *managedObjectModel = nil;
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"refurbme" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"debty" withExtension:@"momd"];
     managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return managedObjectModel;
 }

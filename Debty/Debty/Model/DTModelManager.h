@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DTPerson+Serializer.h"
 
 @interface DTModelManager : NSObject
+
++ (NSManagedObjectContext *)sharedContext;
+
++ (void)getPersonSample;
 
 @end

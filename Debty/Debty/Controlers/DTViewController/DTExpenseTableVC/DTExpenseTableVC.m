@@ -9,6 +9,7 @@
 #import "DTExpenseTableVC.h"
 #import "DTExpenseTableViewCell.h"
 #import "DTNewAccountNavigationController.h"
+#import "DTModelManager.h"
 
 #define NIB_NAME @"DTExpenseTableVC"
 
@@ -34,6 +35,8 @@
 
 - (void)generateExpenses
 {
+    [DTModelManager getPersonSample];
+    
     NSMutableArray *tempExpenses = [[NSMutableArray alloc] init];
     for (int i = 0; i < 30; i++) {
         DTTempExpense *expense = [DTTempExpense randomExpense];

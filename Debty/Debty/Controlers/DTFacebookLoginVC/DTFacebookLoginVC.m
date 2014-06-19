@@ -52,7 +52,7 @@
     NSLog(@"%@", user);
     [DTTempUser setWithFacebookUser:user];
     
-    [DTBackendManager identifyUserWithGraph:user success:^(NSURLSessionDataTask *task, NSDictionary *json) {
+    [DTBackendManager identifyUserWithGraph:user success:^(NSURLSessionDataTask *task, NSDictionary *json) {        
         
     } failure:^(NSURLSessionDataTask *operation, NSError *error) {
         
