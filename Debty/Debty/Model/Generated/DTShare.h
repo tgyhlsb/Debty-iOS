@@ -15,7 +15,7 @@
 
 @property (nonatomic, retain) NSDecimalNumber * amount;
 @property (nonatomic, retain) NSNumber * identifier;
-@property (nonatomic, retain) DTExpense *expense;
 @property (nonatomic, retain) DTPerson *person;
+@property (nonatomic, retain) DTExpense *expense;
 
 @end

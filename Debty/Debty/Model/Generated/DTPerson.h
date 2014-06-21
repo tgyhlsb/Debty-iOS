@@ -18,23 +18,23 @@
 @property (nonatomic, retain) NSString * facebookID;
 @property (nonatomic, retain) NSString * firstName;
 @property (nonatomic, retain) NSString * gender;
+@property (nonatomic, retain) NSNumber * identifer;
 @property (nonatomic, retain) NSNumber * identifier;
 @property (nonatomic, retain) NSString * lastName;
-@property (nonatomic, retain) NSNumber * identifer;
-@property (nonatomic, retain) NSSet *accounts;
 @property (nonatomic, retain) NSSet *shares;
+@property (nonatomic, retain) NSSet *accounts;
 @end
 
 @interface DTPerson (CoreDataGeneratedAccessors)
-
-- (void)addAccountsObject:(DTAccount *)value;
-- (void)removeAccountsObject:(DTAccount *)value;
-- (void)addAccounts:(NSSet *)values;
-- (void)removeAccounts:(NSSet *)values;
 
 - (void)addSharesObject:(DTShare *)value;
 - (void)removeSharesObject:(DTShare *)value;
 - (void)addShares:(NSSet *)values;
 - (void)removeShares:(NSSet *)values;
+
+- (void)addAccountsObject:(DTAccount *)value;
+- (void)removeAccountsObject:(DTAccount *)value;
+- (void)addAccounts:(NSSet *)values;
+- (void)removeAccounts:(NSSet *)values;
 
 @end

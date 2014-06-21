@@ -15,7 +15,7 @@
 
 @dynamic amount;
 @dynamic identifier;
-@dynamic expense;
 @dynamic person;
+@dynamic expense;
 
 @end

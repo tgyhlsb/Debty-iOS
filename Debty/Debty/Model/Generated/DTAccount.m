@@ -13,9 +13,9 @@
 
 @implementation DTAccount
 
-@dynamic name;
 @dynamic identifier;
-@dynamic expenses;
+@dynamic name;
 @dynamic persons;
+@dynamic expenses;
 
 @end

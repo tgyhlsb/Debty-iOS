@@ -13,11 +13,11 @@
 
 @implementation DTExpense
 
+@dynamic amount;
 @dynamic creationDate;
 @dynamic date;
-@dynamic amount;
 @dynamic identifier;
-@dynamic account;
 @dynamic shares;
+@dynamic account;
 
 @end

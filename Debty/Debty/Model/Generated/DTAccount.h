@@ -13,22 +13,22 @@
 
 @interface DTAccount : NSManagedObject
 
-@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * identifier;
-@property (nonatomic, retain) NSSet *expenses;
+@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSSet *persons;
+@property (nonatomic, retain) NSSet *expenses;
 @end
 
 @interface DTAccount (CoreDataGeneratedAccessors)
-
-- (void)addExpensesObject:(DTExpense *)value;
-- (void)removeExpensesObject:(DTExpense *)value;
-- (void)addExpenses:(NSSet *)values;
-- (void)removeExpenses:(NSSet *)values;
 
 - (void)addPersonsObject:(DTPerson *)value;
 - (void)removePersonsObject:(DTPerson *)value;
 - (void)addPersons:(NSSet *)values;
 - (void)removePersons:(NSSet *)values;
+
+- (void)addExpensesObject:(DTExpense *)value;
+- (void)removeExpensesObject:(DTExpense *)value;
+- (void)addExpenses:(NSSet *)values;
+- (void)removeExpenses:(NSSet *)values;
 
 @end

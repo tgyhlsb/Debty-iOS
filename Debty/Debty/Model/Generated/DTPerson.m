@@ -18,10 +18,10 @@
 @dynamic facebookID;
 @dynamic firstName;
 @dynamic gender;
+@dynamic identifer;
 @dynamic identifier;
 @dynamic lastName;
-@dynamic identifer;
-@dynamic accounts;
 @dynamic shares;
+@dynamic accounts;
 
 @end

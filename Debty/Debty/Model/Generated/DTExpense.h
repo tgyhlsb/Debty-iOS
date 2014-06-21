@@ -13,12 +13,12 @@
 
 @interface DTExpense : NSManagedObject
 
+@property (nonatomic, retain) NSDecimalNumber * amount;
 @property (nonatomic, retain) NSDate * creationDate;
 @property (nonatomic, retain) NSDate * date;
-@property (nonatomic, retain) NSDecimalNumber * amount;
 @property (nonatomic, retain) NSNumber * identifier;
-@property (nonatomic, retain) DTAccount *account;
 @property (nonatomic, retain) NSSet *shares;
+@property (nonatomic, retain) DTAccount *account;
 @end
 
 @interface DTExpense (CoreDataGeneratedAccessors)
