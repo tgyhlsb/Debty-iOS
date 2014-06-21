@@ -1,21 +1,21 @@
 //
-//  DTAccount.m
+//  DTShare.m
 //  Debty
 //
 //  Created by Tanguy Hélesbeux on 21/06/2014.
 //  Copyright (c) 2014 Debty. All rights reserved.
 //
 
-#import "DTAccount.h"
+#import "DTShare.h"
 #import "DTExpense.h"
 #import "DTPerson.h"
 
 
-@implementation DTAccount
+@implementation DTShare
 
-@dynamic name;
+@dynamic amount;
 @dynamic identifier;
-@dynamic expenses;
-@dynamic persons;
+@dynamic expense;
+@dynamic person;
 
 @end

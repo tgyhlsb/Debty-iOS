@@ -2,18 +2,21 @@
 //  DTAccount.h
 //  Debty
 //
-//  Created by Tanguy Hélesbeux on 14/06/2014.
+//  Created by Tanguy Hélesbeux on 21/06/2014.
 //  Copyright (c) 2014 Debty. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class DTExpense;
+@class DTExpense, DTPerson;
 
 @interface DTAccount : NSManagedObject
 
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSNumber * identifier;
 @property (nonatomic, retain) NSSet *expenses;
+@property (nonatomic, retain) NSSet *persons;
 @end
 
 @interface DTAccount (CoreDataGeneratedAccessors)
@@ -22,5 +25,10 @@
 - (void)removeExpensesObject:(DTExpense *)value;
 - (void)addExpenses:(NSSet *)values;
 - (void)removeExpenses:(NSSet *)values;
+
+- (void)addPersonsObject:(DTPerson *)value;
+- (void)removePersonsObject:(DTPerson *)value;
+- (void)addPersons:(NSSet *)values;
+- (void)removePersons:(NSSet *)values;
 
 @end
