@@ -48,10 +48,7 @@
 }
 
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user
-{
-    NSLog(@"%@", user);
-    [DTTempUser setWithFacebookUser:user];
-    
+{    
     [DTBackendManager identifyUserWithGraph:user success:^(NSURLSessionDataTask *task, NSDictionary *json) {        
         
     } failure:^(NSURLSessionDataTask *operation, NSError *error) {

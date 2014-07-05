@@ -20,9 +20,9 @@
 + (DTPerson *)personWithInfo:(NSDictionary *)info
       inManagedObjectContext:(NSManagedObjectContext *)context
 {
-    NSString *facebookID = [info objectForKey:@"facebook_id"];
+    NSString *identifier = [info objectForKey:@"id"];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_PERSON];
-    request.predicate = [NSPredicate predicateWithFormat:@"facebookID = %@", facebookID];
+    request.predicate = [NSPredicate predicateWithFormat:@"identifier = %@", identifier];
     
     DTPerson *person = nil;
     
@@ -39,6 +39,7 @@
         }
 
         //TODO attributes
+        person.identifier = [info objectForKey:@"id"];
         person.facebookID = [info objectForKey:@"facebook_id"];
         person.firstName = [info objectForKey:@"first_name"];
         person.lastName = [info objectForKey:@"last_name"];

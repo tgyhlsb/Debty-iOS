@@ -14,6 +14,7 @@
 + (NSManagedObjectContext *)sharedContext;
 
 + (void)getPersonSample;
++ (void)updateUser;
 
 
 + (NSFetchedResultsController *)fetchResultControllerForPersons;

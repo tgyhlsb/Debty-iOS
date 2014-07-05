@@ -20,8 +20,8 @@
         <attribute name="facebookID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="identifer" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="isMainUser" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="accounts" toMany="YES" deletionRule="Nullify" destinationEntity="DTAccount" inverseName="persons" inverseEntity="DTAccount" syncable="YES"/>
         <relationship name="shares" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DTShare" inverseName="person" inverseEntity="DTShare" syncable="YES"/>

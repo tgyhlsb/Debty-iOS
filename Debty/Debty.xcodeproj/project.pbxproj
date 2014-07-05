@@ -40,6 +40,7 @@
 		5A2F5D551955EB0D00337637 /* DTAccount+Serializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2F5D541955EB0D00337637 /* DTAccount+Serializer.m */; };
 		5A408432195382ED006146E5 /* DTBackendManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A408431195382ED006146E5 /* DTBackendManager.m */; };
 		5A40843619539962006146E5 /* DTCoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A40843519539962006146E5 /* DTCoreDataTableViewController.m */; };
+		5A4E128419685F05002EEE82 /* DTFacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4E128319685F05002EEE82 /* DTFacebookManager.m */; };
 		5A8570B61955EDC600A517BD /* DTExpense+Serializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8570B51955EDC600A517BD /* DTExpense+Serializer.m */; };
 		5A8570BC1955F33600A517BD /* DTShare+Serializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8570BB1955F33600A517BD /* DTShare+Serializer.m */; };
 		5A8570C01955F36700A517BD /* DTExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8570BF1955F36700A517BD /* DTExpense.m */; };
@@ -121,6 +122,8 @@
 		5A408431195382ED006146E5 /* DTBackendManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTBackendManager.m; sourceTree = "<group>"; };
 		5A40843419539962006146E5 /* DTCoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTCoreDataTableViewController.h; sourceTree = "<group>"; };
 		5A40843519539962006146E5 /* DTCoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTCoreDataTableViewController.m; sourceTree = "<group>"; };
+		5A4E128219685F05002EEE82 /* DTFacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTFacebookManager.h; sourceTree = "<group>"; };
+		5A4E128319685F05002EEE82 /* DTFacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTFacebookManager.m; sourceTree = "<group>"; };
 		5A8570B41955EDC600A517BD /* DTExpense+Serializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DTExpense+Serializer.h"; path = "Model/DTExpense+Serializer.h"; sourceTree = "<group>"; };
 		5A8570B51955EDC600A517BD /* DTExpense+Serializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DTExpense+Serializer.m"; path = "Model/DTExpense+Serializer.m"; sourceTree = "<group>"; };
 		5A8570BA1955F33600A517BD /* DTShare+Serializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DTShare+Serializer.h"; path = "Model/DTShare+Serializer.h"; sourceTree = "<group>"; };
@@ -448,6 +451,8 @@
 				5A8714CA194E0EA800D2111F /* DTURLConnection.m */,
 				5A408430195382ED006146E5 /* DTBackendManager.h */,
 				5A408431195382ED006146E5 /* DTBackendManager.m */,
+				5A4E128219685F05002EEE82 /* DTFacebookManager.h */,
+				5A4E128319685F05002EEE82 /* DTFacebookManager.m */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -621,6 +626,7 @@
 				5A8714C5194E0C7900D2111F /* DTModelManager.m in Sources */,
 				5A8570BC1955F33600A517BD /* DTShare+Serializer.m in Sources */,
 				5A220EE919411E0C00BDABCF /* DTViewController.m in Sources */,
+				5A4E128419685F05002EEE82 /* DTFacebookManager.m in Sources */,
 				5A8570C31955F36800A517BD /* DTAccount.m in Sources */,
 				5A220ED01941122A00BDABCF /* DTTabBarController.m in Sources */,
 				5A12DFA1194B7F12006E942F /* DTExpenseTableViewCell.m in Sources */,

@@ -29,6 +29,8 @@
 {
     DTExpenseTableVC *controller = [[DTExpenseTableVC alloc] initWithNibName:NIB_NAME bundle:nil];
     controller.title = @"Expenses";
+    controller.canPullToRefresh = YES;
+    controller.clearsSelectionOnViewWillAppear = YES;
     return controller;
 }
 
@@ -37,7 +39,7 @@
     [DTModelManager getPersonSample];
     
     NSMutableArray *tempExpenses = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 10; i++) {
         DTTempExpense *expense = [DTTempExpense randomExpense];
         [tempExpenses addObject:expense];
     }
@@ -105,6 +107,17 @@
 {
     self.fetchedResultsController = [DTModelManager fetchResultControllerForPersons];
 }
+
+- (void)tableViewShouldRefresh
+{
+    [DTModelManager getPersonSample];
+    [self stopRefreshingTableView];
+}
+
+//- (void)stopRefreshingTableView
+//{
+//    
+//}
 
 #pragma mark - Handlers
 

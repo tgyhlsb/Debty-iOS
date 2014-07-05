@@ -23,13 +23,18 @@ static DTModelManager *sharedManager;
 
 + (void)getPersonSample
 {
-    [DTBackendManager updateFirendList:nil success:^(NSURLSessionDataTask *task, NSDictionary *json) {
+    [DTBackendManager getAllPersons:nil success:^(NSURLSessionDataTask *task, NSDictionary *json) {
         NSArray *personArray = [json objectForKey:@"results"];
         [DTPerson personsWithArray:personArray];
         [DTModelManager save];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+}
+
++ (void)updateUser
+{
+
 }
 
 

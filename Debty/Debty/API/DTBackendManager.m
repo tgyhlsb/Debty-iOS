@@ -7,8 +7,9 @@
 //
 
 #import "DTBackendManager.h"
+#import "DTFacebookManager.h"
 
-#define BASE_URL @"http://127.0.0.1:8000/"
+#define BASE_URL @"http://debty.herokuapp.com/"
 
 static DTBackendManager *sharedManager;
 
@@ -42,7 +43,7 @@ static DTBackendManager *sharedManager;
 #pragma mark - Services -
 #pragma mark Identify user
 
-+ (void)identifyUserWithGraph:(id)userGraph
++ (void)identifyUserWithGraph:(id<FBGraphUser>)userGraph
                       success:(void (^)(NSURLSessionDataTask *, NSDictionary *))success
                       failure:(void (^)(NSURLSessionDataTask *, NSError *))failure
 {
@@ -51,25 +52,52 @@ static DTBackendManager *sharedManager;
                                                     failure:failure];
 }
 
-- (void)identifyUserWithGraph:(id)userGraph
+- (void)identifyUserWithGraph:(id<FBGraphUser>)userGraph
                       success:(void (^)(NSURLSessionDataTask *, NSDictionary *))success
                       failure:(void (^)(NSURLSessionDataTask *, NSError *))failure
 {
-    [self POST:@"login/" parameters:userGraph success:success failure:failure];
+    [self POST:@"login/" parameters:userGraph
+       success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
+           [self updateUserSuccess:success failure:failure];
+    } failure:failure];
 }
+
 
 #pragma mark Update friend list
 
-+ (void)updateFirendList:(NSArray *)friendList
++ (void)updateUserSuccess:(void (^)(NSURLSessionDataTask *, NSDictionary *))success
+                  failure:(void (^)(NSURLSessionDataTask *, NSError *))failure
+{
+    [[DTBackendManager sharedManager] updateUserSuccess:success
+                                                failure:failure];
+}
+
+- (void)updateUserSuccess:(void (^)(NSURLSessionDataTask *, NSDictionary *))success
+                  failure:(void (^)(NSURLSessionDataTask *, NSError *))failure
+{
+    [DTFacebookManager fetchFriendsWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        if (error) {
+            NSLog(@"[DTFacebookManager fetchFriendsWithCompletionHandler:]\n%@", error);
+            failure(nil, error);
+        } else {
+            NSArray *friendList = (NSArray *)[result objectForKey:@"data"];
+            NSArray *friendsIDs = [DTFacebookManager facebookIDForUserArray:friendList];
+            [self POST:@"updatefriends/" parameters:friendsIDs success:success failure:failure];
+        }
+    }];
+}
+
+
++ (void)getAllPersons:(NSArray *)friendList
                  success:(void (^)(NSURLSessionDataTask *, NSDictionary *))success
                  failure:(void (^)(NSURLSessionDataTask *, NSError *))failure
 {
-    [[DTBackendManager sharedManager] updateFirendList:friendList
+    [[DTBackendManager sharedManager] getAllPersons:friendList
                                                success:success
                                                failure:failure];
 }
 
-- (void)updateFirendList:(NSArray *)friendList
+- (void)getAllPersons:(NSArray *)friendList
                  success:(void (^)(NSURLSessionDataTask *, NSDictionary *))success
                  failure:(void (^)(NSURLSessionDataTask *, NSError *))failure
 {

@@ -20,7 +20,7 @@
 + (DTShare *)shareWithInfo:(NSDictionary *)info
     inManagedObjectContext:(NSManagedObjectContext *)context
 {
-    NSString *identifier = [info objectForKey:@"identifier"];
+    NSString *identifier = [info objectForKey:@"id"];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_SHARE];
     request.predicate = [NSPredicate predicateWithFormat:@"identifier = %@", identifier];
     

@@ -20,7 +20,7 @@
 + (DTAccount *)accountWithInfo:(NSDictionary *)info
         inManagedObjectContext:(NSManagedObjectContext *)context
 {
-    NSString *identifier = [info objectForKey:@"identifier"];
+    NSString *identifier = [info objectForKey:@"id"];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_ACCOUNT];
     request.predicate = [NSPredicate predicateWithFormat:@"identifier = %@", identifier];
     
@@ -39,7 +39,7 @@
         }
         
         //TODO attributes
-        account.name = [info objectForKey:@"first_name"];
+        account.name = [info objectForKey:@"label"];
     }
     
     return account;

@@ -2,7 +2,7 @@
 //  DTPerson.h
 //  Debty
 //
-//  Created by Tanguy Hélesbeux on 21/06/2014.
+//  Created by Tanguy Hélesbeux on 05/07/2014.
 //  Copyright (c) 2014 Debty. All rights reserved.
 //
 
@@ -18,23 +18,23 @@
 @property (nonatomic, retain) NSString * facebookID;
 @property (nonatomic, retain) NSString * firstName;
 @property (nonatomic, retain) NSString * gender;
-@property (nonatomic, retain) NSNumber * identifer;
 @property (nonatomic, retain) NSNumber * identifier;
 @property (nonatomic, retain) NSString * lastName;
-@property (nonatomic, retain) NSSet *shares;
+@property (nonatomic, retain) NSNumber * isMainUser;
 @property (nonatomic, retain) NSSet *accounts;
+@property (nonatomic, retain) NSSet *shares;
 @end
 
 @interface DTPerson (CoreDataGeneratedAccessors)
-
-- (void)addSharesObject:(DTShare *)value;
-- (void)removeSharesObject:(DTShare *)value;
-- (void)addShares:(NSSet *)values;
-- (void)removeShares:(NSSet *)values;
 
 - (void)addAccountsObject:(DTAccount *)value;
 - (void)removeAccountsObject:(DTAccount *)value;
 - (void)addAccounts:(NSSet *)values;
 - (void)removeAccounts:(NSSet *)values;
+
+- (void)addSharesObject:(DTShare *)value;
+- (void)removeSharesObject:(DTShare *)value;
+- (void)addShares:(NSSet *)values;
+- (void)removeShares:(NSSet *)values;
 
 @end

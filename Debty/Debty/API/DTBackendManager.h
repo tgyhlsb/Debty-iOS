@@ -16,7 +16,11 @@
                       success:(void (^)(NSURLSessionDataTask *task, NSDictionary *json))success
                       failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
 
-+ (void)updateFirendList:(NSArray *)friendList
+
++ (void)updateUserSuccess:(void (^)(NSURLSessionDataTask *task, NSDictionary *json))success
+                  failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
+
++ (void)getAllPersons:(NSArray *)friendList
                       success:(void (^)(NSURLSessionDataTask *task, NSDictionary *json))success
                       failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
 

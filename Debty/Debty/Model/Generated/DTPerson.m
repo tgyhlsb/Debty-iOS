@@ -2,7 +2,7 @@
 //  DTPerson.m
 //  Debty
 //
-//  Created by Tanguy Hélesbeux on 21/06/2014.
+//  Created by Tanguy Hélesbeux on 05/07/2014.
 //  Copyright (c) 2014 Debty. All rights reserved.
 //
 
@@ -18,10 +18,10 @@
 @dynamic facebookID;
 @dynamic firstName;
 @dynamic gender;
-@dynamic identifer;
 @dynamic identifier;
 @dynamic lastName;
-@dynamic shares;
+@dynamic isMainUser;
 @dynamic accounts;
+@dynamic shares;
 
 @end
