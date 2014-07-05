@@ -9,16 +9,20 @@
 #import <Foundation/Foundation.h>
 #import "DTPerson+Serializer.h"
 
+static NSString *DTNotificationMainUserUpdate = @"DTNotificationMainUserUpdate";
+
 @interface DTModelManager : NSObject
 
 + (NSManagedObjectContext *)sharedContext;
++ (DTPerson *)mainUser;
++ (NSArray *)userFriends;
 
 + (void)getPersonSample;
-+ (void)updateUser;
 
 + (void)setMainUserWithInfo:(NSDictionary *)userInfo;
 
 
 + (NSFetchedResultsController *)fetchResultControllerForPersons;
++ (NSFetchedResultsController *)fetchResultControllerForMainUserFriends;
 
 @end

@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <FacebookSDK/FacebookSDK.h>
 
+#define FACEBOOK_PERMISSIONS @[@"public_profile", @"email", @"user_friends"]
+
 @interface DTFacebookManager : NSObject
 
 + (void)fetchFriendsWithCompletionHandler:(FBRequestHandler)completionHandler;

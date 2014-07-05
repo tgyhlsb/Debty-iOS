@@ -11,6 +11,7 @@
 #import "DTFacebookLoginVC.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import "AFNetworkActivityIndicatorManager.h"
+#import "DTModelManager.h"
 
 @interface DTAppDelegate()
 

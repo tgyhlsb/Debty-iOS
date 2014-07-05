@@ -22,35 +22,12 @@ static DTModelManager *sharedManager;
 @implementation DTModelManager
 
 
-+ (void)getPersonSample
+#pragma mark - NSNotification
+
+- (void)notifiyMainUserUpdate
 {
-    [DTBackendManager getAllPersons:nil success:^(NSURLSessionDataTask *task, NSDictionary *json) {
-        NSArray *personArray = [json objectForKey:@"results"];
-        [DTPerson personsWithArray:personArray];
-        [DTModelManager save];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
-    }];
+    [[NSNotificationCenter defaultCenter] postNotificationName:DTNotificationMainUserUpdate object:self.mainUser];
 }
-
-+ (void)updateUser
-{
-
-}
-
-+ (void)setMainUserWithInfo:(NSDictionary *)userInfo
-{
-    [[DTModelManager sharedManager] setMainUserWithInfo:userInfo];
-}
-
-
-- (void)setMainUserWithInfo:(NSDictionary *)userInfo
-{
-    NSMutableDictionary *mainUserInfo = [[userInfo objectForKey:@"user"] mutableCopy];
-    [mainUserInfo setObject:@1 forKey:MAIN_USER_KEY];
-    self.mainUser = [DTPerson personWithInfo:mainUserInfo];
-}
-
 
 #pragma mark - Setters
 
@@ -67,6 +44,21 @@ static DTModelManager *sharedManager;
 + (NSFetchedResultsController *)fetchResultControllerForPersons
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_PERSON];
+    
+    request.sortDescriptors = @[];
+    
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                               managedObjectContext:[DTModelManager sharedContext]
+                                                 sectionNameKeyPath:nil
+                                                          cacheName:nil];
+}
+
++ (NSFetchedResultsController *)fetchResultControllerForMainUserFriends
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_PERSON];
+    DTPerson *mainUser = [DTModelManager mainUser];
+    request.predicate = [NSPredicate predicateWithFormat:@"friendsInverseRelation = %@", mainUser];
+    
     
     request.sortDescriptors = @[];
     
@@ -123,6 +115,42 @@ static DTModelManager *sharedManager;
 {
     [self.context deleteObject:object];
     [self save];
+}
+
++ (void)getPersonSample
+{
+    [DTBackendManager getAllPersons:nil success:^(NSURLSessionDataTask *task, NSDictionary *json) {
+        NSArray *personArray = [json objectForKey:@"results"];
+        [DTPerson personsWithArray:personArray];
+        [DTModelManager save];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+
++ (DTPerson *)mainUser
+{
+    return [DTModelManager sharedManager].mainUser;
+}
+
++ (NSArray *)userFriends
+{
+    NSSortDescriptor *sortNameDescriptor = [[NSSortDescriptor alloc] initWithKey:@"firstName" ascending:YES];
+    DTPerson *mainUser = [DTModelManager mainUser];
+    return [mainUser.friends sortedArrayUsingDescriptors:@[sortNameDescriptor]];
+}
+
++ (void)setMainUserWithInfo:(NSDictionary *)userInfo
+{
+    [[DTModelManager sharedManager] setMainUserWithInfo:userInfo];
+}
+
+
+- (void)setMainUserWithInfo:(NSDictionary *)userInfo
+{
+    NSMutableDictionary *mainUserInfo = [[userInfo objectForKey:@"user"] mutableCopy];
+    [mainUserInfo setObject:@1 forKey:MAIN_USER_KEY];
+    self.mainUser = [DTPerson personWithInfo:mainUserInfo];
 }
 
 #pragma mark - Imported from Stanford Coding Together #13 lesson -

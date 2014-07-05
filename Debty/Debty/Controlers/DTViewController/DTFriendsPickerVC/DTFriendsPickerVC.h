@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Debty. All rights reserved.
 //
 
-#import "DTViewController.h"
+#import "DTCoreDataTableViewController.h"
 
-@interface DTFriendsPickerVC : DTViewController
+@interface DTFriendsPickerVC : DTCoreDataTableViewController
 
 + (DTFriendsPickerVC *)newController;
 

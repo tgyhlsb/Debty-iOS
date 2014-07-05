@@ -12,6 +12,7 @@
 #import "DTTempUser.h"
 #import "DTBackendManager.h"
 #import "DTModelManager.h"
+#import "DTFacebookManager.h"
 
 #define NIB_NAME @"DTFacebookLoginVC"
 
@@ -35,7 +36,7 @@
 {
     [super viewDidLoad];
     
-    self.loginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
+    self.loginView.readPermissions = FACEBOOK_PERMISSIONS;
     self.loginView.delegate = self;
     self.loginView.loginBehavior = FBSessionLoginBehaviorUseSystemAccountIfPresent;
 }
