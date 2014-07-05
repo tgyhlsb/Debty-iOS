@@ -24,6 +24,8 @@
         <attribute name="isMainUser" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="accounts" toMany="YES" deletionRule="Nullify" destinationEntity="DTAccount" inverseName="persons" inverseEntity="DTAccount" syncable="YES"/>
+        <relationship name="friends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DTPerson" inverseName="friendsInverseRelation" inverseEntity="DTPerson" syncable="YES"/>
+        <relationship name="friendsInverseRelation" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DTPerson" inverseName="friends" inverseEntity="DTPerson" syncable="YES"/>
         <relationship name="shares" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DTShare" inverseName="person" inverseEntity="DTShare" syncable="YES"/>
     </entity>
     <entity name="DTShare" representedClassName="DTShare" syncable="YES">
@@ -35,7 +37,7 @@
     <elements>
         <element name="DTAccount" positionX="-63" positionY="-334" width="128" height="103"/>
         <element name="DTExpense" positionX="241" positionY="-432" width="128" height="133"/>
-        <element name="DTPerson" positionX="223" positionY="-54" width="209" height="193"/>
+        <element name="DTPerson" positionX="223" positionY="-54" width="209" height="223"/>
         <element name="DTShare" positionX="522" positionY="-405" width="128" height="103"/>
     </elements>
 </model>

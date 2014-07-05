@@ -43,6 +43,15 @@
         person.facebookID = [info objectForKey:@"facebook_id"];
         person.firstName = [info objectForKey:@"first_name"];
         person.lastName = [info objectForKey:@"last_name"];
+        
+        NSNumber *isMainUser = [info objectForKey:MAIN_USER_KEY];
+        person.isMainUser = (isMainUser != nil) ? isMainUser : @0;
+        
+        NSArray *friendsInfo = [info objectForKey:@"friends"];
+        if (friendsInfo && [friendsInfo count]) {
+            NSArray *friends = [DTPerson personsWithArray:friendsInfo];
+            person.friends = [NSSet setWithArray:friends];
+        }
     }
     
     return person;

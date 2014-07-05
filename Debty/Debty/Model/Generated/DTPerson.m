@@ -8,6 +8,7 @@
 
 #import "DTPerson.h"
 #import "DTAccount.h"
+#import "DTPerson.h"
 #import "DTShare.h"
 
 
@@ -23,5 +24,7 @@
 @dynamic isMainUser;
 @dynamic accounts;
 @dynamic shares;
+@dynamic friends;
+@dynamic friendsInverseRelation;
 
 @end

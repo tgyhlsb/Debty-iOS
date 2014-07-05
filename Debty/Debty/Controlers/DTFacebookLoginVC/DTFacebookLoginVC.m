@@ -11,6 +11,7 @@
 #import "DTAppDelegate.h"
 #import "DTTempUser.h"
 #import "DTBackendManager.h"
+#import "DTModelManager.h"
 
 #define NIB_NAME @"DTFacebookLoginVC"
 
@@ -50,7 +51,7 @@
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user
 {    
     [DTBackendManager identifyUserWithGraph:user success:^(NSURLSessionDataTask *task, NSDictionary *json) {        
-        
+        [DTModelManager setMainUserWithInfo:json];
     } failure:^(NSURLSessionDataTask *operation, NSError *error) {
         
     }];

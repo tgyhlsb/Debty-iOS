@@ -14,6 +14,7 @@ static DTModelManager *sharedManager;
 
 @interface DTModelManager()
 
+@property (strong, nonatomic) DTPerson *mainUser;
 @property (strong, nonatomic) NSManagedObjectContext *context;
 
 @end
@@ -35,6 +36,29 @@ static DTModelManager *sharedManager;
 + (void)updateUser
 {
 
+}
+
++ (void)setMainUserWithInfo:(NSDictionary *)userInfo
+{
+    [[DTModelManager sharedManager] setMainUserWithInfo:userInfo];
+}
+
+
+- (void)setMainUserWithInfo:(NSDictionary *)userInfo
+{
+    NSMutableDictionary *mainUserInfo = [[userInfo objectForKey:@"user"] mutableCopy];
+    [mainUserInfo setObject:@1 forKey:MAIN_USER_KEY];
+    self.mainUser = [DTPerson personWithInfo:mainUserInfo];
+}
+
+
+#pragma mark - Setters
+
+- (void)setMainUser:(DTPerson *)mainUser
+{
+    _mainUser = mainUser;
+    NSLog(@"[DTModelManager mainUser] =\n%@", mainUser);
+    [self save];
 }
 
 

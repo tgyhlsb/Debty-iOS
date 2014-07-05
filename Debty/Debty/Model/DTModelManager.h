@@ -16,6 +16,8 @@
 + (void)getPersonSample;
 + (void)updateUser;
 
++ (void)setMainUserWithInfo:(NSDictionary *)userInfo;
+
 
 + (NSFetchedResultsController *)fetchResultControllerForPersons;
 

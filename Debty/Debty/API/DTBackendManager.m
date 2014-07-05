@@ -35,6 +35,7 @@ static DTBackendManager *sharedManager;
     if (self) {
         self.responseSerializer = [AFJSONResponseSerializer serializer];
         self.requestSerializer = [AFJSONRequestSerializer serializer];
+        [self.requestSerializer setAuthorizationHeaderFieldWithUsername:@"maelogier" password:@"olouise38"];
     }
     
     return self;
@@ -82,7 +83,8 @@ static DTBackendManager *sharedManager;
         } else {
             NSArray *friendList = (NSArray *)[result objectForKey:@"data"];
             NSArray *friendsIDs = [DTFacebookManager facebookIDForUserArray:friendList];
-            [self POST:@"updatefriends/" parameters:friendsIDs success:success failure:failure];
+            NSDictionary *params = @{@"friends": friendsIDs};
+            [self POST:@"updatefriends/" parameters:params success:success failure:failure];
         }
     }];
 }

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class DTAccount, DTShare;
+@class DTAccount, DTPerson, DTShare;
 
 @interface DTPerson : NSManagedObject
 
@@ -23,6 +23,8 @@
 @property (nonatomic, retain) NSNumber * isMainUser;
 @property (nonatomic, retain) NSSet *accounts;
 @property (nonatomic, retain) NSSet *shares;
+@property (nonatomic, retain) NSSet *friends;
+@property (nonatomic, retain) NSSet *friendsInverseRelation;
 @end
 
 @interface DTPerson (CoreDataGeneratedAccessors)
@@ -36,5 +38,15 @@
 - (void)removeSharesObject:(DTShare *)value;
 - (void)addShares:(NSSet *)values;
 - (void)removeShares:(NSSet *)values;
+
+- (void)addFriendsObject:(DTPerson *)value;
+- (void)removeFriendsObject:(DTPerson *)value;
+- (void)addFriends:(NSSet *)values;
+- (void)removeFriends:(NSSet *)values;
+
+- (void)addFriendsInverseRelationObject:(DTPerson *)value;
+- (void)removeFriendsInverseRelationObject:(DTPerson *)value;
+- (void)addFriendsInverseRelation:(NSSet *)values;
+- (void)removeFriendsInverseRelation:(NSSet *)values;
 
 @end

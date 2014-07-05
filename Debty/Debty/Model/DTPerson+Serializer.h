@@ -10,6 +10,8 @@
 
 #define CLASS_NAME_PERSON @"DTPerson"
 
+#define MAIN_USER_KEY @"isMainUser"
+
 @interface DTPerson (Serializer)
 
 + (DTPerson *)personWithInfo:(NSDictionary *)info;
