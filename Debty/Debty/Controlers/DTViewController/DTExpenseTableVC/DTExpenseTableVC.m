@@ -105,7 +105,7 @@
 
 - (void)setUpFetchRequest
 {
-    self.fetchedResultsController = [DTModelManager fetchResultControllerForPersons];
+    self.fetchedResultsController = [DTModelManager fetchResultControllerForPersonsWithSearchString:self.searchBar.text];
 }
 
 - (void)tableViewShouldRefresh
@@ -113,11 +113,6 @@
     [DTModelManager getPersonSample];
     [self stopRefreshingTableView];
 }
-
-//- (void)stopRefreshingTableView
-//{
-//    
-//}
 
 #pragma mark - Handlers
 
@@ -138,7 +133,7 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    
+    [self setUpFetchRequest];
 }
 
 #pragma mark - UITableViewDataSource

@@ -17,6 +17,13 @@
 
 @implementation DTViewController
 
+
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - View methods
 
 - (void)setCloseButtonVisible:(BOOL)visible

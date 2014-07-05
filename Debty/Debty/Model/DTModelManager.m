@@ -43,7 +43,16 @@ static DTModelManager *sharedManager;
 
 + (NSFetchedResultsController *)fetchResultControllerForPersons
 {
+    return [DTModelManager fetchResultControllerForPersonsWithSearchString:nil];
+}
+
++ (NSFetchedResultsController *)fetchResultControllerForPersonsWithSearchString:(NSString *)searchString
+{
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_PERSON];
+    
+    if (searchString && [searchString length]) {
+        request.predicate = [NSPredicate predicateWithFormat:@"firstName contains[c] %@", searchString];
+    }
     
     request.sortDescriptors = @[];
     

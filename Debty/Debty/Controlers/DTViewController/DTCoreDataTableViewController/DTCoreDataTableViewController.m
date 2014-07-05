@@ -11,6 +11,8 @@
 
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
+@property (nonatomic) CGFloat defaultBottomInset;
+
 @end
 
 @implementation DTCoreDataTableViewController
@@ -23,6 +25,8 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate= self;
+    
+    [self registerToKeyboardNotifications];
     
 //    self.tableView.backgroundColor = [UIColor clearColor];
 }
@@ -223,6 +227,54 @@
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     [self.tableView endUpdates];
+}
+
+#pragma mark - Keyboard Handlers
+//http://code.tutsplus.com/tutorials/ios-sdk-keeping-content-from-underneath-the-keyboard--mobile-6103
+
+- (void)registerToKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+}
+
+- (void)keyboardWasShown:(NSNotification *)notification
+{
+    
+    // Step 1: Get the size of the keyboard.
+    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    
+    // Step 2: Adjust the bottom content inset of your scroll view by the keyboard height.
+    UIEdgeInsets contentInsets = self.tableView.contentInset;
+    self.defaultBottomInset = contentInsets.bottom;
+    contentInsets.bottom = keyboardSize.height;
+    self.tableView.contentInset = contentInsets;
+    self.tableView.scrollIndicatorInsets = contentInsets;
+    
+    
+    // Step 3: Scroll the target text field into view.
+//    CGRect aRect = self.view.frame;
+//    aRect.size.height -= keyboardSize.height;
+//    if (!CGRectContainsPoint(aRect, activeTextField.frame.origin) ) {
+//        CGPoint scrollPoint = CGPointMake(0.0, activeTextField.frame.origin.y - (keyboardSize.height-15));
+//        [self.tableView setContentOffset:scrollPoint animated:YES];
+//    }
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification
+{
+    UIEdgeInsets contentInsets = self.tableView.contentInset;
+    contentInsets.bottom = self.defaultBottomInset;
+    self.tableView.contentInset = contentInsets;
+    self.tableView.scrollIndicatorInsets = contentInsets;
 }
 
 
