@@ -8,6 +8,7 @@
 
 #import "DTBackendManager.h"
 #import "DTFacebookManager.h"
+#import "DTInstallation.h"
 
 
 #define BASE_URL @"http://debty.herokuapp.com/"
@@ -36,15 +37,21 @@ static DTBackendManager *sharedManager;
     if (self) {
         self.responseSerializer = [AFJSONResponseSerializer serializer];
         self.requestSerializer = [AFJSONRequestSerializer serializer];
-        
-//        NSString
-        [self.requestSerializer setAuthorizationHeaderFieldWithUsername:@"maelogier" password:@"olouise38"];
-        
-//        CocoaSecurityResult *sha224 = [CocoaSecurity sha224:@"test"];
-//        NSLog(@"%@", sha256.utf8String);
     }
     
     return self;
+}
+
+- (void)updateAuthorizationHeader
+{
+    NSString *identifier = [DTInstallation authIdentifier];
+    NSString *password = [DTInstallation authPassword];
+    
+    // TODO do not override these
+    identifier = @"maelogier";
+    password = @"olouise38";
+    
+    [self.requestSerializer setAuthorizationHeaderFieldWithUsername:identifier password:password];
 }
 
 #pragma mark - Services -
@@ -63,6 +70,7 @@ static DTBackendManager *sharedManager;
                       success:(void (^)(NSURLSessionDataTask *, NSDictionary *))success
                       failure:(void (^)(NSURLSessionDataTask *, NSError *))failure
 {
+    [self updateAuthorizationHeader]; // TODO no auth for /login/
     [self POST:@"login/" parameters:userGraph
        success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
            [self updateUserSuccess:success failure:failure];
@@ -88,8 +96,10 @@ static DTBackendManager *sharedManager;
             failure(nil, error);
         } else {
             NSArray *friendList = (NSArray *)[result objectForKey:@"data"];
+            NSLog(@"[DTBackendManager updateUserSuccess:failure:]\nFound %ld facebook friend(s)", [friendList count]);
             NSArray *friendsIDs = [DTFacebookManager facebookIDForUserArray:friendList];
             NSDictionary *params = @{@"friends": friendsIDs};
+            [self updateAuthorizationHeader];
             [self POST:@"updatefriends/" parameters:params success:success failure:failure];
         }
     }];

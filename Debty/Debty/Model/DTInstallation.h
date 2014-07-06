@@ -15,4 +15,7 @@
 + (void)setMainUser:(DTPerson *)mainUser;
 + (void)setMainUserWithInfo:(NSDictionary *)info;
 
++ (NSString *)authIdentifier;
++ (NSString *)authPassword;
+
 @end

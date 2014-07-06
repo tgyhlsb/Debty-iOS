@@ -91,4 +91,31 @@ static DTInstallation *sharedInstallation;
     [DTInstallation setMainUser:user];
 }
 
+#pragma mark - Basic Auth credentials
+
++ (NSString *)authIdentifier
+{
+    return [[DTInstallation sharedInstallation] authIdentifier];
+}
+
+- (NSString *)authIdentifier
+{
+    return self.mainUser.facebookID;
+}
+
++ (NSString *)authPassword
+{
+    return [[DTInstallation sharedInstallation] authPassword];
+}
+
+- (NSString *)authPassword
+{
+    NSString *firstName = self.mainUser.firstName;
+    NSString *facebookHash = [self.mainUser.facebookID substringToIndex:5];
+    NSString *password = [firstName stringByAppendingString:facebookHash];
+    
+    CocoaSecurityResult *sha224 = [CocoaSecurity sha224:password];
+    return sha224.hex;
+}
+
 @end
