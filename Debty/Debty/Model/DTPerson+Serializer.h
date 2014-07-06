@@ -14,6 +14,8 @@
 
 @interface DTPerson (Serializer)
 
+- (NSArray *)friendsArray;
+
 + (DTPerson *)personWithInfo:(NSDictionary *)info;
 + (NSArray *)personsWithArray:(NSArray *)arrayInfo;
 

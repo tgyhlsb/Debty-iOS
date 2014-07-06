@@ -9,6 +9,7 @@
 #import "DTBackendManager.h"
 #import "DTFacebookManager.h"
 
+
 #define BASE_URL @"http://debty.herokuapp.com/"
 
 static DTBackendManager *sharedManager;
@@ -35,7 +36,12 @@ static DTBackendManager *sharedManager;
     if (self) {
         self.responseSerializer = [AFJSONResponseSerializer serializer];
         self.requestSerializer = [AFJSONRequestSerializer serializer];
+        
+//        NSString
         [self.requestSerializer setAuthorizationHeaderFieldWithUsername:@"maelogier" password:@"olouise38"];
+        
+//        CocoaSecurityResult *sha224 = [CocoaSecurity sha224:@"test"];
+//        NSLog(@"%@", sha256.utf8String);
     }
     
     return self;

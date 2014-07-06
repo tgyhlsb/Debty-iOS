@@ -12,6 +12,7 @@
 #import "DTTempUser.h"
 #import "DTBackendManager.h"
 #import "DTModelManager.h"
+#import "DTInstallation.h"
 #import "DTFacebookManager.h"
 
 #define NIB_NAME @"DTFacebookLoginVC"
@@ -51,8 +52,9 @@
 
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user
 {    
-    [DTBackendManager identifyUserWithGraph:user success:^(NSURLSessionDataTask *task, NSDictionary *json) {        
-        [DTModelManager setMainUserWithInfo:json];
+    [DTBackendManager identifyUserWithGraph:user success:^(NSURLSessionDataTask *task, NSDictionary *json) {
+        NSDictionary *userInfo = [json objectForKey:@"user"];
+        [DTInstallation setMainUserWithInfo:userInfo];
     } failure:^(NSURLSessionDataTask *operation, NSError *error) {
         
     }];

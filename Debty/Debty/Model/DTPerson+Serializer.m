@@ -11,6 +11,12 @@
 
 @implementation DTPerson (Serializer)
 
+- (NSArray *)friendsArray
+{
+    NSSortDescriptor *sortNameDescriptor = [[NSSortDescriptor alloc] initWithKey:@"firstName" ascending:YES];
+    return [self.friends sortedArrayUsingDescriptors:@[sortNameDescriptor]];
+}
+
 + (DTPerson *)personWithInfo:(NSDictionary *)info
 {
     return [DTPerson personWithInfo:info
@@ -45,12 +51,12 @@
         person.lastName = [info objectForKey:@"last_name"];
         
         NSNumber *isMainUser = [info objectForKey:MAIN_USER_KEY];
-        person.isMainUser = (isMainUser != nil) ? isMainUser : @0;
+        person.isMainUser = (isMainUser != nil) ? isMainUser : @(NO);
         
         NSArray *friendsInfo = [info objectForKey:@"friends"];
         if (friendsInfo && [friendsInfo count]) {
             NSArray *friends = [DTPerson personsWithArray:friendsInfo];
-            person.friends = [NSSet setWithArray:friends];
+            [person setFriends:[NSSet setWithArray:friends]];
         }
     }
     

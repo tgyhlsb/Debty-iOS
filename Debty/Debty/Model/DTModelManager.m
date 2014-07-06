@@ -9,12 +9,12 @@
 #import "DTModelManager.h"
 #import <CoreData/CoreData.h>
 #import "DTBackendManager.h"
+#import "DTInstallation.h"
 
 static DTModelManager *sharedManager;
 
 @interface DTModelManager()
 
-@property (strong, nonatomic) DTPerson *mainUser;
 @property (strong, nonatomic) NSManagedObjectContext *context;
 
 @end
@@ -24,22 +24,32 @@ static DTModelManager *sharedManager;
 
 #pragma mark - NSNotification
 
-- (void)notifiyMainUserUpdate
++ (void)notifyMainUserUpdate
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:DTNotificationMainUserUpdate object:self.mainUser];
+    [[DTModelManager sharedManager] notifyMainUserUpdate];
 }
 
-#pragma mark - Setters
-
-- (void)setMainUser:(DTPerson *)mainUser
+- (void)notifyMainUserUpdate
 {
-    _mainUser = mainUser;
-    NSLog(@"[DTModelManager mainUser] =\n%@", mainUser);
-    [self save];
+    [[NSNotificationCenter defaultCenter] postNotificationName:DTNotificationMainUserUpdate object:nil];
 }
 
 
 #pragma mark - FetchResultController factory -
+
++ (NSFetchedResultsController *)fetchResultControllerForPersonsWithIdentifier:(NSNumber *)identifier
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_PERSON];
+    
+    request.predicate = [NSPredicate predicateWithFormat:@"identifier == %@", identifier];
+    
+    request.sortDescriptors = @[];
+    
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                               managedObjectContext:[DTModelManager sharedContext]
+                                                 sectionNameKeyPath:nil
+                                                          cacheName:nil];
+}
 
 + (NSFetchedResultsController *)fetchResultControllerForPersons
 {
@@ -51,7 +61,7 @@ static DTModelManager *sharedManager;
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_PERSON];
     
     if (searchString && [searchString length]) {
-        request.predicate = [NSPredicate predicateWithFormat:@"firstName contains[c] %@", searchString];
+        request.predicate = [NSPredicate predicateWithFormat:@"firstName contains[c] %@ || lastName contains[c] %@", searchString, searchString, searchString];
     }
     
     request.sortDescriptors = @[];
@@ -64,9 +74,20 @@ static DTModelManager *sharedManager;
 
 + (NSFetchedResultsController *)fetchResultControllerForMainUserFriends
 {
+    return [DTModelManager fetchResultControllerForMainUserFriendsWithSearchString:nil];
+}
+
++ (NSFetchedResultsController *)fetchResultControllerForMainUserFriendsWithSearchString:(NSString *)searchString
+{
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_PERSON];
-    DTPerson *mainUser = [DTModelManager mainUser];
-    request.predicate = [NSPredicate predicateWithFormat:@"friendsInverseRelation = %@", mainUser];
+    DTPerson *mainUser = [DTInstallation mainUser];
+    request.predicate = [NSPredicate predicateWithFormat:@"ANY friendsInverseRelation == %@", mainUser];
+    
+    
+    if (searchString && [searchString length]) {
+        NSPredicate *searchPredicate = [NSPredicate predicateWithFormat:@"firstName contains[c] %@ || lastName contains[c] %@", searchString, searchString, searchString];
+        request.predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[request.predicate, searchPredicate]];
+    }
     
     
     request.sortDescriptors = @[];
@@ -135,31 +156,6 @@ static DTModelManager *sharedManager;
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-}
-
-+ (DTPerson *)mainUser
-{
-    return [DTModelManager sharedManager].mainUser;
-}
-
-+ (NSArray *)userFriends
-{
-    NSSortDescriptor *sortNameDescriptor = [[NSSortDescriptor alloc] initWithKey:@"firstName" ascending:YES];
-    DTPerson *mainUser = [DTModelManager mainUser];
-    return [mainUser.friends sortedArrayUsingDescriptors:@[sortNameDescriptor]];
-}
-
-+ (void)setMainUserWithInfo:(NSDictionary *)userInfo
-{
-    [[DTModelManager sharedManager] setMainUserWithInfo:userInfo];
-}
-
-
-- (void)setMainUserWithInfo:(NSDictionary *)userInfo
-{
-    NSMutableDictionary *mainUserInfo = [[userInfo objectForKey:@"user"] mutableCopy];
-    [mainUserInfo setObject:@1 forKey:MAIN_USER_KEY];
-    self.mainUser = [DTPerson personWithInfo:mainUserInfo];
 }
 
 #pragma mark - Imported from Stanford Coding Together #13 lesson -

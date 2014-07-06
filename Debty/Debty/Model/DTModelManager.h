@@ -14,16 +14,15 @@ static NSString *DTNotificationMainUserUpdate = @"DTNotificationMainUserUpdate";
 @interface DTModelManager : NSObject
 
 + (NSManagedObjectContext *)sharedContext;
-+ (DTPerson *)mainUser;
-+ (NSArray *)userFriends;
 
 + (void)getPersonSample;
 
-+ (void)setMainUserWithInfo:(NSDictionary *)userInfo;
 
 
 + (NSFetchedResultsController *)fetchResultControllerForPersons;
++ (NSFetchedResultsController *)fetchResultControllerForPersonsWithIdentifier:(NSNumber *)identifier;
 + (NSFetchedResultsController *)fetchResultControllerForPersonsWithSearchString:(NSString *)searchString;
 + (NSFetchedResultsController *)fetchResultControllerForMainUserFriends;
++ (NSFetchedResultsController *)fetchResultControllerForMainUserFriendsWithSearchString:(NSString *)searchString;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "DTFriendsPickerVC.h"
 #import "DTModelManager.h"
+#import "DTPerson.h"
 
 #define NIB_NAME @"DTFriendsPickerVC"
 
