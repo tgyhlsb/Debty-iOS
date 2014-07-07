@@ -56,7 +56,7 @@
         NSDictionary *userInfo = [json objectForKey:@"user"];
         [DTInstallation setMainUserWithInfo:userInfo];
     } failure:^(NSURLSessionDataTask *operation, NSError *error) {
-        
+        NSLog(@"%@", error);
     }];
 }
 

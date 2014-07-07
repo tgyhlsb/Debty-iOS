@@ -47,10 +47,6 @@ static DTBackendManager *sharedManager;
     NSString *identifier = [DTInstallation authIdentifier];
     NSString *password = [DTInstallation authPassword];
     
-    // TODO do not override these
-    identifier = @"maelogier";
-    password = @"olouise38";
-    
     [self.requestSerializer setAuthorizationHeaderFieldWithUsername:identifier password:password];
 }
 
@@ -70,9 +66,12 @@ static DTBackendManager *sharedManager;
                       success:(void (^)(NSURLSessionDataTask *, NSDictionary *))success
                       failure:(void (^)(NSURLSessionDataTask *, NSError *))failure
 {
-    [self updateAuthorizationHeader]; // TODO no auth for /login/
     [self POST:@"login/" parameters:userGraph
        success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
+           NSDictionary *user = [[responseObject objectForKey:@"person"] lastObject];
+//           TODO is the user new ? or just connected ?
+//           NSString *userStatus = [responseObject objectForKey:@"status"];
+           [DTInstallation setMainUserWithInfo:user];
            [self updateUserSuccess:success failure:failure];
     } failure:failure];
 }

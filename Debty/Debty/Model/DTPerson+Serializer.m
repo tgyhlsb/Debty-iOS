@@ -54,7 +54,7 @@
         person.isMainUser = (isMainUser != nil) ? isMainUser : @(NO);
         
         NSArray *friendsInfo = [info objectForKey:@"friends"];
-        if (friendsInfo && [friendsInfo count]) {
+        if (friendsInfo) {
             NSArray *friends = [DTPerson personsWithArray:friendsInfo];
             [person setFriends:[NSSet setWithArray:friends]];
         }

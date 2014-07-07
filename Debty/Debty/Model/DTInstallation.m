@@ -114,8 +114,8 @@ static DTInstallation *sharedInstallation;
     NSString *facebookHash = [self.mainUser.facebookID substringToIndex:5];
     NSString *password = [firstName stringByAppendingString:facebookHash];
     
-    CocoaSecurityResult *sha224 = [CocoaSecurity sha224:password];
-    return sha224.hex;
+    CocoaSecurityResult *sha256 = [CocoaSecurity sha256:password];
+    return [sha256.hex lowercaseString];
 }
 
 @end
