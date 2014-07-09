@@ -12,10 +12,10 @@
 
 #define NIB_NAME @"DTFriendsPickerVC"
 
-@interface DTFriendsPickerVC () <UITableViewDataSource, UITableViewDelegate>
+@interface DTFriendsPickerVC () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-//@property (strong, nonatomic) NSArray *friendList;
+@property (weak, nonatomic) IBOutlet UITextField *searchTextField;
 
 @end
 
@@ -28,34 +28,33 @@
     return controller;
 }
 
-//- (void)registerToMainUserUpdateNotification
-//{
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mainUserUpdateNotificationHandler) name:DTNotificationMainUserUpdate object:nil];
-//}
-
 #pragma mark - View life cycle 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    [self registerToTextFieldNotification];
     [self setUpFetchRequest];
-    
-//    [self reloadTableView];
 }
 
-//#pragma mark - DTNotificationMainUserUpdate
-//
-//- (void)mainUserUpdateNotificationHandler
-//{
-//    [self reloadTableView];
-//}
+#pragma mark - Handlers
+
+- (void)registerToTextFieldNotification
+{
+    [self.searchTextField addTarget:self action:@selector(searchTextFieldValueDidChange) forControlEvents:UIControlEventEditingChanged];
+}
+
+- (void)searchTextFieldValueDidChange
+{
+    [self setUpFetchRequest];
+}
 
 #pragma mark - DTCoreDataTableViewController
 
 - (void)setUpFetchRequest
 {
-    self.fetchedResultsController = [DTModelManager fetchResultControllerForMainUserFriends];
+    self.fetchedResultsController = [DTModelManager fetchResultControllerForMainUserFriendsWithSearchString:self.searchTextField.text];
 }
 
 - (void)tableViewShouldRefresh
@@ -65,12 +64,6 @@
 
 
 #pragma mark - UITableViewDataSource
-
-//- (void)reloadTableView
-//{
-//    self.friendList = [DTModelManager userFriends];
-//    [self.tableView reloadData];
-//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

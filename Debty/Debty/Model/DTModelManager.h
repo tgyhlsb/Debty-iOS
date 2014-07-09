@@ -17,8 +17,6 @@ static NSString *DTNotificationMainUserUpdate = @"DTNotificationMainUserUpdate";
 
 + (void)getPersonSample;
 
-
-
 + (NSFetchedResultsController *)fetchResultControllerForPersons;
 + (NSFetchedResultsController *)fetchResultControllerForPersonsWithIdentifier:(NSNumber *)identifier;
 + (NSFetchedResultsController *)fetchResultControllerForPersonsWithSearchString:(NSString *)searchString;
