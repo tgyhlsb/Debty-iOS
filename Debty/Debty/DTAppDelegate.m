@@ -9,9 +9,8 @@
 #import "DTAppDelegate.h"
 #import "DTTabBarController.h"
 #import "DTFacebookLoginVC.h"
-#import <FacebookSDK/FacebookSDK.h>
 #import "AFNetworkActivityIndicatorManager.h"
-#import "DTModelManager.h"
+#import "DTInstallation.h"
 #import "DTFacebookManager.h"
 
 @interface DTAppDelegate()
@@ -72,11 +71,8 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    // Override point for customization after application launch.
-    
-    [FBLoginView class];
-    
-    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
+    if ([DTInstallation canUnlockApplication]) {
+        [DTInstallation loginWithFacebook];
         self.window.rootViewController = self.tabBarController;
     } else {
         self.window.rootViewController = self.facebookLoginVC;

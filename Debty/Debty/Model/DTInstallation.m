@@ -7,7 +7,10 @@
 //
 
 #import "DTInstallation.h"
+#import "DTAppDelegate.h"
 #import "DTModelManager.h"
+#import "DTBackendManager.h"
+#import "DTFacebookManager.h"
 
 #define MAINUSER_IDENTIFIER_KEY @"mainUserIdentifier"
 
@@ -18,6 +21,8 @@ static DTInstallation *sharedInstallation;
 @property (strong, nonatomic) NSNumber *mainUserIdentifier;
 
 @property (strong, nonatomic) DTPerson *mainUser;
+
+@property (nonatomic) DTUserState userState;
 
 @end
 
@@ -116,6 +121,70 @@ static DTInstallation *sharedInstallation;
     
     CocoaSecurityResult *sha256 = [CocoaSecurity sha256:password];
     return [sha256.hex lowercaseString];
+}
+
+#pragma mark - Facebook actions
+
++ (void)loginWithFacebook
+{
+    [DTFacebookManager logInWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        [DTInstallation sharedInstallation].userState = DTUserStateFetchingInfo;
+        [[DTInstallation sharedInstallation] facebookFetchedUserInfo:result];
+    }];
+}
+
+
++ (void)logoutFromFacebook
+{
+    [DTFacebookManager logOut];
+    [DTInstallation sharedInstallation].userState = DTUserStateLoggedOut;
+}
+
+
+- (void)facebookFetchedUserInfo:(id<FBGraphUser>)user
+{
+    [DTBackendManager identifyUserWithGraph:user success:^(NSURLSessionDataTask *task, NSDictionary *json) {
+        NSDictionary *userInfo = [json objectForKey:@"user"];
+        [DTInstallation setMainUserWithInfo:userInfo];
+        self.userState = DTUserStateLoggedIn;
+    } failure:^(NSURLSessionDataTask *operation, NSError *error) {
+        NSLog(@"%@", error);
+    }];
+}
+
+#pragma mark - Lock/unlock Application
+
++ (void)unlockApplication
+{
+    [DTAppDelegate setLoggedIn];
+}
+
++ (void)lockApplication
+{
+    [DTAppDelegate setLoggedOut];
+}
+
++ (BOOL)canUnlockApplication
+{
+    return [DTFacebookManager isSessionAvailable];
+}
+
+#pragma mark - User State
+
++ (DTUserState)userState
+{
+    return [DTInstallation sharedInstallation].userState;
+}
+
+- (void)setUserState:(DTUserState)userState
+{
+    _userState = userState;
+    [self notifyUserStateChanged];
+}
+
+- (void)notifyUserStateChanged
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:DTNotificationUserStateChanged object:nil];
 }
 
 @end

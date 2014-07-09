@@ -11,15 +11,22 @@
 
 #define FACEBOOK_PERMISSIONS @[@"public_profile", @"email", @"user_friends"]
 
+static NSString *DTNotificationFacebookUserLoggedIn = @"DTFacebookUserLoggedIn";
+static NSString *DTNotificationFacebookUserLoggedOut = @"DTFacebookUserLoggetOut";
+
 @interface DTFacebookManager : NSObject
 
-+ (void)fetchFriendsWithCompletionHandler:(FBRequestHandler)completionHandler;
 + (NSString *)facebookIDForUser:(id<FBGraphUser>)user;
 + (NSArray *)facebookIDForUserArray:(NSArray *)users;
 
 + (void)logOut;
-+ (void)logIn;
++ (void)logInWithCompletionHandler:(FBRequestHandler)completionHandler;
+
++ (BOOL)isSessionAvailable;
 + (BOOL)isSessionOpen;
+
++ (void)fetchUserWithCompletionHandler:(FBRequestHandler)completionHandler;
++ (void)fetchFriendsWithCompletionHandler:(FBRequestHandler)completionHandler;
 
 + (void)handleAppColdStart;
 

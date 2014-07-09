@@ -10,6 +10,12 @@
 
 @implementation DTFacebookManager
 
++ (void)fetchUserWithCompletionHandler:(FBRequestHandler)completionHandler
+{
+    FBRequest *meRequest = [FBRequest requestForMe];
+    [meRequest startWithCompletionHandler:completionHandler];
+}
+
 + (void)fetchFriendsWithCompletionHandler:(FBRequestHandler)completionHandler
 {
     FBRequest *friendRequest = [FBRequest requestForMyFriends];
@@ -18,7 +24,7 @@
 
 + (NSString *)facebookIDForUser:(id<FBGraphUser>)user
 {
-    return @"";
+    return [user objectForKey:@"id"];
 }
 
 + (NSArray *)facebookIDForUserArray:(NSArray *)users
@@ -50,29 +56,32 @@
          ^(FBSession *session, FBSessionState state, NSError *error) {
              
              // Call the sessionStateChanged:state:error method to handle session state changes
-             [self sessionStateChanged:session state:state error:error];
+             [self sessionStateChanged:session state:state error:error completionHandler:nil];
          }];
     }
 }
 
 + (void)handleAppColdStart
 {
-    // Note this handler block should be the exact same as the handler passed to any open calls.
-    [FBSession.activeSession setStateChangeHandler:
-     ^(FBSession *session, FBSessionState state, NSError *error) {
-         
-         // Call the sessionStateChanged:state:error method to handle session state changes
-         [self sessionStateChanged:session state:state error:error];
-     }];
+//    // Note this handler block should be the exact same as the handler passed to any open calls.
+//    [FBSession.activeSession setStateChangeHandler:
+//     ^(FBSession *session, FBSessionState state, NSError *error) {
+//         
+//         // Call the sessionStateChanged:state:error method to handle session state changes
+//         [self sessionStateChanged:session state:state error:error completionHandler:nil];
+//     }];
 }
 
-+ (void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error
++ (void)sessionStateChanged:(FBSession *)session
+                      state:(FBSessionState)state
+                      error:(NSError *)error
+          completionHandler:(FBRequestHandler)completionHandler
 {
     // If the session was opened successfully
     if (!error && state == FBSessionStateOpen){
         NSLog(@"Session opened");
         // Show the user the logged-in UI
-        [self userLoggedIn];
+        [self userLoggedInWithCompletionHandler:completionHandler];
         return;
     }
     if (state == FBSessionStateClosed || state == FBSessionStateClosedLoginFailed){
@@ -124,7 +133,7 @@
     }
 }
 
-+ (void)logIn
++ (void)logInWithCompletionHandler:(FBRequestHandler)completionHandler
 {
     // Open a session showing the user the login UI
     // You must ALWAYS ask for public_profile permissions when opening a session
@@ -134,7 +143,7 @@
      ^(FBSession *session, FBSessionState state, NSError *error) {
          
          // Call the sessionStateChanged:state:error method to handle session state changes
-         [self sessionStateChanged:session state:state error:error];
+         [self sessionStateChanged:session state:state error:error completionHandler:completionHandler];
      }];
 }
 
@@ -145,6 +154,11 @@
     [FBSession.activeSession closeAndClearTokenInformation];
 }
 
++ (BOOL)isSessionAvailable
+{
+    return (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded || FBSession.activeSession.state == FBSessionStateCreatedOpening || [self isSessionOpen]);
+}
+
 + (BOOL)isSessionOpen
 {
     return (FBSession.activeSession.state == FBSessionStateOpen || FBSession.activeSession.state == FBSessionStateOpenTokenExtended);
@@ -152,17 +166,21 @@
 
 + (void)showMessage:(NSString *)alertText withTitle:(NSString *)alertTitle
 {
-    
+    NSLog(@"[DTFacebookManager showMessage:withTitle]\n%@\%@", alertTitle, alertText);
 }
 
-+ (void)userLoggedIn
++ (void)userLoggedInWithCompletionHandler:(FBRequestHandler)completionHandler
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:DTNotificationFacebookUserLoggedIn object:nil];
     
+    if (completionHandler) {
+        [self fetchUserWithCompletionHandler:completionHandler];
+    }
 }
 
 + (void)userLoggedOut
 {
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:DTNotificationFacebookUserLoggedOut object:nil];
 }
 
 @end
