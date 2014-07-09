@@ -74,7 +74,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *identifer = @"cell";
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     
     DTPerson *friend = [self.fetchedResultsController objectAtIndexPath:indexPath];
