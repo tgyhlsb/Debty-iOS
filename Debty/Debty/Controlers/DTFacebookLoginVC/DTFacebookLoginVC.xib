@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="5056"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DTFacebookLoginVC">
@@ -23,10 +23,26 @@
                         <constraint firstAttribute="height" constant="50" id="T4L-hP-Kme"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mAC-e2-4DC">
+                    <rect key="frame" x="20" y="358" width="280" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="3z4-FB-IcR"/>
+                    </constraints>
+                    <state key="normal" title="Custom FB login">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="facebookButtonHandler:" destination="-1" eventType="touchUpInside" id="phu-5J-NLG"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="mAC-e2-4DC" secondAttribute="trailing" constant="20" id="2TQ-AH-1Ed"/>
                 <constraint firstItem="Bd9-bC-bjm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="3bh-u8-i87"/>
+                <constraint firstItem="Bd9-bC-bjm" firstAttribute="top" secondItem="mAC-e2-4DC" secondAttribute="bottom" constant="30" id="9DB-SP-zfH"/>
+                <constraint firstItem="mAC-e2-4DC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="9ju-2G-AU8"/>
                 <constraint firstAttribute="bottom" secondItem="Bd9-bC-bjm" secondAttribute="bottom" constant="80" id="Me6-l2-kHQ"/>
                 <constraint firstAttribute="trailing" secondItem="Bd9-bC-bjm" secondAttribute="trailing" constant="20" id="fg5-9L-Rk0"/>
             </constraints>

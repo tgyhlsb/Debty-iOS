@@ -17,4 +17,10 @@
 + (NSString *)facebookIDForUser:(id<FBGraphUser>)user;
 + (NSArray *)facebookIDForUserArray:(NSArray *)users;
 
++ (void)logOut;
++ (void)logIn;
++ (BOOL)isSessionOpen;
+
++ (void)handleAppColdStart;
+
 @end

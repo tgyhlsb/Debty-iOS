@@ -42,6 +42,18 @@
     self.loginView.loginBehavior = FBSessionLoginBehaviorUseSystemAccountIfPresent;
 }
 
+#pragma mark - Button handlers
+
+- (IBAction)facebookButtonHandler:(UIButton *)sender
+{
+    if ([DTFacebookManager isSessionOpen]) {
+        [DTFacebookManager logOut];
+    } else {
+        [DTFacebookManager logIn];
+    }
+}
+
+
 #pragma mark - FBLoginViewDelegate
 
 - (void)loginView:(FBLoginView *)loginView handleError:(NSError *)error

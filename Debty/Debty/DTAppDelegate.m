@@ -12,6 +12,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "AFNetworkActivityIndicatorManager.h"
 #import "DTModelManager.h"
+#import "DTFacebookManager.h"
 
 @interface DTAppDelegate()
 
@@ -106,6 +107,11 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    
+    // Handle the user leaving the app while the Facebook login dialog is being shown
+    // For example: when the user presses the iOS "home" button while the login dialog is active
+    [FBAppCall handleDidBecomeActive];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -116,9 +122,11 @@
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
+         annotation:(id)annotation
+{
     
     // Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
+    [DTFacebookManager handleAppColdStart];
     BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
     
     // You can add your app-specific url handling code here if needed
