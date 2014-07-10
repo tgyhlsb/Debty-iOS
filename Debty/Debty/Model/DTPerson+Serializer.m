@@ -50,9 +50,6 @@
         person.firstName = [info objectForKey:@"first_name"];
         person.lastName = [info objectForKey:@"last_name"];
         
-        NSNumber *isMainUser = [info objectForKey:MAIN_USER_KEY];
-        person.isMainUser = (isMainUser != nil) ? isMainUser : @(NO);
-        
         NSArray *friendsInfo = [info objectForKey:@"friends"];
         if (friendsInfo) {
             NSArray *friends = [DTPerson personsWithArray:friendsInfo];

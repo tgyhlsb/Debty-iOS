@@ -2,7 +2,7 @@
 //  DTShare.h
 //  Debty
 //
-//  Created by Tanguy Hélesbeux on 21/06/2014.
+//  Created by Tanguy Hélesbeux on 10/07/2014.
 //  Copyright (c) 2014 Debty. All rights reserved.
 //
 
@@ -15,7 +15,8 @@
 
 @property (nonatomic, retain) NSDecimalNumber * amount;
 @property (nonatomic, retain) NSNumber * identifier;
-@property (nonatomic, retain) DTPerson *person;
+@property (nonatomic, retain) NSNumber * needSync;
 @property (nonatomic, retain) DTExpense *expense;
+@property (nonatomic, retain) DTPerson *person;
 
 @end

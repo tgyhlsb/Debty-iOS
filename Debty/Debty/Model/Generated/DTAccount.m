@@ -2,7 +2,7 @@
 //  DTAccount.m
 //  Debty
 //
-//  Created by Tanguy Hélesbeux on 21/06/2014.
+//  Created by Tanguy Hélesbeux on 10/07/2014.
 //  Copyright (c) 2014 Debty. All rights reserved.
 //
 
@@ -15,7 +15,8 @@
 
 @dynamic identifier;
 @dynamic name;
-@dynamic persons;
+@dynamic needSync;
 @dynamic expenses;
+@dynamic persons;
 
 @end

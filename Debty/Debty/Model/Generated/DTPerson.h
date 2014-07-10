@@ -2,7 +2,7 @@
 //  DTPerson.h
 //  Debty
 //
-//  Created by Tanguy Hélesbeux on 06/07/2014.
+//  Created by Tanguy Hélesbeux on 10/07/2014.
 //  Copyright (c) 2014 Debty. All rights reserved.
 //
 
@@ -19,8 +19,8 @@
 @property (nonatomic, retain) NSString * firstName;
 @property (nonatomic, retain) NSString * gender;
 @property (nonatomic, retain) NSNumber * identifier;
-@property (nonatomic, retain) NSNumber * isMainUser;
 @property (nonatomic, retain) NSString * lastName;
+@property (nonatomic, retain) NSNumber * needSync;
 @property (nonatomic, retain) NSSet *accounts;
 @property (nonatomic, retain) NSSet *friends;
 @property (nonatomic, retain) NSSet *friendsInverseRelation;

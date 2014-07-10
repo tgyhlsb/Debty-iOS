@@ -2,7 +2,7 @@
 //  DTExpense.h
 //  Debty
 //
-//  Created by Tanguy Hélesbeux on 21/06/2014.
+//  Created by Tanguy Hélesbeux on 10/07/2014.
 //  Copyright (c) 2014 Debty. All rights reserved.
 //
 
@@ -17,8 +17,9 @@
 @property (nonatomic, retain) NSDate * creationDate;
 @property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) NSNumber * identifier;
-@property (nonatomic, retain) NSSet *shares;
+@property (nonatomic, retain) NSNumber * needSync;
 @property (nonatomic, retain) DTAccount *account;
+@property (nonatomic, retain) NSSet *shares;
 @end
 
 @interface DTExpense (CoreDataGeneratedAccessors)
