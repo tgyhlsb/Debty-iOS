@@ -8,7 +8,7 @@
 
 #import "DTTabBarController.h"
 #import "DTNavigationController.h"
-#import "DTExpenseTableVC.h"
+#import "DTAccountsTableVC.h"
 #import "DTFacebookLoginVC.h"
 #import "DTTestVC.h"
 
@@ -23,7 +23,7 @@
 + (DTTabBarController *)newController {
     DTTabBarController *tabBarController = [[DTTabBarController alloc] init];
     
-    DTExpenseTableVC *expenseTableVC = [DTExpenseTableVC newController];
+    DTAccountsTableVC *expenseTableVC = [DTAccountsTableVC newController];
     [expenseTableVC setAddExpenseButtonVisible:YES];
     DTNavigationController *navigationControllerOne = [DTNavigationController newControllerWithRootViewController:expenseTableVC];
     navigationControllerOne.title = @"Expenses";

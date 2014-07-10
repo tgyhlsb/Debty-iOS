@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "DTCoreDataTableViewController.h"
 
-@interface DTExpenseTableVC : DTCoreDataTableViewController
+@interface DTAccountsTableVC : DTCoreDataTableViewController
 
-+ (DTExpenseTableVC *)newController;
++ (DTAccountsTableVC *)newController;
 
 - (void)setAddExpenseButtonVisible:(BOOL)visible;
 

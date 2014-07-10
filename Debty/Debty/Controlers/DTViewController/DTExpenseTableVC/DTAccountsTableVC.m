@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Debty. All rights reserved.
 //
 
-#import "DTExpenseTableVC.h"
-#import "DTExpenseTableViewCell.h"
+#import "DTAccountsTableVC.h"
+#import "DTAccountTableViewCell.h"
 #import "DTNewAccountNavigationController.h"
 #import "DTModelManager.h"
 
 #define NIB_NAME @"DTExpenseTableVC"
 
-@interface DTExpenseTableVC () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
+@interface DTAccountsTableVC () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @property (nonatomic, strong) UIBarButtonItem *addExpenseButton;
 
@@ -23,27 +23,15 @@
 
 @end
 
-@implementation DTExpenseTableVC
+@implementation DTAccountsTableVC
 
-+ (DTExpenseTableVC *)newController
++ (DTAccountsTableVC *)newController
 {
-    DTExpenseTableVC *controller = [[DTExpenseTableVC alloc] initWithNibName:NIB_NAME bundle:nil];
+    DTAccountsTableVC *controller = [[DTAccountsTableVC alloc] initWithNibName:NIB_NAME bundle:nil];
     controller.title = @"Expenses";
     controller.canPullToRefresh = YES;
     controller.clearsSelectionOnViewWillAppear = YES;
     return controller;
-}
-
-- (void)generateExpenses
-{
-    [DTModelManager getPersonSample];
-    
-    NSMutableArray *tempExpenses = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 10; i++) {
-        DTTempExpense *expense = [DTTempExpense randomExpense];
-        [tempExpenses addObject:expense];
-    }
-    self.expenses = tempExpenses;
 }
 
 - (void)setUpGestureRecognizer
@@ -60,11 +48,9 @@
 {
     [super viewDidLoad];
     
-    [self generateExpenses];
-    
     [self setUpFetchRequest];
     
-    [DTExpenseTableViewCell registerToTableView:self.tableView];
+    [DTAccountTableViewCell registerToTableView:self.tableView];
     
     self.navigationItem.titleView = self.searchBar;
     
@@ -105,12 +91,11 @@
 
 - (void)setUpFetchRequest
 {
-    self.fetchedResultsController = [DTModelManager fetchResultControllerForPersonsWithSearchString:self.searchBar.text];
+    self.fetchedResultsController = [DTModelManager fetchResultControllerForAccounts];
 }
 
 - (void)tableViewShouldRefresh
 {
-    [DTModelManager getPersonSample];
     [self stopRefreshingTableView];
 }
 
@@ -140,15 +125,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *identifier = [DTExpenseTableViewCell reusableIdentifier];
-    DTExpenseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    NSString *identifier = [DTAccountTableViewCell reusableIdentifier];
+    DTAccountTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
-    DTTempExpense *expense = [self.expenses objectAtIndex:indexPath.row];
-    DTPerson *person = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    expense.friend.name = person.firstName;
-    expense.friend.facebookID = person.facebookID;
+    DTAccount *account = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    cell.expense = expense;
+    cell.account = account;
     
     cell.layer.shouldRasterize = YES;
     cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
@@ -160,7 +142,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [DTExpenseTableViewCell height];
+    return [DTAccountTableViewCell height];
 }
 
 @end

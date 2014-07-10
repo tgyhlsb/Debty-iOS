@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "DTPerson+Serializer.h"
+#import "DTAccount+Serializer.h"
+#import "DTExpense+Serializer.h"
+#import "DTShare+Serializer.h"
 
 static NSString *DTNotificationMainUserUpdate = @"DTNotificationMainUserUpdate";
 
@@ -20,6 +23,10 @@ static NSString *DTNotificationMainUserUpdate = @"DTNotificationMainUserUpdate";
 + (NSFetchedResultsController *)fetchResultControllerForPersons;
 + (NSFetchedResultsController *)fetchResultControllerForPersonsWithIdentifier:(NSNumber *)identifier;
 + (NSFetchedResultsController *)fetchResultControllerForPersonsWithSearchString:(NSString *)searchString;
+
++ (NSFetchedResultsController *)fetchResultControllerForAccounts;
++ (NSFetchedResultsController *)fetchResultControllerForAccountsWithSearchString:(NSString *)searchString;
+
 + (NSFetchedResultsController *)fetchResultControllerForMainUserFriends;
 + (NSFetchedResultsController *)fetchResultControllerForMainUserFriendsWithSearchString:(NSString *)searchString;
 

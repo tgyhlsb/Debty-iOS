@@ -11,6 +11,11 @@
 
 @implementation DTAccount (Serializer)
 
+- (NSNumber *)balanceForPerson:(DTPerson *)person
+{
+    return @2.0;
+}
+
 + (DTAccount *)accountWithInfo:(NSDictionary *)info
 {
     return [DTAccount accountWithInfo:info

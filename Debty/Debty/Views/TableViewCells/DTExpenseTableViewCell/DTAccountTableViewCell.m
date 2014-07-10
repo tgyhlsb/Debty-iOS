@@ -6,40 +6,42 @@
 //  Copyright (c) 2014 Debty. All rights reserved.
 //
 
-#import "DTExpenseTableViewCell.h"
+#import "DTAccountTableViewCell.h"
+#import "DTPerson+Serializer.h"
 #import "DTGroupPictureView.h"
 
 #define NIB_NAME @"DTExpenseTableViewCell"
 #define HEIGHT 50.0
 
-@interface DTExpenseTableViewCell()
+@interface DTAccountTableViewCell()
 
-@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *accountNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *balanceLabel;
 @property (weak, nonatomic) IBOutlet DTGroupPictureView *pictureView;
 
 @end
 
-@implementation DTExpenseTableViewCell
+@implementation DTAccountTableViewCell
 
 #pragma mark - View
 
 - (void)updateView
 {
-    self.userNameLabel.text = self.expense.friend.name;
-    self.priceLabel.text = [NSString stringWithFormat:@"%@", self.expense.price];
+    self.accountNameLabel.text = self.account.name;
+    self.balanceLabel.text = [NSString stringWithFormat:@"%@", [self.account balanceForPerson:nil]];
     
     [self.pictureView reset];
-    [self.pictureView addUserID:self.expense.friend.facebookID withName:self.expense.friend.name];
-    [self.pictureView addUserID:self.expense.friend.facebookID withName:self.expense.friend.name];
+    for (DTPerson *person in self.account.persons) {
+        [self.pictureView addUserID:person.facebookID withName:person.firstName];
+    }
     [self.pictureView updateLayout];
 }
 
 #pragma mark - Setters
 
-- (void)setExpense:(DTTempExpense *)expense
+- (void)setAccount:(DTAccount *)account
 {
-    _expense = expense;
+    _account = account;
     [self updateView];
 }
 
@@ -53,7 +55,7 @@
 + (void)registerToTableView:(UITableView *)tableView
 {
     UINib *nib = [UINib nibWithNibName:NIB_NAME bundle:nil];
-    [tableView registerNib:nib forCellReuseIdentifier:[DTExpenseTableViewCell reusableIdentifier]];
+    [tableView registerNib:nib forCellReuseIdentifier:[DTAccountTableViewCell reusableIdentifier]];
 }
 
 + (CGFloat)height

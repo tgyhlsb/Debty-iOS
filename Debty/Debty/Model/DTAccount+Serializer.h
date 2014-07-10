@@ -15,5 +15,7 @@
 + (DTAccount *)accountWithInfo:(NSDictionary *)info;
 + (NSArray *)accountsWithArray:(NSArray *)arrayInfo;
 
+- (NSNumber *)balanceForPerson:(DTPerson *)person;
+
 
 @end

@@ -7,10 +7,10 @@
 //
 
 #import "DTTableViewCell.h"
-#import "DTTempExpense.h"
+#import "DTAccount+Serializer.h"
 
-@interface DTExpenseTableViewCell : DTTableViewCell
+@interface DTAccountTableViewCell : DTTableViewCell
 
-@property (strong, nonatomic) DTTempExpense *expense;
+@property (strong, nonatomic) DTAccount *account;
 
 @end

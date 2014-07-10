@@ -72,6 +72,27 @@ static DTModelManager *sharedManager;
                                                           cacheName:nil];
 }
 
++ (NSFetchedResultsController *)fetchResultControllerForAccounts
+{
+    return [DTModelManager fetchResultControllerForAccountsWithSearchString:nil];
+}
+
++ (NSFetchedResultsController *)fetchResultControllerForAccountsWithSearchString:(NSString *)searchString
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_ACCOUNT];
+    
+    if (searchString && [searchString length]) {
+        request.predicate = [NSPredicate predicateWithFormat:@""];
+    }
+    
+    request.sortDescriptors = @[];
+    
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                               managedObjectContext:[DTModelManager sharedContext]
+                                                 sectionNameKeyPath:nil
+                                                          cacheName:nil];
+}
+
 + (NSFetchedResultsController *)fetchResultControllerForMainUserFriends
 {
     return [DTModelManager fetchResultControllerForMainUserFriendsWithSearchString:nil];
