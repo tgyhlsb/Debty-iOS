@@ -7,6 +7,7 @@
 //
 
 #import "DTAccount.h"
+#import "DTPerson+Serializer.h"
 
 #define CLASS_NAME_ACCOUNT @"DTAccount"
 
@@ -14,8 +15,7 @@
 
 + (DTAccount *)accountWithInfo:(NSDictionary *)info;
 + (NSArray *)accountsWithArray:(NSArray *)arrayInfo;
-
-- (NSNumber *)balanceForPerson:(DTPerson *)person;
++ (DTAccount *)accountWithPersons:(NSArray *)persons;
 
 
 @end

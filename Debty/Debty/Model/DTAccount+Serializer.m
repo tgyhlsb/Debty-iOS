@@ -11,11 +11,6 @@
 
 @implementation DTAccount (Serializer)
 
-- (NSNumber *)balanceForPerson:(DTPerson *)person
-{
-    return @2.0;
-}
-
 + (DTAccount *)accountWithInfo:(NSDictionary *)info
 {
     return [DTAccount accountWithInfo:info
@@ -58,6 +53,37 @@
         [tempAccounts addObject:account];
     }
     return tempAccounts;
+}
+
++ (DTAccount *)accountWithPersons:(NSArray *)persons
+{
+    return [DTAccount accountWithPersons:persons
+                  inManagedObjectContext:[DTModelManager sharedContext]];
+}
+
++ (DTAccount *)accountWithPersons:(NSArray *)persons
+           inManagedObjectContext:(NSManagedObjectContext *)context
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_ACCOUNT];
+    [NSPredicate predicateWithFormat:@"ALL persons IN %@", persons];
+    
+    DTAccount *account = nil;
+    
+    NSError *error = nil;
+    NSArray *matches = [context executeFetchRequest:request error:&error];
+    
+    if (error || !matches || [matches count] > 1) {
+        //handle error
+    } else {
+        if ([matches count]) {
+            account = [matches firstObject];
+        } else {
+            account = [NSEntityDescription insertNewObjectForEntityForName:CLASS_NAME_ACCOUNT inManagedObjectContext:context];
+            [account setPersons:[NSSet setWithArray:persons]];
+        }
+    }
+    
+    return account;
 }
 
 @end

@@ -10,7 +10,7 @@
 #import "DTPerson+Serializer.h"
 #import "DTGroupPictureView.h"
 
-#define NIB_NAME @"DTExpenseTableViewCell"
+#define NIB_NAME @"DTAccountTableViewCell"
 #define HEIGHT 50.0
 
 @interface DTAccountTableViewCell()
@@ -27,7 +27,7 @@
 
 - (void)updateView
 {
-    self.accountNameLabel.text = self.account.name;
+    self.accountNameLabel.text = self.account.safeName;
     self.balanceLabel.text = [NSString stringWithFormat:@"%@", [self.account balanceForPerson:nil]];
     
     [self.pictureView reset];

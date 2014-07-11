@@ -18,7 +18,6 @@
 @implementation DTViewController
 
 
-
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -69,7 +68,6 @@
     NSLog(@"[DTViewController closeButtonHandler]");
     if (self.closeBlock) {
         self.closeBlock();
-        self.closeBlock = nil;
     }
 }
 

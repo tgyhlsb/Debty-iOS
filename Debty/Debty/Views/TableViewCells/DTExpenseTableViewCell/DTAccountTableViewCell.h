@@ -7,7 +7,7 @@
 //
 
 #import "DTTableViewCell.h"
-#import "DTAccount+Serializer.h"
+#import "DTAccount+Helpers.h"
 
 @interface DTAccountTableViewCell : DTTableViewCell
 

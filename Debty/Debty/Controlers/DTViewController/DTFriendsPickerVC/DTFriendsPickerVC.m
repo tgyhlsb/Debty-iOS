@@ -9,6 +9,8 @@
 #import "DTFriendsPickerVC.h"
 #import "DTModelManager.h"
 #import "DTPerson.h"
+#import "DTCreateAccountVC.h"
+#import "DTInstallation.h"
 
 #define NIB_NAME @"DTFriendsPickerVC"
 
@@ -25,6 +27,8 @@
 {
     DTFriendsPickerVC *controller = [[DTFriendsPickerVC alloc] initWithNibName:NIB_NAME bundle:nil];
     controller.title = @"Pick a friend";
+    controller.canPullToRefresh = YES;
+    controller.clearsSelectionOnViewWillAppear = YES;
     return controller;
 }
 
@@ -74,6 +78,19 @@
     cell.detailTextLabel.text = friend.lastName;
     
     return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DTPerson *friend = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    DTPerson *me = [DTInstallation mainUser];
+    DTAccount *newAccount = [DTAccount accountWithPersons:@[me, friend]];
+    NSLog(@"%@", newAccount);
+    
+//    DTCreateAccountVC *destination = [DTCreateAccountVC newController];
+//    [self.navigationController pushViewController:destination animated:YES];
 }
 
 @end
