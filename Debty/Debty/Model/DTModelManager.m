@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "DTBackendManager.h"
 #import "DTInstallation.h"
+#import "DTAccount+Helpers.h"
 
 static DTModelManager *sharedManager;
 
@@ -32,6 +33,16 @@ static DTModelManager *sharedManager;
 - (void)notifyMainUserUpdate
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:DTNotificationMainUserUpdate object:nil];
+}
+
+
++ (DTAccount *)accountWithPersons:(NSArray *)persons
+{
+    DTAccount *account = [DTAccount accountWithPersons:persons];
+    if ([account safeNeedSync]) {
+        [DTModelManager save];
+    }
+    return account;
 }
 
 

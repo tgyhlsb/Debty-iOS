@@ -3,7 +3,7 @@
     <entity name="DTAccount" representedClassName="DTAccount" syncable="YES">
         <attribute name="identifier" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="needSync" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="needSync" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <relationship name="expenses" toMany="YES" deletionRule="Cascade" destinationEntity="DTExpense" inverseName="account" inverseEntity="DTExpense" syncable="YES"/>
         <relationship name="persons" toMany="YES" deletionRule="Nullify" destinationEntity="DTPerson" inverseName="accounts" inverseEntity="DTPerson" syncable="YES"/>
     </entity>
@@ -12,7 +12,7 @@
         <attribute name="creationDate" attributeType="Date" syncable="YES"/>
         <attribute name="date" attributeType="Date" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="needSync" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="needSync" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <relationship name="account" maxCount="1" deletionRule="Nullify" destinationEntity="DTAccount" inverseName="expenses" inverseEntity="DTAccount" syncable="YES"/>
         <relationship name="shares" toMany="YES" deletionRule="Cascade" destinationEntity="DTShare" inverseName="expense" inverseEntity="DTShare" syncable="YES"/>
     </entity>
@@ -24,7 +24,7 @@
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="needSync" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="needSync" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <relationship name="accounts" toMany="YES" deletionRule="Nullify" destinationEntity="DTAccount" inverseName="persons" inverseEntity="DTAccount" syncable="YES"/>
         <relationship name="friends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DTPerson" inverseName="friendsInverseRelation" inverseEntity="DTPerson" syncable="YES"/>
         <relationship name="friendsInverseRelation" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DTPerson" inverseName="friends" inverseEntity="DTPerson" syncable="YES"/>
@@ -33,14 +33,14 @@
     <entity name="DTShare" representedClassName="DTShare" syncable="YES">
         <attribute name="amount" attributeType="Decimal" minValueString="0" defaultValueString="0.0" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="needSync" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="needSync" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <relationship name="expense" maxCount="1" deletionRule="Nullify" destinationEntity="DTExpense" inverseName="shares" inverseEntity="DTExpense" syncable="YES"/>
         <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DTPerson" inverseName="shares" inverseEntity="DTPerson" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DTAccount" positionX="-63" positionY="-334" width="128" height="118"/>
-        <element name="DTExpense" positionX="241" positionY="-432" width="128" height="148"/>
-        <element name="DTPerson" positionX="223" positionY="-54" width="209" height="223"/>
-        <element name="DTShare" positionX="522" positionY="-405" width="128" height="118"/>
+        <element name="DTAccount" positionX="-63" positionY="-334" width="128" height="120"/>
+        <element name="DTExpense" positionX="241" positionY="-432" width="128" height="150"/>
+        <element name="DTPerson" positionX="223" positionY="-54" width="209" height="225"/>
+        <element name="DTShare" positionX="522" positionY="-405" width="128" height="120"/>
     </elements>
 </model>

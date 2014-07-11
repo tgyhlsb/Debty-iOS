@@ -12,5 +12,6 @@
 
 - (NSNumber *)balanceForPerson:(DTPerson *)person;
 - (NSString *)safeName;
+- (BOOL)safeNeedSync;
 
 @end

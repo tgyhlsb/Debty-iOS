@@ -86,7 +86,7 @@
 {
     DTPerson *friend = [self.fetchedResultsController objectAtIndexPath:indexPath];
     DTPerson *me = [DTInstallation mainUser];
-    DTAccount *newAccount = [DTAccount accountWithPersons:@[me, friend]];
+    DTAccount *newAccount = [DTModelManager accountWithPersons:@[me, friend]];
     NSLog(@"%@", newAccount);
     
 //    DTCreateAccountVC *destination = [DTCreateAccountVC newController];

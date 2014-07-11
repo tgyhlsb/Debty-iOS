@@ -28,4 +28,9 @@
     return self.name;
 }
 
+- (BOOL)safeNeedSync
+{
+    return [self.needSync boolValue];
+}
+
 @end
