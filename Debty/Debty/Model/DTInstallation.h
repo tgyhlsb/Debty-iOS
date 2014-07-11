@@ -19,9 +19,9 @@ typedef NS_ENUM(NSInteger, DTUserState) {
 
 @interface DTInstallation : NSObject
 
-+ (DTPerson *)mainUser;
-+ (void)setMainUser:(DTPerson *)mainUser;
-+ (void)setMainUserWithInfo:(NSDictionary *)info;
++ (DTPerson *)me;
++ (void)setMe:(DTPerson *)me;
++ (void)setMeWithInfo:(NSDictionary *)info;
 
 + (DTUserState)userState;
 + (void)loginWithFacebook;

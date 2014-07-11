@@ -85,7 +85,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DTPerson *friend = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    DTPerson *me = [DTInstallation mainUser];
+    DTPerson *me = [DTInstallation me];
     DTAccount *newAccount = [DTModelManager accountWithPersons:@[me, friend]];
     NSLog(@"%@", newAccount);
     

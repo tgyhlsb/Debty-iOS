@@ -71,7 +71,7 @@ static DTBackendManager *sharedManager;
            NSDictionary *user = [[responseObject objectForKey:@"person"] lastObject];
 //           TODO is the user new ? or just connected ?
 //           NSString *userStatus = [responseObject objectForKey:@"status"];
-           [DTInstallation setMainUserWithInfo:user];
+           [DTInstallation setMeWithInfo:user];
            [self updateUserSuccess:success failure:failure];
     } failure:failure];
 }

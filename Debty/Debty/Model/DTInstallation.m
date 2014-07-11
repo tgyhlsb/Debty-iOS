@@ -18,9 +18,9 @@ static DTInstallation *sharedInstallation;
 
 @interface DTInstallation()
 
-@property (strong, nonatomic) NSNumber *mainUserIdentifier;
+@property (strong, nonatomic) NSNumber *meIdentifier;
 
-@property (strong, nonatomic) DTPerson *mainUser;
+@property (strong, nonatomic) DTPerson *me;
 
 @property (nonatomic) DTUserState userState;
 
@@ -38,35 +38,35 @@ static DTInstallation *sharedInstallation;
 
 #pragma mark - Main User
 
-@synthesize mainUserIdentifier = _mainUserIdentifier;
+@synthesize meIdentifier = _meIdentifier;
 
-- (void)setMainUserIdentifier:(NSNumber *)mainUserIdentifier
+- (void)setMeIdentifier:(NSNumber *)mainUserIdentifier
 {
-    _mainUserIdentifier = mainUserIdentifier;
+    _meIdentifier = mainUserIdentifier;
     [[NSUserDefaults standardUserDefaults] setObject:mainUserIdentifier forKey:MAINUSER_IDENTIFIER_KEY];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (NSNumber *)mainUserIdentifier
+- (NSNumber *)meIdentifier
 {
-    if (!_mainUserIdentifier) {
-        _mainUserIdentifier = [[NSUserDefaults standardUserDefaults] objectForKey:MAINUSER_IDENTIFIER_KEY];
+    if (!_meIdentifier) {
+        _meIdentifier = [[NSUserDefaults standardUserDefaults] objectForKey:MAINUSER_IDENTIFIER_KEY];
     }
-    return _mainUserIdentifier;
+    return _meIdentifier;
 }
 
-@synthesize mainUser = _mainUser;
+@synthesize me = _me;
 
-- (void)setMainUser:(DTPerson *)mainUser
+- (void)setMe:(DTPerson *)me
 {
-    self.mainUserIdentifier = mainUser.identifier;
-    _mainUser = mainUser;
+    self.meIdentifier = me.identifier;
+    _me = me;
 }
 
-- (DTPerson *)mainUser
+- (DTPerson *)me
 {
-    if (!_mainUser) {
-        NSFetchedResultsController *fetchedResultController = [DTModelManager fetchResultControllerForPersonsWithIdentifier:self.mainUserIdentifier];
+    if (!_me) {
+        NSFetchedResultsController *fetchedResultController = [DTModelManager fetchResultControllerForPersonsWithIdentifier:self.meIdentifier];
         
         NSError *error = nil;
         [fetchedResultController performFetch:&error];
@@ -74,26 +74,26 @@ static DTInstallation *sharedInstallation;
         if (error) {
             NSLog(@"[DTInstallation mainUser]\n%@", error);
         } else {
-            _mainUser = [[fetchedResultController fetchedObjects] lastObject];
+            _me = [[fetchedResultController fetchedObjects] lastObject];
         }
     }
-    return _mainUser;
+    return _me;
 }
 
-+ (void)setMainUser:(DTPerson *)mainUser
++ (void)setMe:(DTPerson *)me
 {
-    [[DTInstallation sharedInstallation] setMainUser:mainUser];
+    [[DTInstallation sharedInstallation] setMe:me];
 }
 
-+ (DTPerson *)mainUser
++ (DTPerson *)me
 {
-    return [[DTInstallation sharedInstallation] mainUser];
+    return [[DTInstallation sharedInstallation] me];
 }
 
-+ (void)setMainUserWithInfo:(NSDictionary *)info
++ (void)setMeWithInfo:(NSDictionary *)info
 {
     DTPerson *user = [DTPerson personWithInfo:info];
-    [DTInstallation setMainUser:user];
+    [DTInstallation setMe:user];
 }
 
 #pragma mark - Basic Auth credentials
@@ -105,7 +105,7 @@ static DTInstallation *sharedInstallation;
 
 - (NSString *)authIdentifier
 {
-    return self.mainUser.facebookID;
+    return self.me.facebookID;
 }
 
 + (NSString *)authPassword
@@ -115,8 +115,8 @@ static DTInstallation *sharedInstallation;
 
 - (NSString *)authPassword
 {
-    NSString *firstName = self.mainUser.firstName;
-    NSString *facebookHash = [self.mainUser.facebookID substringToIndex:5];
+    NSString *firstName = self.me.firstName;
+    NSString *facebookHash = [self.me.facebookID substringToIndex:5];
     NSString *password = [firstName stringByAppendingString:facebookHash];
     
     CocoaSecurityResult *sha256 = [CocoaSecurity sha256:password];
@@ -145,7 +145,7 @@ static DTInstallation *sharedInstallation;
 {
     [DTBackendManager identifyUserWithGraph:user success:^(NSURLSessionDataTask *task, NSDictionary *json) {
         NSDictionary *userInfo = [json objectForKey:@"user"];
-        [DTInstallation setMainUserWithInfo:userInfo];
+        [DTInstallation setMeWithInfo:userInfo];
         self.userState = DTUserStateLoggedIn;
     } failure:^(NSURLSessionDataTask *operation, NSError *error) {
         NSLog(@"%@", error);

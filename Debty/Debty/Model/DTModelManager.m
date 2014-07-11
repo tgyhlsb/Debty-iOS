@@ -112,8 +112,8 @@ static DTModelManager *sharedManager;
 + (NSFetchedResultsController *)fetchResultControllerForMainUserFriendsWithSearchString:(NSString *)searchString
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_PERSON];
-    DTPerson *mainUser = [DTInstallation mainUser];
-    request.predicate = [NSPredicate predicateWithFormat:@"ANY friendsInverseRelation == %@", mainUser];
+    DTPerson *me = [DTInstallation me];
+    request.predicate = [NSPredicate predicateWithFormat:@"ANY friendsInverseRelation == %@", me];
     
     
     if (searchString && [searchString length]) {
