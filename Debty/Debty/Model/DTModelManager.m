@@ -64,15 +64,27 @@ static DTModelManager *sharedManager;
 
 + (NSFetchedResultsController *)fetchResultControllerForPersons
 {
-    return [DTModelManager fetchResultControllerForPersonsWithSearchString:nil];
+    return [DTModelManager fetchResultControllerForPersonsWithSearchString:nil selected:nil];
 }
 
 + (NSFetchedResultsController *)fetchResultControllerForPersonsWithSearchString:(NSString *)searchString
+                                                                       selected:(NSNumber *)selected
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_PERSON];
     
+    NSMutableArray *predicates = [[NSMutableArray alloc] init];
+    
     if (searchString && [searchString length]) {
-        request.predicate = [NSPredicate predicateWithFormat:@"firstName contains[c] %@ || lastName contains[c] %@", searchString, searchString, searchString];
+        NSPredicate *searchStringPredicate = [NSPredicate predicateWithFormat:@"firstName contains[c] %@ || lastName contains[c] %@", searchString, searchString, searchString];
+        [predicates addObject:searchStringPredicate];
+    }
+    if (selected) {
+        NSPredicate *isSelectedPredicate = [NSPredicate predicateWithFormat:@"isSelected == %@", selected];
+        [predicates addObject:isSelectedPredicate];
+    }
+    
+    if ([predicates count]) {
+        request.predicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
     }
     
     request.sortDescriptors = @[];
@@ -106,21 +118,28 @@ static DTModelManager *sharedManager;
 
 + (NSFetchedResultsController *)fetchResultControllerForMainUserFriends
 {
-    return [DTModelManager fetchResultControllerForMainUserFriendsWithSearchString:nil];
+    return [DTModelManager fetchResultControllerForMainUserFriendsWithSearchString:nil selected:nil];
 }
 
 + (NSFetchedResultsController *)fetchResultControllerForMainUserFriendsWithSearchString:(NSString *)searchString
+                                                                               selected:(NSNumber *)selected
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_PERSON];
     DTPerson *me = [DTInstallation me];
-    request.predicate = [NSPredicate predicateWithFormat:@"ANY friendsInverseRelation == %@", me];
+    
+    NSPredicate *isFriendPRedicate = [NSPredicate predicateWithFormat:@"ANY friendsInverseRelation == %@", me];
+    NSMutableArray *predicates = [[NSMutableArray alloc] initWithObjects:isFriendPRedicate, nil];
     
     
     if (searchString && [searchString length]) {
         NSPredicate *searchPredicate = [NSPredicate predicateWithFormat:@"firstName contains[c] %@ || lastName contains[c] %@", searchString, searchString, searchString];
-        request.predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[request.predicate, searchPredicate]];
+        [predicates addObject:searchPredicate];
     }
-    
+    if (selected) {
+        NSPredicate *isSelectedPredicate = [NSPredicate predicateWithFormat:@"isSelected == %@", selected];
+        [predicates addObject:isSelectedPredicate];
+    }
+    request.predicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
     
     request.sortDescriptors = @[];
     

@@ -2,7 +2,7 @@
 //  DTPerson.m
 //  Debty
 //
-//  Created by Tanguy Hélesbeux on 10/07/2014.
+//  Created by Tanguy Hélesbeux on 12/07/2014.
 //  Copyright (c) 2014 Debty. All rights reserved.
 //
 
@@ -22,6 +22,7 @@
 @dynamic identifier;
 @dynamic lastName;
 @dynamic needSync;
+@dynamic isSelected;
 @dynamic accounts;
 @dynamic friends;
 @dynamic friendsInverseRelation;

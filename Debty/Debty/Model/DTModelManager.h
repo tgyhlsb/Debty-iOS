@@ -24,12 +24,14 @@ static NSString *DTNotificationMainUserUpdate = @"DTNotificationMainUserUpdate";
 
 + (NSFetchedResultsController *)fetchResultControllerForPersons;
 + (NSFetchedResultsController *)fetchResultControllerForPersonsWithIdentifier:(NSNumber *)identifier;
-+ (NSFetchedResultsController *)fetchResultControllerForPersonsWithSearchString:(NSString *)searchString;
++ (NSFetchedResultsController *)fetchResultControllerForPersonsWithSearchString:(NSString *)searchString
+                                                                       selected:(NSNumber *)selected;
 
 + (NSFetchedResultsController *)fetchResultControllerForAccounts;
 + (NSFetchedResultsController *)fetchResultControllerForAccountsWithSearchString:(NSString *)searchString;
 
 + (NSFetchedResultsController *)fetchResultControllerForMainUserFriends;
-+ (NSFetchedResultsController *)fetchResultControllerForMainUserFriendsWithSearchString:(NSString *)searchString;
++ (NSFetchedResultsController *)fetchResultControllerForMainUserFriendsWithSearchString:(NSString *)searchString
+                                                                               selected:(NSNumber *)selected;
 
 @end
