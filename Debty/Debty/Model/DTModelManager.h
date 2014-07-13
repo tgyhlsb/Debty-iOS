@@ -29,6 +29,7 @@ static NSString *DTNotificationMainUserUpdate = @"DTNotificationMainUserUpdate";
 + (NSFetchedResultsController *)fetchResultControllerForPersonsWithIdentifier:(NSNumber *)identifier;
 + (NSFetchedResultsController *)fetchResultControllerForPersonsWithSearchString:(NSString *)searchString
                                                                        selected:(NSNumber *)selected;
++ (NSFetchedResultsController *)fetchResultControllerForPersonInAccount:(DTAccount *)account;
 
 + (NSFetchedResultsController *)fetchResultControllerForMainUserFriends;
 + (NSFetchedResultsController *)fetchResultControllerForMainUserFriendsWithSearchString:(NSString *)searchString

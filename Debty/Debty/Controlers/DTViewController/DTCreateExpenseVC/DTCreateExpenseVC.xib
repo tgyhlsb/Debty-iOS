@@ -11,6 +11,7 @@
                 <outlet property="nameLabel" destination="gnU-a8-Amg" id="iBR-s1-dAT"/>
                 <outlet property="segmentedControl" destination="toT-rl-Mp2" id="Kdq-WS-r1E"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="whoPayedLabel" destination="E2T-gL-URU" id="H5j-c1-ZYf"/>
                 <outlet property="whoPayedView" destination="RfS-sL-Wac" id="7Qr-U2-Vrk"/>
             </connections>
         </placeholder>

@@ -24,6 +24,8 @@
     DTCreateExpenseNavigationController *navigationController = [[DTCreateExpenseNavigationController alloc] initWithRootViewController:rootViewController];
     navigationController.expenseAttributeVC = rootViewController;
     
+    rootViewController.account = navigationController.account;
+    
     [rootViewController setNextButtonVisible:YES];
     [rootViewController setCloseButtonVisible:YES];
     
@@ -36,6 +38,12 @@
     }];
     
     return navigationController;
+}
+
+- (void)setAccount:(DTAccount *)account
+{
+    _account = account;
+    self.expenseAttributeVC.account = account;
 }
 
 #pragma mark - Navigation methods

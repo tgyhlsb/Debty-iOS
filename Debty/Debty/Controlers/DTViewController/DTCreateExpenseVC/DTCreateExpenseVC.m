@@ -8,13 +8,15 @@
 
 #import "DTCreateExpenseVC.h"
 #import "DTShareSplitCell.h"
+#import "DTWhoPayedPickerVC.h"
 
 #define NIB_NAME @"DTCreateExpenseVC"
 
-@interface DTCreateExpenseVC () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface DTCreateExpenseVC () <UICollectionViewDataSource, UICollectionViewDelegate, DTWhoPayedPickerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UIView *whoPayedView;
+@property (weak, nonatomic) IBOutlet UILabel *whoPayedLabel;
 
 @property (weak, nonatomic) IBOutlet UITextField *nameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *amountLabel;
@@ -37,6 +39,12 @@
     [self.whoPayedView addGestureRecognizer:whoPayedTapRecognizer];
 }
 
+- (void)setWhoPayed:(DTPerson *)whoPayed
+{
+    _whoPayed = whoPayed;
+    self.whoPayedLabel.text = whoPayed.firstName;
+}
+
 #pragma mark - View life cycle
 
 - (void)viewDidLoad
@@ -57,7 +65,11 @@
 
 - (void)whoPayedViewTapHandler
 {
-    
+    DTWhoPayedPickerVC *destination = [DTWhoPayedPickerVC newController];
+    destination.account = self.account;
+    destination.whoPayed = self.whoPayed;
+    destination.delegate = self;
+    [self.navigationController pushViewController:destination animated:YES];
 }
 
 #pragma mark - Expense Attributes
@@ -105,6 +117,13 @@
 {
     NSIndexPath *indexPath = [[self.collectionView indexPathsForVisibleItems] firstObject];
     self.segmentedControl.selectedSegmentIndex = indexPath.row;
+}
+
+#pragma mark - DTWhoPayedPickerDelegate
+
+- (void)whoPayedPickerDidSelectPerson:(DTPerson *)person
+{
+    self.whoPayed = person;
 }
 
 @end

@@ -124,6 +124,20 @@ static DTModelManager *sharedManager;
                                                           cacheName:nil];
 }
 
++ (NSFetchedResultsController *)fetchResultControllerForPersonInAccount:(DTAccount *)account
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_PERSON];
+    
+    request.predicate = [NSPredicate predicateWithFormat:@"self IN %@.persons", account];
+    
+    request.sortDescriptors = @[];
+    
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                               managedObjectContext:[DTModelManager sharedContext]
+                                                 sectionNameKeyPath:nil
+                                                          cacheName:nil];
+}
+
 #pragma mark Main user friends
 
 + (NSFetchedResultsController *)fetchResultControllerForMainUserFriends
