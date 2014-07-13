@@ -45,6 +45,22 @@ static DTModelManager *sharedManager;
     return account;
 }
 
+#pragma mark - Selection methods
+
++ (void)deselectAllPersons
+{
+    NSFetchedResultsController *personsController = [DTModelManager fetchResultControllerForPersonsWithSearchString:nil selected:@(YES)];
+    NSError *error = nil;
+    [personsController performFetch:&error];
+    if (error) {
+        NSLog(@"[DTModelManager deselectAllPersons]\n%@", error);
+    } else {
+        NSArray *selectedPersons = [personsController fetchedObjects];
+        [selectedPersons makeObjectsPerformSelector:@selector(setIsSelected:) withObject:@(NO)];
+        [DTModelManager save];
+    }
+}
+
 
 #pragma mark - FetchResultController factory -
 

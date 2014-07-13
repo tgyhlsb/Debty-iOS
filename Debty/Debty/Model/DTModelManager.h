@@ -20,6 +20,8 @@ static NSString *DTNotificationMainUserUpdate = @"DTNotificationMainUserUpdate";
 
 + (void)getPersonSample;
 
++ (void)deselectAllPersons;
+
 + (DTAccount *)accountWithPersons:(NSArray *)persons;
 
 + (NSFetchedResultsController *)fetchResultControllerForPersons;

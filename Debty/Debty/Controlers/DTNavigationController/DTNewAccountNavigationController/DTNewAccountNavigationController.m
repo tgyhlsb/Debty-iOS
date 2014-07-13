@@ -9,6 +9,8 @@
 #import "DTNewAccountNavigationController.h"
 #import "DTFriendsPickerVC.h"
 #import "DTCreateAccountVC.h"
+#import "DTModelManager.h"
+#import "DTInstallation.h"
 
 @interface DTNewAccountNavigationController ()
 
@@ -33,6 +35,19 @@
     return navigationController;
 }
 
+#pragma mark - Helpers
+
+- (NSArray *)selectedFriends
+{
+    NSFetchedResultsController *selectedFriendsController = [DTModelManager fetchResultControllerForMainUserFriendsWithSearchString:nil selected:@(YES)];
+    NSError *error = nil;
+    [selectedFriendsController performFetch:&error];
+    if (error) {
+        NSLog(@"%@", error);
+    }
+    return [selectedFriendsController fetchedObjects];
+}
+
 #pragma mark - Navigation methods
 
 - (void)selfDissmiss
@@ -44,8 +59,17 @@
 
 - (void)pushToCreateAccountVC
 {
-    DTCreateAccountVC *destination = [DTCreateAccountVC newController];
-    [self pushViewController:destination animated:YES];
+    NSMutableArray *friends = [[self selectedFriends] mutableCopy];
+    [friends addObject:[DTInstallation me]];
+    [DTModelManager deselectAllPersons];
+    DTAccount *account = [DTModelManager accountWithPersons:friends];
+    
+    if ([friends count] == 2) {
+        [self selfDissmiss];
+    } else {
+        DTCreateAccountVC *destination = [DTCreateAccountVC newController];
+        [self pushViewController:destination animated:YES];
+    }
 }
 
 @end

@@ -65,7 +65,7 @@
            inManagedObjectContext:(NSManagedObjectContext *)context
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_ACCOUNT];
-    [NSPredicate predicateWithFormat:@"ALL persons IN %@", persons];
+    request.predicate = [NSPredicate predicateWithFormat:@"(persons.@count == %d) AND (SUBQUERY(persons, $x, $x IN %@).@count == %d)",persons.count, persons, persons.count];
     
     DTAccount *account = nil;
     
@@ -75,7 +75,7 @@
     if (error || !matches || [matches count] > 1) {
         //handle error
     } else {
-        if ([matches count]) {
+        if ([matches count] && [persons count] <= 2) { // Only dual-accounts can't be duplicates
             account = [matches firstObject];
         } else {
             account = [NSEntityDescription insertNewObjectForEntityForName:CLASS_NAME_ACCOUNT inManagedObjectContext:context];
