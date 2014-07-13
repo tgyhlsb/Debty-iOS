@@ -14,6 +14,7 @@
 @interface DTCreateExpenseVC () <UICollectionViewDataSource, UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (weak, nonatomic) IBOutlet UIView *whoPayedView;
 
 @property (weak, nonatomic) IBOutlet UITextField *nameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *amountLabel;
@@ -28,12 +29,21 @@
     return controller;
 }
 
+- (void)registerToGestureRecognizer
+{
+    UITapGestureRecognizer *whoPayedTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(whoPayedViewTapHandler)];
+    whoPayedTapRecognizer.numberOfTapsRequired = 1;
+    whoPayedTapRecognizer.numberOfTouchesRequired = 1;
+    [self.whoPayedView addGestureRecognizer:whoPayedTapRecognizer];
+}
+
 #pragma mark - View life cycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    [self registerToGestureRecognizer];
     [DTShareSplitCell registerToCollectionView:self.collectionView];
 }
 
@@ -45,6 +55,10 @@
     [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
 }
 
+- (void)whoPayedViewTapHandler
+{
+    
+}
 
 #pragma mark - Expense Attributes
 
