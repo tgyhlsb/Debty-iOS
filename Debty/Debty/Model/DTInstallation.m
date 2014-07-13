@@ -11,6 +11,7 @@
 #import "DTModelManager.h"
 #import "DTBackendManager.h"
 #import "DTFacebookManager.h"
+#import "DTPerson+Serializer.h"
 
 #define MAINUSER_IDENTIFIER_KEY @"mainUserIdentifier"
 

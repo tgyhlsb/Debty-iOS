@@ -10,7 +10,10 @@
 #import <CoreData/CoreData.h>
 #import "DTBackendManager.h"
 #import "DTInstallation.h"
-#import "DTAccount+Helpers.h"
+#import "DTAccount+Serializer.h"
+#import "DTPerson+Serializer.h"
+#import "DTExpense+Serializer.h"
+#import "DTShare+Helpers.h"
 
 static DTModelManager *sharedManager;
 

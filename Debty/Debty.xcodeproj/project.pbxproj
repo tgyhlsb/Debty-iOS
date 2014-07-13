@@ -64,6 +64,8 @@
 		5AD8271D1972C31100445E3E /* DTFriendsPickerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD8271B1972C31100445E3E /* DTFriendsPickerVC.xib */; };
 		5AD827221972C32300445E3E /* DTAccountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD827201972C32300445E3E /* DTAccountTableViewCell.m */; };
 		5AD827231972C32300445E3E /* DTAccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD827211972C32300445E3E /* DTAccountTableViewCell.xib */; };
+		5AD827261972C67100445E3E /* DTExpense+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD827251972C67100445E3E /* DTExpense+Helpers.m */; };
+		5AD827291972C68500445E3E /* DTShare+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD827281972C68500445E3E /* DTShare+Helpers.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +174,10 @@
 		5AD8271F1972C32300445E3E /* DTAccountTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTAccountTableViewCell.h; sourceTree = "<group>"; };
 		5AD827201972C32300445E3E /* DTAccountTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTAccountTableViewCell.m; sourceTree = "<group>"; };
 		5AD827211972C32300445E3E /* DTAccountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DTAccountTableViewCell.xib; sourceTree = "<group>"; };
+		5AD827241972C67100445E3E /* DTExpense+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DTExpense+Helpers.h"; path = "Model/DTExpense+Helpers.h"; sourceTree = "<group>"; };
+		5AD827251972C67100445E3E /* DTExpense+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DTExpense+Helpers.m"; path = "Model/DTExpense+Helpers.m"; sourceTree = "<group>"; };
+		5AD827271972C68500445E3E /* DTShare+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DTShare+Helpers.h"; path = "Model/DTShare+Helpers.h"; sourceTree = "<group>"; };
+		5AD827281972C68500445E3E /* DTShare+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DTShare+Helpers.m"; path = "Model/DTShare+Helpers.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,8 +222,12 @@
 				5AD826FB197015D000445E3E /* DTAccount+Helpers.m */,
 				5A8570B41955EDC600A517BD /* DTExpense+Serializer.h */,
 				5A8570B51955EDC600A517BD /* DTExpense+Serializer.m */,
+				5AD827241972C67100445E3E /* DTExpense+Helpers.h */,
+				5AD827251972C67100445E3E /* DTExpense+Helpers.m */,
 				5A8570BA1955F33600A517BD /* DTShare+Serializer.h */,
 				5A8570BB1955F33600A517BD /* DTShare+Serializer.m */,
+				5AD827271972C68500445E3E /* DTShare+Helpers.h */,
+				5AD827281972C68500445E3E /* DTShare+Helpers.m */,
 				5A8714C3194E0C7900D2111F /* DTModelManager.h */,
 				5A8714C4194E0C7900D2111F /* DTModelManager.m */,
 				5A1FE28619696F8A0097EAA2 /* DTInstallation.h */,
@@ -680,6 +690,7 @@
 				5AD8270219717EA300445E3E /* DTPerson+Helpers.m in Sources */,
 				5A8570BC1955F33600A517BD /* DTShare+Serializer.m in Sources */,
 				5AA5E3E2196F3AAE0015A6B2 /* debty.xcdatamodeld in Sources */,
+				5AD827291972C68500445E3E /* DTShare+Helpers.m in Sources */,
 				5A220EE919411E0C00BDABCF /* DTViewController.m in Sources */,
 				5AD8271C1972C31100445E3E /* DTFriendsPickerVC.m in Sources */,
 				5A4E128419685F05002EEE82 /* DTFacebookManager.m in Sources */,
@@ -692,6 +703,7 @@
 				5A220EF61941237C00BDABCF /* DTFacebookLoginVC.m in Sources */,
 				5A1FE28819696F8A0097EAA2 /* DTInstallation.m in Sources */,
 				5A220EAA1941103100BDABCF /* DTAppDelegate.m in Sources */,
+				5AD827261972C67100445E3E /* DTExpense+Helpers.m in Sources */,
 				5A12DFAC194B8EB1006E942F /* DTGroupPictureView.m in Sources */,
 				5A975D79194C50C100566A2A /* DTTempFriend.m in Sources */,
 				5A975D9F194DCF4200566A2A /* DTCreateAccountVC.m in Sources */,

@@ -7,7 +7,7 @@
 //
 
 #import "DTAccountTableViewCell.h"
-#import "DTPerson+Serializer.h"
+#import "DTPerson+Helpers.h"
 #import "DTGroupPictureView.h"
 
 #define NIB_NAME @"DTAccountTableViewCell"

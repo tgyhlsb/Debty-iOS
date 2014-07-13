@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DTPerson+Serializer.h"
-#import "DTAccount+Serializer.h"
-#import "DTExpense+Serializer.h"
-#import "DTShare+Serializer.h"
+#import "DTPerson+Helpers.h"
+#import "DTAccount+Helpers.h"
+#import "DTExpense+Helpers.h"
+#import "DTShare+Helpers.h"
 
 static NSString *DTNotificationMainUserUpdate = @"DTNotificationMainUserUpdate";
 
