@@ -13,6 +13,8 @@
 @property (nonatomic, strong) void (^closeBlock)(void);
 @property (nonatomic, strong) void (^nextBlock)(void);
 
++ (instancetype)newController;
+
 - (void)setCloseButtonVisible:(BOOL)visible;
 - (void)setNextButtonVisible:(BOOL)visible;
 

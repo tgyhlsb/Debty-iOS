@@ -26,6 +26,24 @@ static DTModelManager *sharedManager;
 @implementation DTModelManager
 
 
++ (DTAccount *)accountWithPersons:(NSArray *)persons
+{
+    DTAccount *account = [DTAccount accountWithPersons:persons];
+    if ([account safeNeedSync]) {
+        [DTModelManager save];
+    }
+    return account;
+}
+
++ (DTExpense *)expenseWithAccount:(DTAccount *)account
+{
+    DTExpense *expense = [DTExpense expenseWithAccount:account];
+    if ([expense safeNeedSync]) {
+        [DTModelManager save];
+    }
+    return expense;
+}
+
 #pragma mark - NSNotification
 
 + (void)notifyMainUserUpdate
@@ -36,16 +54,6 @@ static DTModelManager *sharedManager;
 - (void)notifyMainUserUpdate
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:DTNotificationMainUserUpdate object:nil];
-}
-
-
-+ (DTAccount *)accountWithPersons:(NSArray *)persons
-{
-    DTAccount *account = [DTAccount accountWithPersons:persons];
-    if ([account safeNeedSync]) {
-        [DTModelManager save];
-    }
-    return account;
 }
 
 #pragma mark - Selection methods

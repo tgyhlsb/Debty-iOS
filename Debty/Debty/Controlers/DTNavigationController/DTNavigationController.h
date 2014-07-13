@@ -10,6 +10,8 @@
 
 @interface DTNavigationController : UINavigationController
 
++ (instancetype)newNavigationController;
+
 + (DTNavigationController *)newControllerWithRootViewController:(UIViewController *)rootVC;
 
 @end

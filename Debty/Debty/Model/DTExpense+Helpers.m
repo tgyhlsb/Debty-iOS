@@ -10,4 +10,9 @@
 
 @implementation DTExpense (Helpers)
 
+- (BOOL)safeNeedSync
+{
+    return [self.needSync boolValue];
+}
+
 @end

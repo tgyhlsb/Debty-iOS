@@ -17,6 +17,11 @@
 
 @implementation DTViewController
 
++ (instancetype)newController
+{
+    NSLog(@"[DTViewController newController] is abstract");
+    return nil;
+}
 
 - (void)dealloc
 {

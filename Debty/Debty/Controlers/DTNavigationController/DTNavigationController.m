@@ -14,6 +14,12 @@
 
 @implementation DTNavigationController
 
++ (instancetype)newNavigationController
+{
+    NSLog(@"[DTNavigationController newNavigationController] is abstract");
+    return nil;
+}
+
 + (DTNavigationController *)newControllerWithRootViewController:(UIViewController *)rootVC
 {
     DTNavigationController *controller = [[DTNavigationController alloc] initWithRootViewController:rootVC];

@@ -18,11 +18,12 @@ static NSString *DTNotificationMainUserUpdate = @"DTNotificationMainUserUpdate";
 
 + (NSManagedObjectContext *)sharedContext;
 
++ (void)save;
 + (void)getPersonSample;
-
 + (void)deselectAllPersons;
 
 + (DTAccount *)accountWithPersons:(NSArray *)persons;
++ (DTExpense *)expenseWithAccount:(DTAccount *)account;
 
 + (NSFetchedResultsController *)fetchResultControllerForPersons;
 + (NSFetchedResultsController *)fetchResultControllerForPersonsWithIdentifier:(NSNumber *)identifier;

@@ -55,5 +55,22 @@
     return tempExpenses;
 }
 
++ (DTExpense *)expenseWithAccount:(DTAccount *)account
+{
+    return [DTExpense expenseWithAccount:account inManagedObjectContext:[DTModelManager sharedContext]];
+}
+
++ (DTExpense *)expenseWithAccount:(DTAccount *)account
+           inManagedObjectContext:(NSManagedObjectContext *)context
+{
+    
+    DTExpense *expense = [NSEntityDescription insertNewObjectForEntityForName:CLASS_NAME_EXPENSE inManagedObjectContext:context];
+    
+    [expense setAccount:account];
+    [expense setShares:[[NSSet alloc] init]];
+    
+    return expense;
+}
+
 
 @end

@@ -14,6 +14,7 @@
 @interface DTExpenseTableViewCell()
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *amountLabel;
 
 @end
 
@@ -24,6 +25,7 @@
 - (void)updateView
 {
     self.nameLabel.text = self.expense.name;
+    self.amountLabel.text = [NSString stringWithFormat:@"%@", self.expense.amount];
 }
 
 #pragma mark - Setters

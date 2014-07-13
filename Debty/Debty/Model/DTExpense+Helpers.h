@@ -10,4 +10,6 @@
 
 @interface DTExpense (Helpers)
 
+- (BOOL)safeNeedSync;
+
 @end

@@ -9,10 +9,13 @@
 #import "DTAccountVC.h"
 #import "DTModelManager.h"
 #import "DTExpenseTableViewCell.h"
+#import "DTCreateExpenseNavigationController.h"
 
 #define NIB_NAME @"DTAccountVC"
 
 @interface DTAccountVC ()
+
+@property (strong, nonatomic) UIBarButtonItem *addExpenseButton;
 
 @end
 
@@ -31,6 +34,7 @@
     [super viewDidLoad];
     
     [self setUpFetchRequest];
+    [self setAddExpenseButtonVisible:YES];
     
     [DTExpenseTableViewCell registerToTableView:self.tableView];
 }
@@ -42,6 +46,38 @@
     _account = account;
     self.title = [account safeName];
     [self setUpFetchRequest];
+}
+
+#pragma mark - Getters
+
+- (UIBarButtonItem *)addExpenseButton
+{
+    if (!_addExpenseButton) {
+        _addExpenseButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addExpenseButtonHandler)];
+    }
+    return _addExpenseButton;
+}
+
+#pragma mark - View methods
+
+- (void)setAddExpenseButtonVisible:(BOOL)visible
+{
+    if (visible) {
+        self.navigationItem.rightBarButtonItem = self.addExpenseButton;
+    } else {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
+}
+
+#pragma mark - Handlers
+
+- (void)addExpenseButtonHandler
+{
+    DTCreateExpenseNavigationController *destination = [DTCreateExpenseNavigationController newNavigationController];
+    destination.account = self.account;
+    [self presentViewController:destination animated:YES completion:^{
+        
+    }];
 }
 
 #pragma mark - DTCoreDataTableViewController
