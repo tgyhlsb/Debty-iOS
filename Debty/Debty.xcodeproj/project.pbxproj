@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2F0A6B9691BE4A6994EEF317 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4982FAE02D2B46DEB259BB4C /* libPods.a */; };
-		5A12DF95194B7E21006E942F /* DTTempExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A12DF94194B7E21006E942F /* DTTempExpense.m */; };
 		5A12DF9B194B7EC9006E942F /* DTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A12DF99194B7EC9006E942F /* DTTableViewCell.m */; };
 		5A12DFAC194B8EB1006E942F /* DTGroupPictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A12DFAB194B8EB1006E942F /* DTGroupPictureView.m */; };
 		5A1FE28819696F8A0097EAA2 /* DTInstallation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1FE28719696F8A0097EAA2 /* DTInstallation.m */; };
@@ -46,8 +45,6 @@
 		5A8714C7194E0CA800D2111F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8714C6194E0CA800D2111F /* CoreData.framework */; };
 		5A8714CB194E0EA800D2111F /* DTURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8714CA194E0EA800D2111F /* DTURLConnection.m */; };
 		5A975D75194C48B800566A2A /* DTNewAccountNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D74194C48B800566A2A /* DTNewAccountNavigationController.m */; };
-		5A975D79194C50C100566A2A /* DTTempFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D78194C50C100566A2A /* DTTempFriend.m */; };
-		5A975D7C194C558000566A2A /* DTTempUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D7B194C558000566A2A /* DTTempUser.m */; };
 		5A975D9F194DCF4200566A2A /* DTCreateAccountVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975D9D194DCF4200566A2A /* DTCreateAccountVC.m */; };
 		5A975DA0194DCF4200566A2A /* DTCreateAccountVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A975D9E194DCF4200566A2A /* DTCreateAccountVC.xib */; };
 		5A975DA4194DD0B600566A2A /* DTPerson+Serializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975DA3194DD0B600566A2A /* DTPerson+Serializer.m */; };
@@ -85,8 +82,6 @@
 /* Begin PBXFileReference section */
 		3C974BA7076740C7A8C15FAB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		4982FAE02D2B46DEB259BB4C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A12DF93194B7E21006E942F /* DTTempExpense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTempExpense.h; path = Model/Temp/DTTempExpense.h; sourceTree = "<group>"; };
-		5A12DF94194B7E21006E942F /* DTTempExpense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTempExpense.m; path = Model/Temp/DTTempExpense.m; sourceTree = "<group>"; };
 		5A12DF98194B7EC9006E942F /* DTTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTableViewCell.h; path = Views/TableViewCells/DTTableViewCell.h; sourceTree = "<group>"; };
 		5A12DF99194B7EC9006E942F /* DTTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTableViewCell.m; path = Views/TableViewCells/DTTableViewCell.m; sourceTree = "<group>"; };
 		5A12DFAA194B8EB1006E942F /* DTGroupPictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTGroupPictureView.h; sourceTree = "<group>"; };
@@ -148,10 +143,6 @@
 		5A8714CA194E0EA800D2111F /* DTURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTURLConnection.m; sourceTree = "<group>"; };
 		5A975D73194C48B800566A2A /* DTNewAccountNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTNewAccountNavigationController.h; path = Debty/Controlers/DTNavigationController/DTNewAccountNavigationController/DTNewAccountNavigationController.h; sourceTree = "<group>"; };
 		5A975D74194C48B800566A2A /* DTNewAccountNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTNewAccountNavigationController.m; path = Debty/Controlers/DTNavigationController/DTNewAccountNavigationController/DTNewAccountNavigationController.m; sourceTree = "<group>"; };
-		5A975D77194C50C100566A2A /* DTTempFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTempFriend.h; path = Model/Temp/DTTempFriend.h; sourceTree = "<group>"; };
-		5A975D78194C50C100566A2A /* DTTempFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTempFriend.m; path = Model/Temp/DTTempFriend.m; sourceTree = "<group>"; };
-		5A975D7A194C558000566A2A /* DTTempUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTempUser.h; path = Model/Temp/DTTempUser.h; sourceTree = "<group>"; };
-		5A975D7B194C558000566A2A /* DTTempUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTempUser.m; path = Model/Temp/DTTempUser.m; sourceTree = "<group>"; };
 		5A975D9C194DCF4200566A2A /* DTCreateAccountVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTCreateAccountVC.h; path = Controlers/DTViewController/DTCreateAccountVC/DTCreateAccountVC.h; sourceTree = "<group>"; };
 		5A975D9D194DCF4200566A2A /* DTCreateAccountVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTCreateAccountVC.m; path = Controlers/DTViewController/DTCreateAccountVC/DTCreateAccountVC.m; sourceTree = "<group>"; };
 		5A975D9E194DCF4200566A2A /* DTCreateAccountVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DTCreateAccountVC.xib; path = Controlers/DTViewController/DTCreateAccountVC/DTCreateAccountVC.xib; sourceTree = "<group>"; };
@@ -222,7 +213,6 @@
 			isa = PBXGroup;
 			children = (
 				5AA5E3D7196F3AAE0015A6B2 /* Generated */,
-				5A12DF97194B7E2D006E942F /* Temp */,
 				5A975DA2194DD0B600566A2A /* DTPerson+Serializer.h */,
 				5A975DA3194DD0B600566A2A /* DTPerson+Serializer.m */,
 				5AD8270019717EA300445E3E /* DTPerson+Helpers.h */,
@@ -245,19 +235,6 @@
 				5A1FE28719696F8A0097EAA2 /* DTInstallation.m */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		5A12DF97194B7E2D006E942F /* Temp */ = {
-			isa = PBXGroup;
-			children = (
-				5A12DF93194B7E21006E942F /* DTTempExpense.h */,
-				5A12DF94194B7E21006E942F /* DTTempExpense.m */,
-				5A975D77194C50C100566A2A /* DTTempFriend.h */,
-				5A975D78194C50C100566A2A /* DTTempFriend.m */,
-				5A975D7A194C558000566A2A /* DTTempUser.h */,
-				5A975D7B194C558000566A2A /* DTTempUser.m */,
-			);
-			name = Temp;
 			sourceTree = "<group>";
 		};
 		5A12DF9D194B7ECD006E942F /* TableViewCells */ = {
@@ -721,7 +698,6 @@
 				5AD827221972C32300445E3E /* DTAccountTableViewCell.m in Sources */,
 				5A6A9E161972FB2800A2E204 /* DTCreateExpenseNavigationController.m in Sources */,
 				5AD827061972BF2600445E3E /* DTAccountVC.m in Sources */,
-				5A12DF95194B7E21006E942F /* DTTempExpense.m in Sources */,
 				5AD826FF19717CFF00445E3E /* DTPerson.m in Sources */,
 				5A975D75194C48B800566A2A /* DTNewAccountNavigationController.m in Sources */,
 				5AA5E3E3196F3AAE0015A6B2 /* DTAccount.m in Sources */,
@@ -729,7 +705,6 @@
 				5A8570B61955EDC600A517BD /* DTExpense+Serializer.m in Sources */,
 				5AD8270B1972C1E900445E3E /* DTExpense.m in Sources */,
 				5A6A9E111972F7DE00A2E204 /* DTCreateExpenseVC.m in Sources */,
-				5A975D7C194C558000566A2A /* DTTempUser.m in Sources */,
 				5A975DA4194DD0B600566A2A /* DTPerson+Serializer.m in Sources */,
 				5A8714C5194E0C7900D2111F /* DTModelManager.m in Sources */,
 				5AD8270219717EA300445E3E /* DTPerson+Helpers.m in Sources */,
@@ -751,7 +726,6 @@
 				5A220EAA1941103100BDABCF /* DTAppDelegate.m in Sources */,
 				5AD827261972C67100445E3E /* DTExpense+Helpers.m in Sources */,
 				5A12DFAC194B8EB1006E942F /* DTGroupPictureView.m in Sources */,
-				5A975D79194C50C100566A2A /* DTTempFriend.m in Sources */,
 				5A975D9F194DCF4200566A2A /* DTCreateAccountVC.m in Sources */,
 				5A220EE1194119AB00BDABCF /* DTNavigationController.m in Sources */,
 				5A2F5D551955EB0D00337637 /* DTAccount+Serializer.m in Sources */,
