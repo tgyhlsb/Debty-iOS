@@ -45,4 +45,9 @@
     return tabBarController;
 }
 
++ (void)setViewForAccount:(DTAccount *)account
+{
+    NSLog(@"[DTTabBarController setViewForAccount:]");
+}
+
 @end

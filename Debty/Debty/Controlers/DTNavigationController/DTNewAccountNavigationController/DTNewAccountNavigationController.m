@@ -11,6 +11,7 @@
 #import "DTCreateAccountVC.h"
 #import "DTModelManager.h"
 #import "DTInstallation.h"
+#import "DTTabBarController.h"
 
 @interface DTNewAccountNavigationController ()
 
@@ -27,7 +28,7 @@
     
     __weak DTViewController *weakRootVC = rootViewController;
     [rootViewController setCloseBlock:^{
-        [((DTNewAccountNavigationController *)weakRootVC.navigationController) selfDissmiss];
+        [((DTNewAccountNavigationController *)weakRootVC.navigationController) selfDissmissWithAccount:nil];
     }];
     [rootViewController setNextBlock:^{
         [((DTNewAccountNavigationController *)weakRootVC.navigationController) pushToCreateAccountVC];
@@ -50,10 +51,12 @@
 
 #pragma mark - Navigation methods
 
-- (void)selfDissmiss
+- (void)selfDissmissWithAccount:(DTAccount *)account
 {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
-        
+        if (account) {
+            [DTTabBarController setViewForAccount:account];
+        }
     }];
 }
 
@@ -65,7 +68,7 @@
     DTAccount *account = [DTModelManager accountWithPersons:friends];
     
     if ([friends count] == 2) {
-        [self selfDissmiss];
+        [self selfDissmissWithAccount:account];
     } else {
         DTCreateAccountVC *destination = [DTCreateAccountVC newController];
         [self pushViewController:destination animated:YES];

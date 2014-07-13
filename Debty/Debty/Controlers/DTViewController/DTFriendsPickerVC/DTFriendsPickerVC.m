@@ -128,13 +128,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DTPerson *friend = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    [self addSelectedFriend:friend];
-//    DTPerson *me = [DTInstallation me];
-//    DTAccount *newAccount = [DTModelManager accountWithPersons:@[me, friend]];
-//    NSLog(@"%@", newAccount);
     
-//    DTCreateAccountVC *destination = [DTCreateAccountVC newController];
-//    [self.navigationController pushViewController:destination animated:YES];
+    if (self.displaySelectedFriendTableView) {
+        [self removeSelectedFriend:friend];
+    } else {
+        [self addSelectedFriend:friend];
+    }
 }
 
 @end

@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DTAccount+Helpers.h"
 
 @interface DTTabBarController : UITabBarController
 
 + (DTTabBarController *)newController;
+
++ (void)setViewForAccount:(DTAccount *)account;
 
 @end
