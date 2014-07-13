@@ -39,6 +39,9 @@
 		5A6A9E111972F7DE00A2E204 /* DTCreateExpenseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A9E0F1972F7DE00A2E204 /* DTCreateExpenseVC.m */; };
 		5A6A9E121972F7DE00A2E204 /* DTCreateExpenseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6A9E101972F7DE00A2E204 /* DTCreateExpenseVC.xib */; };
 		5A6A9E161972FB2800A2E204 /* DTCreateExpenseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A9E151972FB2800A2E204 /* DTCreateExpenseNavigationController.m */; };
+		5A6A9E1A1973262A00A2E204 /* DTCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A9E191973262A00A2E204 /* DTCollectionViewCell.m */; };
+		5A6A9E1E1973270500A2E204 /* DTShareSplitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A9E1D1973270500A2E204 /* DTShareSplitCell.m */; };
+		5A6A9E201973271700A2E204 /* DTShareSplitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6A9E1F1973271700A2E204 /* DTShareSplitCell.xib */; };
 		5A8570B61955EDC600A517BD /* DTExpense+Serializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8570B51955EDC600A517BD /* DTExpense+Serializer.m */; };
 		5A8570BC1955F33600A517BD /* DTShare+Serializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8570BB1955F33600A517BD /* DTShare+Serializer.m */; };
 		5A8714C5194E0C7900D2111F /* DTModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8714C4194E0C7900D2111F /* DTModelManager.m */; };
@@ -132,6 +135,11 @@
 		5A6A9E101972F7DE00A2E204 /* DTCreateExpenseVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DTCreateExpenseVC.xib; path = Controlers/DTViewController/DTCreateExpenseVC/DTCreateExpenseVC.xib; sourceTree = "<group>"; };
 		5A6A9E141972FB2800A2E204 /* DTCreateExpenseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTCreateExpenseNavigationController.h; path = Debty/Controlers/DTNavigationController/DTCreateExpenseNavigationController/DTCreateExpenseNavigationController.h; sourceTree = "<group>"; };
 		5A6A9E151972FB2800A2E204 /* DTCreateExpenseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTCreateExpenseNavigationController.m; path = Debty/Controlers/DTNavigationController/DTCreateExpenseNavigationController/DTCreateExpenseNavigationController.m; sourceTree = "<group>"; };
+		5A6A9E181973262A00A2E204 /* DTCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTCollectionViewCell.h; path = Views/DTCollectionViewCell/DTCollectionViewCell.h; sourceTree = "<group>"; };
+		5A6A9E191973262A00A2E204 /* DTCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTCollectionViewCell.m; path = Views/DTCollectionViewCell/DTCollectionViewCell.m; sourceTree = "<group>"; };
+		5A6A9E1C1973270500A2E204 /* DTShareSplitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTShareSplitCell.h; path = Views/DTCollectionViewCell/DTShareSplitCell/DTShareSplitCell.h; sourceTree = "<group>"; };
+		5A6A9E1D1973270500A2E204 /* DTShareSplitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTShareSplitCell.m; path = Views/DTCollectionViewCell/DTShareSplitCell/DTShareSplitCell.m; sourceTree = "<group>"; };
+		5A6A9E1F1973271700A2E204 /* DTShareSplitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DTShareSplitCell.xib; path = Views/DTCollectionViewCell/DTShareSplitCell/DTShareSplitCell.xib; sourceTree = "<group>"; };
 		5A8570B41955EDC600A517BD /* DTExpense+Serializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DTExpense+Serializer.h"; path = "Model/DTExpense+Serializer.h"; sourceTree = "<group>"; };
 		5A8570B51955EDC600A517BD /* DTExpense+Serializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DTExpense+Serializer.m"; path = "Model/DTExpense+Serializer.m"; sourceTree = "<group>"; };
 		5A8570BA1955F33600A517BD /* DTShare+Serializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DTShare+Serializer.h"; path = "Model/DTShare+Serializer.h"; sourceTree = "<group>"; };
@@ -252,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				5A12DFA9194B8EB1006E942F /* DTGroupPictureView */,
+				5A6A9E1B197326B600A2E204 /* CollectionViewCells */,
 				5A12DF9D194B7ECD006E942F /* TableViewCells */,
 			);
 			name = Views;
@@ -452,6 +461,26 @@
 			name = DTCreateExpenseNavigationController;
 			sourceTree = "<group>";
 		};
+		5A6A9E1B197326B600A2E204 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				5A6A9E181973262A00A2E204 /* DTCollectionViewCell.h */,
+				5A6A9E191973262A00A2E204 /* DTCollectionViewCell.m */,
+				5A6A9E211973271B00A2E204 /* DTShareSplitCell */,
+			);
+			name = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		5A6A9E211973271B00A2E204 /* DTShareSplitCell */ = {
+			isa = PBXGroup;
+			children = (
+				5A6A9E1C1973270500A2E204 /* DTShareSplitCell.h */,
+				5A6A9E1D1973270500A2E204 /* DTShareSplitCell.m */,
+				5A6A9E1F1973271700A2E204 /* DTShareSplitCell.xib */,
+			);
+			name = DTShareSplitCell;
+			sourceTree = "<group>";
+		};
 		5A8714C8194E0EA800D2111F /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -631,6 +660,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A6A9E201973271700A2E204 /* DTShareSplitCell.xib in Resources */,
 				5AD827111972C2EC00445E3E /* DTExpenseTableViewCell.xib in Resources */,
 				5AD8271D1972C31100445E3E /* DTFriendsPickerVC.xib in Resources */,
 				5A975DA0194DCF4200566A2A /* DTCreateAccountVC.xib in Resources */,
@@ -701,9 +731,11 @@
 				5AD826FF19717CFF00445E3E /* DTPerson.m in Sources */,
 				5A975D75194C48B800566A2A /* DTNewAccountNavigationController.m in Sources */,
 				5AA5E3E3196F3AAE0015A6B2 /* DTAccount.m in Sources */,
+				5A6A9E1A1973262A00A2E204 /* DTCollectionViewCell.m in Sources */,
 				5A12DF9B194B7EC9006E942F /* DTTableViewCell.m in Sources */,
 				5A8570B61955EDC600A517BD /* DTExpense+Serializer.m in Sources */,
 				5AD8270B1972C1E900445E3E /* DTExpense.m in Sources */,
+				5A6A9E1E1973270500A2E204 /* DTShareSplitCell.m in Sources */,
 				5A6A9E111972F7DE00A2E204 /* DTCreateExpenseVC.m in Sources */,
 				5A975DA4194DD0B600566A2A /* DTPerson+Serializer.m in Sources */,
 				5A8714C5194E0C7900D2111F /* DTModelManager.m in Sources */,
