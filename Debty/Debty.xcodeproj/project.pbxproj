@@ -36,6 +36,7 @@
 		5A408432195382ED006146E5 /* DTBackendManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A408431195382ED006146E5 /* DTBackendManager.m */; };
 		5A40843619539962006146E5 /* DTCoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A40843519539962006146E5 /* DTCoreDataTableViewController.m */; };
 		5A4E128419685F05002EEE82 /* DTFacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4E128319685F05002EEE82 /* DTFacebookManager.m */; };
+		5A6A9E0C1972CC3900A2E204 /* DTExpenseNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A9E0B1972CC3900A2E204 /* DTExpenseNavigationViewController.m */; };
 		5A8570B61955EDC600A517BD /* DTExpense+Serializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8570B51955EDC600A517BD /* DTExpense+Serializer.m */; };
 		5A8570BC1955F33600A517BD /* DTShare+Serializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8570BB1955F33600A517BD /* DTShare+Serializer.m */; };
 		5A8714C5194E0C7900D2111F /* DTModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8714C4194E0C7900D2111F /* DTModelManager.m */; };
@@ -126,6 +127,8 @@
 		5A40843519539962006146E5 /* DTCoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTCoreDataTableViewController.m; sourceTree = "<group>"; };
 		5A4E128219685F05002EEE82 /* DTFacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTFacebookManager.h; sourceTree = "<group>"; };
 		5A4E128319685F05002EEE82 /* DTFacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTFacebookManager.m; sourceTree = "<group>"; };
+		5A6A9E0A1972CC3900A2E204 /* DTExpenseNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTExpenseNavigationViewController.h; path = Debty/Controlers/DTNavigationController/DTExpenseNavigationController/DTExpenseNavigationViewController.h; sourceTree = "<group>"; };
+		5A6A9E0B1972CC3900A2E204 /* DTExpenseNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTExpenseNavigationViewController.m; path = Debty/Controlers/DTNavigationController/DTExpenseNavigationController/DTExpenseNavigationViewController.m; sourceTree = "<group>"; };
 		5A8570B41955EDC600A517BD /* DTExpense+Serializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DTExpense+Serializer.h"; path = "Model/DTExpense+Serializer.h"; sourceTree = "<group>"; };
 		5A8570B51955EDC600A517BD /* DTExpense+Serializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DTExpense+Serializer.m"; path = "Model/DTExpense+Serializer.m"; sourceTree = "<group>"; };
 		5A8570BA1955F33600A517BD /* DTShare+Serializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DTShare+Serializer.h"; path = "Model/DTShare+Serializer.h"; sourceTree = "<group>"; };
@@ -393,6 +396,7 @@
 			children = (
 				5A220EDF194119AB00BDABCF /* DTNavigationController.h */,
 				5A220EE0194119AB00BDABCF /* DTNavigationController.m */,
+				5A6A9E0D1972CC4400A2E204 /* DTExpenseNavigationViewController */,
 				5A975D76194C48BD00566A2A /* DTNewAccountNavigationController */,
 			);
 			name = DTNavigationController;
@@ -431,6 +435,15 @@
 			);
 			name = DTCoreDataTableViewController;
 			path = Controlers/DTViewController/DTCoreDataTableViewController;
+			sourceTree = "<group>";
+		};
+		5A6A9E0D1972CC4400A2E204 /* DTExpenseNavigationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5A6A9E0A1972CC3900A2E204 /* DTExpenseNavigationViewController.h */,
+				5A6A9E0B1972CC3900A2E204 /* DTExpenseNavigationViewController.m */,
+			);
+			name = DTExpenseNavigationViewController;
 			sourceTree = "<group>";
 		};
 		5A8714C8194E0EA800D2111F /* API */ = {
@@ -688,6 +701,7 @@
 				5A975DA4194DD0B600566A2A /* DTPerson+Serializer.m in Sources */,
 				5A8714C5194E0C7900D2111F /* DTModelManager.m in Sources */,
 				5AD8270219717EA300445E3E /* DTPerson+Helpers.m in Sources */,
+				5A6A9E0C1972CC3900A2E204 /* DTExpenseNavigationViewController.m in Sources */,
 				5A8570BC1955F33600A517BD /* DTShare+Serializer.m in Sources */,
 				5AA5E3E2196F3AAE0015A6B2 /* debty.xcdatamodeld in Sources */,
 				5AD827291972C68500445E3E /* DTShare+Helpers.m in Sources */,

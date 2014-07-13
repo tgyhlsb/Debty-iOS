@@ -55,7 +55,7 @@
 {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
         if (account) {
-            [DTTabBarController setViewForAccount:account];
+            [DTTabBarController setViewForAccount:account animated:YES];
         }
     }];
 }

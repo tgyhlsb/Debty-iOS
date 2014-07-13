@@ -95,7 +95,7 @@ static DTBackendManager *sharedManager;
             failure(nil, error);
         } else {
             NSArray *friendList = (NSArray *)[result objectForKey:@"data"];
-            NSLog(@"[DTBackendManager updateUserSuccess:failure:]\nFound %ld facebook friend(s)", (unsigned long)[friendList count]);
+            NSLog(@"[DTBackendManager updateUserSuccess:failure:]\nFound %lu facebook friend(s)", (unsigned long)[friendList count]);
             NSArray *friendsIDs = [DTFacebookManager facebookIDForUserArray:friendList];
             NSDictionary *params = @{@"friends": friendsIDs};
             [self updateAuthorizationHeader];

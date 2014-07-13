@@ -11,43 +11,53 @@
 #import "DTAccountsTableVC.h"
 #import "DTFacebookLoginVC.h"
 #import "DTTestVC.h"
+#import "DTExpenseNavigationViewController.h"
 
 #define NIB_NAME @"DTTabBarController"
 
+static DTTabBarController *sharedController;
+
 @interface DTTabBarController ()
+
+@property (strong, nonatomic) DTExpenseNavigationViewController *expenseNavigationController;
 
 @end
 
 @implementation DTTabBarController
 
-+ (DTTabBarController *)newController {
-    DTTabBarController *tabBarController = [[DTTabBarController alloc] init];
-    
-    DTAccountsTableVC *expenseTableVC = [DTAccountsTableVC newController];
-    [expenseTableVC setAddExpenseButtonVisible:YES];
-    DTNavigationController *navigationControllerOne = [DTNavigationController newControllerWithRootViewController:expenseTableVC];
-    navigationControllerOne.title = @"Expenses";
-    
-    DTTestVC *vc2 = [DTTestVC newController];
-    DTNavigationController *navigationControllerTwo = [DTNavigationController newControllerWithRootViewController:vc2];
-    navigationControllerTwo.title = @"Two";
-    
-    DTTestVC *vc3 = [DTTestVC newController];
-    DTNavigationController *navigationControllerThree = [DTNavigationController newControllerWithRootViewController:vc3];
-    navigationControllerThree.title = @"Three";
-    
-    DTFacebookLoginVC *vc4 = [DTFacebookLoginVC newController];
-    DTNavigationController *navigationControllerFour = [DTNavigationController newControllerWithRootViewController:vc4];
-    navigationControllerFour.title = @"Four";
-    
-    [tabBarController setViewControllers:@[navigationControllerOne, navigationControllerTwo, navigationControllerThree, navigationControllerFour]];
-    
-    return tabBarController;
++ (DTTabBarController *)sharedController
+{
+    if (!sharedController) {
+        sharedController = [[DTTabBarController alloc] init];
+        
+        sharedController.expenseNavigationController = [DTExpenseNavigationViewController newController];
+        
+        DTTestVC *vc2 = [DTTestVC newController];
+        DTNavigationController *navigationControllerTwo = [DTNavigationController newControllerWithRootViewController:vc2];
+        navigationControllerTwo.title = @"Two";
+        
+        DTTestVC *vc3 = [DTTestVC newController];
+        DTNavigationController *navigationControllerThree = [DTNavigationController newControllerWithRootViewController:vc3];
+        navigationControllerThree.title = @"Three";
+        
+        DTFacebookLoginVC *vc4 = [DTFacebookLoginVC newController];
+        DTNavigationController *navigationControllerFour = [DTNavigationController newControllerWithRootViewController:vc4];
+        navigationControllerFour.title = @"Four";
+        
+        [sharedController setViewControllers:@[sharedController.expenseNavigationController, navigationControllerTwo, navigationControllerThree, navigationControllerFour]];
+    }
+    return sharedController;
 }
 
-+ (void)setViewForAccount:(DTAccount *)account
++ (void)setViewForAccount:(DTAccount *)account animated:(BOOL)animated
 {
-    NSLog(@"[DTTabBarController setViewForAccount:]");
+    [[DTTabBarController sharedController] setViewForAccount:account animated:animated];
 }
+
+- (void)setViewForAccount:(DTAccount *)account animated:(BOOL)animated
+{
+    [self.expenseNavigationController setViewForAccount:account animated:animated];
+}
+
 
 @end

@@ -143,7 +143,7 @@
 - (DTTabBarController *)tabBarController
 {
     if (!_tabBarController) {
-        _tabBarController = [DTTabBarController newController];
+        _tabBarController = [DTTabBarController sharedController];
     }
     return _tabBarController;
 }

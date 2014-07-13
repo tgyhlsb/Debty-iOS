@@ -11,8 +11,8 @@
 
 @interface DTTabBarController : UITabBarController
 
-+ (DTTabBarController *)newController;
++ (DTTabBarController *)sharedController;
 
-+ (void)setViewForAccount:(DTAccount *)account;
++ (void)setViewForAccount:(DTAccount *)account animated:(BOOL)animated;
 
 @end
