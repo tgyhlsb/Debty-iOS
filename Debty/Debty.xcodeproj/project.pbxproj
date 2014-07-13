@@ -10,11 +10,7 @@
 		2F0A6B9691BE4A6994EEF317 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4982FAE02D2B46DEB259BB4C /* libPods.a */; };
 		5A12DF95194B7E21006E942F /* DTTempExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A12DF94194B7E21006E942F /* DTTempExpense.m */; };
 		5A12DF9B194B7EC9006E942F /* DTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A12DF99194B7EC9006E942F /* DTTableViewCell.m */; };
-		5A12DFA1194B7F12006E942F /* DTAccountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A12DFA0194B7F12006E942F /* DTAccountTableViewCell.m */; };
-		5A12DFA4194B7F22006E942F /* DTAccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A12DFA3194B7F22006E942F /* DTAccountTableViewCell.xib */; };
 		5A12DFAC194B8EB1006E942F /* DTGroupPictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A12DFAB194B8EB1006E942F /* DTGroupPictureView.m */; };
-		5A12DFB0194C465C006E942F /* DTFriendsPickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A12DFAE194C465C006E942F /* DTFriendsPickerVC.m */; };
-		5A12DFB1194C465C006E942F /* DTFriendsPickerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A12DFAF194C465C006E942F /* DTFriendsPickerVC.xib */; };
 		5A1FE28819696F8A0097EAA2 /* DTInstallation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1FE28719696F8A0097EAA2 /* DTInstallation.m */; };
 		5A220E9A1941103100BDABCF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A220E991941103100BDABCF /* Foundation.framework */; };
 		5A220E9C1941103100BDABCF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A220E9B1941103100BDABCF /* CoreGraphics.framework */; };
@@ -33,8 +29,6 @@
 		5A220ED8194117A100BDABCF /* DTTestVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A220ED6194117A100BDABCF /* DTTestVC.xib */; };
 		5A220EE1194119AB00BDABCF /* DTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A220EE0194119AB00BDABCF /* DTNavigationController.m */; };
 		5A220EE919411E0C00BDABCF /* DTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A220EE819411E0C00BDABCF /* DTViewController.m */; };
-		5A220EEE19411E4900BDABCF /* DTAccountsTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A220EEC19411E4900BDABCF /* DTAccountsTableVC.m */; };
-		5A220EEF19411E4900BDABCF /* DTAccountsTableVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A220EED19411E4900BDABCF /* DTAccountsTableVC.xib */; };
 		5A220EF61941237C00BDABCF /* DTFacebookLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A220EF41941237C00BDABCF /* DTFacebookLoginVC.m */; };
 		5A220EF71941237C00BDABCF /* DTFacebookLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A220EF51941237C00BDABCF /* DTFacebookLoginVC.xib */; };
 		5A220EFA1941245700BDABCF /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A220EF91941245700BDABCF /* FacebookSDK.framework */; };
@@ -55,11 +49,21 @@
 		5A975DA4194DD0B600566A2A /* DTPerson+Serializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A975DA3194DD0B600566A2A /* DTPerson+Serializer.m */; };
 		5AA5E3E2196F3AAE0015A6B2 /* debty.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5AA5E3D8196F3AAE0015A6B2 /* debty.xcdatamodeld */; };
 		5AA5E3E3196F3AAE0015A6B2 /* DTAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA5E3DB196F3AAE0015A6B2 /* DTAccount.m */; };
-		5AA5E3E4196F3AAE0015A6B2 /* DTExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA5E3DD196F3AAE0015A6B2 /* DTExpense.m */; };
 		5AA5E3E6196F3AAE0015A6B2 /* DTShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA5E3E1196F3AAE0015A6B2 /* DTShare.m */; };
 		5AD826FC197015D000445E3E /* DTAccount+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD826FB197015D000445E3E /* DTAccount+Helpers.m */; };
 		5AD826FF19717CFF00445E3E /* DTPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD826FE19717CFF00445E3E /* DTPerson.m */; };
 		5AD8270219717EA300445E3E /* DTPerson+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD8270119717EA300445E3E /* DTPerson+Helpers.m */; };
+		5AD827061972BF2600445E3E /* DTAccountVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD827041972BF2600445E3E /* DTAccountVC.m */; };
+		5AD827071972BF2600445E3E /* DTAccountVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD827051972BF2600445E3E /* DTAccountVC.xib */; };
+		5AD8270B1972C1E900445E3E /* DTExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD8270A1972C1E900445E3E /* DTExpense.m */; };
+		5AD8270E1972C2CF00445E3E /* DTExpenseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD8270D1972C2CF00445E3E /* DTExpenseTableViewCell.m */; };
+		5AD827111972C2EC00445E3E /* DTExpenseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD827101972C2EC00445E3E /* DTExpenseTableViewCell.xib */; };
+		5AD827161972C30200445E3E /* DTAccountsTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD827141972C30200445E3E /* DTAccountsTableVC.m */; };
+		5AD827171972C30200445E3E /* DTAccountsTableVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD827151972C30200445E3E /* DTAccountsTableVC.xib */; };
+		5AD8271C1972C31100445E3E /* DTFriendsPickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD8271A1972C31100445E3E /* DTFriendsPickerVC.m */; };
+		5AD8271D1972C31100445E3E /* DTFriendsPickerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD8271B1972C31100445E3E /* DTFriendsPickerVC.xib */; };
+		5AD827221972C32300445E3E /* DTAccountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD827201972C32300445E3E /* DTAccountTableViewCell.m */; };
+		5AD827231972C32300445E3E /* DTAccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD827211972C32300445E3E /* DTAccountTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,14 +83,8 @@
 		5A12DF94194B7E21006E942F /* DTTempExpense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTempExpense.m; path = Model/Temp/DTTempExpense.m; sourceTree = "<group>"; };
 		5A12DF98194B7EC9006E942F /* DTTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTableViewCell.h; path = Views/TableViewCells/DTTableViewCell.h; sourceTree = "<group>"; };
 		5A12DF99194B7EC9006E942F /* DTTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTableViewCell.m; path = Views/TableViewCells/DTTableViewCell.m; sourceTree = "<group>"; };
-		5A12DF9F194B7F12006E942F /* DTAccountTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTAccountTableViewCell.h; path = Views/TableViewCells/DTExpenseTableViewCell/DTAccountTableViewCell.h; sourceTree = "<group>"; };
-		5A12DFA0194B7F12006E942F /* DTAccountTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTAccountTableViewCell.m; path = Views/TableViewCells/DTExpenseTableViewCell/DTAccountTableViewCell.m; sourceTree = "<group>"; };
-		5A12DFA3194B7F22006E942F /* DTAccountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DTAccountTableViewCell.xib; path = Views/TableViewCells/DTExpenseTableViewCell/DTAccountTableViewCell.xib; sourceTree = "<group>"; };
 		5A12DFAA194B8EB1006E942F /* DTGroupPictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTGroupPictureView.h; sourceTree = "<group>"; };
 		5A12DFAB194B8EB1006E942F /* DTGroupPictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTGroupPictureView.m; sourceTree = "<group>"; };
-		5A12DFAD194C465C006E942F /* DTFriendsPickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTFriendsPickerVC.h; path = Controlers/DTViewController/DTFriendsPickerVC/DTFriendsPickerVC.h; sourceTree = "<group>"; };
-		5A12DFAE194C465C006E942F /* DTFriendsPickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTFriendsPickerVC.m; path = Controlers/DTViewController/DTFriendsPickerVC/DTFriendsPickerVC.m; sourceTree = "<group>"; };
-		5A12DFAF194C465C006E942F /* DTFriendsPickerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DTFriendsPickerVC.xib; path = Controlers/DTViewController/DTFriendsPickerVC/DTFriendsPickerVC.xib; sourceTree = "<group>"; };
 		5A1FE28619696F8A0097EAA2 /* DTInstallation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTInstallation.h; path = Model/DTInstallation.h; sourceTree = "<group>"; };
 		5A1FE28719696F8A0097EAA2 /* DTInstallation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTInstallation.m; path = Model/DTInstallation.m; sourceTree = "<group>"; };
 		5A220E961941103100BDABCF /* Debty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Debty.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,9 +112,6 @@
 		5A220EE0194119AB00BDABCF /* DTNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTNavigationController.m; path = Debty/Controlers/DTNavigationController/DTNavigationController.m; sourceTree = "<group>"; };
 		5A220EE719411E0C00BDABCF /* DTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTViewController.h; path = Controlers/DTViewController/DTViewController.h; sourceTree = "<group>"; };
 		5A220EE819411E0C00BDABCF /* DTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTViewController.m; path = Controlers/DTViewController/DTViewController.m; sourceTree = "<group>"; };
-		5A220EEB19411E4900BDABCF /* DTAccountsTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTAccountsTableVC.h; path = Controlers/DTViewController/DTExpenseTableVC/DTAccountsTableVC.h; sourceTree = "<group>"; };
-		5A220EEC19411E4900BDABCF /* DTAccountsTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTAccountsTableVC.m; path = Controlers/DTViewController/DTExpenseTableVC/DTAccountsTableVC.m; sourceTree = "<group>"; };
-		5A220EED19411E4900BDABCF /* DTAccountsTableVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DTAccountsTableVC.xib; path = Controlers/DTViewController/DTExpenseTableVC/DTAccountsTableVC.xib; sourceTree = "<group>"; };
 		5A220EF31941237C00BDABCF /* DTFacebookLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTFacebookLoginVC.h; path = Controlers/DTFacebookLoginVC/DTFacebookLoginVC.h; sourceTree = "<group>"; };
 		5A220EF41941237C00BDABCF /* DTFacebookLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTFacebookLoginVC.m; path = Controlers/DTFacebookLoginVC/DTFacebookLoginVC.m; sourceTree = "<group>"; };
 		5A220EF51941237C00BDABCF /* DTFacebookLoginVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DTFacebookLoginVC.xib; path = Controlers/DTFacebookLoginVC/DTFacebookLoginVC.xib; sourceTree = "<group>"; };
@@ -152,8 +147,6 @@
 		5AA5E3D9196F3AAE0015A6B2 /* debty.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = debty.xcdatamodel; sourceTree = "<group>"; };
 		5AA5E3DA196F3AAE0015A6B2 /* DTAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTAccount.h; sourceTree = "<group>"; };
 		5AA5E3DB196F3AAE0015A6B2 /* DTAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTAccount.m; sourceTree = "<group>"; };
-		5AA5E3DC196F3AAE0015A6B2 /* DTExpense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTExpense.h; sourceTree = "<group>"; };
-		5AA5E3DD196F3AAE0015A6B2 /* DTExpense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTExpense.m; sourceTree = "<group>"; };
 		5AA5E3E0196F3AAE0015A6B2 /* DTShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTShare.h; sourceTree = "<group>"; };
 		5AA5E3E1196F3AAE0015A6B2 /* DTShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTShare.m; sourceTree = "<group>"; };
 		5AD826FA197015D000445E3E /* DTAccount+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DTAccount+Helpers.h"; path = "Model/DTAccount+Helpers.h"; sourceTree = "<group>"; };
@@ -162,6 +155,23 @@
 		5AD826FE19717CFF00445E3E /* DTPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPerson.m; sourceTree = "<group>"; };
 		5AD8270019717EA300445E3E /* DTPerson+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DTPerson+Helpers.h"; path = "Model/DTPerson+Helpers.h"; sourceTree = "<group>"; };
 		5AD8270119717EA300445E3E /* DTPerson+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DTPerson+Helpers.m"; path = "Model/DTPerson+Helpers.m"; sourceTree = "<group>"; };
+		5AD827031972BF2600445E3E /* DTAccountVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTAccountVC.h; path = DTAccountVC/DTAccountVC.h; sourceTree = "<group>"; };
+		5AD827041972BF2600445E3E /* DTAccountVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTAccountVC.m; path = DTAccountVC/DTAccountVC.m; sourceTree = "<group>"; };
+		5AD827051972BF2600445E3E /* DTAccountVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DTAccountVC.xib; path = DTAccountVC/DTAccountVC.xib; sourceTree = "<group>"; };
+		5AD827091972C1E900445E3E /* DTExpense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTExpense.h; sourceTree = "<group>"; };
+		5AD8270A1972C1E900445E3E /* DTExpense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTExpense.m; sourceTree = "<group>"; };
+		5AD8270C1972C2CF00445E3E /* DTExpenseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTExpenseTableViewCell.h; path = Views/TableViewCells/DTExpenseTableViewCell/DTExpenseTableViewCell.h; sourceTree = "<group>"; };
+		5AD8270D1972C2CF00445E3E /* DTExpenseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTExpenseTableViewCell.m; path = Views/TableViewCells/DTExpenseTableViewCell/DTExpenseTableViewCell.m; sourceTree = "<group>"; };
+		5AD827101972C2EC00445E3E /* DTExpenseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DTExpenseTableViewCell.xib; path = Views/TableViewCells/DTExpenseTableViewCell/DTExpenseTableViewCell.xib; sourceTree = "<group>"; };
+		5AD827131972C30200445E3E /* DTAccountsTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTAccountsTableVC.h; sourceTree = "<group>"; };
+		5AD827141972C30200445E3E /* DTAccountsTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTAccountsTableVC.m; sourceTree = "<group>"; };
+		5AD827151972C30200445E3E /* DTAccountsTableVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DTAccountsTableVC.xib; sourceTree = "<group>"; };
+		5AD827191972C31100445E3E /* DTFriendsPickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTFriendsPickerVC.h; sourceTree = "<group>"; };
+		5AD8271A1972C31100445E3E /* DTFriendsPickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTFriendsPickerVC.m; sourceTree = "<group>"; };
+		5AD8271B1972C31100445E3E /* DTFriendsPickerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DTFriendsPickerVC.xib; sourceTree = "<group>"; };
+		5AD8271F1972C32300445E3E /* DTAccountTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTAccountTableViewCell.h; sourceTree = "<group>"; };
+		5AD827201972C32300445E3E /* DTAccountTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTAccountTableViewCell.m; sourceTree = "<group>"; };
+		5AD827211972C32300445E3E /* DTAccountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DTAccountTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,7 +244,8 @@
 			children = (
 				5A12DF98194B7EC9006E942F /* DTTableViewCell.h */,
 				5A12DF99194B7EC9006E942F /* DTTableViewCell.m */,
-				5A12DFA2194B7F16006E942F /* DTExpenseTableViewCell */,
+				5AD8270F1972C2D600445E3E /* DTExpenseTableViewCell */,
+				5AD8271E1972C32300445E3E /* DTAccountTableViewCell */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -248,16 +259,6 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		5A12DFA2194B7F16006E942F /* DTExpenseTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				5A12DF9F194B7F12006E942F /* DTAccountTableViewCell.h */,
-				5A12DFA0194B7F12006E942F /* DTAccountTableViewCell.m */,
-				5A12DFA3194B7F22006E942F /* DTAccountTableViewCell.xib */,
-			);
-			name = DTExpenseTableViewCell;
-			sourceTree = "<group>";
-		};
 		5A12DFA9194B8EB1006E942F /* DTGroupPictureView */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,16 +267,6 @@
 			);
 			name = DTGroupPictureView;
 			path = Views/DTGroupPictureView;
-			sourceTree = "<group>";
-		};
-		5A12DFB2194C4660006E942F /* DTFriendsPickerVC */ = {
-			isa = PBXGroup;
-			children = (
-				5A12DFAD194C465C006E942F /* DTFriendsPickerVC.h */,
-				5A12DFAE194C465C006E942F /* DTFriendsPickerVC.m */,
-				5A12DFAF194C465C006E942F /* DTFriendsPickerVC.xib */,
-			);
-			name = DTFriendsPickerVC;
 			sourceTree = "<group>";
 		};
 		5A220E8D1941103100BDABCF = {
@@ -404,21 +395,9 @@
 				5A220EE719411E0C00BDABCF /* DTViewController.h */,
 				5A220EE819411E0C00BDABCF /* DTViewController.m */,
 				5A40843319539962006146E5 /* DTCoreDataTableViewController */,
-				5A12DFB2194C4660006E942F /* DTFriendsPickerVC */,
 				5A975DA1194DCF4B00566A2A /* DTCreateAccountVC */,
 			);
 			name = DTViewController;
-			sourceTree = "<group>";
-		};
-		5A220EF019411E4D00BDABCF /* DTExpenseTableVC */ = {
-			isa = PBXGroup;
-			children = (
-				5A220EEB19411E4900BDABCF /* DTAccountsTableVC.h */,
-				5A220EEC19411E4900BDABCF /* DTAccountsTableVC.m */,
-				5A220EED19411E4900BDABCF /* DTAccountsTableVC.xib */,
-			);
-			name = DTExpenseTableVC;
-			path = ../../..;
 			sourceTree = "<group>";
 		};
 		5A220EF81941238100BDABCF /* DTFacebookLoginVC */ = {
@@ -436,7 +415,9 @@
 			children = (
 				5A40843419539962006146E5 /* DTCoreDataTableViewController.h */,
 				5A40843519539962006146E5 /* DTCoreDataTableViewController.m */,
-				5A220EF019411E4D00BDABCF /* DTExpenseTableVC */,
+				5AD827181972C31100445E3E /* DTFriendsPickerVC */,
+				5AD827121972C30200445E3E /* DTAccountsTableVC */,
+				5AD827081972BF2F00445E3E /* DTAccountVC */,
 			);
 			name = DTCoreDataTableViewController;
 			path = Controlers/DTViewController/DTCoreDataTableViewController;
@@ -478,17 +459,68 @@
 			isa = PBXGroup;
 			children = (
 				5AA5E3D8196F3AAE0015A6B2 /* debty.xcdatamodeld */,
+				5AD827091972C1E900445E3E /* DTExpense.h */,
+				5AD8270A1972C1E900445E3E /* DTExpense.m */,
 				5AD826FD19717CFF00445E3E /* DTPerson.h */,
 				5AD826FE19717CFF00445E3E /* DTPerson.m */,
 				5AA5E3DA196F3AAE0015A6B2 /* DTAccount.h */,
 				5AA5E3DB196F3AAE0015A6B2 /* DTAccount.m */,
-				5AA5E3DC196F3AAE0015A6B2 /* DTExpense.h */,
-				5AA5E3DD196F3AAE0015A6B2 /* DTExpense.m */,
 				5AA5E3E0196F3AAE0015A6B2 /* DTShare.h */,
 				5AA5E3E1196F3AAE0015A6B2 /* DTShare.m */,
 			);
 			name = Generated;
 			path = Model/Generated;
+			sourceTree = "<group>";
+		};
+		5AD827081972BF2F00445E3E /* DTAccountVC */ = {
+			isa = PBXGroup;
+			children = (
+				5AD827031972BF2600445E3E /* DTAccountVC.h */,
+				5AD827041972BF2600445E3E /* DTAccountVC.m */,
+				5AD827051972BF2600445E3E /* DTAccountVC.xib */,
+			);
+			name = DTAccountVC;
+			sourceTree = "<group>";
+		};
+		5AD8270F1972C2D600445E3E /* DTExpenseTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				5AD8270C1972C2CF00445E3E /* DTExpenseTableViewCell.h */,
+				5AD8270D1972C2CF00445E3E /* DTExpenseTableViewCell.m */,
+				5AD827101972C2EC00445E3E /* DTExpenseTableViewCell.xib */,
+			);
+			name = DTExpenseTableViewCell;
+			sourceTree = "<group>";
+		};
+		5AD827121972C30200445E3E /* DTAccountsTableVC */ = {
+			isa = PBXGroup;
+			children = (
+				5AD827131972C30200445E3E /* DTAccountsTableVC.h */,
+				5AD827141972C30200445E3E /* DTAccountsTableVC.m */,
+				5AD827151972C30200445E3E /* DTAccountsTableVC.xib */,
+			);
+			path = DTAccountsTableVC;
+			sourceTree = "<group>";
+		};
+		5AD827181972C31100445E3E /* DTFriendsPickerVC */ = {
+			isa = PBXGroup;
+			children = (
+				5AD827191972C31100445E3E /* DTFriendsPickerVC.h */,
+				5AD8271A1972C31100445E3E /* DTFriendsPickerVC.m */,
+				5AD8271B1972C31100445E3E /* DTFriendsPickerVC.xib */,
+			);
+			path = DTFriendsPickerVC;
+			sourceTree = "<group>";
+		};
+		5AD8271E1972C32300445E3E /* DTAccountTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				5AD8271F1972C32300445E3E /* DTAccountTableViewCell.h */,
+				5AD827201972C32300445E3E /* DTAccountTableViewCell.m */,
+				5AD827211972C32300445E3E /* DTAccountTableViewCell.xib */,
+			);
+			name = DTAccountTableViewCell;
+			path = Views/TableViewCells/DTAccountTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -570,13 +602,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AD827111972C2EC00445E3E /* DTExpenseTableViewCell.xib in Resources */,
+				5AD8271D1972C31100445E3E /* DTFriendsPickerVC.xib in Resources */,
 				5A975DA0194DCF4200566A2A /* DTCreateAccountVC.xib in Resources */,
 				5A220ED8194117A100BDABCF /* DTTestVC.xib in Resources */,
-				5A12DFB1194C465C006E942F /* DTFriendsPickerVC.xib in Resources */,
+				5AD827071972BF2600445E3E /* DTAccountVC.xib in Resources */,
+				5AD827231972C32300445E3E /* DTAccountTableViewCell.xib in Resources */,
 				5A220EB21941103100BDABCF /* Images.xcassets in Resources */,
-				5A220EEF19411E4900BDABCF /* DTAccountsTableVC.xib in Resources */,
 				5A220EF71941237C00BDABCF /* DTFacebookLoginVC.xib in Resources */,
-				5A12DFA4194B7F22006E942F /* DTAccountTableViewCell.xib in Resources */,
+				5AD827171972C30200445E3E /* DTAccountsTableVC.xib in Resources */,
 				5A220EA41941103100BDABCF /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -630,14 +664,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A408432195382ED006146E5 /* DTBackendManager.m in Sources */,
+				5AD827161972C30200445E3E /* DTAccountsTableVC.m in Sources */,
+				5AD827221972C32300445E3E /* DTAccountTableViewCell.m in Sources */,
+				5AD827061972BF2600445E3E /* DTAccountVC.m in Sources */,
 				5A12DF95194B7E21006E942F /* DTTempExpense.m in Sources */,
-				5A12DFB0194C465C006E942F /* DTFriendsPickerVC.m in Sources */,
 				5AD826FF19717CFF00445E3E /* DTPerson.m in Sources */,
 				5A975D75194C48B800566A2A /* DTNewAccountNavigationController.m in Sources */,
 				5AA5E3E3196F3AAE0015A6B2 /* DTAccount.m in Sources */,
 				5A12DF9B194B7EC9006E942F /* DTTableViewCell.m in Sources */,
 				5A8570B61955EDC600A517BD /* DTExpense+Serializer.m in Sources */,
-				5AA5E3E4196F3AAE0015A6B2 /* DTExpense.m in Sources */,
+				5AD8270B1972C1E900445E3E /* DTExpense.m in Sources */,
 				5A975D7C194C558000566A2A /* DTTempUser.m in Sources */,
 				5A975DA4194DD0B600566A2A /* DTPerson+Serializer.m in Sources */,
 				5A8714C5194E0C7900D2111F /* DTModelManager.m in Sources */,
@@ -645,9 +681,10 @@
 				5A8570BC1955F33600A517BD /* DTShare+Serializer.m in Sources */,
 				5AA5E3E2196F3AAE0015A6B2 /* debty.xcdatamodeld in Sources */,
 				5A220EE919411E0C00BDABCF /* DTViewController.m in Sources */,
+				5AD8271C1972C31100445E3E /* DTFriendsPickerVC.m in Sources */,
 				5A4E128419685F05002EEE82 /* DTFacebookManager.m in Sources */,
+				5AD8270E1972C2CF00445E3E /* DTExpenseTableViewCell.m in Sources */,
 				5A220ED01941122A00BDABCF /* DTTabBarController.m in Sources */,
-				5A12DFA1194B7F12006E942F /* DTAccountTableViewCell.m in Sources */,
 				5AD826FC197015D000445E3E /* DTAccount+Helpers.m in Sources */,
 				5AA5E3E6196F3AAE0015A6B2 /* DTShare.m in Sources */,
 				5A40843619539962006146E5 /* DTCoreDataTableViewController.m in Sources */,
@@ -661,7 +698,6 @@
 				5A220EE1194119AB00BDABCF /* DTNavigationController.m in Sources */,
 				5A2F5D551955EB0D00337637 /* DTAccount+Serializer.m in Sources */,
 				5A220ED7194117A100BDABCF /* DTTestVC.m in Sources */,
-				5A220EEE19411E4900BDABCF /* DTAccountsTableVC.m in Sources */,
 				5A220EA61941103100BDABCF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

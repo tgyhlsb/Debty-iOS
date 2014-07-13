@@ -64,6 +64,8 @@ static DTModelManager *sharedManager;
 
 #pragma mark - FetchResultController factory -
 
+#pragma mark Persons
+
 + (NSFetchedResultsController *)fetchResultControllerForPersonsWithIdentifier:(NSNumber *)identifier
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_PERSON];
@@ -111,26 +113,7 @@ static DTModelManager *sharedManager;
                                                           cacheName:nil];
 }
 
-+ (NSFetchedResultsController *)fetchResultControllerForAccounts
-{
-    return [DTModelManager fetchResultControllerForAccountsWithSearchString:nil];
-}
-
-+ (NSFetchedResultsController *)fetchResultControllerForAccountsWithSearchString:(NSString *)searchString
-{
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_ACCOUNT];
-    
-    if (searchString && [searchString length]) {
-        request.predicate = [NSPredicate predicateWithFormat:@""];
-    }
-    
-    request.sortDescriptors = @[];
-    
-    return [[NSFetchedResultsController alloc] initWithFetchRequest:request
-                                               managedObjectContext:[DTModelManager sharedContext]
-                                                 sectionNameKeyPath:nil
-                                                          cacheName:nil];
-}
+#pragma mark Main user friends
 
 + (NSFetchedResultsController *)fetchResultControllerForMainUserFriends
 {
@@ -154,6 +137,58 @@ static DTModelManager *sharedManager;
     if (selected) {
         NSPredicate *isSelectedPredicate = [NSPredicate predicateWithFormat:@"isSelected == %@", selected];
         [predicates addObject:isSelectedPredicate];
+    }
+    request.predicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
+    
+    request.sortDescriptors = @[];
+    
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                               managedObjectContext:[DTModelManager sharedContext]
+                                                 sectionNameKeyPath:nil
+                                                          cacheName:nil];
+}
+
+#pragma mark Accounts
+
++ (NSFetchedResultsController *)fetchResultControllerForAccounts
+{
+    return [DTModelManager fetchResultControllerForAccountsWithSearchString:nil];
+}
+
++ (NSFetchedResultsController *)fetchResultControllerForAccountsWithSearchString:(NSString *)searchString
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_ACCOUNT];
+    
+    if (searchString && [searchString length]) {
+        request.predicate = [NSPredicate predicateWithFormat:@""];
+    }
+    
+    request.sortDescriptors = @[];
+    
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                               managedObjectContext:[DTModelManager sharedContext]
+                                                 sectionNameKeyPath:nil
+                                                          cacheName:nil];
+}
+
+#pragma mark - Expenses
+
++ (NSFetchedResultsController *)fetchResultControllerForExpensesInAccount:(DTAccount *)account
+{
+    return [DTModelManager fetchResultControllerForExpensesInAccount:account withSearchString:nil];
+}
+
++ (NSFetchedResultsController *)fetchResultControllerForExpensesInAccount:(DTAccount *)account withSearchString:(NSString *)searchString
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_EXPENSE];
+    
+    NSPredicate *accountPredicate = [NSPredicate predicateWithFormat:@"account == %@", account];
+    NSMutableArray *predicates = [[NSMutableArray alloc] initWithObjects:accountPredicate, nil];
+    
+    
+    if (searchString && [searchString length]) {
+        NSPredicate *searchPredicate = [NSPredicate predicateWithFormat:@"name contains[c] %@", searchString];
+        [predicates addObject:searchPredicate];
     }
     request.predicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
     

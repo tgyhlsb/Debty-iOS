@@ -12,6 +12,7 @@
         <attribute name="creationDate" attributeType="Date" syncable="YES"/>
         <attribute name="date" attributeType="Date" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="needSync" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <relationship name="account" maxCount="1" deletionRule="Nullify" destinationEntity="DTAccount" inverseName="expenses" inverseEntity="DTAccount" syncable="YES"/>
         <relationship name="shares" toMany="YES" deletionRule="Cascade" destinationEntity="DTShare" inverseName="expense" inverseEntity="DTShare" syncable="YES"/>
@@ -40,7 +41,7 @@
     </entity>
     <elements>
         <element name="DTAccount" positionX="-63" positionY="-334" width="128" height="120"/>
-        <element name="DTExpense" positionX="241" positionY="-432" width="128" height="150"/>
+        <element name="DTExpense" positionX="241" positionY="-432" width="128" height="163"/>
         <element name="DTPerson" positionX="223" positionY="-54" width="209" height="238"/>
         <element name="DTShare" positionX="522" positionY="-405" width="128" height="120"/>
     </elements>

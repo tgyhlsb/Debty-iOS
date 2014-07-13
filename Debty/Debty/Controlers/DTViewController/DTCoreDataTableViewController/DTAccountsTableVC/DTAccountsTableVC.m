@@ -10,6 +10,7 @@
 #import "DTAccountTableViewCell.h"
 #import "DTNewAccountNavigationController.h"
 #import "DTModelManager.h"
+#import "DTAccountVC.h"
 
 #define NIB_NAME @"DTExpenseTableVC"
 
@@ -54,7 +55,7 @@
     
     self.navigationItem.titleView = self.searchBar;
     
-    [self setUpGestureRecognizer];
+//    [self setUpGestureRecognizer];
 }
 
 #pragma mark - Getters
@@ -143,6 +144,13 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return [DTAccountTableViewCell height];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DTAccountVC *destination = [DTAccountVC newController];
+    destination.account = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [self.navigationController pushViewController:destination animated:YES];
 }
 
 @end
