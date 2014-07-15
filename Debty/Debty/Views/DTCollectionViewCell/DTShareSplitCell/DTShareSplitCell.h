@@ -17,4 +17,6 @@
 
 @property (strong, nonatomic) NSArray *persons;
 
++ (CGFloat)heightForNumberOfPersons:(NSInteger)numberOfPersons;
+
 @end

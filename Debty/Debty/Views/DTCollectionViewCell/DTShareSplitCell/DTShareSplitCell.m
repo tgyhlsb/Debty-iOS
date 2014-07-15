@@ -11,6 +11,8 @@
 
 #define NIB_NAME @"DTShareSplitCell"
 
+#define HEIGHT 44.0
+
 @interface DTShareSplitCell() <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -23,9 +25,14 @@
 {
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.showsHorizontalScrollIndicator = NO;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.allowsSelection = NO;
     self.tableView.scrollEnabled = NO;
+}
+
++ (CGFloat)heightForNumberOfPersons:(NSInteger)numberOfPersons
+{
+    return numberOfPersons * HEIGHT;
 }
 
 - (void)setPersons:(NSArray *)persons
@@ -43,7 +50,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return 20;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
