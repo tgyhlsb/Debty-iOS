@@ -17,8 +17,6 @@
 #define INDEX_SPLIT_PERCENT 2
 #define INDEX_SPLIT_SHARE   3
 
-#define TEST_NB_CELL 20
-
 @interface DTCreateExpenseVC () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DTWhoPayedPickerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewHeightConstraint;
@@ -65,7 +63,7 @@
 {
     [super viewDidLoad];
     
-    self.collectionViewHeightConstraint.constant = [DTShareSplitCell heightForNumberOfPersons:TEST_NB_CELL];
+    self.collectionViewHeightConstraint.constant = [DTShareSplitCell heightForNumberOfPersons:[self.account.persons count]];
     
     [self registerToGestureRecognizer];
     [DTShareSplitCell registerToCollectionView:self.collectionView];
@@ -173,7 +171,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(320, [DTShareSplitCell heightForNumberOfPersons:TEST_NB_CELL]);
+    return CGSizeMake(320, [DTShareSplitCell heightForNumberOfPersons:[self.account.persons count]]);
 }
 
 #pragma mark - UICollectionViewDelegate

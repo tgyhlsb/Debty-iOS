@@ -25,7 +25,7 @@
 {
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.showsHorizontalScrollIndicator = NO;
-//    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.allowsSelection = NO;
     self.tableView.scrollEnabled = NO;
 }
@@ -50,17 +50,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return [self.persons count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     
-//    DTPerson *person = [self.persons objectAtIndex:indexPath.row];
-//    cell.textLabel.text = person.firstName;
-    
-    cell.textLabel.text = @"ok";
+    DTPerson *person = [self.persons objectAtIndex:indexPath.row];
+    cell.textLabel.text = person.firstName;
     
     return cell;
 }
