@@ -12,14 +12,25 @@
 
 #define NIB_NAME @"DTCreateExpenseVC"
 
+#define INDEX_SPLIT_EQUALLY 0
+#define INDEX_SPLIT_EXACTLY 1
+#define INDEX_SPLIT_PERCENT 2
+#define INDEX_SPLIT_SHARE   3
+
 @interface DTCreateExpenseVC () <UICollectionViewDataSource, UICollectionViewDelegate, DTWhoPayedPickerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UIView *whoPayedView;
 @property (weak, nonatomic) IBOutlet UILabel *whoPayedLabel;
+@property (weak, nonatomic) IBOutlet UILabel *whoPayedTitleLabel;
 
 @property (weak, nonatomic) IBOutlet UITextField *nameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *amountLabel;
+
+@property (strong, nonatomic) DTShareSplitCell *equallySplitCell;
+@property (strong, nonatomic) DTShareSplitCell *exactSplitCell;
+@property (strong, nonatomic) DTShareSplitCell *perCentSplitCell;
+@property (strong, nonatomic) DTShareSplitCell *shareSplitCell;
 
 @end
 
@@ -96,17 +107,61 @@
     return 4;
 }
 
+- (DTShareSplitCell *)equallySplitCell
+{
+    if (!_equallySplitCell) {
+        NSString *identifier = IDENTIFIER_EQUALLY;
+        _equallySplitCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:[NSIndexPath indexPathForRow:INDEX_SPLIT_EQUALLY inSection:0]];
+        _equallySplitCell.persons = [self.account.persons sortedArrayUsingDescriptors:nil];
+    }
+    return _equallySplitCell;
+}
+
+- (DTShareSplitCell *)exactSplitCell
+{
+    if (!_exactSplitCell) {
+        NSString *identifier = IDENTIFIER_EXACTLY;
+        _exactSplitCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:[NSIndexPath indexPathForRow:INDEX_SPLIT_EXACTLY inSection:0]];
+        _exactSplitCell.persons = [self.account.persons sortedArrayUsingDescriptors:nil];
+    }
+    return _exactSplitCell;
+}
+
+- (DTShareSplitCell *)perCentSplitCell
+{
+    if (!_perCentSplitCell) {
+        NSString *identifier = IDENTIFIER_PERCENT;
+        _perCentSplitCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:[NSIndexPath indexPathForRow:INDEX_SPLIT_PERCENT inSection:0]];
+        _perCentSplitCell.persons = [self.account.persons sortedArrayUsingDescriptors:nil];
+    }
+    return _perCentSplitCell;
+}
+
+- (DTShareSplitCell *)shareSplitCell
+{
+    if (!_shareSplitCell) {
+        NSString *identifier = IDENTIFIER_SHARE;
+        _shareSplitCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:[NSIndexPath indexPathForRow:INDEX_SPLIT_SHARE inSection:0]];
+        _shareSplitCell.persons = [self.account.persons sortedArrayUsingDescriptors:nil];
+    }
+    return _shareSplitCell;
+}
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *identifier = [DTShareSplitCell reusableIdentifier];
-    DTShareSplitCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-    
-    static int n = 0;
-    [cell setColor:n++];
-    
-    return cell;
-    
+    switch (indexPath.row) {
+        case INDEX_SPLIT_EQUALLY:
+            return self.equallySplitCell;
+        case INDEX_SPLIT_EXACTLY:
+            return self.exactSplitCell;
+        case INDEX_SPLIT_PERCENT:
+            return self.perCentSplitCell;
+        case INDEX_SPLIT_SHARE:
+            return self.shareSplitCell;
+            
+        default:
+            return nil;
+    }
 }
 
 #pragma mark - UICollectionViewDelegate

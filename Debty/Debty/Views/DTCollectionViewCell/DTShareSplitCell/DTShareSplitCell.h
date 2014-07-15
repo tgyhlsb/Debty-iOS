@@ -8,8 +8,13 @@
 
 #import "DTCollectionViewCell.h"
 
+#define IDENTIFIER_EQUALLY @"equallyCell"
+#define IDENTIFIER_EXACTLY @"exactlyCell"
+#define IDENTIFIER_PERCENT @"percentCell"
+#define IDENTIFIER_SHARE   @"shareCell"
+
 @interface DTShareSplitCell : DTCollectionViewCell
 
-- (void)setColor:(int)n;
+@property (strong, nonatomic) NSArray *persons;
 
 @end

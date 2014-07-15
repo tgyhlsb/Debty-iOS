@@ -12,6 +12,7 @@
                 <outlet property="segmentedControl" destination="toT-rl-Mp2" id="Kdq-WS-r1E"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="whoPayedLabel" destination="E2T-gL-URU" id="H5j-c1-ZYf"/>
+                <outlet property="whoPayedTitleLabel" destination="CVw-I3-dV6" id="Sj1-FH-azC"/>
                 <outlet property="whoPayedView" destination="RfS-sL-Wac" id="7Qr-U2-Vrk"/>
             </connections>
         </placeholder>
@@ -57,7 +58,7 @@
                 <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="XRs-Jm-aUt">
                     <rect key="frame" x="0.0" y="272" width="320" height="120"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="120" id="dnP-qa-FoT"/>
                     </constraints>
@@ -77,12 +78,9 @@
                     <rect key="frame" x="0.0" y="160" width="320" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVw-I3-dV6">
-                            <rect key="frame" x="20" y="10" width="42" height="30"/>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who payed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVw-I3-dV6">
+                            <rect key="frame" x="20" y="15" width="88" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="6go-nW-N7X"/>
-                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="highlightedColor"/>
                         </label>
