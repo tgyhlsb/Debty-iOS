@@ -35,6 +35,8 @@
 		5A408432195382ED006146E5 /* DTBackendManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A408431195382ED006146E5 /* DTBackendManager.m */; };
 		5A40843619539962006146E5 /* DTCoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A40843519539962006146E5 /* DTCoreDataTableViewController.m */; };
 		5A4E128419685F05002EEE82 /* DTFacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4E128319685F05002EEE82 /* DTFacebookManager.m */; };
+		5A63454E1975CA460059B065 /* DTShareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A63454D1975CA460059B065 /* DTShareCell.m */; };
+		5A6345501975CA560059B065 /* DTShareCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A63454F1975CA560059B065 /* DTShareCell.xib */; };
 		5A6A9E0C1972CC3900A2E204 /* DTExpenseNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A9E0B1972CC3900A2E204 /* DTExpenseNavigationViewController.m */; };
 		5A6A9E111972F7DE00A2E204 /* DTCreateExpenseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A9E0F1972F7DE00A2E204 /* DTCreateExpenseVC.m */; };
 		5A6A9E121972F7DE00A2E204 /* DTCreateExpenseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6A9E101972F7DE00A2E204 /* DTCreateExpenseVC.xib */; };
@@ -130,6 +132,9 @@
 		5A40843519539962006146E5 /* DTCoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTCoreDataTableViewController.m; sourceTree = "<group>"; };
 		5A4E128219685F05002EEE82 /* DTFacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTFacebookManager.h; sourceTree = "<group>"; };
 		5A4E128319685F05002EEE82 /* DTFacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTFacebookManager.m; sourceTree = "<group>"; };
+		5A63454C1975CA460059B065 /* DTShareCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTShareCell.h; path = Views/TableViewCells/DTShareCell/DTShareCell.h; sourceTree = "<group>"; };
+		5A63454D1975CA460059B065 /* DTShareCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTShareCell.m; path = Views/TableViewCells/DTShareCell/DTShareCell.m; sourceTree = "<group>"; };
+		5A63454F1975CA560059B065 /* DTShareCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DTShareCell.xib; path = Views/TableViewCells/DTShareCell/DTShareCell.xib; sourceTree = "<group>"; };
 		5A6A9E0A1972CC3900A2E204 /* DTExpenseNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTExpenseNavigationViewController.h; path = Debty/Controlers/DTNavigationController/DTExpenseNavigationController/DTExpenseNavigationViewController.h; sourceTree = "<group>"; };
 		5A6A9E0B1972CC3900A2E204 /* DTExpenseNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTExpenseNavigationViewController.m; path = Debty/Controlers/DTNavigationController/DTExpenseNavigationController/DTExpenseNavigationViewController.m; sourceTree = "<group>"; };
 		5A6A9E0E1972F7DE00A2E204 /* DTCreateExpenseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTCreateExpenseVC.h; path = Controlers/DTViewController/DTCreateExpenseVC/DTCreateExpenseVC.h; sourceTree = "<group>"; };
@@ -255,6 +260,7 @@
 			children = (
 				5A12DF98194B7EC9006E942F /* DTTableViewCell.h */,
 				5A12DF99194B7EC9006E942F /* DTTableViewCell.m */,
+				5A6345511975CA5D0059B065 /* DTShareCell */,
 				5AD8270F1972C2D600445E3E /* DTExpenseTableViewCell */,
 				5AD8271E1972C32300445E3E /* DTAccountTableViewCell */,
 			);
@@ -437,6 +443,16 @@
 			);
 			name = DTCoreDataTableViewController;
 			path = Controlers/DTViewController/DTCoreDataTableViewController;
+			sourceTree = "<group>";
+		};
+		5A6345511975CA5D0059B065 /* DTShareCell */ = {
+			isa = PBXGroup;
+			children = (
+				5A63454C1975CA460059B065 /* DTShareCell.h */,
+				5A63454D1975CA460059B065 /* DTShareCell.m */,
+				5A63454F1975CA560059B065 /* DTShareCell.xib */,
+			);
+			name = DTShareCell;
 			sourceTree = "<group>";
 		};
 		5A6A9E0D1972CC4400A2E204 /* DTExpenseNavigationViewController */ = {
@@ -687,6 +703,7 @@
 				5A6A9E26197331D100A2E204 /* DTWhoPayedPickerVC.xib in Resources */,
 				5A220EF71941237C00BDABCF /* DTFacebookLoginVC.xib in Resources */,
 				5AD827171972C30200445E3E /* DTAccountsTableVC.xib in Resources */,
+				5A6345501975CA560059B065 /* DTShareCell.xib in Resources */,
 				5A220EA41941103100BDABCF /* InfoPlist.strings in Resources */,
 				5A6A9E121972F7DE00A2E204 /* DTCreateExpenseVC.xib in Resources */,
 			);
@@ -741,6 +758,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A408432195382ED006146E5 /* DTBackendManager.m in Sources */,
+				5A63454E1975CA460059B065 /* DTShareCell.m in Sources */,
 				5AD827161972C30200445E3E /* DTAccountsTableVC.m in Sources */,
 				5AD827221972C32300445E3E /* DTAccountTableViewCell.m in Sources */,
 				5A6A9E161972FB2800A2E204 /* DTCreateExpenseNavigationController.m in Sources */,

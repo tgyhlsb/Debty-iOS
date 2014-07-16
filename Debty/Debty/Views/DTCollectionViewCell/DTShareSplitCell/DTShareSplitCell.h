@@ -13,8 +13,16 @@
 #define IDENTIFIER_PERCENT @"percentCell"
 #define IDENTIFIER_SHARE   @"shareCell"
 
+typedef NS_ENUM(NSInteger, DTShareSplitCellType) {
+    DTShareSplitCellTypeEqually,
+    DTShareSplitCellTypeExactly,
+    DTShareSplitCellTypePercent,
+    DTShareSplitCellTypeShare
+};
+
 @interface DTShareSplitCell : DTCollectionViewCell
 
+@property (nonatomic) DTShareSplitCellType type;
 @property (strong, nonatomic) NSArray *persons;
 
 + (CGFloat)heightForNumberOfPersons:(NSInteger)numberOfPersons;

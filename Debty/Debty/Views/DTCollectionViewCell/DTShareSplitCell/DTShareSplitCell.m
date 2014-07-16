@@ -8,6 +8,7 @@
 
 #import "DTShareSplitCell.h"
 #import "DTPerson+Helpers.h"
+#import "DTShareCell.h"
 
 #define NIB_NAME @"DTShareSplitCell"
 
@@ -28,6 +29,8 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.allowsSelection = NO;
     self.tableView.scrollEnabled = NO;
+    
+    [DTShareCell registerToTableView:self.tableView];
 }
 
 + (CGFloat)heightForNumberOfPersons:(NSInteger)numberOfPersons
@@ -55,10 +58,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    NSString *identifier = [DTShareCell reusableIdentifier];
+    DTShareCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
     DTPerson *person = [self.persons objectAtIndex:indexPath.row];
-    cell.textLabel.text = person.firstName;
+    cell.person = person;
+    cell.type = self.type;
     
     return cell;
 }

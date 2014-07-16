@@ -116,6 +116,7 @@
         NSString *identifier = IDENTIFIER_EQUALLY;
         _equallySplitCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:[NSIndexPath indexPathForRow:INDEX_SPLIT_EQUALLY inSection:0]];
         _equallySplitCell.persons = [self.account.persons sortedArrayUsingDescriptors:nil];
+        _equallySplitCell.type = DTShareSplitCellTypeEqually;
     }
     return _equallySplitCell;
 }
@@ -126,6 +127,7 @@
         NSString *identifier = IDENTIFIER_EXACTLY;
         _exactSplitCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:[NSIndexPath indexPathForRow:INDEX_SPLIT_EXACTLY inSection:0]];
         _exactSplitCell.persons = [self.account.persons sortedArrayUsingDescriptors:nil];
+        _exactSplitCell.type = DTShareSplitCellTypeExactly;
     }
     return _exactSplitCell;
 }
@@ -136,6 +138,7 @@
         NSString *identifier = IDENTIFIER_PERCENT;
         _perCentSplitCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:[NSIndexPath indexPathForRow:INDEX_SPLIT_PERCENT inSection:0]];
         _perCentSplitCell.persons = [self.account.persons sortedArrayUsingDescriptors:nil];
+        _perCentSplitCell.type = DTShareSplitCellTypePercent;
     }
     return _perCentSplitCell;
 }
@@ -146,6 +149,7 @@
         NSString *identifier = IDENTIFIER_SHARE;
         _shareSplitCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:[NSIndexPath indexPathForRow:INDEX_SPLIT_SHARE inSection:0]];
         _shareSplitCell.persons = [self.account.persons sortedArrayUsingDescriptors:nil];
+        _shareSplitCell.type = DTShareSplitCellTypeShare;
     }
     return _shareSplitCell;
 }
