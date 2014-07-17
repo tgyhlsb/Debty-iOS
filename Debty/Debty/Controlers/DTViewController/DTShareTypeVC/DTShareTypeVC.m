@@ -11,10 +11,14 @@
 
 #define NIB_NAME @"DTShareTypeVC"
 
-@interface DTShareTypeVC () <UIPageViewControllerDataSource>
+@interface DTShareTypeVC () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 @property (strong, nonatomic) UIPageViewController *pageController;
 @property (strong, nonatomic) NSArray *viewControllers;
+
+@property (weak, nonatomic) IBOutlet UIView *pageControllerView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+
 
 @end
 
@@ -25,6 +29,8 @@
     DTShareTypeVC *controller = [[DTShareTypeVC alloc] initWithNibName:NIB_NAME bundle:nil];
     return controller;
 }
+
+#pragma mark Getters & Setters
 
 - (void)setExpense:(DTExpense *)expense
 {
@@ -58,6 +64,12 @@
     return _viewControllers;
 }
 
+- (void)setViewControllerAtIndex:(NSInteger)index
+{
+    UIViewController *viewController = [self.viewControllers objectAtIndex:index];
+    [self.pageController setViewControllers:@[viewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+}
+
 #pragma mark - View life cycle
 
 - (void)viewDidLoad
@@ -67,15 +79,23 @@
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     
     self.pageController.dataSource = self;
-    [[self.pageController view] setFrame:[[self view] bounds]];
+    self.pageController.delegate = self;
+    self.pageController.view.frame = self.pageControllerView.frame;
     
-    UIViewController *rootViewController = [self.viewControllers firstObject];
-    [self.pageController setViewControllers:@[rootViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    [self setViewControllerAtIndex:0];
     
     [self addChildViewController:self.pageController];
-    [[self view] addSubview:[self.pageController view]];
+    [self.view addSubview:[self.pageController view]];
     [self.pageController didMoveToParentViewController:self];
 }
+
+#pragma mark - Handlers
+
+- (IBAction)segmentedControlValueDidChange
+{
+    [self setViewControllerAtIndex:self.segmentedControl.selectedSegmentIndex];
+}
+
 
 #pragma mark - UIPageViewControllerDataSource
 
@@ -99,6 +119,14 @@
     }
     
     return [self.viewControllers objectAtIndex:index+1];
+}
+
+#pragma mark - UIPageViewControllerDelegate
+
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
+{
+    DTShareTypeVC *viewController = [[pageViewController viewControllers] firstObject];
+    self.segmentedControl.selectedSegmentIndex = [self.viewControllers indexOfObject:viewController];
 }
 
 @end

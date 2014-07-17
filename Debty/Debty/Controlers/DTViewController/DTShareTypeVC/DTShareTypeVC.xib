@@ -6,6 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DTShareTypeVC">
             <connections>
+                <outlet property="pageControllerView" destination="cJ5-gU-fI1" id="ixh-jl-RcH"/>
+                <outlet property="segmentedControl" destination="6QY-G2-kjV" id="5II-9X-huQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,7 +15,39 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cJ5-gU-fI1">
+                    <rect key="frame" x="0.0" y="108" width="320" height="460"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6QY-G2-kjV">
+                    <rect key="frame" x="20" y="72" width="280" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="j3x-Ee-oid"/>
+                    </constraints>
+                    <segments>
+                        <segment title="="/>
+                        <segment title="€"/>
+                        <segment title="%"/>
+                        <segment title="n°"/>
+                    </segments>
+                    <connections>
+                        <action selector="segmentedControlValueDidChange" destination="-1" eventType="valueChanged" id="6YR-N6-6Ek"/>
+                    </connections>
+                </segmentedControl>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="cJ5-gU-fI1" secondAttribute="bottom" id="4eP-pF-3op"/>
+                <constraint firstItem="cJ5-gU-fI1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="LMM-QS-N2k"/>
+                <constraint firstAttribute="trailing" secondItem="cJ5-gU-fI1" secondAttribute="trailing" id="Svx-Vq-f6Z"/>
+                <constraint firstItem="6QY-G2-kjV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="72" id="agF-ev-Vv8"/>
+                <constraint firstItem="cJ5-gU-fI1" firstAttribute="top" secondItem="6QY-G2-kjV" secondAttribute="bottom" constant="8" id="jGG-6g-pmk"/>
+                <constraint firstItem="6QY-G2-kjV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="yCE-u7-MWe"/>
+                <constraint firstAttribute="trailing" secondItem="6QY-G2-kjV" secondAttribute="trailing" constant="20" id="zA3-fg-L01"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
