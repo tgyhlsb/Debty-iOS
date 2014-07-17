@@ -6,8 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DTSharesEditorVC">
             <connections>
-                <outlet property="collectionView" destination="z8h-Kr-GbC" id="J3R-ia-Yd9"/>
-                <outlet property="segmentedControl" destination="uDM-Zh-sld" id="fpf-kD-lE2"/>
+                <outlet property="tableView" destination="ygS-8m-8cq" id="geP-eh-m8s"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,48 +15,18 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="uDM-Zh-sld">
-                    <rect key="frame" x="20" y="92" width="280" height="29"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="28" id="oCo-Jb-eNT"/>
-                    </constraints>
-                    <segments>
-                        <segment title="="/>
-                        <segment title="€"/>
-                        <segment title="%"/>
-                        <segment title="n°"/>
-                    </segments>
-                    <connections>
-                        <action selector="segmentedControlHandler" destination="-1" eventType="valueChanged" id="0Ft-Qw-jaB"/>
-                    </connections>
-                </segmentedControl>
-                <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="z8h-Kr-GbC">
-                    <rect key="frame" x="0.0" y="128" width="320" height="440"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ygS-8m-8cq">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="w25-36-kGc">
-                        <size key="itemSize" width="50" height="50"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                    <cells/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="sDP-cw-GAb"/>
-                        <outlet property="delegate" destination="-1" id="hId-6i-1uX"/>
-                    </connections>
-                </collectionView>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="z8h-Kr-GbC" secondAttribute="trailing" id="4Ls-5g-VGa"/>
-                <constraint firstItem="uDM-Zh-sld" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="FWK-BK-cUL"/>
-                <constraint firstItem="uDM-Zh-sld" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="92" id="IXV-md-pjm"/>
-                <constraint firstItem="z8h-Kr-GbC" firstAttribute="top" secondItem="uDM-Zh-sld" secondAttribute="bottom" constant="8" id="LSl-tf-cwP"/>
-                <constraint firstAttribute="trailing" secondItem="uDM-Zh-sld" secondAttribute="trailing" constant="20" id="fmS-ZP-3N2"/>
-                <constraint firstAttribute="bottom" secondItem="z8h-Kr-GbC" secondAttribute="bottom" id="kTP-Ly-7YU"/>
-                <constraint firstItem="z8h-Kr-GbC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="w6s-6J-ev2"/>
+                <constraint firstItem="ygS-8m-8cq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="87d-z2-b6V"/>
+                <constraint firstItem="ygS-8m-8cq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="d62-ax-ef4"/>
+                <constraint firstAttribute="trailing" secondItem="ygS-8m-8cq" secondAttribute="trailing" id="moh-ea-jPD"/>
+                <constraint firstAttribute="bottom" secondItem="ygS-8m-8cq" secondAttribute="bottom" id="uMN-Of-mej"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

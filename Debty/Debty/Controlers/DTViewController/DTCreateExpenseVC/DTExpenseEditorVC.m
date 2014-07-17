@@ -69,6 +69,7 @@
 {
     DTSharesEditorVC *destination = [DTSharesEditorVC newController];
     destination.expense = self.expense;
+    destination.type = DTShareTypeEqually;
     [self.navigationController pushViewController:destination animated:YES];
 }
 

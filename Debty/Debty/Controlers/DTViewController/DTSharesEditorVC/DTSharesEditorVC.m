@@ -7,29 +7,12 @@
 //
 
 #import "DTSharesEditorVC.h"
-#import "DTShareSplitCell.h"
-#import "DTAccount+Helpers.h"
-#import "DTExpense+Helpers.h"
-#import "DTShare+Helpers.h"
+#import "DTShareCell.h"
+#import "DTModelManager.h"
 
 #define NIB_NAME @"DTSharesEditorVC"
 
-
-#define INDEX_SPLIT_EQUALLY 0
-#define INDEX_SPLIT_EXACTLY 1
-#define INDEX_SPLIT_PERCENT 2
-#define INDEX_SPLIT_SHARE   3
-
-@interface DTSharesEditorVC () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate>
-
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewHeightConstraint;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
-
-@property (strong, nonatomic) DTShareSplitCell *equallySplitCell;
-@property (strong, nonatomic) DTShareSplitCell *exactSplitCell;
-@property (strong, nonatomic) DTShareSplitCell *perCentSplitCell;
-@property (strong, nonatomic) DTShareSplitCell *shareSplitCell;
+@interface DTSharesEditorVC () <DTShareCellDelegate>
 
 @end
 
@@ -49,112 +32,53 @@
 {
     [super viewDidLoad];
     
-    self.collectionViewHeightConstraint.constant = [DTShareSplitCell heightForNumberOfPersons:[self.expense.account.persons count]];
+    [DTShareCell registerToTableView:self.tableView];
     
-    [DTShareSplitCell registerToCollectionView:self.collectionView];
+    [self setUpFetchRequest];
 }
+
+#pragma mark - DTCoreDataTableViewController
+
+- (void)setUpFetchRequest
+{
+    self.fetchedResultsController = [DTModelManager fetchResultControllerForSharesInExpense:self.expense];
+}
+
+- (void)tableViewShouldRefresh
+{
+    [self stopRefreshingTableView];
+}
+
 
 #pragma mark - Handlers
 
-- (IBAction)segmentedControlHandler
+
+#pragma mark - DTShareCellDelegate
+
+- (BOOL)shareCellShouldReturn:(DTShareCell *)cell
 {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:self.segmentedControl.selectedSegmentIndex];
-    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+    return YES;
 }
 
-#pragma mark - UICollectionViewDataSource
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+- (void)shareCellValueDidChange:(DTShareCell *)cell
 {
-    return 4;
+    
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+#pragma mark - UITableViewDataSource
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 1;
+    NSString *identifer = [DTShareCell reusableIdentifier];
+    DTShareCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
+    
+    cell.share = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.type = self.type;
+    cell.delegate = self;
+    
+    return cell;
 }
 
-- (DTShareSplitCell *)equallySplitCell
-{
-    if (!_equallySplitCell) {
-        NSString *identifier = IDENTIFIER_EQUALLY;
-        _equallySplitCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:[NSIndexPath indexPathForRow:0 inSection:INDEX_SPLIT_EQUALLY]];
-        _equallySplitCell.shares = [self.expense.shares sortedArrayUsingDescriptors:nil];
-        _equallySplitCell.type = DTShareTypeEqually;
-        _equallySplitCell.backgroundColor = [UIColor redColor];
-    }
-    return _equallySplitCell;
-}
-
-- (DTShareSplitCell *)exactSplitCell
-{
-    if (!_exactSplitCell) {
-        NSString *identifier = IDENTIFIER_EXACTLY;
-        _exactSplitCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:[NSIndexPath indexPathForRow:0 inSection:INDEX_SPLIT_EXACTLY]];
-        _exactSplitCell.shares = [self.expense.shares sortedArrayUsingDescriptors:nil];
-        _exactSplitCell.type = DTShareTypeExactly;
-        _exactSplitCell.backgroundColor = [UIColor greenColor];
-    }
-    return _exactSplitCell;
-}
-
-- (DTShareSplitCell *)perCentSplitCell
-{
-    if (!_perCentSplitCell) {
-        NSString *identifier = IDENTIFIER_PERCENT;
-        _perCentSplitCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:[NSIndexPath indexPathForRow:0 inSection:INDEX_SPLIT_PERCENT]];
-         _perCentSplitCell.shares = [self.expense.shares sortedArrayUsingDescriptors:nil];
-        _perCentSplitCell.type = DTShareTypePercent;
-        _perCentSplitCell.backgroundColor = [UIColor blueColor];
-    }
-    return _perCentSplitCell;
-}
-
-- (DTShareSplitCell *)shareSplitCell
-{
-    if (!_shareSplitCell) {
-        NSString *identifier = IDENTIFIER_SHARE;
-        _shareSplitCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:[NSIndexPath indexPathForRow:0 inSection:INDEX_SPLIT_SHARE]];
-        _shareSplitCell.shares = [self.expense.shares sortedArrayUsingDescriptors:nil];
-        _shareSplitCell.type = DTShareTypeShare;
-        _shareSplitCell.backgroundColor = [UIColor yellowColor];
-    }
-    return _shareSplitCell;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    switch (indexPath.section) {
-        case INDEX_SPLIT_EQUALLY:
-            return self.equallySplitCell;
-        case INDEX_SPLIT_EXACTLY:
-            return self.exactSplitCell;
-        case INDEX_SPLIT_PERCENT:
-            return self.perCentSplitCell;
-        case INDEX_SPLIT_SHARE:
-            return self.shareSplitCell;
-            
-        default:
-            return nil;
-    }
-}
-
-#pragma mark - UICollectionViewDelegateFlowLayout
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    return CGSizeMake(320, [DTShareSplitCell heightForNumberOfPersons:[self.expense.account.persons count]]);
-}
-
-#pragma mark - UICollectionViewDelegate
-
-#pragma mark - UIScrollViewDelegate
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    NSIndexPath *indexPath = [[self.collectionView indexPathsForVisibleItems] firstObject];
-    self.segmentedControl.selectedSegmentIndex = indexPath.section;
-}
 
 
 @end

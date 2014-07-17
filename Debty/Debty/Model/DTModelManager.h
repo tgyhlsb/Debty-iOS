@@ -42,4 +42,6 @@ static NSString *DTNotificationMainUserUpdate = @"DTNotificationMainUserUpdate";
 + (NSFetchedResultsController *)fetchResultControllerForExpensesInAccount:(DTAccount *)account
                                                          withSearchString:(NSString *)searchString;
 
++ (NSFetchedResultsController *)fetchResultControllerForSharesInExpense:(DTExpense *)expense;
+
 @end
