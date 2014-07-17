@@ -7,7 +7,7 @@
 //
 
 #import "DTExpenseEditorVC.h"
-#import "DTShareSplitCell.h"
+#import "DTShareTypeVC.h"
 #import "DTWhoPayedPickerVC.h"
 #import "DTSharesEditorVC.h"
 
@@ -67,9 +67,8 @@
 
 - (IBAction)shareEditorButtonHandler
 {
-    DTSharesEditorVC *destination = [DTSharesEditorVC newController];
+    DTShareTypeVC *destination = [DTShareTypeVC newController];
     destination.expense = self.expense;
-    destination.type = DTShareTypeEqually;
     [self.navigationController pushViewController:destination animated:YES];
 }
 
