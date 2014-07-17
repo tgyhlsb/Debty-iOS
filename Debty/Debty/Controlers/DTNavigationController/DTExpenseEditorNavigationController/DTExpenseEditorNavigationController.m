@@ -7,12 +7,12 @@
 //
 
 #import "DTExpenseEditorNavigationController.h"
-#import "DTcreateExpenseVC.h"
+#import "DTExpenseEditorVC.h"
 #import "DTModelManager.h"
 
 @interface DTExpenseEditorNavigationController ()
 
-@property (strong, nonatomic) DTCreateExpenseVC *expenseAttributeVC;
+@property (strong, nonatomic) DTExpenseEditorVC *expenseAttributeVC;
 
 @end
 
@@ -20,7 +20,7 @@
 
 + (instancetype)newNavigationController
 {
-    DTCreateExpenseVC *rootViewController = [DTCreateExpenseVC newController];
+    DTExpenseEditorVC *rootViewController = [DTExpenseEditorVC newController];
     DTExpenseEditorNavigationController *navigationController = [[DTExpenseEditorNavigationController alloc] initWithRootViewController:rootViewController];
     navigationController.expenseAttributeVC = rootViewController;
     

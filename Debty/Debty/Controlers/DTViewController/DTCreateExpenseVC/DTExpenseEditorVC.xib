@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DTCreateExpenseVC">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DTExpenseEditorVC">
             <connections>
                 <outlet property="amountLabel" destination="o3A-Nf-PYM" id="Ckh-nM-IfI"/>
                 <outlet property="collectionView" destination="XRs-Jm-aUt" id="ovs-UL-teU"/>

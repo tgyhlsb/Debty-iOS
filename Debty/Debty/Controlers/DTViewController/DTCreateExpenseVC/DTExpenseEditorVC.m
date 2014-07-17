@@ -6,19 +6,19 @@
 //  Copyright (c) 2014 Debty. All rights reserved.
 //
 
-#import "DTCreateExpenseVC.h"
+#import "DTExpenseEditorVC.h"
 #import "DTShareSplitCell.h"
 #import "DTWhoPayedPickerVC.h"
 #import "DTShare+Serializer.h" // ok, need to allocate temp shares
 
-#define NIB_NAME @"DTCreateExpenseVC"
+#define NIB_NAME @"DTExpenseEditorVC"
 
 #define INDEX_SPLIT_EQUALLY 0
 #define INDEX_SPLIT_EXACTLY 1
 #define INDEX_SPLIT_PERCENT 2
 #define INDEX_SPLIT_SHARE   3
 
-@interface DTCreateExpenseVC () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DTWhoPayedPickerDelegate>
+@interface DTExpenseEditorVC () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DTWhoPayedPickerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
@@ -36,11 +36,11 @@
 
 @end
 
-@implementation DTCreateExpenseVC
+@implementation DTExpenseEditorVC
 
 + (instancetype)newController
 {
-    DTCreateExpenseVC *controller = [[DTCreateExpenseVC alloc] initWithNibName:NIB_NAME bundle:nil];
+    DTExpenseEditorVC *controller = [[DTExpenseEditorVC alloc] initWithNibName:NIB_NAME bundle:nil];
     return controller;
 }
 

@@ -10,7 +10,7 @@
 #import "DTAccount.h"
 #import "DTPerson.h"
 
-@interface DTCreateExpenseVC : DTViewController
+@interface DTExpenseEditorVC : DTViewController
 
 @property (strong, nonatomic) DTAccount *account;
 @property (strong, nonatomic) DTPerson *whoPayed;
