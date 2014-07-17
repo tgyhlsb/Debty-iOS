@@ -45,8 +45,6 @@
 		5A6A9E111972F7DE00A2E204 /* DTExpenseEditorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A9E0F1972F7DE00A2E204 /* DTExpenseEditorVC.m */; };
 		5A6A9E121972F7DE00A2E204 /* DTExpenseEditorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6A9E101972F7DE00A2E204 /* DTExpenseEditorVC.xib */; };
 		5A6A9E1A1973262A00A2E204 /* DTCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A9E191973262A00A2E204 /* DTCollectionViewCell.m */; };
-		5A6A9E1E1973270500A2E204 /* DTShareSplitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A9E1D1973270500A2E204 /* DTShareSplitCell.m */; };
-		5A6A9E201973271700A2E204 /* DTShareSplitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6A9E1F1973271700A2E204 /* DTShareSplitCell.xib */; };
 		5A6A9E25197331D100A2E204 /* DTWhoPayedPickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A9E23197331D100A2E204 /* DTWhoPayedPickerVC.m */; };
 		5A6A9E26197331D100A2E204 /* DTWhoPayedPickerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6A9E24197331D100A2E204 /* DTWhoPayedPickerVC.xib */; };
 		5A8570B61955EDC600A517BD /* DTExpense+Serializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8570B51955EDC600A517BD /* DTExpense+Serializer.m */; };
@@ -152,9 +150,6 @@
 		5A6A9E101972F7DE00A2E204 /* DTExpenseEditorVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DTExpenseEditorVC.xib; path = Controlers/DTViewController/DTCreateExpenseVC/DTExpenseEditorVC.xib; sourceTree = "<group>"; };
 		5A6A9E181973262A00A2E204 /* DTCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTCollectionViewCell.h; path = Views/DTCollectionViewCell/DTCollectionViewCell.h; sourceTree = "<group>"; };
 		5A6A9E191973262A00A2E204 /* DTCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTCollectionViewCell.m; path = Views/DTCollectionViewCell/DTCollectionViewCell.m; sourceTree = "<group>"; };
-		5A6A9E1C1973270500A2E204 /* DTShareSplitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTShareSplitCell.h; path = Views/DTCollectionViewCell/DTShareSplitCell/DTShareSplitCell.h; sourceTree = "<group>"; };
-		5A6A9E1D1973270500A2E204 /* DTShareSplitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTShareSplitCell.m; path = Views/DTCollectionViewCell/DTShareSplitCell/DTShareSplitCell.m; sourceTree = "<group>"; };
-		5A6A9E1F1973271700A2E204 /* DTShareSplitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DTShareSplitCell.xib; path = Views/DTCollectionViewCell/DTShareSplitCell/DTShareSplitCell.xib; sourceTree = "<group>"; };
 		5A6A9E22197331D100A2E204 /* DTWhoPayedPickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTWhoPayedPickerVC.h; path = DTWhoPayedPickerVC/DTWhoPayedPickerVC.h; sourceTree = "<group>"; };
 		5A6A9E23197331D100A2E204 /* DTWhoPayedPickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTWhoPayedPickerVC.m; path = DTWhoPayedPickerVC/DTWhoPayedPickerVC.m; sourceTree = "<group>"; };
 		5A6A9E24197331D100A2E204 /* DTWhoPayedPickerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DTWhoPayedPickerVC.xib; path = DTWhoPayedPickerVC/DTWhoPayedPickerVC.xib; sourceTree = "<group>"; };
@@ -511,19 +506,8 @@
 			children = (
 				5A6A9E181973262A00A2E204 /* DTCollectionViewCell.h */,
 				5A6A9E191973262A00A2E204 /* DTCollectionViewCell.m */,
-				5A6A9E211973271B00A2E204 /* DTShareSplitCell */,
 			);
 			name = CollectionViewCells;
-			sourceTree = "<group>";
-		};
-		5A6A9E211973271B00A2E204 /* DTShareSplitCell */ = {
-			isa = PBXGroup;
-			children = (
-				5A6A9E1C1973270500A2E204 /* DTShareSplitCell.h */,
-				5A6A9E1D1973270500A2E204 /* DTShareSplitCell.m */,
-				5A6A9E1F1973271700A2E204 /* DTShareSplitCell.xib */,
-			);
-			name = DTShareSplitCell;
 			sourceTree = "<group>";
 		};
 		5A6A9E27197331D500A2E204 /* DTWhoPayedPickerVC */ = {
@@ -725,7 +709,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A6A9E201973271700A2E204 /* DTShareSplitCell.xib in Resources */,
 				5AD827111972C2EC00445E3E /* DTExpenseTableViewCell.xib in Resources */,
 				5A1F7526197868E400AB580F /* DTSharesEditorVC.xib in Resources */,
 				5AD8271D1972C31100445E3E /* DTFriendsPickerVC.xib in Resources */,
@@ -805,7 +788,6 @@
 				5A6A9E25197331D100A2E204 /* DTWhoPayedPickerVC.m in Sources */,
 				5A8570B61955EDC600A517BD /* DTExpense+Serializer.m in Sources */,
 				5AD8270B1972C1E900445E3E /* DTExpense.m in Sources */,
-				5A6A9E1E1973270500A2E204 /* DTShareSplitCell.m in Sources */,
 				5A6A9E111972F7DE00A2E204 /* DTExpenseEditorVC.m in Sources */,
 				5A1F7525197868E400AB580F /* DTSharesEditorVC.m in Sources */,
 				5A975DA4194DD0B600566A2A /* DTPerson+Serializer.m in Sources */,
