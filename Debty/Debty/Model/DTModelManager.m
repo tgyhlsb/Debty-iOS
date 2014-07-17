@@ -13,7 +13,7 @@
 #import "DTAccount+Serializer.h"
 #import "DTPerson+Serializer.h"
 #import "DTExpense+Serializer.h"
-#import "DTShare+Helpers.h"
+#import "DTShare+Serializer.h"
 
 static DTModelManager *sharedManager;
 
@@ -196,7 +196,7 @@ static DTModelManager *sharedManager;
                                                           cacheName:nil];
 }
 
-#pragma mark - Expenses
+#pragma mark Expenses
 
 + (NSFetchedResultsController *)fetchResultControllerForExpensesInAccount:(DTAccount *)account
 {
@@ -224,6 +224,26 @@ static DTModelManager *sharedManager;
                                                  sectionNameKeyPath:nil
                                                           cacheName:nil];
 }
+
+#pragma mark Shares
+
++ (NSFetchedResultsController *)fetchResultControllerForSharesInExpense:(DTExpense *)expense
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_SHARE];
+    
+    NSPredicate *expensePredicate = [NSPredicate predicateWithFormat:@"expense == %@", expense];
+    NSMutableArray *predicates = [[NSMutableArray alloc] initWithObjects:expensePredicate, nil];
+    
+    request.predicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
+    
+    request.sortDescriptors = @[];
+    
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                               managedObjectContext:[DTModelManager sharedContext]
+                                                 sectionNameKeyPath:nil
+                                                          cacheName:nil];
+}
+
 
 #pragma mark - Singleton
 

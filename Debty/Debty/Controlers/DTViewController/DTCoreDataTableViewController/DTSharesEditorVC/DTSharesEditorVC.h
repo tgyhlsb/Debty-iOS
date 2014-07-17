@@ -6,11 +6,13 @@
 //  Copyright (c) 2014 Debty. All rights reserved.
 //
 
-#import "DTViewController.h"
+#import "DTCoreDataTableViewController.h"
 #import "DTExpense.h"
+#import "DTshare+Helpers.h"
 
-@interface DTSharesEditorVC : DTViewController
+@interface DTSharesEditorVC : DTCoreDataTableViewController
 
 @property (strong, nonatomic) DTExpense *expense;
+@property (nonatomic) DTShareType type;
 
 @end
