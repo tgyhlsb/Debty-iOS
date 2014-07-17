@@ -78,9 +78,9 @@
 {
     if (!_equallySplitCell) {
         NSString *identifier = IDENTIFIER_EQUALLY;
-        _equallySplitCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:[NSIndexPath indexPathForRow:INDEX_SPLIT_EQUALLY inSection:0]];
+        _equallySplitCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:[NSIndexPath indexPathForRow:0 inSection:INDEX_SPLIT_EQUALLY]];
         _equallySplitCell.shares = [self.expense.shares sortedArrayUsingDescriptors:nil];
-        _equallySplitCell.type = DTShareSplitCellTypeEqually;
+        _equallySplitCell.type = DTShareTypeEqually;
         _equallySplitCell.backgroundColor = [UIColor redColor];
     }
     return _equallySplitCell;
@@ -90,9 +90,9 @@
 {
     if (!_exactSplitCell) {
         NSString *identifier = IDENTIFIER_EXACTLY;
-        _exactSplitCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:[NSIndexPath indexPathForRow:INDEX_SPLIT_EXACTLY inSection:0]];
+        _exactSplitCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:[NSIndexPath indexPathForRow:0 inSection:INDEX_SPLIT_EXACTLY]];
         _exactSplitCell.shares = [self.expense.shares sortedArrayUsingDescriptors:nil];
-        _exactSplitCell.type = DTShareSplitCellTypeExactly;
+        _exactSplitCell.type = DTShareTypeExactly;
         _exactSplitCell.backgroundColor = [UIColor greenColor];
     }
     return _exactSplitCell;
@@ -102,9 +102,9 @@
 {
     if (!_perCentSplitCell) {
         NSString *identifier = IDENTIFIER_PERCENT;
-        _perCentSplitCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:[NSIndexPath indexPathForRow:INDEX_SPLIT_PERCENT inSection:0]];
+        _perCentSplitCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:[NSIndexPath indexPathForRow:0 inSection:INDEX_SPLIT_PERCENT]];
          _perCentSplitCell.shares = [self.expense.shares sortedArrayUsingDescriptors:nil];
-        _perCentSplitCell.type = DTShareSplitCellTypePercent;
+        _perCentSplitCell.type = DTShareTypePercent;
         _perCentSplitCell.backgroundColor = [UIColor blueColor];
     }
     return _perCentSplitCell;
@@ -114,9 +114,9 @@
 {
     if (!_shareSplitCell) {
         NSString *identifier = IDENTIFIER_SHARE;
-        _shareSplitCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:[NSIndexPath indexPathForRow:INDEX_SPLIT_SHARE inSection:0]];
+        _shareSplitCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:[NSIndexPath indexPathForRow:0 inSection:INDEX_SPLIT_SHARE]];
         _shareSplitCell.shares = [self.expense.shares sortedArrayUsingDescriptors:nil];
-        _shareSplitCell.type = DTShareSplitCellTypeShare;
+        _shareSplitCell.type = DTShareTypeShare;
         _shareSplitCell.backgroundColor = [UIColor yellowColor];
     }
     return _shareSplitCell;

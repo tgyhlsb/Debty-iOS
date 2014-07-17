@@ -7,20 +7,26 @@
 //
 
 #import "DTTableViewCell.h"
-#import "DTShare.h"
+#import "DTShare+Helpers.h"
 
-
-typedef NS_ENUM(NSInteger, DTShareCellType) {
-    DTShareCellTypeEqually,
-    DTShareCellTypeExactly,
-    DTShareCellTypePercent,
-    DTShareCellTypeShare
-};
+@protocol DTShareCellDelegate;
 
 @interface DTShareCell : DTTableViewCell
 
-@property (nonatomic) DTShareCellType type;
+@property (weak, nonatomic) id<DTShareCellDelegate> delegate;
+
+@property (nonatomic) DTShareType type;
 @property (strong, nonatomic) DTShare *share;
-@property (strong, nonatomic) NSNumber *value;
+@property (strong, nonatomic) NSDecimalNumber *value;
+
+- (void)becomeFirstResponder;
+- (void)resignFirstResponder;
+
+@end
+
+@protocol DTShareCellDelegate <NSObject>
+
+- (BOOL)shareCellShouldReturn:(DTShareCell *)cell;
+- (void)shareCellValueDidChange:(DTShareCell *)cell;
 
 @end

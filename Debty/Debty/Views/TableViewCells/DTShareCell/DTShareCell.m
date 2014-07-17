@@ -12,7 +12,7 @@
 #define NIB_NAME @"DTShareCell"
 #define HEIGHT 44
 
-@interface DTShareCell()
+@interface DTShareCell() <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *valueTextField;
@@ -22,43 +22,77 @@
 
 @implementation DTShareCell
 
-- (void)setType:(DTShareCellType)type
+- (void)becomeFirstResponder
+{
+    [self.valueTextField becomeFirstResponder];
+}
+
+- (void)resignFirstResponder
+{
+    [self.valueTextField resignFirstResponder];
+}
+
+#pragma mark - View life cycle
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    [self registerForTextFieldNotification];
+    
+    self.value = [NSDecimalNumber decimalNumberWithString:@"0"];
+    
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler)];
+    [self addGestureRecognizer:tapRecognizer];
+}
+
+#pragma mark - Setters
+
+- (void)setType:(DTShareType)type
 {
     _type = type;
     
     self.nameLabel.text = self.share.person.firstName;
     switch (type) {
-        case DTShareCellTypeEqually:
+        case DTShareTypeEqually:
         {
-            self.unitLabel.text = @"";
-            self.valueTextField.text = @"";
-            self.valueTextField.placeholder = @"";
+            self.unitLabel.hidden = YES;
+            self.valueTextField.hidden = YES;
             break;
         }
             
-        case DTShareCellTypeExactly:
+        case DTShareTypeExactly:
         {
+            self.unitLabel.hidden = NO;
+            self.valueTextField.hidden = NO;
             self.unitLabel.text = @"";
             self.valueTextField.text = @"";
             self.valueTextField.placeholder = @"0,00";
+            self.valueTextField.keyboardType = UIKeyboardTypeDecimalPad;
             self.unitLabel.text = @"€";
             break;
         }
             
-        case DTShareCellTypePercent:
+        case DTShareTypePercent:
         {
+            self.unitLabel.hidden = NO;
+            self.valueTextField.hidden = NO;
             self.unitLabel.text = @"";
             self.valueTextField.text = @"";
             self.valueTextField.placeholder = @"0";
+            self.valueTextField.keyboardType = UIKeyboardTypeDecimalPad;
             self.unitLabel.text = @"%";
             break;
         }
             
-        case DTShareCellTypeShare:
+        case DTShareTypeShare:
         {
+            self.unitLabel.hidden = NO;
+            self.valueTextField.hidden = NO;
             self.unitLabel.text = @"";
             self.valueTextField.text = @"";
             self.valueTextField.placeholder = @"0";
+            self.valueTextField.keyboardType = UIKeyboardTypeNumberPad;
             self.unitLabel.text = @"share";
             break;
         }
@@ -68,6 +102,57 @@
     }
 }
 
+- (void)setValue:(NSDecimalNumber *)value
+{
+
+    _value = value;
+    
+    // Update view if type is Equally
+    if (self.type == DTShareTypeEqually) {
+        if ([value isEqualToNumber:@0]) {
+            self.accessoryType = UITableViewCellAccessoryNone;
+        } else {
+            self.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+    }
+    
+    // Notiffy delegate
+    if ([self.delegate respondsToSelector:@selector(shareCellValueDidChange:)]) {
+        [self.delegate shareCellValueDidChange:self];
+    }
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if ([self.delegate respondsToSelector:@selector(shareCellShouldReturn:)]) {
+        return [self.delegate shareCellShouldReturn:self];
+    }
+    return YES;
+}
+
+- (void)valueTextFieldValueDidChange
+{
+    self.value = [NSDecimalNumber decimalNumberWithString:self.valueTextField.text];
+}
+
+- (void)registerForTextFieldNotification
+{
+    [self.valueTextField addTarget:self
+                            action:@selector(valueTextFieldValueDidChange)
+                  forControlEvents:UIControlEventEditingChanged];
+}
+
+
+#pragma mark - Handlers
+
+- (void)tapHandler
+{
+    if (self.type == DTShareTypeEqually) {
+        self.value = [self.value boolValue] ? [NSDecimalNumber decimalNumberWithString:@"0"] : [NSDecimalNumber decimalNumberWithString:@"1"];
+    }
+}
 
 #pragma mark - Subclass methods
 

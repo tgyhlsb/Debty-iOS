@@ -33,7 +33,7 @@
                             <constraint firstAttribute="height" constant="30" id="UjM-sy-Dd9"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
+                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                     </textField>
                 </subviews>
                 <constraints>

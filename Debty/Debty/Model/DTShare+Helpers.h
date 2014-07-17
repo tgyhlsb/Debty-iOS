@@ -8,6 +8,13 @@
 
 #import "DTShare.h"
 
+typedef NS_ENUM(NSInteger, DTShareType) {
+    DTShareTypeEqually,
+    DTShareTypeExactly,
+    DTShareTypePercent,
+    DTShareTypeShare
+};
+
 @interface DTShare (Helpers)
 
 @end

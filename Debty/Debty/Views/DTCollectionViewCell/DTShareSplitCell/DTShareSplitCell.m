@@ -7,7 +7,6 @@
 //
 
 #import "DTShareSplitCell.h"
-#import "DTShare+Helpers.h"
 #import "DTShareCell.h"
 
 #define NIB_NAME @"DTShareSplitCell"

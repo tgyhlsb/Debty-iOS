@@ -7,22 +7,18 @@
 //
 
 #import "DTCollectionViewCell.h"
+#import "DTSHare+Helpers.h"
 
 #define IDENTIFIER_EQUALLY @"equallyCell"
 #define IDENTIFIER_EXACTLY @"exactlyCell"
 #define IDENTIFIER_PERCENT @"percentCell"
 #define IDENTIFIER_SHARE   @"shareCell"
 
-typedef NS_ENUM(NSInteger, DTShareSplitCellType) {
-    DTShareSplitCellTypeEqually,
-    DTShareSplitCellTypeExactly,
-    DTShareSplitCellTypePercent,
-    DTShareSplitCellTypeShare
-};
+
 
 @interface DTShareSplitCell : DTCollectionViewCell
 
-@property (nonatomic) DTShareSplitCellType type;
+@property (nonatomic) DTShareType type;
 @property (strong, nonatomic) NSArray *shares;
 
 + (CGFloat)heightForNumberOfPersons:(NSInteger)numberOfPersons;
