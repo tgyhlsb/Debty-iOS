@@ -6,6 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DTSharesEditorVC">
             <connections>
+                <outlet property="footerDetailLabel" destination="zVC-14-Tw5" id="Skm-ZU-cTf"/>
+                <outlet property="footerLabel" destination="z25-B9-AWd" id="tVz-lw-EDX"/>
+                <outlet property="footerView" destination="MqD-ow-HGX" id="iq1-eq-cQB"/>
                 <outlet property="tableView" destination="ygS-8m-8cq" id="geP-eh-m8s"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -19,6 +22,36 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <view key="tableFooterView" contentMode="scaleToFill" id="MqD-ow-HGX">
+                        <rect key="frame" x="0.0" y="468" width="320" height="100"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z25-B9-AWd">
+                                <rect key="frame" x="139" y="20" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVC-14-Tw5">
+                                <rect key="frame" x="144" y="49" width="31" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zVC-14-Tw5" firstAttribute="top" secondItem="z25-B9-AWd" secondAttribute="bottom" constant="8" id="4gK-dO-KoR"/>
+                            <constraint firstItem="z25-B9-AWd" firstAttribute="top" secondItem="MqD-ow-HGX" secondAttribute="top" constant="20" id="PtD-PU-Aba"/>
+                            <constraint firstItem="zVC-14-Tw5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MqD-ow-HGX" secondAttribute="leading" constant="20" id="Sp4-VO-jyk"/>
+                            <constraint firstItem="z25-B9-AWd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MqD-ow-HGX" secondAttribute="leading" constant="20" id="UrQ-oD-u6L"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="z25-B9-AWd" secondAttribute="trailing" constant="20" id="W06-Sq-yI2"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zVC-14-Tw5" secondAttribute="trailing" constant="20" id="ewv-HU-aqy"/>
+                            <constraint firstAttribute="centerX" secondItem="zVC-14-Tw5" secondAttribute="centerX" id="rBk-s2-xoZ"/>
+                            <constraint firstAttribute="centerX" secondItem="z25-B9-AWd" secondAttribute="centerX" id="tfv-xE-uJ8"/>
+                        </constraints>
+                    </view>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
