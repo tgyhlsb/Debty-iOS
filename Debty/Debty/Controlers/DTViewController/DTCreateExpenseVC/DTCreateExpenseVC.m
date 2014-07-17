@@ -9,6 +9,7 @@
 #import "DTCreateExpenseVC.h"
 #import "DTShareSplitCell.h"
 #import "DTWhoPayedPickerVC.h"
+#import "DTShare+Serializer.h" // ok, need to allocate temp shares
 
 #define NIB_NAME @"DTCreateExpenseVC"
 
@@ -115,7 +116,7 @@
     if (!_equallySplitCell) {
         NSString *identifier = IDENTIFIER_EQUALLY;
         _equallySplitCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:[NSIndexPath indexPathForRow:INDEX_SPLIT_EQUALLY inSection:0]];
-        _equallySplitCell.persons = [self.account.persons sortedArrayUsingDescriptors:nil];
+        _equallySplitCell.persons = [DTShare sharesForExpense:<#(DTExpense *)#>;
         _equallySplitCell.type = DTShareSplitCellTypeEqually;
     }
     return _equallySplitCell;

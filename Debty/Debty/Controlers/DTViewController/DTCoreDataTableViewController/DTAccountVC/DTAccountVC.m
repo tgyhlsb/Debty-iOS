@@ -9,7 +9,7 @@
 #import "DTAccountVC.h"
 #import "DTModelManager.h"
 #import "DTExpenseTableViewCell.h"
-#import "DTCreateExpenseNavigationController.h"
+#import "DTExpenseEditorNavigationController.h"
 
 #define NIB_NAME @"DTAccountVC"
 
@@ -73,7 +73,7 @@
 
 - (void)addExpenseButtonHandler
 {
-    DTCreateExpenseNavigationController *destination = [DTCreateExpenseNavigationController newNavigationController];
+    DTExpenseEditorNavigationController *destination = [DTExpenseEditorNavigationController newNavigationController];
     destination.account = self.account;
     [self presentViewController:destination animated:YES completion:^{
         

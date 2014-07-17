@@ -9,7 +9,7 @@
 #import "DTNavigationController.h"
 #import "DTAccount+Helpers.h"
 
-@interface DTCreateExpenseNavigationController : DTNavigationController
+@interface DTExpenseEditorNavigationController : DTNavigationController
 
 @property (strong, nonatomic) DTAccount *account;
 

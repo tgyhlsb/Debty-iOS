@@ -6,22 +6,22 @@
 //  Copyright (c) 2014 Debty. All rights reserved.
 //
 
-#import "DTCreateExpenseNavigationController.h"
+#import "DTExpenseEditorNavigationController.h"
 #import "DTcreateExpenseVC.h"
 #import "DTModelManager.h"
 
-@interface DTCreateExpenseNavigationController ()
+@interface DTExpenseEditorNavigationController ()
 
 @property (strong, nonatomic) DTCreateExpenseVC *expenseAttributeVC;
 
 @end
 
-@implementation DTCreateExpenseNavigationController
+@implementation DTExpenseEditorNavigationController
 
 + (instancetype)newNavigationController
 {
     DTCreateExpenseVC *rootViewController = [DTCreateExpenseVC newController];
-    DTCreateExpenseNavigationController *navigationController = [[DTCreateExpenseNavigationController alloc] initWithRootViewController:rootViewController];
+    DTExpenseEditorNavigationController *navigationController = [[DTExpenseEditorNavigationController alloc] initWithRootViewController:rootViewController];
     navigationController.expenseAttributeVC = rootViewController;
     
     rootViewController.account = navigationController.account;
@@ -31,10 +31,10 @@
     
     __weak DTViewController *weakRootVC = rootViewController;
     [rootViewController setCloseBlock:^{
-        [((DTCreateExpenseNavigationController *)weakRootVC.navigationController) selfDissmiss];
+        [((DTExpenseEditorNavigationController *)weakRootVC.navigationController) selfDissmiss];
     }];
     [rootViewController setNextBlock:^{
-        [((DTCreateExpenseNavigationController *)weakRootVC.navigationController) createExpense];
+        [((DTExpenseEditorNavigationController *)weakRootVC.navigationController) createExpense];
     }];
     
     return navigationController;
