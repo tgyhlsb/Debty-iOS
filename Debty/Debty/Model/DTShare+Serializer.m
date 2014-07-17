@@ -55,4 +55,26 @@
     return tempShares;
 }
 
++ (NSArray *)sharesForExpense:(DTExpense *)expense
+{
+    NSInteger numberOfPersons = [expense.account.persons count];
+    NSMutableArray *tempShares = [[NSMutableArray alloc] initWithCapacity:numberOfPersons];
+    NSManagedObjectContext *context = [DTModelManager sharedContext];
+    
+    CGFloat totalAmount = [expense.amount floatValue];
+    CGFloat individualAmount = totalAmount/numberOfPersons;
+    CGFloat lastAmount = totalAmount - (numberOfPersons - 1)*individualAmount;
+    
+    DTShare *share = nil;
+    for (DTPerson *person in expense.account.persons) {
+        share = [NSEntityDescription insertNewObjectForEntityForName:CLASS_NAME_SHARE inManagedObjectContext:context];
+        share.amount = [[NSDecimalNumber alloc] initWithFloat:individualAmount];
+        share.person = person;
+        [tempShares addObject:share];
+    }
+    share.amount = [[NSDecimalNumber alloc] initWithFloat:lastAmount];
+    
+    return tempShares;
+}
+
 @end

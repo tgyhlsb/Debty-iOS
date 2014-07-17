@@ -7,6 +7,7 @@
 //
 
 #import "DTShareCell.h"
+#import "DTPerson+Helpers.h"
 
 #define NIB_NAME @"DTShareCell"
 #define HEIGHT 44
@@ -25,7 +26,7 @@
 {
     _type = type;
     
-    self.nameLabel.text = self.person.firstName;
+    self.nameLabel.text = self.share.person.firstName;
     switch (type) {
         case DTShareCellTypeEqually:
         {

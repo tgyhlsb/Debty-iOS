@@ -7,7 +7,7 @@
 //
 
 #import "DTShareSplitCell.h"
-#import "DTPerson+Helpers.h"
+#import "DTShare+Helpers.h"
 #import "DTShareCell.h"
 
 #define NIB_NAME @"DTShareSplitCell"
@@ -38,9 +38,9 @@
     return numberOfPersons * HEIGHT;
 }
 
-- (void)setPersons:(NSArray *)persons
+- (void)setShares:(NSArray *)shares
 {
-    _persons = persons;
+    _shares = shares;
     [self.tableView reloadData];
 }
 
@@ -53,7 +53,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.persons count];
+    return [self.shares count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -61,8 +61,8 @@
     NSString *identifier = [DTShareCell reusableIdentifier];
     DTShareCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
-    DTPerson *person = [self.persons objectAtIndex:indexPath.row];
-    cell.person = person;
+    DTShare *share = [self.shares objectAtIndex:indexPath.row];
+    cell.share = share;
     cell.type = self.type;
     
     return cell;

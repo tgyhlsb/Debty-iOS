@@ -7,7 +7,7 @@
 //
 
 #import "DTTableViewCell.h"
-#import "DTPerson.h"
+#import "DTShare.h"
 
 
 typedef NS_ENUM(NSInteger, DTShareCellType) {
@@ -20,7 +20,7 @@ typedef NS_ENUM(NSInteger, DTShareCellType) {
 @interface DTShareCell : DTTableViewCell
 
 @property (nonatomic) DTShareCellType type;
-@property (strong, nonatomic) DTPerson *person;
+@property (strong, nonatomic) DTShare *share;
 @property (strong, nonatomic) NSNumber *value;
 
 @end

@@ -15,6 +15,6 @@
 + (DTExpense *)expenseWithInfo:(NSDictionary *)info;
 + (DTExpense *)expensesWithArray:(NSArray *)arrayInfo;
 
-+ (DTExpense *)expenseWithAccount:(DTAccount *)account;
++ (DTExpense *)newExpenseWithAccount:(DTAccount *)account;
 
 @end

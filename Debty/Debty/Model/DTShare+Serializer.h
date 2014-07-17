@@ -15,4 +15,6 @@
 + (DTShare *)shareWithInfo:(NSDictionary *)info;
 + (DTShare *)sharesWithArray:(NSArray *)arrayInfo;
 
++ (NSArray *)sharesForExpense:(DTExpense *)expense;
+
 @end

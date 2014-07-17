@@ -23,7 +23,7 @@ typedef NS_ENUM(NSInteger, DTShareSplitCellType) {
 @interface DTShareSplitCell : DTCollectionViewCell
 
 @property (nonatomic) DTShareSplitCellType type;
-@property (strong, nonatomic) NSArray *persons;
+@property (strong, nonatomic) NSArray *shares;
 
 + (CGFloat)heightForNumberOfPersons:(NSInteger)numberOfPersons;
 
