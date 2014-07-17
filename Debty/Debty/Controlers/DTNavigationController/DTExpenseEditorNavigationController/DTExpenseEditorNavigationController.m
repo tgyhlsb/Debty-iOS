@@ -12,7 +12,7 @@
 
 @interface DTExpenseEditorNavigationController ()
 
-@property (strong, nonatomic) DTExpenseEditorVC *expenseAttributeVC;
+@property (strong, nonatomic) DTExpenseEditorVC *expenseEditorVC;
 
 @end
 
@@ -22,9 +22,9 @@
 {
     DTExpenseEditorVC *rootViewController = [DTExpenseEditorVC newController];
     DTExpenseEditorNavigationController *navigationController = [[DTExpenseEditorNavigationController alloc] initWithRootViewController:rootViewController];
-    navigationController.expenseAttributeVC = rootViewController;
+    navigationController.expenseEditorVC = rootViewController;
     
-    rootViewController.account = navigationController.account;
+    rootViewController.expense = navigationController.expense;
     
     [rootViewController setNextButtonVisible:YES];
     [rootViewController setCloseButtonVisible:YES];
@@ -34,16 +34,16 @@
         [((DTExpenseEditorNavigationController *)weakRootVC.navigationController) selfDissmiss];
     }];
     [rootViewController setNextBlock:^{
-        [((DTExpenseEditorNavigationController *)weakRootVC.navigationController) createExpense];
+        [((DTExpenseEditorNavigationController *)weakRootVC.navigationController) validate];
     }];
     
     return navigationController;
 }
 
-- (void)setAccount:(DTAccount *)account
+- (void)setExpense:(DTExpense *)expense
 {
-    _account = account;
-    self.expenseAttributeVC.account = account;
+    _expense = expense;
+    self.expenseEditorVC.expense = expense;
 }
 
 #pragma mark - Navigation methods
@@ -55,12 +55,12 @@
     }];
 }
 
-- (void)createExpense
+- (void)validate
 {
-    DTExpense *expense = [DTModelManager expenseWithAccount:self.account];
-    expense.name = [self.expenseAttributeVC expenseName];
-    expense.amount = [self.expenseAttributeVC expenseAmount];
-    [DTModelManager save];
+//    DTExpense *expense = [DTModelManager expenseWithAccount:self.account];
+//    expense.name = [self.expenseEditorVC expenseName];
+//    expense.amount = [self.expenseEditorVC expenseAmount];
+//    [DTModelManager save];
     [self selfDissmiss];
 }
 

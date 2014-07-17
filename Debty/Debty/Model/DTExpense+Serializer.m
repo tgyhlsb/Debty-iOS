@@ -55,7 +55,7 @@
     return tempExpenses;
 }
 
-+ (DTExpense *)expenseWithAccount:(DTAccount *)account
++ (DTExpense *)newExpenseWithAccount:(DTAccount *)account
 {
     return [DTExpense expenseWithAccount:account inManagedObjectContext:[DTModelManager sharedContext]];
 }

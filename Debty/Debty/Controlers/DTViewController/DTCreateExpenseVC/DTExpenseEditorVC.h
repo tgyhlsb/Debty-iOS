@@ -7,12 +7,12 @@
 //
 
 #import "DTViewController.h"
-#import "DTAccount.h"
+#import "DTExpense.h"
 #import "DTPerson.h"
 
 @interface DTExpenseEditorVC : DTViewController
 
-@property (strong, nonatomic) DTAccount *account;
+@property (strong, nonatomic) DTExpense *expense;
 @property (strong, nonatomic) DTPerson *whoPayed;
 
 - (NSString *)expenseName;

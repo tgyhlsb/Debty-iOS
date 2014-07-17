@@ -37,7 +37,7 @@ static DTModelManager *sharedManager;
 
 + (DTExpense *)expenseWithAccount:(DTAccount *)account
 {
-    DTExpense *expense = [DTExpense expenseWithAccount:account];
+    DTExpense *expense = [DTExpense newExpenseWithAccount:account];
     if ([expense safeNeedSync]) {
         [DTModelManager save];
     }

@@ -36,7 +36,7 @@
 
 - (void)setUpFetchRequest
 {
-    self.fetchedResultsController = [DTModelManager fetchResultControllerForPersonInAccount:self.account];
+    self.fetchedResultsController = [DTModelManager fetchResultControllerForPersonInAccount:self.expense.account];
 }
 
 - (void)tableViewShouldRefresh

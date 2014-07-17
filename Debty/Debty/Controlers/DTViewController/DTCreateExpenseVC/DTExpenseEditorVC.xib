@@ -7,10 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DTExpenseEditorVC">
             <connections>
                 <outlet property="amountLabel" destination="o3A-Nf-PYM" id="Ckh-nM-IfI"/>
-                <outlet property="collectionView" destination="XRs-Jm-aUt" id="ovs-UL-teU"/>
-                <outlet property="collectionViewHeightConstraint" destination="dnP-qa-FoT" id="QUY-zn-oEE"/>
                 <outlet property="nameLabel" destination="gnU-a8-Amg" id="iBR-s1-dAT"/>
-                <outlet property="segmentedControl" destination="toT-rl-Mp2" id="Kdq-WS-r1E"/>
                 <outlet property="view" destination="izA-XQ-0SD" id="LOV-Sj-yfc"/>
                 <outlet property="whoPayedLabel" destination="E2T-gL-URU" id="H5j-c1-ZYf"/>
                 <outlet property="whoPayedTitleLabel" destination="CVw-I3-dV6" id="Sj1-FH-azC"/>
@@ -45,41 +42,6 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
-                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="toT-rl-Mp2">
-                            <rect key="frame" x="20" y="236" width="280" height="29"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="28" id="ftj-AY-NQh"/>
-                            </constraints>
-                            <segments>
-                                <segment title="="/>
-                                <segment title="€"/>
-                                <segment title="%"/>
-                                <segment title="n°"/>
-                            </segments>
-                            <connections>
-                                <action selector="segmentedControlHandler" destination="-1" eventType="valueChanged" id="7hj-0n-O05"/>
-                            </connections>
-                        </segmentedControl>
-                        <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="XRs-Jm-aUt">
-                            <rect key="frame" x="0.0" y="272" width="320" height="120"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="120" id="dnP-qa-FoT"/>
-                            </constraints>
-                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="dHi-Ov-JBK">
-                                <size key="itemSize" width="320" height="120"/>
-                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            </collectionViewFlowLayout>
-                            <cells/>
-                            <connections>
-                                <outlet property="dataSource" destination="-1" id="TF5-CZ-TWo"/>
-                                <outlet property="delegate" destination="-1" id="G2l-Ka-tQ7"/>
-                            </connections>
-                        </collectionView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RfS-sL-Wac">
                             <rect key="frame" x="0.0" y="160" width="320" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -109,22 +71,16 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="XRs-Jm-aUt" firstAttribute="top" secondItem="toT-rl-Mp2" secondAttribute="bottom" constant="8" id="3UI-1q-Qd5"/>
                         <constraint firstItem="o3A-Nf-PYM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="3uc-sn-afo"/>
                         <constraint firstAttribute="trailing" secondItem="o3A-Nf-PYM" secondAttribute="trailing" constant="20" id="BCQ-gh-Zbz"/>
                         <constraint firstItem="o3A-Nf-PYM" firstAttribute="top" secondItem="gnU-a8-Amg" secondAttribute="bottom" constant="8" id="FX0-Bc-frJ"/>
-                        <constraint firstAttribute="trailing" secondItem="XRs-Jm-aUt" secondAttribute="trailing" id="IAO-nc-AWg"/>
                         <constraint firstAttribute="trailing" secondItem="RfS-sL-Wac" secondAttribute="trailing" id="Oy1-i5-dFx"/>
-                        <constraint firstItem="toT-rl-Mp2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="VaB-Hm-POJ"/>
                         <constraint firstAttribute="trailing" secondItem="gnU-a8-Amg" secondAttribute="trailing" constant="20" id="Vrg-42-sxV"/>
                         <constraint firstItem="gnU-a8-Amg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="arO-jV-txx"/>
-                        <constraint firstItem="toT-rl-Mp2" firstAttribute="top" secondItem="RfS-sL-Wac" secondAttribute="bottom" constant="26" id="bTm-cK-jg1"/>
-                        <constraint firstItem="XRs-Jm-aUt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gob-Ma-L9Q"/>
                         <constraint firstItem="RfS-sL-Wac" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="n2m-VA-6rl"/>
+                        <constraint firstAttribute="bottom" secondItem="RfS-sL-Wac" secondAttribute="bottom" constant="182" id="n3K-Tp-kcB"/>
                         <constraint firstItem="gnU-a8-Amg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="84" id="rJc-VE-LFI"/>
                         <constraint firstItem="RfS-sL-Wac" firstAttribute="top" secondItem="o3A-Nf-PYM" secondAttribute="bottom" constant="8" id="rTX-fH-nh0"/>
-                        <constraint firstAttribute="trailing" secondItem="toT-rl-Mp2" secondAttribute="trailing" constant="20" id="x11-91-Rc1"/>
-                        <constraint firstAttribute="bottom" secondItem="XRs-Jm-aUt" secondAttribute="bottom" id="zR5-9Y-ury"/>
                     </constraints>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

@@ -12,7 +12,7 @@
 #import "DTModelManager.h"
 #import "DTAccountVC.h"
 
-#define NIB_NAME @"DTExpenseTableVC"
+#define NIB_NAME @"DTAccountsTableVC"
 
 @interface DTAccountsTableVC () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 

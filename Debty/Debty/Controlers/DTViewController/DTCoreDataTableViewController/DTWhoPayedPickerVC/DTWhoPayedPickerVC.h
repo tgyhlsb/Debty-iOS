@@ -7,7 +7,8 @@
 //
 
 #import "DTCoreDataTableViewController.h"
-#import "DTAccount.h"
+#import "DTExpense.h"
+#import "DTPerson.h"
 
 @protocol DTWhoPayedPickerDelegate;
 
@@ -15,7 +16,7 @@
 
 @property (weak, nonatomic) id<DTWhoPayedPickerDelegate> delegate;
 
-@property (strong, nonatomic) DTAccount *account;
+@property (strong, nonatomic) DTExpense *expense;
 @property (strong, nonatomic) DTPerson *whoPayed;
 
 @end
