@@ -70,6 +70,7 @@
         share = [NSEntityDescription insertNewObjectForEntityForName:CLASS_NAME_SHARE inManagedObjectContext:context];
         share.amount = [[NSDecimalNumber alloc] initWithFloat:individualAmount];
         share.person = person;
+        share.expense = expense;
         [tempShares addObject:share];
     }
     share.amount = [[NSDecimalNumber alloc] initWithFloat:lastAmount];

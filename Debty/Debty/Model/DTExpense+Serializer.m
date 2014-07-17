@@ -8,6 +8,7 @@
 
 #import "DTExpense+Serializer.h"
 #import "DTModelManager.h"
+#import "DTShare+Serializer.h"
 
 @implementation DTExpense (Serializer)
 
@@ -67,7 +68,7 @@
     DTExpense *expense = [NSEntityDescription insertNewObjectForEntityForName:CLASS_NAME_EXPENSE inManagedObjectContext:context];
     
     [expense setAccount:account];
-    [expense setShares:[[NSSet alloc] init]];
+    [DTShare sharesForExpense:expense];
     
     return expense;
 }
