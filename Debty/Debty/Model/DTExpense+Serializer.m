@@ -40,6 +40,7 @@
         }
         
         //TODO attributes
+        expense.isValid = @(YES);
         expense.amount = [info objectForKey:@"amount"];
     }
     
@@ -69,6 +70,7 @@
     
     [expense setAccount:account];
     [DTShare sharesForExpense:expense];
+    [expense setIsValid:@(NO)];
     
     return expense;
 }

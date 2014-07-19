@@ -6,8 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DTExpenseEditorVC">
             <connections>
-                <outlet property="amountLabel" destination="o3A-Nf-PYM" id="Ckh-nM-IfI"/>
-                <outlet property="nameLabel" destination="gnU-a8-Amg" id="iBR-s1-dAT"/>
+                <outlet property="amountTextField" destination="o3A-Nf-PYM" id="qn8-MW-iYf"/>
+                <outlet property="nameTextField" destination="gnU-a8-Amg" id="1em-IN-vup"/>
                 <outlet property="view" destination="izA-XQ-0SD" id="LOV-Sj-yfc"/>
                 <outlet property="whoPayedLabel" destination="E2T-gL-URU" id="H5j-c1-ZYf"/>
                 <outlet property="whoPayedTitleLabel" destination="CVw-I3-dV6" id="Sj1-FH-azC"/>
@@ -40,7 +40,7 @@
                                 <constraint firstAttribute="height" constant="30" id="X6z-R9-1lc"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RfS-sL-Wac">
                             <rect key="frame" x="0.0" y="160" width="320" height="50"/>

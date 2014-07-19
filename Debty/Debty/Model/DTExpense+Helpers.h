@@ -11,5 +11,6 @@
 @interface DTExpense (Helpers)
 
 - (BOOL)safeNeedSync;
+- (BOOL)safeIsValid;
 
 @end

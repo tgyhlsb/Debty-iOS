@@ -35,12 +35,9 @@ static DTModelManager *sharedManager;
     return account;
 }
 
-+ (DTExpense *)expenseWithAccount:(DTAccount *)account
++ (DTExpense *)newExpenseWithAccount:(DTAccount *)account
 {
     DTExpense *expense = [DTExpense newExpenseWithAccount:account];
-    if ([expense safeNeedSync]) {
-        [DTModelManager save];
-    }
     return expense;
 }
 
@@ -207,7 +204,7 @@ static DTModelManager *sharedManager;
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_EXPENSE];
     
-    NSPredicate *accountPredicate = [NSPredicate predicateWithFormat:@"account == %@", account];
+    NSPredicate *accountPredicate = [NSPredicate predicateWithFormat:@"account == %@ && isValid == YES", account];
     NSMutableArray *predicates = [[NSMutableArray alloc] initWithObjects:accountPredicate, nil];
     
     

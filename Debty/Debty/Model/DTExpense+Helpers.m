@@ -12,7 +12,12 @@
 
 - (BOOL)safeNeedSync
 {
-    return [self.needSync boolValue];
+    return self.needSync ? [self.needSync boolValue] : NO;
+}
+
+- (BOOL)safeIsValid
+{
+    return self.isValid ? [self.isValid boolValue] : NO;
 }
 
 @end

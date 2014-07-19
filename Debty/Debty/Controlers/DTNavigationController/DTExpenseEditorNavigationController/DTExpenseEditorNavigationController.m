@@ -18,13 +18,19 @@
 
 @implementation DTExpenseEditorNavigationController
 
-+ (instancetype)newNavigationController
++ (instancetype)newNavigationControllerWithAccount:(DTAccount *)account
+{
+    DTExpense *expense = [DTModelManager newExpenseWithAccount:account];
+    return [DTExpenseEditorNavigationController newNavigationControllerWithExpense:expense];
+}
+
++ (instancetype)newNavigationControllerWithExpense:(DTExpense *)expense
 {
     DTExpenseEditorVC *rootViewController = [DTExpenseEditorVC newController];
     DTExpenseEditorNavigationController *navigationController = [[DTExpenseEditorNavigationController alloc] initWithRootViewController:rootViewController];
     navigationController.expenseEditorVC = rootViewController;
     
-    rootViewController.expense = navigationController.expense;
+    navigationController.expense = expense;
     
     [rootViewController setNextButtonVisible:YES];
     [rootViewController setCloseButtonVisible:YES];
@@ -39,6 +45,10 @@
     
     return navigationController;
 }
+
+#pragma mark - Getters & setters
+
+@synthesize expense = _expense;
 
 - (void)setExpense:(DTExpense *)expense
 {
@@ -57,10 +67,8 @@
 
 - (void)validate
 {
-//    DTExpense *expense = [DTModelManager expenseWithAccount:self.account];
-//    expense.name = [self.expenseEditorVC expenseName];
-//    expense.amount = [self.expenseEditorVC expenseAmount];
-//    [DTModelManager save];
+    self.expense.isValid = @(YES);
+    [DTModelManager save];
     [self selfDissmiss];
 }
 

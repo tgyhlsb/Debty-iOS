@@ -73,9 +73,7 @@
 
 - (void)addExpenseButtonHandler
 {
-    DTExpenseEditorNavigationController *destination = [DTExpenseEditorNavigationController newNavigationController];
-    DTExpense *expense = [DTModelManager expenseWithAccount:self.account];
-    destination.expense = expense;
+    DTExpenseEditorNavigationController *destination = [DTExpenseEditorNavigationController newNavigationControllerWithAccount:self.account];
     [self presentViewController:destination animated:YES completion:^{
         
     }];

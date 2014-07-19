@@ -8,8 +8,12 @@
 
 #import "DTNavigationController.h"
 #import "DTExpense+Helpers.h"
+#import "DTAccount+Helpers.h"
 
 @interface DTExpenseEditorNavigationController : DTNavigationController
+
++ (instancetype)newNavigationControllerWithAccount:(DTAccount *)account;
++ (instancetype)newNavigationControllerWithExpense:(DTExpense *)expense;
 
 @property (strong, nonatomic) DTExpense *expense;
 

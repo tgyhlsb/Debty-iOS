@@ -18,8 +18,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *whoPayedLabel;
 @property (weak, nonatomic) IBOutlet UILabel *whoPayedTitleLabel;
 
-@property (weak, nonatomic) IBOutlet UITextField *nameLabel;
-@property (weak, nonatomic) IBOutlet UITextField *amountLabel;
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *amountTextField;
 
 @end
 
@@ -37,6 +37,12 @@
     whoPayedTapRecognizer.numberOfTapsRequired = 1;
     whoPayedTapRecognizer.numberOfTouchesRequired = 1;
     [self.whoPayedView addGestureRecognizer:whoPayedTapRecognizer];
+}
+
+- (void)registerToTextFieldNotifications
+{
+    [self.nameTextField addTarget:self action:@selector(nameTextFieldValueDidChange) forControlEvents:UIControlEventEditingChanged];
+    [self.amountTextField addTarget:self action:@selector(amountTextFieldValueDidChange) forControlEvents:UIControlEventEditingChanged];
 }
 
 - (void)setWhoPayed:(DTPerson *)whoPayed
@@ -57,9 +63,20 @@
     [super viewDidLoad];
     
     [self registerToGestureRecognizer];
+    [self registerToTextFieldNotifications];
 }
 
 #pragma mark - Handlers
+
+- (void)nameTextFieldValueDidChange
+{
+    self.expense.name = self.nameTextField.text;
+}
+
+- (void)amountTextFieldValueDidChange
+{
+    self.expense.amount = [NSDecimalNumber decimalNumberWithString:self.amountTextField.text];
+}
 
 - (void)whoPayedViewTapHandler
 {
@@ -81,12 +98,12 @@
 
 - (NSString *)expenseName
 {
-    return self.nameLabel.text;
+    return self.nameTextField.text;
 }
 
 - (NSDecimalNumber *)expenseAmount
 {
-    return [NSDecimalNumber decimalNumberWithString:self.amountLabel.text];
+    return [NSDecimalNumber decimalNumberWithString:self.amountTextField.text];
 }
 
 #pragma mark - DTWhoPayedPickerDelegate

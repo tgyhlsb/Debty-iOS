@@ -2,7 +2,7 @@
 //  DTExpense.m
 //  Debty
 //
-//  Created by Tanguy Hélesbeux on 13/07/2014.
+//  Created by Tanguy Hélesbeux on 19/07/2014.
 //  Copyright (c) 2014 Debty. All rights reserved.
 //
 
@@ -17,8 +17,9 @@
 @dynamic creationDate;
 @dynamic date;
 @dynamic identifier;
-@dynamic needSync;
 @dynamic name;
+@dynamic needSync;
+@dynamic isValid;
 @dynamic account;
 @dynamic shares;
 
