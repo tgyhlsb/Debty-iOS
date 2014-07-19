@@ -11,7 +11,11 @@
 
 #define NIB_NAME @"DTShareTypeVC"
 
-@interface DTShareTypeVC () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+@interface DTShareTypeVC () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIBarPositioningDelegate>
+
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 
 @property (strong, nonatomic) UIPageViewController *pageController;
 @property (strong, nonatomic) NSArray *viewControllers;
@@ -97,7 +101,46 @@
 }
 
 
+- (IBAction)cancelButtonHandler:(UIBarButtonItem *)sender
+{
+    [self selfDissmiss];
+}
+
+- (IBAction)doneButtonHandler:(UIBarButtonItem *)sender
+{
+    if ([self shouldSaveShares]) {
+        [self selfDissmiss];
+    } else {
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"invalid shares" delegate:self cancelButtonTitle:@"Back" otherButtonTitles:nil] show];
+    }
+}
+
+- (BOOL)shouldSaveShares
+{
+    DTSharesEditorVC *activeVC = [self activeViewController];
+    
+    if ([activeVC areSharesValid]) {
+        [activeVC setSharesFromValues];
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (void)selfDissmiss
+{
+    if (self.closeBlock) {
+        self.closeBlock();
+    }
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - UIPageViewControllerDataSource
+
+- (DTSharesEditorVC *)activeViewController
+{
+    return [[self.pageController viewControllers] firstObject];
+}
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
@@ -125,8 +168,15 @@
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
 {
-    DTShareTypeVC *viewController = [[pageViewController viewControllers] firstObject];
+    DTSharesEditorVC *viewController = [self activeViewController];
     self.segmentedControl.selectedSegmentIndex = [self.viewControllers indexOfObject:viewController];
+}
+
+#pragma mark - UIBarPositioningDelegate
+
+- (UIBarPosition)positionForBar:(id<UIBarPositioning>)bar
+{
+    return UIBarPositionTopAttached;
 }
 
 @end

@@ -15,4 +15,9 @@
 @property (strong, nonatomic) DTExpense *expense;
 @property (nonatomic) DTShareType type;
 
+- (void)setSharesFromValues;
+- (void)setValuesFromShares;
+
+- (BOOL)areSharesValid;
+
 @end

@@ -45,6 +45,11 @@
     self.whoPayedLabel.text = whoPayed.firstName;
 }
 
+- (void)updateSplitView
+{
+    
+}
+
 #pragma mark - View life cycle
 
 - (void)viewDidLoad
@@ -69,7 +74,7 @@
 {
     DTShareTypeVC *destination = [DTShareTypeVC newController];
     destination.expense = self.expense;
-    [self.navigationController pushViewController:destination animated:YES];
+    [self presentViewController:destination animated:YES completion:nil];
 }
 
 #pragma mark - Expense Attributes

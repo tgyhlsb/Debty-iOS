@@ -39,6 +39,12 @@
     return _cellValues;
 }
 
+- (void)setExpense:(DTExpense *)expense
+{
+    _expense = expense;
+    [self setValuesFromShares];
+}
+
 - (void)updateFooter
 {
     switch (self.type) {
@@ -89,7 +95,80 @@
 
 - (CGFloat)errorValue
 {
-    return [self.expense.amount floatValue] - [self totalValue];
+    switch (self.type) {
+        case DTShareTypeEqually:
+            return [self totalValue] ? 0.0 : 1.0;
+            
+        case DTShareTypeExactly:
+            return [self.expense.amount floatValue] - [self totalValue];
+            
+        case DTShareTypePercent:
+            return 100.0 - [self totalValue];
+            
+        case DTShareTypeShare:
+            return [self totalValue] ? 0.0 : 1.0;
+    }
+}
+
+- (void)setSharesFromValues
+{
+    switch (self.type) {
+        case DTShareTypeEqually:
+        {
+            
+            break;
+        }
+            
+        case DTShareTypeExactly:
+        {
+            for (NSIndexPath *indexPath in [self.cellValues allKeys]) {
+                DTShare *share = [self.fetchedResultsController objectAtIndexPath:indexPath];
+                share.amount = [self.cellValues objectForKey:indexPath];
+                NSLog(@"%@", share.amount);
+            }
+            break;
+        }
+            
+        case DTShareTypePercent:
+        {
+            self.expense.amount = [NSDecimalNumber decimalNumberWithString:@"10"];
+            NSDecimalNumber *totalPayed = [NSDecimalNumber decimalNumberWithString:@"0.00"];
+            DTShare *share = nil;
+            for (NSIndexPath *indexPath in [self.cellValues allKeys]) {
+                share = [self.fetchedResultsController objectAtIndexPath:indexPath];
+                CGFloat percent = [[self.cellValues objectForKey:indexPath] floatValue];
+                NSLog(@"percent = %f", percent);
+                CGFloat amount = round(percent*[self.expense.amount floatValue])/100.0;
+                NSLog(@"amount = %f", amount);
+                share.amount = [[NSDecimalNumber alloc] initWithFloat:amount];
+                totalPayed = [totalPayed decimalNumberByAdding:share.amount];
+                NSLog(@"%@", share.amount);
+            }
+            
+            NSDecimalNumber *missing = [self.expense.amount decimalNumberBySubtracting:totalPayed];
+            share.amount = [share.amount decimalNumberByAdding:missing];
+            NSLog(@"-> %@", share.amount);
+            
+            break;
+        }
+            
+        case DTShareTypeShare:
+        {
+            
+            break;
+        }
+            
+    }
+}
+
+- (void)setValuesFromShares
+{
+    [self updateFooter];
+}
+
+- (BOOL)areSharesValid
+{
+    return ([self errorValue] == 0.0);
 }
 
 #pragma mark - View life cycle
@@ -101,6 +180,7 @@
     [DTShareCell registerToTableView:self.tableView];
     
     [self setUpFetchRequest];
+    [self updateFooter];
 }
 
 #pragma mark - DTCoreDataTableViewController
