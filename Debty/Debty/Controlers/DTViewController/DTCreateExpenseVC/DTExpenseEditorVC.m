@@ -51,11 +51,6 @@
     self.whoPayedLabel.text = whoPayed.firstName;
 }
 
-- (void)updateSplitView
-{
-    
-}
-
 #pragma mark - View life cycle
 
 - (void)viewDidLoad

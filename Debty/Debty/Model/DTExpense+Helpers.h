@@ -7,8 +7,12 @@
 //
 
 #import "DTExpense.h"
+#import "DTShare+Helpers.h"
 
 @interface DTExpense (Helpers)
+
+- (DTShareType)type;
+- (void)setType:(DTShareType)type;
 
 - (BOOL)safeNeedSync;
 - (BOOL)safeIsValid;

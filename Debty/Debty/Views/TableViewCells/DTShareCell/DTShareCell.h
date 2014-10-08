@@ -8,6 +8,7 @@
 
 #import "DTTableViewCell.h"
 #import "DTShare+Helpers.h"
+#import "DTPerson+Helpers.h"
 
 @protocol DTShareCellDelegate;
 
@@ -16,7 +17,7 @@
 @property (weak, nonatomic) id<DTShareCellDelegate> delegate;
 
 @property (nonatomic) DTShareType type;
-@property (strong, nonatomic) DTShare *share;
+@property (strong, nonatomic) DTPerson *person;
 @property (strong, nonatomic) NSDecimalNumber *value;
 
 - (void)becomeFirstResponder;

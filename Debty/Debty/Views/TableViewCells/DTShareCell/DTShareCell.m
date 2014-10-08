@@ -52,7 +52,7 @@
 {
     _type = type;
     
-    self.nameLabel.text = self.share.person.firstName;
+    self.nameLabel.text = self.person.firstName;
     switch (type) {
         case DTShareTypeEqually:
         {
@@ -114,6 +114,8 @@
         } else {
             self.accessoryType = UITableViewCellAccessoryCheckmark;
         }
+    } else {
+        self.valueTextField.text = [self.value stringValue];
     }
     
     // Notiffy delegate

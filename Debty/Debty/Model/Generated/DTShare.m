@@ -2,7 +2,7 @@
 //  DTShare.m
 //  Debty
 //
-//  Created by Tanguy Hélesbeux on 10/07/2014.
+//  Created by Tanguy Hélesbeux on 08/10/2014.
 //  Copyright (c) 2014 Debty. All rights reserved.
 //
 
@@ -13,7 +13,7 @@
 
 @implementation DTShare
 
-@dynamic amount;
+@dynamic value;
 @dynamic identifier;
 @dynamic needSync;
 @dynamic expense;

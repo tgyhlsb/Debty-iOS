@@ -8,6 +8,7 @@
 
 #import "DTShareTypeVC.h"
 #import "DTSharesEditorVC.h"
+#import "DTExpense+Helpers.h"
 
 #define NIB_NAME @"DTShareTypeVC"
 
@@ -74,6 +75,11 @@
     [self.pageController setViewControllers:@[viewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
 }
 
+- (void)setViewForShareType:(DTShareType)type
+{
+    [self setViewControllerAtIndex:type];
+}
+
 #pragma mark - View life cycle
 
 - (void)viewDidLoad
@@ -93,13 +99,19 @@
     [self.pageController didMoveToParentViewController:self];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self setViewForShareType:self.expense.type];
+    self.segmentedControl.selectedSegmentIndex = self.expense.type;
+}
+
 #pragma mark - Handlers
 
 - (IBAction)segmentedControlValueDidChange
 {
-    [self setViewControllerAtIndex:self.segmentedControl.selectedSegmentIndex];
+    [self setViewForShareType:self.segmentedControl.selectedSegmentIndex];
 }
-
 
 - (IBAction)cancelButtonHandler:(UIBarButtonItem *)sender
 {

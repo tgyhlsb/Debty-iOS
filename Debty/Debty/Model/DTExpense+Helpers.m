@@ -10,6 +10,16 @@
 
 @implementation DTExpense (Helpers)
 
+- (DTShareType)type
+{
+    return [self.intType intValue];
+}
+
+- (void)setType:(DTShareType)type
+{
+    self.intType = [NSNumber numberWithInt:type];
+}
+
 - (BOOL)safeNeedSync
 {
     return self.needSync ? [self.needSync boolValue] : NO;

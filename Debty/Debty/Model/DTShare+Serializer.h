@@ -16,5 +16,6 @@
 + (DTShare *)sharesWithArray:(NSArray *)arrayInfo;
 
 + (NSArray *)sharesForExpense:(DTExpense *)expense;
++ (DTShare *)shareForExpense:(DTExpense *)expense andPerson:(DTPerson *)person;
 
 @end
