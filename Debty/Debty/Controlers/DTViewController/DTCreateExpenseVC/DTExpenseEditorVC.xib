@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DTExpenseEditorVC">
             <connections>
                 <outlet property="amountTextField" destination="o3A-Nf-PYM" id="qn8-MW-iYf"/>
+                <outlet property="dateLabel" destination="It9-Ip-NdW" id="8r3-Pg-ZWt"/>
                 <outlet property="nameTextField" destination="gnU-a8-Amg" id="1em-IN-vup"/>
                 <outlet property="view" destination="izA-XQ-0SD" id="LOV-Sj-yfc"/>
                 <outlet property="whoPayedLabel" destination="E2T-gL-URU" id="H5j-c1-ZYf"/>
@@ -71,15 +73,23 @@
                                 <action selector="shareEditorButtonHandler" destination="-1" eventType="touchUpInside" id="NRm-eB-1FH"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="It9-Ip-NdW">
+                            <rect key="frame" x="258" y="230" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="It9-Ip-NdW" firstAttribute="top" secondItem="RfS-sL-Wac" secondAttribute="bottom" constant="20" id="3A0-RQ-mh9"/>
                         <constraint firstItem="o3A-Nf-PYM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="3uc-sn-afo"/>
                         <constraint firstAttribute="trailing" secondItem="o3A-Nf-PYM" secondAttribute="trailing" constant="20" id="BCQ-gh-Zbz"/>
                         <constraint firstItem="o3A-Nf-PYM" firstAttribute="top" secondItem="gnU-a8-Amg" secondAttribute="bottom" constant="8" id="FX0-Bc-frJ"/>
                         <constraint firstAttribute="trailing" secondItem="RfS-sL-Wac" secondAttribute="trailing" id="Oy1-i5-dFx"/>
                         <constraint firstAttribute="trailing" secondItem="gnU-a8-Amg" secondAttribute="trailing" constant="20" id="Vrg-42-sxV"/>
                         <constraint firstItem="gnU-a8-Amg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="arO-jV-txx"/>
+                        <constraint firstAttribute="trailing" secondItem="It9-Ip-NdW" secondAttribute="trailing" constant="20" id="arR-gI-NKL"/>
                         <constraint firstItem="RfS-sL-Wac" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="n2m-VA-6rl"/>
                         <constraint firstAttribute="bottom" secondItem="RfS-sL-Wac" secondAttribute="bottom" constant="182" id="n3K-Tp-kcB"/>
                         <constraint firstItem="gnU-a8-Amg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="84" id="rJc-VE-LFI"/>

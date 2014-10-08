@@ -74,7 +74,8 @@
 
 - (void)setAutoCloseOnSelectDate:(BOOL)autoClose
 {
-    [self setAllowClearDate:!autoClose];
+//    @Tanguy
+//    [self setAllowClearDate:!autoClose];
     _autoCloseOnSelectDate = autoClose;
 }
 
