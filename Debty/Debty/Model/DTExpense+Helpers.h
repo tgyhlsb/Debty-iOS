@@ -19,7 +19,7 @@
 
 
 - (DTShare *)shareForPerson:(DTPerson *)person;
-- (void)setSharesFromPersonAndValueMapping:(NSMapTable *)mapTable andType:(DTShareType)type;
+- (void)setSharesFromPersonAndValueMapping:(NSMapTable *)mapTable;
 - (NSMapTable *)getPersonAndValueMapping;
 
 @end

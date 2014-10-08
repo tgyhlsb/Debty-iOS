@@ -53,6 +53,8 @@
     self.expense.amount = self.amount;
     self.expense.whoPayed = self.whoPayed;
     self.expense.date = self.payDate;
+    self.expense.type = self.shareType;
+    [self.expense setSharesFromPersonAndValueMapping:self.personsAndValuesMapping];
 }
 
 #pragma mark - Set up
@@ -185,7 +187,10 @@
 
 - (void)amountTextFieldValueDidChange
 {
-    self.amount = [NSDecimalNumber decimalNumberWithString:self.amountTextField.text];
+    NSDecimalNumber *amount = [NSDecimalNumber decimalNumberWithString:self.amountTextField.text];
+    if (amount && [amount floatValue] >= 0.0f) {
+        self.amount = amount;
+    }
 }
 
 - (void)whoPayedViewTapHandler

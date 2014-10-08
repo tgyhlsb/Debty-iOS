@@ -115,7 +115,11 @@
             self.accessoryType = UITableViewCellAccessoryCheckmark;
         }
     } else {
-        self.valueTextField.text = [self.value stringValue];
+        if ([self.value floatValue] <= 0.0f) {
+            self.valueTextField.text = @"";
+        } else {
+            self.valueTextField.text = [self.value stringValue];
+        }
     }
     
     // Notiffy delegate if needed, ie keyboard or click input
@@ -138,7 +142,10 @@
 
 - (void)valueTextFieldValueDidChange
 {
-    self.value = [NSDecimalNumber decimalNumberWithString:self.valueTextField.text];
+    NSDecimalNumber *value = [NSDecimalNumber decimalNumberWithString:self.valueTextField.text];
+    if (value && [value floatValue] >= 0.0f) {
+        self.value = value;
+    }
 }
 
 - (void)registerForTextFieldNotification
@@ -155,6 +162,8 @@
 {
     if (self.type == DTShareTypeEqually) {
         self.value = [self.value boolValue] ? [NSDecimalNumber decimalNumberWithString:@"0"] : [NSDecimalNumber decimalNumberWithString:@"1"];
+    } else {
+        [self.valueTextField becomeFirstResponder];
     }
 }
 

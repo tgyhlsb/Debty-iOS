@@ -42,60 +42,14 @@
     return [DTShare shareForExpense:self andPerson:person];
 }
 
-- (void)setSharesFromPersonAndValueMapping:(NSMapTable *)mapTable andType:(DTShareType)type
+- (void)setSharesFromPersonAndValueMapping:(NSMapTable *)mapTable
 {
-    [self setType:type];
-    switch (type) {
-        case DTShareTypeEqually:
-        {
-            
-            break;
-        }
-            
-        case DTShareTypeExactly:
-        {
-            NSEnumerator *personEnumerator = [mapTable keyEnumerator];
-            DTPerson *person = nil;
-            DTShare *share = nil;
-            while (person = [personEnumerator nextObject]) {
-                share = [self shareForPerson:person];
-                share.value = [mapTable objectForKey:person];
-                NSLog(@"%@", share.value);
-            }
-            break;
-        }
-            
-        case DTShareTypePercent:
-        {
-            NSDecimalNumber *totalPayed = [NSDecimalNumber decimalNumberWithString:@"0.00"];
-            NSDecimalNumber *totalToPay = [NSDecimalNumber decimalNumberWithString:@"100.00"];
-            
-            NSEnumerator *personEnumerator = [mapTable keyEnumerator];
-            DTPerson *person = nil;
-            DTShare *share = nil;
-            while (person = [personEnumerator nextObject]) {
-                share = [self shareForPerson:person];
-                CGFloat percent = [[mapTable objectForKey:person] floatValue];
-                NSString *stringPercent = [NSString stringWithFormat:@"%.2f", percent];
-                NSLog(@"percent = %@", stringPercent);
-                share.value = [[NSDecimalNumber alloc] initWithString:stringPercent];
-                totalPayed = [totalPayed decimalNumberByAdding:share.value];
-                NSLog(@"%@", share.value);
-            }
-            
-            NSDecimalNumber *missing = [totalToPay decimalNumberBySubtracting:totalPayed];
-            share.value = [share.value decimalNumberByAdding:missing];
-            NSLog(@"-> %@", share.value);
-            
-            break;
-        }
-            
-        case DTShareTypeShare:
-        {
-            
-            break;
-        }
-            
+    NSEnumerator *personEnumerator = [mapTable keyEnumerator];
+    DTPerson *person = nil;
+    DTShare *share = nil;
+    while (person = [personEnumerator nextObject]) {
+        share = [self shareForPerson:person];
+        share.value = [mapTable objectForKey:person];
     }
 }
 
