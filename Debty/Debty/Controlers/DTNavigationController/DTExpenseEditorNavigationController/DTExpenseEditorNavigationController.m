@@ -67,7 +67,7 @@
 
 - (void)validate
 {
-    self.expense.isValid = @(YES);
+    [self.expenseEditorVC saveExpense];
     [DTModelManager save];
     [self selfDissmiss];
 }

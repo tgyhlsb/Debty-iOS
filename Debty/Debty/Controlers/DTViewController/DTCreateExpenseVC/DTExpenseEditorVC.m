@@ -15,15 +15,20 @@
 #define NIB_NAME @"DTExpenseEditorVC"
 
 @interface DTExpenseEditorVC () <DTWhoPayedPickerDelegate, THDatePickerDelegate>
+
+@property (strong, nonatomic) DTPerson *whoPayed;
 @property (weak, nonatomic) IBOutlet UIView *whoPayedView;
 @property (weak, nonatomic) IBOutlet UILabel *whoPayedLabel;
 @property (weak, nonatomic) IBOutlet UILabel *whoPayedTitleLabel;
 
+@property (strong, nonatomic) NSString *name;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+
+@property (strong, nonatomic) NSDecimalNumber *amount;
 @property (weak, nonatomic) IBOutlet UITextField *amountTextField;
 
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) NSDate *payDate;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) NSDictionary *datePickerOptions;
 @property (strong, nonatomic) THDatePickerViewController *datePicker;
 
@@ -36,6 +41,18 @@
     DTExpenseEditorVC *controller = [[DTExpenseEditorVC alloc] initWithNibName:NIB_NAME bundle:nil];
     return controller;
 }
+
+- (void)saveExpense
+{
+    self.expense.isValid = @(YES);
+    
+    self.expense.name = self.name;
+    self.expense.amount = self.amount;
+    self.expense.whoPayed = self.whoPayed;
+    self.expense.date = self.payDate;
+}
+
+#pragma mark - Set up
 
 - (void)registerToGestureRecognizer
 {
@@ -57,18 +74,31 @@
     [self.amountTextField addTarget:self action:@selector(amountTextFieldValueDidChange) forControlEvents:UIControlEventEditingChanged];
 }
 
+#pragma mark - Getters & Setters
+
 - (void)setWhoPayed:(DTPerson *)whoPayed
 {
     _whoPayed = whoPayed;
-    self.expense.whoPayed = whoPayed;
     self.whoPayedLabel.text = whoPayed.firstName;
+}
+
+- (void)setName:(NSString *)name
+{
+    _name = name;
+    self.nameTextField.text = name;
+}
+
+- (void)setAmount:(NSDecimalNumber *)amount
+{
+    _amount = amount;
+    self.amountTextField.text = [amount stringValue];
 }
 
 - (THDatePickerViewController *)datePicker
 {
     if (!_datePicker) {
         _datePicker = [THDatePickerViewController datePicker];
-        _datePicker.date = [NSDate date];
+        _datePicker.date = self.payDate;
         _datePicker.delegate = self;
         [_datePicker setAllowClearDate:NO];
         [_datePicker setAutoCloseOnSelectDate:NO];
@@ -91,10 +121,19 @@
              };
 }
 
+@synthesize payDate = _payDate;
+
+- (NSDate *)payDate
+{
+    if (!_payDate) {
+        _payDate = [NSDate date];
+    }
+    return _payDate;
+}
+
 - (void)setPayDate:(NSDate *)payDate
 {
     _payDate = payDate;
-    self.expense.date = payDate;
     
     if (payDate) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -113,18 +152,30 @@
     [self registerToTextFieldNotifications];
     
     self.dateLabel.text = @"Pick a date";
+    
+    [self updateView];
+}
+
+- (void)updateView
+{
+    if (self.expense) {
+        self.name = self.expense.name;
+        self.payDate = self.expense.date;
+        self.whoPayed = self.expense.whoPayed;
+        self.amount = self.expense.amount;
+    }
 }
 
 #pragma mark - Handlers
 
 - (void)nameTextFieldValueDidChange
 {
-    self.expense.name = self.nameTextField.text;
+    self.name = self.nameTextField.text;
 }
 
 - (void)amountTextFieldValueDidChange
 {
-    self.expense.amount = [NSDecimalNumber decimalNumberWithString:self.amountTextField.text];
+    self.amount = [NSDecimalNumber decimalNumberWithString:self.amountTextField.text];
 }
 
 - (void)whoPayedViewTapHandler
@@ -147,18 +198,6 @@
     DTShareTypeVC *destination = [DTShareTypeVC newController];
     destination.expense = self.expense;
     [self presentViewController:destination animated:YES completion:nil];
-}
-
-#pragma mark - Expense Attributes
-
-- (NSString *)expenseName
-{
-    return self.nameTextField.text;
-}
-
-- (NSDecimalNumber *)expenseAmount
-{
-    return [NSDecimalNumber decimalNumberWithString:self.amountTextField.text];
 }
 
 #pragma mark - DTWhoPayedPickerDelegate

@@ -13,10 +13,7 @@
 @interface DTExpenseEditorVC : DTViewController
 
 @property (strong, nonatomic) DTExpense *expense;
-@property (strong, nonatomic) DTPerson *whoPayed;
 
-- (NSString *)expenseName;
-- (NSDecimalNumber *)expenseAmount;
-
+- (void)saveExpense;
 
 @end

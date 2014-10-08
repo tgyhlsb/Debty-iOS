@@ -9,7 +9,7 @@
 #import "DTExpenseDetailsVC.h"
 #import "DTPerson+Helpers.h"
 #import "DTModelManager.h"
-#import "DTExpenseEditorVC.h"
+#import "DTExpenseEditorNavigationController.h"
 
 #define NIB_NAME @"DTExpenseDetailsVC"
 
@@ -60,8 +60,12 @@
     [super viewDidLoad];
     
     [self setUpFetchRequest];
-    
     [self setUpView];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     [self updateView];
 }
 
@@ -78,9 +82,10 @@
 
 - (void)editButtonHandler
 {
-    DTExpenseEditorVC *destination = [DTExpenseEditorVC newController];
-    destination.expense = self.expense;
-    [self.navigationController pushViewController:destination animated:YES];
+    DTExpenseEditorNavigationController *destination = [DTExpenseEditorNavigationController newNavigationControllerWithExpense:self.expense];
+    [self presentViewController:destination animated:YES completion:^{
+        
+    }];
 }
 
 #pragma mark - DTCoreDataTableViewController

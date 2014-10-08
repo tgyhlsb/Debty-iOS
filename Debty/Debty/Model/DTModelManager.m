@@ -80,7 +80,8 @@ static DTModelManager *sharedManager;
     
     request.predicate = [NSPredicate predicateWithFormat:@"identifier == %@", identifier];
     
-    request.sortDescriptors = @[];
+    NSSortDescriptor *alphabeticOrder = [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES];
+    request.sortDescriptors = @[alphabeticOrder];
     
     return [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                managedObjectContext:[DTModelManager sharedContext]
@@ -113,7 +114,8 @@ static DTModelManager *sharedManager;
         request.predicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
     }
     
-    request.sortDescriptors = @[];
+    NSSortDescriptor *alphabeticOrder = [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES];
+    request.sortDescriptors = @[alphabeticOrder];
     
     return [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                managedObjectContext:[DTModelManager sharedContext]
@@ -127,7 +129,8 @@ static DTModelManager *sharedManager;
     
     request.predicate = [NSPredicate predicateWithFormat:@"self IN %@.persons", account];
     
-    request.sortDescriptors = @[];
+    NSSortDescriptor *alphabeticOrder = [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES];
+    request.sortDescriptors = @[alphabeticOrder];
     
     return [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                managedObjectContext:[DTModelManager sharedContext]
@@ -162,7 +165,8 @@ static DTModelManager *sharedManager;
     }
     request.predicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
     
-    request.sortDescriptors = @[];
+    NSSortDescriptor *alphabeticOrder = [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES];
+    request.sortDescriptors = @[alphabeticOrder];
     
     return [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                managedObjectContext:[DTModelManager sharedContext]
@@ -185,7 +189,8 @@ static DTModelManager *sharedManager;
         request.predicate = [NSPredicate predicateWithFormat:@""];
     }
     
-    request.sortDescriptors = @[];
+    NSSortDescriptor *alphabeticOrder = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    request.sortDescriptors = @[alphabeticOrder];
     
     return [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                managedObjectContext:[DTModelManager sharedContext]
@@ -233,7 +238,8 @@ static DTModelManager *sharedManager;
     
     request.predicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
     
-    request.sortDescriptors = @[];
+    NSSortDescriptor *alphabeticOrder = [NSSortDescriptor sortDescriptorWithKey:@"person.firstName" ascending:YES];
+    request.sortDescriptors = @[alphabeticOrder];
     
     return [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                managedObjectContext:[DTModelManager sharedContext]
