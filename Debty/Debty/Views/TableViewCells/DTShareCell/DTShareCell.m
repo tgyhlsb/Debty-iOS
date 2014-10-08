@@ -118,9 +118,11 @@
         self.valueTextField.text = [self.value stringValue];
     }
     
-    // Notiffy delegate
-    if ([self.delegate respondsToSelector:@selector(shareCellValueDidChange:)]) {
-        [self.delegate shareCellValueDidChange:self];
+    // Notiffy delegate if needed, ie keyboard or click input
+    if ([[self.value stringValue] isEqualToString:self.valueTextField.text] || self.type == DTShareTypeEqually) {
+        if ([self.delegate respondsToSelector:@selector(shareCellValueDidChange:)]) {
+            [self.delegate shareCellValueDidChange:self];
+        }
     }
 }
 

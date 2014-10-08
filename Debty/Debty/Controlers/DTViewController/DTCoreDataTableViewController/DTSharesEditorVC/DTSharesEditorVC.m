@@ -9,7 +9,6 @@
 #import "DTSharesEditorVC.h"
 #import "DTShareCell.h"
 #import "DTModelManager.h"
-#import "DTShare+Serializer.h"
 
 #define NIB_NAME @"DTSharesEditorVC"
 
@@ -17,7 +16,6 @@
 
 @interface DTSharesEditorVC () <DTShareCellDelegate>
 
-@property (strong, nonatomic) NSMutableDictionary *cellValues;
 
 @property (weak, nonatomic) IBOutlet UIView *footerView;
 @property (weak, nonatomic) IBOutlet UILabel *footerDetailLabel;
@@ -34,26 +32,23 @@
     return controller;
 }
 
-- (NSMutableDictionary *)cellValues
+- (NSMapTable *)personsAndValuesMapping
 {
-    if (!_cellValues) {
-        _cellValues = [[NSMutableDictionary alloc] init];
+    if (!_personsAndValuesMapping) {
+        _personsAndValuesMapping = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsStrongMemory
+                                                          valueOptions:NSPointerFunctionsStrongMemory];
     }
-    return _cellValues;
+    return _personsAndValuesMapping;
 }
 
 - (void)setExpense:(DTExpense *)expense
 {
     _expense = expense;
-    
-    if (self.type == expense.type) {
-        [self setValuesFromShares];
-    }
 }
 
 - (void)updateFooter
 {
-    switch (self.type) {
+    switch (self.shareType) {
         case DTShareTypeEqually:
         {
             self.footerDetailLabel.hidden = YES;
@@ -91,9 +86,14 @@
 
 - (CGFloat)totalValue
 {
-    NSArray *values = [self.cellValues allValues];
+    
+    NSEnumerator *enumerator = [self.personsAndValuesMapping keyEnumerator];
+    DTPerson *key = nil;
+    NSDecimalNumber *value = nil;
     CGFloat total = 0;
-    for (NSDecimalNumber *value in values) {
+    
+    while ((key = [enumerator nextObject])) {
+        value = [self.personsAndValuesMapping objectForKey:key];
         total += [value floatValue];
     }
     return total;
@@ -101,7 +101,7 @@
 
 - (CGFloat)errorValue
 {
-    switch (self.type) {
+    switch (self.shareType) {
         case DTShareTypeEqually:
             return [self totalValue] ? 0.0 : 1.0;
             
@@ -114,76 +114,6 @@
         case DTShareTypeShare:
             return [self totalValue] ? 0.0 : 1.0;
     }
-}
-
-- (DTShare *)shareForPerson:(DTPerson *)person
-{
-    for (DTShare *share in self.expense.shares) {
-        if ([share.person isEqual:person]) {
-            return share;
-        }
-    }
-    return [DTShare shareForExpense:self.expense andPerson:person];
-}
-
-- (void)setSharesFromValues
-{
-    [self.expense setType:self.type];
-    switch (self.type) {
-        case DTShareTypeEqually:
-        {
-            
-            break;
-        }
-            
-        case DTShareTypeExactly:
-        {
-            for (NSIndexPath *indexPath in [self.cellValues allKeys]) {
-                DTPerson *person = [self.fetchedResultsController objectAtIndexPath:indexPath];
-                DTShare *share = [self shareForPerson:person];
-                share.value = [self.cellValues objectForKey:indexPath];
-                NSLog(@"%@", share.value);
-            }
-            break;
-        }
-            
-        case DTShareTypePercent:
-        {
-            NSDecimalNumber *totalPayed = [NSDecimalNumber decimalNumberWithString:@"0.00"];
-            NSDecimalNumber *totalToPay = [NSDecimalNumber decimalNumberWithString:@"100.00"];
-            DTPerson *person = nil;
-            DTShare *share = nil;
-            for (NSIndexPath *indexPath in [self.cellValues allKeys]) {
-                person = [self.fetchedResultsController objectAtIndexPath:indexPath];
-                share = [self shareForPerson:person];
-                CGFloat percent = [[self.cellValues objectForKey:indexPath] floatValue];
-                NSString *stringPercent = [NSString stringWithFormat:@"%.2f", percent];
-                NSLog(@"percent = %@", stringPercent);
-                share.value = [[NSDecimalNumber alloc] initWithString:stringPercent];
-                totalPayed = [totalPayed decimalNumberByAdding:share.value];
-                NSLog(@"%@", share.value);
-            }
-            
-            NSDecimalNumber *missing = [totalToPay decimalNumberBySubtracting:totalPayed];
-            share.value = [share.value decimalNumberByAdding:missing];
-            NSLog(@"-> %@", share.value);
-            
-            break;
-        }
-            
-        case DTShareTypeShare:
-        {
-            
-            break;
-        }
-            
-    }
-}
-
-- (void)setValuesFromShares
-{
-    
-    [self updateFooter];
 }
 
 - (BOOL)areSharesValid
@@ -228,10 +158,7 @@
 
 - (void)shareCellValueDidChange:(DTShareCell *)cell
 {
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    if (indexPath) {
-        [self.cellValues setObject:cell.value forKey:indexPath];
-    }
+    [self.personsAndValuesMapping setObject:cell.value forKey:cell.person];
     [self updateFooter];
 }
 
@@ -243,23 +170,16 @@
     DTShareCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
     
     cell.person = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.type = self.type;
+    cell.type = self.shareType;
     cell.delegate = self;
     
     // update cell value
-    if (self.expense.type == self.type) {
-        NSDecimalNumber *actualValue = [self.cellValues objectForKey:indexPath];
-        if (!actualValue) {
-            DTShare *share = [self shareForPerson:cell.person];
-            if (share) {
-                actualValue = share.value;
-            } else {
-                actualValue = CELL_DEFAULT_VALUE;
-            }
-        }
-        [self.cellValues setObject:actualValue forKey:indexPath];
-        cell.value = actualValue;
+    NSDecimalNumber *actualValue = [self.personsAndValuesMapping objectForKey:cell.person];
+    if (!actualValue) {
+        actualValue = CELL_DEFAULT_VALUE;
     }
+    [self.personsAndValuesMapping setObject:actualValue forKey:cell.person];
+    cell.value = actualValue;
     
     return cell;
 }

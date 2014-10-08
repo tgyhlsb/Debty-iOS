@@ -32,6 +32,9 @@
 @property (strong, nonatomic) NSDictionary *datePickerOptions;
 @property (strong, nonatomic) THDatePickerViewController *datePicker;
 
+@property (nonatomic) DTShareType shareType;
+@property (strong, nonatomic) NSMapTable *personsAndValuesMapping;
+
 @end
 
 @implementation DTExpenseEditorVC
@@ -92,6 +95,11 @@
 {
     _amount = amount;
     self.amountTextField.text = [amount stringValue];
+}
+
+- (void)setPersonsAndValuesMapping:(NSMapTable *)personsAndValuesMapping
+{
+    _personsAndValuesMapping = personsAndValuesMapping;
 }
 
 - (THDatePickerViewController *)datePicker
@@ -163,6 +171,8 @@
         self.payDate = self.expense.date;
         self.whoPayed = self.expense.whoPayed;
         self.amount = self.expense.amount;
+        self.shareType =self.expense.type;
+        self.personsAndValuesMapping = [self.expense getPersonAndValueMapping];
     }
 }
 
@@ -197,6 +207,15 @@
 {
     DTShareTypeVC *destination = [DTShareTypeVC newController];
     destination.expense = self.expense;
+    destination.shareType = self.shareType;
+    destination.personsAndValuesMapping = self.personsAndValuesMapping;
+    
+    __weak DTShareTypeVC *weakDestination = destination;
+//    Called when user saves the new shares
+    destination.nextBlock = ^{
+        self.shareType = weakDestination.shareType;
+        self.personsAndValuesMapping = weakDestination.personsAndValuesMapping;
+    };
     [self presentViewController:destination animated:YES completion:nil];
 }
 

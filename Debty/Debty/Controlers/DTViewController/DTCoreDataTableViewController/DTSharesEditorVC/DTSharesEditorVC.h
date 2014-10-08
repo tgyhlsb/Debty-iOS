@@ -7,16 +7,15 @@
 //
 
 #import "DTCoreDataTableViewController.h"
-#import "DTExpense.h"
-#import "DTshare+Helpers.h"
+#import "DTExpense+Helpers.h"
+#import "DTShare+Helpers.h"
 
 @interface DTSharesEditorVC : DTCoreDataTableViewController
 
 @property (strong, nonatomic) DTExpense *expense;
-@property (nonatomic) DTShareType type;
 
-- (void)setSharesFromValues;
-- (void)setValuesFromShares;
+@property (nonatomic) DTShareType shareType;
+@property (strong, nonatomic) NSMapTable *personsAndValuesMapping;
 
 - (BOOL)areSharesValid;
 

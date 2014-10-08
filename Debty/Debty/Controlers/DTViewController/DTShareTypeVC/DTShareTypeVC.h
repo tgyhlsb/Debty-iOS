@@ -8,9 +8,12 @@
 
 #import "DTViewController.h"
 #import "DTExpense.h"
+#import "DTShare+Helpers.h"
 
 @interface DTShareTypeVC : DTViewController
 
 @property (strong, nonatomic) DTExpense *expense;
+@property (nonatomic) DTShareType shareType;
+@property (strong, nonatomic) NSMapTable *personsAndValuesMapping;
 
 @end

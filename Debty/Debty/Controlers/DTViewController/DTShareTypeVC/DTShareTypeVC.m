@@ -37,31 +37,23 @@
 
 #pragma mark Getters & Setters
 
-- (void)setExpense:(DTExpense *)expense
-{
-    _expense = expense;
-    
-    // update all VCs
-    [self.viewControllers makeObjectsPerformSelector:@selector(setExpense:) withObject:self.expense];
-}
-
 - (NSArray *)viewControllers
 {
     if (!_viewControllers) {
         DTSharesEditorVC *equallyVC = [DTSharesEditorVC newController];
-        equallyVC.type = DTShareTypeEqually;
+        equallyVC.shareType = DTShareTypeEqually;
         equallyVC.expense = self.expense;
         
         DTSharesEditorVC *exactlyVC = [DTSharesEditorVC newController];
-        exactlyVC.type = DTShareTypeExactly;
+        exactlyVC.shareType = DTShareTypeExactly;
         exactlyVC.expense = self.expense;
         
         DTSharesEditorVC *percentVC = [DTSharesEditorVC newController];
-        percentVC.type = DTShareTypePercent;
+        percentVC.shareType = DTShareTypePercent;
         percentVC.expense = self.expense;
         
         DTSharesEditorVC *shareVC = [DTSharesEditorVC newController];
-        shareVC.type = DTShareTypeShare;
+        shareVC.shareType = DTShareTypeShare;
         shareVC.expense = self.expense;
         
         _viewControllers = [NSArray arrayWithObjects:equallyVC, exactlyVC, percentVC, shareVC, nil];
@@ -72,12 +64,14 @@
 - (void)setViewControllerAtIndex:(NSInteger)index
 {
     UIViewController *viewController = [self.viewControllers objectAtIndex:index];
-    [self.pageController setViewControllers:@[viewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-}
-
-- (void)setViewForShareType:(DTShareType)type
-{
-    [self setViewControllerAtIndex:type];
+    
+    __weak DTShareTypeVC *weakSelf;
+    [self.pageController setViewControllers:@[viewController]
+                                  direction:UIPageViewControllerNavigationDirectionForward
+                                   animated:NO
+                                 completion:^(BOOL finished) {
+            weakSelf.segmentedControl.selectedSegmentIndex = weakSelf.shareType;
+    }];
 }
 
 #pragma mark - View life cycle
@@ -92,7 +86,7 @@
     self.pageController.delegate = self;
     self.pageController.view.frame = self.pageControllerView.frame;
     
-    [self setViewControllerAtIndex:0];
+    [self setViewControllerAtIndex:self.shareType];
     
     [self addChildViewController:self.pageController];
     [self.view addSubview:[self.pageController view]];
@@ -102,15 +96,18 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self setViewForShareType:self.expense.type];
-    self.segmentedControl.selectedSegmentIndex = self.expense.type;
+    
+//    Set up active VC
+    DTSharesEditorVC *activeVC = [self.viewControllers objectAtIndex:self.shareType];
+    activeVC.personsAndValuesMapping = self.personsAndValuesMapping;
+    self.segmentedControl.selectedSegmentIndex = self.shareType;
 }
 
 #pragma mark - Handlers
 
 - (IBAction)segmentedControlValueDidChange
 {
-    [self setViewForShareType:self.segmentedControl.selectedSegmentIndex];
+    [self setViewControllerAtIndex:self.segmentedControl.selectedSegmentIndex];
 }
 
 - (IBAction)cancelButtonHandler:(UIBarButtonItem *)sender
@@ -120,23 +117,19 @@
 
 - (IBAction)doneButtonHandler:(UIBarButtonItem *)sender
 {
-    if ([self shouldSaveShares]) {
+    DTSharesEditorVC *activeVC = [self activeViewController];
+    if ([activeVC areSharesValid]) {
+        self.shareType = activeVC.shareType;
+        self.personsAndValuesMapping = activeVC.personsAndValuesMapping;
+        
+        if (self.nextBlock) {
+            self.nextBlock();
+        }
+        
         [self selfDissmiss];
     } else {
         [[[UIAlertView alloc] initWithTitle:@"Error" message:@"invalid shares" delegate:self cancelButtonTitle:@"Back" otherButtonTitles:nil] show];
     }
-}
-
-- (BOOL)shouldSaveShares
-{
-    DTSharesEditorVC *activeVC = [self activeViewController];
-    
-    if ([activeVC areSharesValid]) {
-        [activeVC setSharesFromValues];
-        return YES;
-    }
-    
-    return NO;
 }
 
 - (void)selfDissmiss
