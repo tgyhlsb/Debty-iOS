@@ -10,6 +10,7 @@
 #import "DTModelManager.h"
 #import "DTExpenseTableViewCell.h"
 #import "DTExpenseEditorNavigationController.h"
+#import "DTExpenseDetailsVC.h"
 
 #define NIB_NAME @"DTAccountVC"
 
@@ -113,6 +114,15 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return [DTExpenseTableViewCell height];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DTExpense *expense = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    DTExpenseDetailsVC *destination = [DTExpenseDetailsVC newController];
+    destination.expense = expense;
+    [self.navigationController pushViewController:destination animated:YES];
 }
 
 @end

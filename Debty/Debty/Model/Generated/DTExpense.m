@@ -8,6 +8,7 @@
 
 #import "DTExpense.h"
 #import "DTAccount.h"
+#import "DTPerson.h"
 #import "DTShare.h"
 
 
@@ -17,11 +18,12 @@
 @dynamic creationDate;
 @dynamic date;
 @dynamic identifier;
+@dynamic intType;
 @dynamic isValid;
 @dynamic name;
 @dynamic needSync;
-@dynamic intType;
 @dynamic account;
 @dynamic shares;
+@dynamic whoPayed;
 
 @end

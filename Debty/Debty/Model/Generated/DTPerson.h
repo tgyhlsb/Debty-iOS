@@ -2,14 +2,14 @@
 //  DTPerson.h
 //  Debty
 //
-//  Created by Tanguy Hélesbeux on 12/07/2014.
+//  Created by Tanguy Hélesbeux on 08/10/2014.
 //  Copyright (c) 2014 Debty. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class DTAccount, DTPerson, DTShare;
+@class DTAccount, DTExpense, DTPerson, DTShare;
 
 @interface DTPerson : NSManagedObject
 
@@ -19,13 +19,14 @@
 @property (nonatomic, retain) NSString * firstName;
 @property (nonatomic, retain) NSString * gender;
 @property (nonatomic, retain) NSNumber * identifier;
+@property (nonatomic, retain) NSNumber * isSelected;
 @property (nonatomic, retain) NSString * lastName;
 @property (nonatomic, retain) NSNumber * needSync;
-@property (nonatomic, retain) NSNumber * isSelected;
 @property (nonatomic, retain) NSSet *accounts;
 @property (nonatomic, retain) NSSet *friends;
 @property (nonatomic, retain) NSSet *friendsInverseRelation;
 @property (nonatomic, retain) NSSet *shares;
+@property (nonatomic, retain) NSSet *payedFor;
 @end
 
 @interface DTPerson (CoreDataGeneratedAccessors)
@@ -49,5 +50,10 @@
 - (void)removeSharesObject:(DTShare *)value;
 - (void)addShares:(NSSet *)values;
 - (void)removeShares:(NSSet *)values;
+
+- (void)addPayedForObject:(DTExpense *)value;
+- (void)removePayedForObject:(DTExpense *)value;
+- (void)addPayedFor:(NSSet *)values;
+- (void)removePayedFor:(NSSet *)values;
 
 @end

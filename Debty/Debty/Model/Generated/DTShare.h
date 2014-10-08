@@ -13,9 +13,9 @@
 
 @interface DTShare : NSManagedObject
 
-@property (nonatomic, retain) NSDecimalNumber * value;
 @property (nonatomic, retain) NSNumber * identifier;
 @property (nonatomic, retain) NSNumber * needSync;
+@property (nonatomic, retain) NSDecimalNumber * value;
 @property (nonatomic, retain) DTExpense *expense;
 @property (nonatomic, retain) DTPerson *person;
 

@@ -13,9 +13,9 @@
 
 @implementation DTShare
 
-@dynamic value;
 @dynamic identifier;
 @dynamic needSync;
+@dynamic value;
 @dynamic expense;
 @dynamic person;
 

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class DTAccount, DTShare;
+@class DTAccount, DTPerson, DTShare;
 
 @interface DTExpense : NSManagedObject
 
@@ -17,12 +17,13 @@
 @property (nonatomic, retain) NSDate * creationDate;
 @property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) NSNumber * identifier;
+@property (nonatomic, retain) NSNumber * intType;
 @property (nonatomic, retain) NSNumber * isValid;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * needSync;
-@property (nonatomic, retain) NSNumber * intType;
 @property (nonatomic, retain) DTAccount *account;
 @property (nonatomic, retain) NSSet *shares;
+@property (nonatomic, retain) DTPerson *whoPayed;
 @end
 
 @interface DTExpense (CoreDataGeneratedAccessors)

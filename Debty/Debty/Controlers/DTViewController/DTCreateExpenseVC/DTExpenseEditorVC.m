@@ -60,6 +60,7 @@
 - (void)setWhoPayed:(DTPerson *)whoPayed
 {
     _whoPayed = whoPayed;
+    self.expense.whoPayed = whoPayed;
     self.whoPayedLabel.text = whoPayed.firstName;
 }
 
