@@ -75,28 +75,49 @@
 
 - (void)nextButtonHandler
 {
+    NSMutableArray *friends = [[self selectedFriends] mutableCopy];
+    [friends addObject:[DTInstallation me]];
+    self.accountDraft.personList = friends;
+    
     if ([self.topViewController isMemberOfClass:[DTFriendsPickerVC class]]) {
-        [self pushToCreateAccountVC];
+        if ([self.accountDraft.personList count] == 1) {
+            [[[UIAlertView alloc] initWithTitle:@"Error"
+                                        message:@"Select friends"
+                                       delegate:self
+                              cancelButtonTitle:@"Ok"
+                              otherButtonTitles:nil] show];
+        } else if ([self.accountDraft.personList count] == 2) {
+            [self createAccount];
+        } else {
+            [self pushToCreateAccountVC];
+        }
     } else if ([self.topViewController isMemberOfClass:[DTCreateAccountVC class]]) {
-        
+        [self createAccount];
     }
 }
 
 - (void)pushToCreateAccountVC
 {
-    NSMutableArray *friends = [[self selectedFriends] mutableCopy];
-    [friends addObject:[DTInstallation me]];
+    DTCreateAccountVC *destination = [DTCreateAccountVC newController];
+    destination.accountDraft = self.accountDraft;
+    [destination setCloseButtonVisible:NO];
+    [destination setNextButtonVisible:YES];
     
-    if ([friends count] == 2) {
-        [DTModelManager deselectAllPersons];
-        DTAccount *account = [DTModelManager accountWithPersons:friends];
-        [self selfDissmissWithAccount:account];
-    } else {
-        self.accountDraft.personList = friends;
-        DTCreateAccountVC *destination = [DTCreateAccountVC newController];
-        destination.accountDraft = self.accountDraft;
-        [self pushViewController:destination animated:YES];
-    }
+    
+    __weak DTViewController *weakDestination = destination;
+    [destination setNextBlock:^{
+        [((DTNewAccountNavigationController *)weakDestination.navigationController) nextButtonHandler];
+    }];
+    
+    [self pushViewController:destination animated:YES];
+}
+
+- (void)createAccount
+{
+    [DTModelManager deselectAllPersons];
+    DTAccount *account = [DTModelManager accountWithPersons:self.accountDraft.personList];
+    account.name = self.accountDraft.name;
+    [self selfDissmissWithAccount:account];
 }
 
 #pragma mark - Navigation
