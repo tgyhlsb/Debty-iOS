@@ -9,6 +9,7 @@
 #import "DTOperationManager.h"
 
 static NSDecimalNumberHandler *sharedDecimalHandler;
+static NSNumberFormatter *sharedNumberFormatter;
 static BOOL useRoundedNumber = NO;
 
 @interface DTOperationManager()
@@ -32,6 +33,16 @@ static BOOL useRoundedNumber = NO;
                                                                                 raiseOnDivideByZero:NO];
     }
     return sharedDecimalHandler;
+}
+
++ (NSNumberFormatter *)sharedNumberFormatter
+{
+    if (!sharedNumberFormatter) {
+        sharedNumberFormatter = [[NSNumberFormatter alloc] init];
+        [sharedNumberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
+        [sharedNumberFormatter setCurrencyCode:@"EUR"];
+    }
+    return sharedNumberFormatter;
 }
 
 + (void)useRoundedNumbers:(BOOL)rounded
@@ -128,6 +139,13 @@ static BOOL useRoundedNumber = NO;
 + (NSDecimalNumber *)substractString:(NSString *)first to:(NSDecimalNumber *)second
 {
     return [DTOperationManager substract:[NSDecimalNumber decimalNumberWithString:first] to:second];
+}
+
+#pragma mark - Currency
+
++ (NSString *)currencyStringWithDecimalNumber:(NSDecimalNumber *)decimalNumber
+{
+    return [[DTOperationManager sharedNumberFormatter] stringFromNumber:decimalNumber];
 }
 
 

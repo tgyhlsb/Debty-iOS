@@ -108,7 +108,8 @@
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     
     DTShare *share = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ | %@", share.person.firstName, [share balancedAmount]];
+    NSString *amount = [DTOperationManager currencyStringWithDecimalNumber:[share balancedAmount]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ | %@", share.person.firstName, amount];
     
     return cell;
 }

@@ -30,5 +30,7 @@
 + (NSDecimalNumber *)substractString:(NSString *)first to:(NSDecimalNumber *)second;
 + (NSDecimalNumber *)substract:(NSDecimalNumber *)first toString:(NSString *)second;
 
++ (NSString *)currencyStringWithDecimalNumber:(NSDecimalNumber *)decimalNumber;
+
 
 @end
