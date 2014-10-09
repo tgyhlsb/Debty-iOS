@@ -9,14 +9,16 @@
 #import "DTShare+Helpers.h"
 #import "DTExpense+Helpers.h"
 #import "DTPerson+Helpers.h"
+#import "DTOperationManager.h"
 
 @implementation DTShare (Helpers)
 
 - (NSDecimalNumber *)dueAmount
 {
     NSDecimalNumber *total = [self.expense totalValue];
-    NSDecimalNumber *percent = [self.value decimalNumberByDividingBy:total];
-    return [self.expense.amount decimalNumberByMultiplyingBy:percent];
+    NSDecimalNumber *percent = [DTOperationManager divide:self.value by:total];
+    NSDecimalNumber *exactAmount = [DTOperationManager multiply:self.expense.amount by:percent];
+    return [DTOperationManager roundedNumber:exactAmount];
 }
 
 - (NSDecimalNumber *)paidAmount
@@ -30,7 +32,7 @@
 
 - (NSDecimalNumber *)balancedAmount
 {
-    return [[self paidAmount] decimalNumberBySubtracting:[self dueAmount]];
+    return [DTOperationManager substract:[self dueAmount] to:[self paidAmount]];
 }
 
 @end

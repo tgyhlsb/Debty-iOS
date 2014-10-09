@@ -9,6 +9,7 @@
 #import "DTExpense+Helpers.h"
 #import "DTPerson+Helpers.h"
 #import "DTShare+Serializer.h"
+#import "DTOperationManager.h"
 
 @implementation DTExpense (Helpers)
 
@@ -34,9 +35,9 @@
 
 - (NSDecimalNumber *)totalValue
 {
-    NSDecimalNumber *total = [NSDecimalNumber decimalNumberWithString:@"0"];
+    NSDecimalNumber *total = [NSDecimalNumber zero];
     for (DTShare *share in self.shares) {
-        total = [total decimalNumberByAdding:share.value];
+        total = [DTOperationManager add:share.value to:total];
     }
     return total;
 }

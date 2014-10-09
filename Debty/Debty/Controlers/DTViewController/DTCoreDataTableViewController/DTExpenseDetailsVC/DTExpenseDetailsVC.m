@@ -10,6 +10,7 @@
 #import "DTPerson+Helpers.h"
 #import "DTModelManager.h"
 #import "DTExpenseEditorNavigationController.h"
+#import "DTOperationManager.h"
 
 #define NIB_NAME @"DTExpenseDetailsVC"
 
@@ -107,14 +108,7 @@
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     
     DTShare *share = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSDecimalNumberHandler *roundPlain = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundPlain
-                                                                                                scale:2
-                                                                                     raiseOnExactness:NO
-                                                                                      raiseOnOverflow:NO
-                                                                                     raiseOnUnderflow:NO
-                                                                                  raiseOnDivideByZero:NO];
-    NSDecimalNumber *rounded = [[share balancedAmount] decimalNumberByRoundingAccordingToBehavior:roundPlain];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ | %@", share.person.firstName, rounded];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ | %@", share.person.firstName, [share balancedAmount]];
     
     return cell;
 }
