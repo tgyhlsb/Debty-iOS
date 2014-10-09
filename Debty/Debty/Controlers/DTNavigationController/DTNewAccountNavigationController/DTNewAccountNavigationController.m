@@ -26,6 +26,8 @@
     [rootViewController setCloseButtonVisible:YES];
     [rootViewController setNextButtonVisible:YES];
     
+    navigationController.navigationBar.translucent = NO;
+    
     __weak DTViewController *weakRootVC = rootViewController;
     [rootViewController setCloseBlock:^{
         [((DTNewAccountNavigationController *)weakRootVC.navigationController) selfDissmissWithAccount:nil];
