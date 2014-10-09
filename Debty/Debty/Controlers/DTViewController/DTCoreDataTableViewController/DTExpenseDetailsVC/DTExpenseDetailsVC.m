@@ -35,7 +35,7 @@
 - (void)updateView
 {
     self.titleLabel.text = self.expense.name;
-    self.amountLabel.text = [self.expense.amount stringValue];
+    self.amountLabel.text = [DTOperationManager currencyStringWithDecimalNumber:self.expense.amount];
     self.whoPayedLabel.text = self.expense.whoPayed.firstName;
     
     
