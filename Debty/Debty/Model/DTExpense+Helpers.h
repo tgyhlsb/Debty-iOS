@@ -16,6 +16,7 @@
 
 - (BOOL)safeNeedSync;
 - (BOOL)safeIsValid;
+- (NSDecimalNumber *)totalValue;
 
 - (DTShare *)shareForPerson:(DTPerson *)person;
 

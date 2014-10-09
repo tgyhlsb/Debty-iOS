@@ -32,6 +32,15 @@
     return self.isValid ? [self.isValid boolValue] : NO;
 }
 
+- (NSDecimalNumber *)totalValue
+{
+    NSDecimalNumber *total = [NSDecimalNumber decimalNumberWithString:@"0"];
+    for (DTShare *share in self.shares) {
+        total = [total decimalNumberByAdding:share.value];
+    }
+    return total;
+}
+
 - (DTShare *)shareForPerson:(DTPerson *)person
 {
     for (DTShare *share in self.shares) {

@@ -17,4 +17,8 @@ typedef NS_ENUM(NSInteger, DTShareType) {
 
 @interface DTShare (Helpers)
 
+- (NSDecimalNumber *)dueAmount;
+- (NSDecimalNumber *)paidAmount;
+- (NSDecimalNumber *)balancedAmount;
+
 @end

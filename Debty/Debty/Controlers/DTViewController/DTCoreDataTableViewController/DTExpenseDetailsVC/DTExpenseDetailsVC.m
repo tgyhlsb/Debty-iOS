@@ -107,8 +107,14 @@
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     
     DTShare *share = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = share.person.firstName;
-    cell.detailTextLabel.text = [share.value stringValue];
+    NSDecimalNumberHandler *roundPlain = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundPlain
+                                                                                                scale:2
+                                                                                     raiseOnExactness:NO
+                                                                                      raiseOnOverflow:NO
+                                                                                     raiseOnUnderflow:NO
+                                                                                  raiseOnDivideByZero:NO];
+    NSDecimalNumber *rounded = [[share balancedAmount] decimalNumberByRoundingAccordingToBehavior:roundPlain];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ | %@", share.person.firstName, rounded];
     
     return cell;
 }
