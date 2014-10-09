@@ -11,6 +11,7 @@
 #import "DTShare+Serializer.h"
 #import "DTOperationManager.h"
 #import "DTInstallation.h"
+#import "DTAccount+Helpers.h"
 
 @implementation DTExpense (Helpers)
 
@@ -61,6 +62,12 @@
     } else {
         return [NSDecimalNumber zero];
     }
+}
+
+- (void)updateCache
+{
+    self.cachedBalance = [self myBalance];
+    [self.account updateCache];
 }
 
 @end

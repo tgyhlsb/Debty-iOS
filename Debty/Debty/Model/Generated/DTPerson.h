@@ -2,7 +2,7 @@
 //  DTPerson.h
 //  Debty
 //
-//  Created by Tanguy Hélesbeux on 08/10/2014.
+//  Created by Tanguy Hélesbeux on 09/10/2014.
 //  Copyright (c) 2014 Debty. All rights reserved.
 //
 
@@ -25,8 +25,8 @@
 @property (nonatomic, retain) NSSet *accounts;
 @property (nonatomic, retain) NSSet *friends;
 @property (nonatomic, retain) NSSet *friendsInverseRelation;
-@property (nonatomic, retain) NSSet *shares;
 @property (nonatomic, retain) NSSet *payedFor;
+@property (nonatomic, retain) NSSet *shares;
 @end
 
 @interface DTPerson (CoreDataGeneratedAccessors)
@@ -46,14 +46,14 @@
 - (void)addFriendsInverseRelation:(NSSet *)values;
 - (void)removeFriendsInverseRelation:(NSSet *)values;
 
-- (void)addSharesObject:(DTShare *)value;
-- (void)removeSharesObject:(DTShare *)value;
-- (void)addShares:(NSSet *)values;
-- (void)removeShares:(NSSet *)values;
-
 - (void)addPayedForObject:(DTExpense *)value;
 - (void)removePayedForObject:(DTExpense *)value;
 - (void)addPayedFor:(NSSet *)values;
 - (void)removePayedFor:(NSSet *)values;
+
+- (void)addSharesObject:(DTShare *)value;
+- (void)removeSharesObject:(DTShare *)value;
+- (void)addShares:(NSSet *)values;
+- (void)removeShares:(NSSet *)values;
 
 @end

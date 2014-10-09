@@ -39,4 +39,9 @@
     return totalBalance;
 }
 
+- (void)updateCache
+{
+    self.cachedBalance = [self myBalance];
+}
+
 @end

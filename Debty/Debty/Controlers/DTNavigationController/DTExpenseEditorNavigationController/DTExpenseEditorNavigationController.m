@@ -73,6 +73,7 @@
     if (!error) {
         [self.expenseEditorVC.expenseCache saveToExpense:self.expense];
         self.expense.isValid = @(YES);
+        [self.expense updateCache];
         [DTModelManager save];
         [self selfDissmiss];
     } else {

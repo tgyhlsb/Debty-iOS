@@ -29,7 +29,7 @@
 - (void)updateView
 {
     self.accountNameLabel.text = self.account.safeName;
-    self.balanceLabel.text = [DTOperationManager currencyStringWithDecimalNumber:[self.account myBalance]];
+    self.balanceLabel.text = [DTOperationManager currencyStringWithDecimalNumber:self.account.cachedBalance];
     
     [self.pictureView reset];
     for (DTPerson *person in self.account.persons) {

@@ -22,4 +22,6 @@
 
 - (DTShare *)shareForPerson:(DTPerson *)person;
 
+- (void)updateCache;
+
 @end

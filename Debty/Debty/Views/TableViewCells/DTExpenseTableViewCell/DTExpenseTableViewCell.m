@@ -26,7 +26,7 @@
 - (void)updateView
 {
     self.nameLabel.text = self.expense.name;
-    self.amountLabel.text = [DTOperationManager currencyStringWithDecimalNumber:[self.expense myBalance]];
+    self.amountLabel.text = [DTOperationManager currencyStringWithDecimalNumber:self.expense.cachedBalance];
 }
 
 #pragma mark - Setters

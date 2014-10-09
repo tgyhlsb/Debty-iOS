@@ -65,7 +65,6 @@
 + (DTExpense *)expenseWithAccount:(DTAccount *)account
            inManagedObjectContext:(NSManagedObjectContext *)context
 {
-    
     DTExpense *expense = [NSEntityDescription insertNewObjectForEntityForName:CLASS_NAME_EXPENSE inManagedObjectContext:context];
     
     [expense setAccount:account];

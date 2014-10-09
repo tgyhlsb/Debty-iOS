@@ -15,4 +15,6 @@
 
 - (NSDecimalNumber *)myBalance;
 
+- (void)updateCache;
+
 @end
