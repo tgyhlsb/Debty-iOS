@@ -7,13 +7,11 @@
 //
 
 #import "DTViewController.h"
-#import "DTExpense.h"
-#import "DTPerson.h"
+#import "DTExpenseCache.h"
 
 @interface DTExpenseEditorVC : DTViewController
 
-@property (strong, nonatomic) DTExpense *expense;
+@property (strong, nonatomic) DTExpenseCache *expenseCache;
 
-- (void)saveExpense;
 
 @end

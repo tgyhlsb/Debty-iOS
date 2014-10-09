@@ -7,16 +7,10 @@
 //
 
 #import "DTCoreDataTableViewController.h"
-#import "DTExpense+Helpers.h"
-#import "DTShare+Helpers.h"
+#import "DTExpenseCache.h"
 
 @interface DTSharesEditorVC : DTCoreDataTableViewController
 
-@property (strong, nonatomic) DTExpense *expense;
-
-@property (nonatomic) DTShareType shareType;
-@property (strong, nonatomic) NSMapTable *personsAndValuesMapping;
-
-- (BOOL)areSharesValid;
+@property (strong, nonatomic) DTExpenseCache *expenseCache;
 
 @end

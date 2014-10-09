@@ -17,9 +17,6 @@
 - (BOOL)safeNeedSync;
 - (BOOL)safeIsValid;
 
-
 - (DTShare *)shareForPerson:(DTPerson *)person;
-- (void)setSharesFromPersonAndValueMapping:(NSMapTable *)mapTable;
-- (NSMapTable *)getPersonAndValueMapping;
 
 @end

@@ -8,7 +8,6 @@
 
 #import "DTSharesEditorVC.h"
 #import "DTShareCell.h"
-#import "DTModelManager.h"
 
 #define NIB_NAME @"DTSharesEditorVC"
 
@@ -32,93 +31,40 @@
     return controller;
 }
 
-- (NSMapTable *)personsAndValuesMapping
-{
-    if (!_personsAndValuesMapping) {
-        _personsAndValuesMapping = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsStrongMemory
-                                                          valueOptions:NSPointerFunctionsStrongMemory];
-    }
-    return _personsAndValuesMapping;
-}
-
-- (void)setExpense:(DTExpense *)expense
-{
-    _expense = expense;
-}
-
 - (void)updateFooter
 {
-    switch (self.shareType) {
+    switch (self.expenseCache.shareType) {
         case DTShareTypeEqually:
         {
             self.footerDetailLabel.hidden = YES;
-            self.footerLabel.text = [NSString stringWithFormat:@"%.0f participants", [self totalValue]];
+            self.footerLabel.text = [NSString stringWithFormat:@"%.0f participants", [self.expenseCache totalValue]];
             break;
         }
             
         case DTShareTypeExactly:
         {
             self.footerDetailLabel.hidden = NO;
-            self.footerLabel.text = [NSString stringWithFormat:@"%.2f €", [self totalValue]];
-            self.footerDetailLabel.text = [NSString stringWithFormat:@"Missing %.2f €", [self errorValue]];
+            self.footerLabel.text = [NSString stringWithFormat:@"%.2f €", [self.expenseCache totalValue]];
+            self.footerDetailLabel.text = [NSString stringWithFormat:@"Missing %.2f €", [self.expenseCache errorValue]];
             break;
         }
             
         case DTShareTypePercent:
         {
             self.footerDetailLabel.hidden = NO;
-            self.footerLabel.text = [NSString stringWithFormat:@"%.0f %%", [self totalValue]];
-            self.footerDetailLabel.text = [NSString stringWithFormat:@"Missing %.2f %%", [self errorValue]];
+            self.footerLabel.text = [NSString stringWithFormat:@"%.0f %%", [self.expenseCache totalValue]];
+            self.footerDetailLabel.text = [NSString stringWithFormat:@"Missing %.2f %%", [self.expenseCache errorValue]];
             break;
         }
             
         case DTShareTypeShare:
         {
             self.footerDetailLabel.hidden = YES;
-            self.footerLabel.text = [NSString stringWithFormat:@"%.0f shares", [self totalValue]];
+            self.footerLabel.text = [NSString stringWithFormat:@"%.0f shares", [self.expenseCache totalValue]];
             break;
         }
             
     }
-}
-
-#pragma mark - Values calculation
-
-- (CGFloat)totalValue
-{
-    
-    NSEnumerator *enumerator = [self.personsAndValuesMapping keyEnumerator];
-    DTPerson *key = nil;
-    NSDecimalNumber *value = nil;
-    CGFloat total = 0;
-    
-    while ((key = [enumerator nextObject])) {
-        value = [self.personsAndValuesMapping objectForKey:key];
-        total += [value floatValue];
-    }
-    return total;
-}
-
-- (CGFloat)errorValue
-{
-    switch (self.shareType) {
-        case DTShareTypeEqually:
-            return [self totalValue] ? 0.0 : 1.0;
-            
-        case DTShareTypeExactly:
-            return [self.expense.amount floatValue] - [self totalValue];
-            
-        case DTShareTypePercent:
-            return 100.0 - [self totalValue];
-            
-        case DTShareTypeShare:
-            return [self totalValue] ? 0.0 : 1.0;
-    }
-}
-
-- (BOOL)areSharesValid
-{
-    return ([self errorValue] == 0.0);
 }
 
 #pragma mark - View life cycle
@@ -137,7 +83,7 @@
 
 - (void)setUpFetchRequest
 {
-    self.fetchedResultsController = [DTModelManager fetchResultControllerForPersonInAccount:self.expense.account];
+    self.fetchedResultsController = [self.expenseCache fetchResultControllerForAvailablePersons];
 }
 
 - (void)tableViewShouldRefresh
@@ -158,7 +104,7 @@
 
 - (void)shareCellValueDidChange:(DTShareCell *)cell
 {
-    [self.personsAndValuesMapping setObject:cell.value forKey:cell.person];
+    [self.expenseCache.personAndValueMapping setObject:cell.value forKey:cell.person];
     [self updateFooter];
 }
 
@@ -170,15 +116,15 @@
     DTShareCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
     
     cell.person = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.type = self.shareType;
+    cell.type = self.expenseCache.shareType;
     cell.delegate = self;
     
     // update cell value
-    NSDecimalNumber *actualValue = [self.personsAndValuesMapping objectForKey:cell.person];
+    NSDecimalNumber *actualValue = [self.expenseCache.personAndValueMapping objectForKey:cell.person];
     if (!actualValue) {
         actualValue = CELL_DEFAULT_VALUE;
     }
-    [self.personsAndValuesMapping setObject:actualValue forKey:cell.person];
+    [self.expenseCache.personAndValueMapping setObject:actualValue forKey:cell.person];
     cell.value = actualValue;
     
     return cell;

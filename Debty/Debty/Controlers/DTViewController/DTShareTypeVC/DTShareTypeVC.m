@@ -41,20 +41,20 @@
 {
     if (!_viewControllers) {
         DTSharesEditorVC *equallyVC = [DTSharesEditorVC newController];
-        equallyVC.shareType = DTShareTypeEqually;
-        equallyVC.expense = self.expense;
+        equallyVC.expenseCache = [self.expenseCache copy];
+        equallyVC.expenseCache.shareType = DTShareTypeEqually;
         
         DTSharesEditorVC *exactlyVC = [DTSharesEditorVC newController];
-        exactlyVC.shareType = DTShareTypeExactly;
-        exactlyVC.expense = self.expense;
+        exactlyVC.expenseCache = [self.expenseCache copy];
+        exactlyVC.expenseCache.shareType = DTShareTypeExactly;
         
         DTSharesEditorVC *percentVC = [DTSharesEditorVC newController];
-        percentVC.shareType = DTShareTypePercent;
-        percentVC.expense = self.expense;
+        percentVC.expenseCache = [self.expenseCache copy];
+        percentVC.expenseCache.shareType = DTShareTypePercent;
         
         DTSharesEditorVC *shareVC = [DTSharesEditorVC newController];
-        shareVC.shareType = DTShareTypeShare;
-        shareVC.expense = self.expense;
+        shareVC.expenseCache = [self.expenseCache copy];
+        shareVC.expenseCache.shareType = DTShareTypeShare;
         
         _viewControllers = [NSArray arrayWithObjects:equallyVC, exactlyVC, percentVC, shareVC, nil];
     }
@@ -70,7 +70,7 @@
                                   direction:UIPageViewControllerNavigationDirectionForward
                                    animated:NO
                                  completion:^(BOOL finished) {
-            weakSelf.segmentedControl.selectedSegmentIndex = weakSelf.shareType;
+            weakSelf.segmentedControl.selectedSegmentIndex = weakSelf.expenseCache.shareType;
     }];
 }
 
@@ -86,21 +86,11 @@
     self.pageController.delegate = self;
     self.pageController.view.frame = self.pageControllerView.frame;
     
-    [self setViewControllerAtIndex:self.shareType];
+    [self setViewControllerAtIndex:self.expenseCache.shareType];
     
     [self addChildViewController:self.pageController];
     [self.view addSubview:[self.pageController view]];
     [self.pageController didMoveToParentViewController:self];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-//    Set up active VC
-    DTSharesEditorVC *activeVC = [self.viewControllers objectAtIndex:self.shareType];
-    activeVC.personsAndValuesMapping = self.personsAndValuesMapping;
-    self.segmentedControl.selectedSegmentIndex = self.shareType;
 }
 
 #pragma mark - Handlers
@@ -118,12 +108,11 @@
 - (IBAction)doneButtonHandler:(UIBarButtonItem *)sender
 {
     DTSharesEditorVC *activeVC = [self activeViewController];
-    if ([activeVC areSharesValid]) {
-        self.shareType = activeVC.shareType;
-        self.personsAndValuesMapping = activeVC.personsAndValuesMapping;
+    if ([activeVC.expenseCache areSharesValid]) {
+        self.expenseCache = activeVC.expenseCache;
         
-        if (self.nextBlock) {
-            self.nextBlock();
+        if ([self.delegate respondsToSelector:@selector(shareTypeVCDidUpdateExpenseCache:)]) {
+            [self.delegate shareTypeVCDidUpdateExpenseCache:self.expenseCache];
         }
         
         [self selfDissmiss];

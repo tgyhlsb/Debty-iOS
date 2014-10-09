@@ -7,13 +7,20 @@
 //
 
 #import "DTViewController.h"
-#import "DTExpense.h"
-#import "DTShare+Helpers.h"
+#import "DTExpenseCache.h"
+
+@protocol DTShareTypeDelegate;
 
 @interface DTShareTypeVC : DTViewController
 
-@property (strong, nonatomic) DTExpense *expense;
-@property (nonatomic) DTShareType shareType;
-@property (strong, nonatomic) NSMapTable *personsAndValuesMapping;
+@property (weak, nonatomic) id<DTShareTypeDelegate> delegate;
+
+@property (strong, nonatomic) DTExpenseCache *expenseCache;
+
+@end
+
+@protocol DTShareTypeDelegate <NSObject>
+
+- (void)shareTypeVCDidUpdateExpenseCache:(DTExpenseCache *)expenseCache;
 
 @end

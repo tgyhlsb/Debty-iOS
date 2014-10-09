@@ -42,25 +42,4 @@
     return [DTShare shareForExpense:self andPerson:person];
 }
 
-- (void)setSharesFromPersonAndValueMapping:(NSMapTable *)mapTable
-{
-    NSEnumerator *personEnumerator = [mapTable keyEnumerator];
-    DTPerson *person = nil;
-    DTShare *share = nil;
-    while (person = [personEnumerator nextObject]) {
-        share = [self shareForPerson:person];
-        share.value = [mapTable objectForKey:person];
-    }
-}
-
-- (NSMapTable *)getPersonAndValueMapping
-{
-    NSMapTable *mapTable = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsStrongMemory
-                                                 valueOptions:NSPointerFunctionsStrongMemory];
-    for (DTShare *share in self.shares) {
-        [mapTable setObject:share.value forKey:share.person];
-    }
-    return mapTable;
-}
-
 @end

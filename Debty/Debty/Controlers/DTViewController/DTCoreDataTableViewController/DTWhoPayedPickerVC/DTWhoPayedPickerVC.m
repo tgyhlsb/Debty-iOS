@@ -7,7 +7,6 @@
 //
 
 #import "DTWhoPayedPickerVC.h"
-#import "DTModelManager.h"
 
 #define NIB_NAME @"DTWhoPayedPickerVC"
 
@@ -36,7 +35,7 @@
 
 - (void)setUpFetchRequest
 {
-    self.fetchedResultsController = [DTModelManager fetchResultControllerForPersonInAccount:self.expense.account];
+    self.fetchedResultsController = [self.expenseCache fetchResultControllerForAvailablePersons];
 }
 
 - (void)tableViewShouldRefresh
@@ -55,7 +54,7 @@
     cell.textLabel.text = person.firstName;
     cell.detailTextLabel.text = person.lastName;
     
-    if ([person isEqual:self.whoPayed]) {
+    if ([person isEqual:self.expenseCache.whoPayed]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -71,10 +70,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.whoPayed = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    DTPerson *person = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     if ([self.delegate respondsToSelector:@selector(whoPayedPickerDidSelectPerson:)]) {
-        [self.delegate whoPayedPickerDidSelectPerson:self.whoPayed];
+        [self.delegate whoPayedPickerDidSelectPerson:person];
     }
     
     [self.navigationController popToRootViewControllerAnimated:YES];

@@ -9,6 +9,7 @@
 #import "DTExpenseEditorNavigationController.h"
 #import "DTExpenseEditorVC.h"
 #import "DTModelManager.h"
+#import "DTExpenseCache.h"
 
 @interface DTExpenseEditorNavigationController ()
 
@@ -37,7 +38,7 @@
     
     __weak DTViewController *weakRootVC = rootViewController;
     [rootViewController setCloseBlock:^{
-        [((DTExpenseEditorNavigationController *)weakRootVC.navigationController) selfDissmiss];
+        [((DTExpenseEditorNavigationController *)weakRootVC.navigationController) cancel];
     }];
     [rootViewController setNextBlock:^{
         [((DTExpenseEditorNavigationController *)weakRootVC.navigationController) validate];
@@ -53,7 +54,8 @@
 - (void)setExpense:(DTExpense *)expense
 {
     _expense = expense;
-    self.expenseEditorVC.expense = expense;
+    
+    self.expenseEditorVC.expenseCache = [DTExpenseCache cacheFromExpense:expense];
 }
 
 #pragma mark - Navigation methods
@@ -67,9 +69,38 @@
 
 - (void)validate
 {
-    [self.expenseEditorVC saveExpense];
-    [DTModelManager save];
+    NSString *error = [self errorForCache:self.expenseEditorVC.expenseCache];
+    if (!error) {
+        [self.expenseEditorVC.expenseCache saveToExpense:self.expense];
+        self.expense.isValid = @(YES);
+        [DTModelManager save];
+        [self selfDissmiss];
+    } else {
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:error delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+    }
+}
+
+- (void)cancel
+{
     [self selfDissmiss];
+}
+
+#pragma mark - Validation
+
+- (NSString *)errorForCache:(DTExpenseCache *)cache
+{
+    NSString *error = nil;
+    if (!cache.name || [cache.name length] <= 0) {
+        error = @"Expense has no name";
+    } else if (!cache.amount || [cache.amount floatValue] <= 0) {
+        error = @"You must enter a valid amount";
+    } else if (!cache.whoPayed) {
+        error = @"Who payed ?";
+    } else if (![cache areSharesValid]) {
+        error = @"Invalid shares";
+    }
+    
+    return error;
 }
 
 @end
