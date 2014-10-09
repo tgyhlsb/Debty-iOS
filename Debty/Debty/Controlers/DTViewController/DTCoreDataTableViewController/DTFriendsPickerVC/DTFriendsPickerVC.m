@@ -34,6 +34,18 @@
     return controller;
 }
 
+- (void)updateDoneButtonTitle
+{
+    if (self.displaySelectedFriendTableView) {
+        NSInteger nbFriend = [[self selectedFriends] count];
+        if (nbFriend > 1) {
+            self.navigationItem.rightBarButtonItem.title = @"Next";
+        } else {
+            self.navigationItem.rightBarButtonItem.title = @"Done";
+        }
+    }
+}
+
 #pragma mark - View life cycle 
 
 - (void)viewDidLoad
@@ -42,6 +54,19 @@
     
     [self registerToTextFieldNotification];
     [self showSelectedFriendList];
+}
+
+#pragma mark - Helpers
+
+- (NSArray *)selectedFriends
+{
+    NSFetchedResultsController *selectedFriendsController = [DTModelManager fetchResultControllerForMainUserFriendsWithSearchString:nil selected:@(YES)];
+    NSError *error = nil;
+    [selectedFriendsController performFetch:&error];
+    if (error) {
+        NSLog(@"%@", error);
+    }
+    return [selectedFriendsController fetchedObjects];
 }
 
 #pragma mark - Handlers
@@ -134,6 +159,8 @@
     } else {
         [self addSelectedFriend:friend];
     }
+    
+    [self updateDoneButtonTitle];
 }
 
 @end

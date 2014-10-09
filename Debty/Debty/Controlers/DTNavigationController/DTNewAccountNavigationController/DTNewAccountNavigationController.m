@@ -12,8 +12,11 @@
 #import "DTModelManager.h"
 #import "DTInstallation.h"
 #import "DTTabBarController.h"
+#import "DTAccountDraft.h"
 
 @interface DTNewAccountNavigationController ()
+
+@property (strong, nonatomic) DTAccountDraft *accountDraft;
 
 @end
 
@@ -33,9 +36,17 @@
         [((DTNewAccountNavigationController *)weakRootVC.navigationController) selfDissmissWithAccount:nil];
     }];
     [rootViewController setNextBlock:^{
-        [((DTNewAccountNavigationController *)weakRootVC.navigationController) pushToCreateAccountVC];
+        [((DTNewAccountNavigationController *)weakRootVC.navigationController) nextButtonHandler];
     }];
     return navigationController;
+}
+
+- (DTAccountDraft *)accountDraft
+{
+    if (!_accountDraft) {
+        _accountDraft = [DTAccountDraft emptyDraft];
+    }
+    return _accountDraft;
 }
 
 #pragma mark - Helpers
@@ -62,19 +73,42 @@
     }];
 }
 
+- (void)nextButtonHandler
+{
+    if ([self.topViewController isMemberOfClass:[DTFriendsPickerVC class]]) {
+        [self pushToCreateAccountVC];
+    } else if ([self.topViewController isMemberOfClass:[DTCreateAccountVC class]]) {
+        
+    }
+}
+
 - (void)pushToCreateAccountVC
 {
     NSMutableArray *friends = [[self selectedFriends] mutableCopy];
     [friends addObject:[DTInstallation me]];
-    [DTModelManager deselectAllPersons];
-    DTAccount *account = [DTModelManager accountWithPersons:friends];
     
     if ([friends count] == 2) {
+        [DTModelManager deselectAllPersons];
+        DTAccount *account = [DTModelManager accountWithPersons:friends];
         [self selfDissmissWithAccount:account];
     } else {
+        self.accountDraft.personList = friends;
         DTCreateAccountVC *destination = [DTCreateAccountVC newController];
+        destination.accountDraft = self.accountDraft;
         [self pushViewController:destination animated:YES];
     }
+}
+
+#pragma mark - Navigation
+
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    [super pushViewController:viewController animated:animated];
+}
+
+- (UIViewController *)popViewControllerAnimated:(BOOL)animated
+{
+    return [super popViewControllerAnimated:animated];
 }
 
 @end

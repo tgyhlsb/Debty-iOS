@@ -61,7 +61,7 @@
 - (UIBarButtonItem *)nextButton
 {
     if (!_nextButton) {
-        _nextButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(nextButtonHandler)];
+        _nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(nextButtonHandler)];
     }
     return _nextButton;
 }

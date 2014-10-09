@@ -17,6 +17,7 @@
 @dynamic name;
 @dynamic needSync;
 @dynamic cachedBalance;
+@dynamic localeCode;
 @dynamic expenses;
 @dynamic persons;
 

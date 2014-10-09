@@ -3,6 +3,7 @@
     <entity name="DTAccount" representedClassName="DTAccount" syncable="YES">
         <attribute name="cachedBalance" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="localeCode" attributeType="String" defaultValueString="EUR" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="needSync" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <relationship name="expenses" toMany="YES" deletionRule="Cascade" destinationEntity="DTExpense" inverseName="account" inverseEntity="DTExpense" syncable="YES"/>
@@ -46,7 +47,7 @@
         <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DTPerson" inverseName="shares" inverseEntity="DTPerson" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DTAccount" positionX="27" positionY="-0" width="128" height="133"/>
+        <element name="DTAccount" positionX="27" positionY="-0" width="128" height="148"/>
         <element name="DTExpense" positionX="205" positionY="186" width="128" height="223"/>
         <element name="DTPerson" positionX="-189" positionY="222" width="128" height="255"/>
         <element name="DTShare" positionX="-450" positionY="-27" width="128" height="118"/>

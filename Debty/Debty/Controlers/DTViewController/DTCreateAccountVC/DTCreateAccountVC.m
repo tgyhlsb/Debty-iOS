@@ -37,6 +37,7 @@
     self.extendedLayoutIncludesOpaqueBars = NO;
     
     [self registerToTextFieldNotifications];
+    [self updateView];
 }
 
 #pragma mark - Set up
@@ -46,11 +47,29 @@
     [self.nameTextField addTarget:self action:@selector(nameTextFieldValueDidChange) forControlEvents:UIControlEventEditingChanged];
 }
 
+- (void)updateView
+{
+    self.nameTextField.text = self.accountDraft.name;
+    NSInteger localeRow = 0;
+    if (self.accountDraft.localeCode) {
+        localeRow = [[NSLocale availableLocaleIdentifiers] indexOfObject:self.accountDraft.localeCode];
+    }
+    [self.currencyPicker selectRow:localeRow inComponent:0 animated:NO];
+}
+
+#pragma mark - Getters & Setters
+
+- (void)setAccountDraft:(DTAccountDraft *)accountDraft
+{
+    _accountDraft = accountDraft;
+    [self updateView];
+}
+
 #pragma mark - Handlers
 
 - (void)nameTextFieldValueDidChange
 {
-    
+    self.accountDraft.name = self.nameTextField.text;
 }
 
 #pragma mark - UIPickerViewDataSource
@@ -81,6 +100,11 @@
     NSString *title = [NSString stringWithFormat:@"%@ %@: %@ (%@)", countryCode, countryName, localCurrencySymbol, currencyCode];
     
     return title;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    self.accountDraft.localeCode = [[NSLocale availableLocaleIdentifiers] objectAtIndex:row];
 }
 
 @end

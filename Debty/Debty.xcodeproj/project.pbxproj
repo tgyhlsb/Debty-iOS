@@ -77,9 +77,10 @@
 		5AFCD2FD19E69FB20085EF11 /* DTExpenseCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFCD2FC19E69FB20085EF11 /* DTExpenseCache.m */; };
 		5AFCD30019E6D2720085EF11 /* DTOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFCD2FF19E6D2720085EF11 /* DTOperationManager.m */; };
 		5AFCD30319E6F4CC0085EF11 /* DTShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFCD30219E6F4CC0085EF11 /* DTShare.m */; };
-		5AFCD30619E6F4CC0085EF11 /* DTAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFCD30519E6F4CC0085EF11 /* DTAccount.m */; };
 		5AFCD30919E6F4CC0085EF11 /* DTExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFCD30819E6F4CC0085EF11 /* DTExpense.m */; };
 		5AFCD30C19E6F4CC0085EF11 /* DTPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFCD30B19E6F4CC0085EF11 /* DTPerson.m */; };
+		5AFCD30F19E745360085EF11 /* DTAccountDraft.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFCD30E19E745360085EF11 /* DTAccountDraft.m */; };
+		5AFCD31219E746860085EF11 /* DTAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFCD31119E746860085EF11 /* DTAccount.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -208,12 +209,14 @@
 		5AFCD2FF19E6D2720085EF11 /* DTOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTOperationManager.m; path = Model/DTOperationManager.m; sourceTree = "<group>"; };
 		5AFCD30119E6F4CC0085EF11 /* DTShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTShare.h; sourceTree = "<group>"; };
 		5AFCD30219E6F4CC0085EF11 /* DTShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTShare.m; sourceTree = "<group>"; };
-		5AFCD30419E6F4CC0085EF11 /* DTAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTAccount.h; sourceTree = "<group>"; };
-		5AFCD30519E6F4CC0085EF11 /* DTAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTAccount.m; sourceTree = "<group>"; };
 		5AFCD30719E6F4CC0085EF11 /* DTExpense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTExpense.h; sourceTree = "<group>"; };
 		5AFCD30819E6F4CC0085EF11 /* DTExpense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTExpense.m; sourceTree = "<group>"; };
 		5AFCD30A19E6F4CC0085EF11 /* DTPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPerson.h; sourceTree = "<group>"; };
 		5AFCD30B19E6F4CC0085EF11 /* DTPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPerson.m; sourceTree = "<group>"; };
+		5AFCD30D19E745360085EF11 /* DTAccountDraft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTAccountDraft.h; path = Model/DTAccountDraft.h; sourceTree = "<group>"; };
+		5AFCD30E19E745360085EF11 /* DTAccountDraft.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTAccountDraft.m; path = Model/DTAccountDraft.m; sourceTree = "<group>"; };
+		5AFCD31019E746860085EF11 /* DTAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTAccount.h; sourceTree = "<group>"; };
+		5AFCD31119E746860085EF11 /* DTAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTAccount.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +258,8 @@
 				5A2F5D541955EB0D00337637 /* DTAccount+Serializer.m */,
 				5AD826FA197015D000445E3E /* DTAccount+Helpers.h */,
 				5AD826FB197015D000445E3E /* DTAccount+Helpers.m */,
+				5AFCD30D19E745360085EF11 /* DTAccountDraft.h */,
+				5AFCD30E19E745360085EF11 /* DTAccountDraft.m */,
 				5A8570B41955EDC600A517BD /* DTExpense+Serializer.h */,
 				5A8570B51955EDC600A517BD /* DTExpense+Serializer.m */,
 				5AD827241972C67100445E3E /* DTExpense+Helpers.h */,
@@ -582,12 +587,12 @@
 			isa = PBXGroup;
 			children = (
 				5AA5E3D8196F3AAE0015A6B2 /* debty.xcdatamodeld */,
+				5AFCD31019E746860085EF11 /* DTAccount.h */,
+				5AFCD31119E746860085EF11 /* DTAccount.m */,
 				5AFCD30A19E6F4CC0085EF11 /* DTPerson.h */,
 				5AFCD30B19E6F4CC0085EF11 /* DTPerson.m */,
 				5AFCD30719E6F4CC0085EF11 /* DTExpense.h */,
 				5AFCD30819E6F4CC0085EF11 /* DTExpense.m */,
-				5AFCD30419E6F4CC0085EF11 /* DTAccount.h */,
-				5AFCD30519E6F4CC0085EF11 /* DTAccount.m */,
 				5AFCD30119E6F4CC0085EF11 /* DTShare.h */,
 				5AFCD30219E6F4CC0085EF11 /* DTShare.m */,
 			);
@@ -805,6 +810,7 @@
 				5A408432195382ED006146E5 /* DTBackendManager.m in Sources */,
 				5A63454E1975CA460059B065 /* DTShareCell.m in Sources */,
 				5AD827161972C30200445E3E /* DTAccountsTableVC.m in Sources */,
+				5AFCD30F19E745360085EF11 /* DTAccountDraft.m in Sources */,
 				5AD827221972C32300445E3E /* DTAccountTableViewCell.m in Sources */,
 				5AD827061972BF2600445E3E /* DTAccountVC.m in Sources */,
 				5A975D75194C48B800566A2A /* DTNewAccountNavigationController.m in Sources */,
@@ -817,7 +823,6 @@
 				5A1F7525197868E400AB580F /* DTSharesEditorVC.m in Sources */,
 				5A975DA4194DD0B600566A2A /* DTPerson+Serializer.m in Sources */,
 				5A8714C5194E0C7900D2111F /* DTModelManager.m in Sources */,
-				5AFCD30619E6F4CC0085EF11 /* DTAccount.m in Sources */,
 				5AD8270219717EA300445E3E /* DTPerson+Helpers.m in Sources */,
 				5A6A9E0C1972CC3900A2E204 /* DTExpenseNavigationViewController.m in Sources */,
 				5A8570BC1955F33600A517BD /* DTShare+Serializer.m in Sources */,
@@ -846,6 +851,7 @@
 				5A220ED7194117A100BDABCF /* DTTestVC.m in Sources */,
 				5AFCD30319E6F4CC0085EF11 /* DTShare.m in Sources */,
 				5A220EA61941103100BDABCF /* main.m in Sources */,
+				5AFCD31219E746860085EF11 /* DTAccount.m in Sources */,
 				5AFCD30019E6D2720085EF11 /* DTOperationManager.m in Sources */,
 				5AFCD30919E6F4CC0085EF11 /* DTExpense.m in Sources */,
 			);

@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * needSync;
 @property (nonatomic, retain) NSDecimalNumber * cachedBalance;
+@property (nonatomic, retain) NSString * localeCode;
 @property (nonatomic, retain) NSSet *expenses;
 @property (nonatomic, retain) NSSet *persons;
 @end

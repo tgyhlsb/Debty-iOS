@@ -72,8 +72,6 @@
 
 #pragma mark - Data manipulation
 
-
-
 - (void)setExpense:(DTExpense *)expense withPersonAndValueMapping:(NSMapTable *)mapTable
 {
     NSEnumerator *personEnumerator = [mapTable keyEnumerator];

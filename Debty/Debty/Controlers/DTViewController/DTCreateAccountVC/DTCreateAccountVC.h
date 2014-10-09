@@ -7,8 +7,11 @@
 //
 
 #import "DTViewController.h"
+#import "DTAccountDraft.h"
 
 @interface DTCreateAccountVC : DTViewController
+
+@property (strong, nonatomic) DTAccountDraft *accountDraft;
 
 + (DTCreateAccountVC *)newController;
 
