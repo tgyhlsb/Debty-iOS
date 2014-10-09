@@ -61,7 +61,10 @@ static BOOL useRoundedNumber = NO;
 
 + (NSDecimalNumber *)divide:(NSDecimalNumber *)first by:(NSDecimalNumber *)second
 {
-    if (useRoundedNumber) {
+    if (!second || [second isEqualToNumber:[NSDecimalNumber zero]]) {
+        NSLog(@"Division by zero occured");
+        return [NSDecimalNumber zero];
+    } else if (useRoundedNumber) {
         return [first decimalNumberByDividingBy:second withBehavior:[DTOperationManager sharedDecimalHandler]];
     } else {
         return [first decimalNumberByDividingBy:second];

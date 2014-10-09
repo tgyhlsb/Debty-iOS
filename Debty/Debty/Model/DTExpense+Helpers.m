@@ -10,6 +10,7 @@
 #import "DTPerson+Helpers.h"
 #import "DTShare+Serializer.h"
 #import "DTOperationManager.h"
+#import "DTInstallation.h"
 
 @implementation DTExpense (Helpers)
 
@@ -50,6 +51,16 @@
         }
     }
     return [DTShare shareForExpense:self andPerson:person];
+}
+
+- (NSDecimalNumber *)myBalance
+{
+    if ([self safeIsValid]) {
+        DTShare *myShare = [self shareForPerson:[DTInstallation me]];
+        return [myShare balancedAmount];
+    } else {
+        return [NSDecimalNumber zero];
+    }
 }
 
 @end

@@ -18,6 +18,8 @@
 - (BOOL)safeIsValid;
 - (NSDecimalNumber *)totalValue;
 
+- (NSDecimalNumber *)myBalance;
+
 - (DTShare *)shareForPerson:(DTPerson *)person;
 
 @end

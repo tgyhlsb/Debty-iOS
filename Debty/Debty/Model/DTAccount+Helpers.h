@@ -10,8 +10,9 @@
 
 @interface DTAccount (Helpers)
 
-- (NSNumber *)balanceForPerson:(DTPerson *)person;
 - (NSString *)safeName;
 - (BOOL)safeNeedSync;
+
+- (NSDecimalNumber *)myBalance;
 
 @end

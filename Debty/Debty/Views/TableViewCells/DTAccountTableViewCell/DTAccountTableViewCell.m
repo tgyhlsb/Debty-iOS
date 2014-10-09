@@ -8,6 +8,7 @@
 
 #import "DTAccountTableViewCell.h"
 #import "DTPerson+Helpers.h"
+#import "DTOperationManager.h"
 #import "DTGroupPictureView.h"
 
 #define NIB_NAME @"DTAccountTableViewCell"
@@ -28,7 +29,7 @@
 - (void)updateView
 {
     self.accountNameLabel.text = self.account.safeName;
-    self.balanceLabel.text = [NSString stringWithFormat:@"%@", [self.account balanceForPerson:nil]];
+    self.balanceLabel.text = [DTOperationManager currencyStringWithDecimalNumber:[self.account myBalance]];
     
     [self.pictureView reset];
     for (DTPerson *person in self.account.persons) {

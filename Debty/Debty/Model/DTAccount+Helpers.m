@@ -7,14 +7,11 @@
 //
 
 #import "DTAccount+Helpers.h" 
-#import "DTPerson.h"
+#import "DTPerson+Helpers.h"
+#import "DTExpense+Helpers.h"
+#import "DTOperationManager.h"
 
 @implementation DTAccount (Helpers)
-
-- (NSNumber *)balanceForPerson:(DTPerson *)person
-{
-    return @2.0;
-}
 
 - (NSString *)safeName
 {
@@ -31,6 +28,15 @@
 - (BOOL)safeNeedSync
 {
     return [self.needSync boolValue];
+}
+
+- (NSDecimalNumber *)myBalance
+{
+    NSDecimalNumber *totalBalance = [NSDecimalNumber zero];
+    for (DTExpense *expense in self.expenses) {
+        totalBalance = [DTOperationManager add:[expense myBalance] to:totalBalance];
+    }
+    return totalBalance;
 }
 
 @end

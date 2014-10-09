@@ -93,6 +93,12 @@
     [self.pageController didMoveToParentViewController:self];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.segmentedControl.selectedSegmentIndex = self.expenseCache.shareType;
+}
+
 #pragma mark - Handlers
 
 - (IBAction)segmentedControlValueDidChange

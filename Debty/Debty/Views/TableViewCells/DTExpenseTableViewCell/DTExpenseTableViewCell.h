@@ -7,7 +7,7 @@
 //
 
 #import "DTTableViewCell.h"
-#import "DTExpense.h"
+#import "DTExpense+Helpers.h"
 
 @interface DTExpenseTableViewCell : DTTableViewCell
 
