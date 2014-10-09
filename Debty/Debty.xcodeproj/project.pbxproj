@@ -78,6 +78,7 @@
 		5AFCD2F419E5D2320085EF11 /* DTAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFCD2F319E5D2320085EF11 /* DTAccount.m */; };
 		5AFCD2F719E5D2320085EF11 /* DTPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFCD2F619E5D2320085EF11 /* DTPerson.m */; };
 		5AFCD2F919E5D7A90085EF11 /* DTExpenseDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AFCD2F819E5D7A90085EF11 /* DTExpenseDetailsVC.xib */; };
+		5AFCD2FD19E69FB20085EF11 /* DTExpenseCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFCD2FC19E69FB20085EF11 /* DTExpenseCache.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -208,6 +209,8 @@
 		5AFCD2F519E5D2320085EF11 /* DTPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPerson.h; sourceTree = "<group>"; };
 		5AFCD2F619E5D2320085EF11 /* DTPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPerson.m; sourceTree = "<group>"; };
 		5AFCD2F819E5D7A90085EF11 /* DTExpenseDetailsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DTExpenseDetailsVC.xib; path = DTExpenseDetailsVC/DTExpenseDetailsVC.xib; sourceTree = "<group>"; };
+		5AFCD2FB19E69FB20085EF11 /* DTExpenseCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTExpenseCache.h; path = Model/DTExpenseCache.h; sourceTree = "<group>"; };
+		5AFCD2FC19E69FB20085EF11 /* DTExpenseCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTExpenseCache.m; path = Model/DTExpenseCache.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +256,8 @@
 				5A8570B51955EDC600A517BD /* DTExpense+Serializer.m */,
 				5AD827241972C67100445E3E /* DTExpense+Helpers.h */,
 				5AD827251972C67100445E3E /* DTExpense+Helpers.m */,
+				5AFCD2FB19E69FB20085EF11 /* DTExpenseCache.h */,
+				5AFCD2FC19E69FB20085EF11 /* DTExpenseCache.m */,
 				5A8570BA1955F33600A517BD /* DTShare+Serializer.h */,
 				5A8570BB1955F33600A517BD /* DTShare+Serializer.m */,
 				5AD827271972C68500445E3E /* DTShare+Helpers.h */,
@@ -802,6 +807,7 @@
 				5A6A9E1A1973262A00A2E204 /* DTCollectionViewCell.m in Sources */,
 				5A12DF9B194B7EC9006E942F /* DTTableViewCell.m in Sources */,
 				5A6A9E25197331D100A2E204 /* DTWhoPayedPickerVC.m in Sources */,
+				5AFCD2FD19E69FB20085EF11 /* DTExpenseCache.m in Sources */,
 				5A8570B61955EDC600A517BD /* DTExpense+Serializer.m in Sources */,
 				5A6A9E111972F7DE00A2E204 /* DTExpenseEditorVC.m in Sources */,
 				5A1F7525197868E400AB580F /* DTSharesEditorVC.m in Sources */,
