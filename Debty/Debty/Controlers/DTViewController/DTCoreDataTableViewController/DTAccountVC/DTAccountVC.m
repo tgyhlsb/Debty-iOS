@@ -14,9 +14,9 @@
 
 #define NIB_NAME @"DTAccountVC"
 
-@interface DTAccountVC ()
+@interface DTAccountVC () <UIActionSheetDelegate>
 
-@property (strong, nonatomic) UIBarButtonItem *addExpenseButton;
+@property (strong, nonatomic) UIBarButtonItem *actionButton;
 
 @end
 
@@ -35,7 +35,7 @@
     [super viewDidLoad];
     
     [self setUpFetchRequest];
-    [self setAddExpenseButtonVisible:YES];
+    [self setActionButtonVisible:YES];
     
     [DTExpenseTableViewCell registerToTableView:self.tableView];
 }
@@ -51,20 +51,20 @@
 
 #pragma mark - Getters
 
-- (UIBarButtonItem *)addExpenseButton
+- (UIBarButtonItem *)actionButton
 {
-    if (!_addExpenseButton) {
-        _addExpenseButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addExpenseButtonHandler)];
+    if (!_actionButton) {
+        _actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(actionButtonHandler)];
     }
-    return _addExpenseButton;
+    return _actionButton;
 }
 
 #pragma mark - View methods
 
-- (void)setAddExpenseButtonVisible:(BOOL)visible
+- (void)setActionButtonVisible:(BOOL)visible
 {
     if (visible) {
-        self.navigationItem.rightBarButtonItem = self.addExpenseButton;
+        self.navigationItem.rightBarButtonItem = self.actionButton;
     } else {
         self.navigationItem.rightBarButtonItem = nil;
     }
@@ -72,7 +72,39 @@
 
 #pragma mark - Handlers
 
-- (void)addExpenseButtonHandler
+- (void)actionButtonHandler
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"Add expense", @"Account settings", nil];
+    
+    [actionSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 0:
+        {
+            [self addExpenseActionHandler];
+            break;
+        }
+            
+        case 1:
+        {
+            break;
+        }
+            
+        case 2:
+        {
+            break;
+        }
+    }
+}
+
+- (void)addExpenseActionHandler
 {
     DTExpenseEditorNavigationController *destination = [DTExpenseEditorNavigationController newNavigationControllerWithAccount:self.account];
     [self presentViewController:destination animated:YES completion:^{
