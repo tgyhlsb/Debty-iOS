@@ -45,7 +45,7 @@
 - (void)setAccount:(DTAccount *)account
 {
     _account = account;
-    self.title = [account safeName];
+    self.title = account.name;
     [self setUpFetchRequest];
 }
 

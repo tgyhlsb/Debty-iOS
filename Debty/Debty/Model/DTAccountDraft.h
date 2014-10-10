@@ -19,6 +19,6 @@
 + (DTAccountDraft *)draftFromAccount:(DTAccount *)account;
 
 - (void)loadFromAccount:(DTAccount *)account;
-- (void)saveToAccount:(DTAccount *)account;
+- (DTAccount *)accountFromDraft;
 
 @end

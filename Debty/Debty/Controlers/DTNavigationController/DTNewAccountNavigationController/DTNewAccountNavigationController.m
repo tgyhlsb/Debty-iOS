@@ -82,8 +82,6 @@
                                    delegate:self
                           cancelButtonTitle:@"Ok"
                           otherButtonTitles:nil] show];
-    } else if ([self.accountDraft.personList count] == 1) {
-        [self createAccount];
     } else {
         [self pushToCreateAccountVC];
     }
@@ -112,11 +110,7 @@
 
 - (void)createAccount
 {
-    NSMutableArray *realPersonList = [[self.accountDraft personList] mutableCopy];
-    [realPersonList addObject:[DTInstallation me]];
-    DTAccount *account = [DTModelManager newAccountWithPersons:realPersonList];
-    account.name = self.accountDraft.name;
-    account.localeCode = self.accountDraft.localeCode;
+    DTAccount *account = [self.accountDraft accountFromDraft];
     
     [DTModelManager deselectAllPersons];
     [DTModelManager save];

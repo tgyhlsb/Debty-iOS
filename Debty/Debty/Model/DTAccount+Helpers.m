@@ -14,20 +14,6 @@
 
 @implementation DTAccount (Helpers)
 
-- (NSString *)safeName
-{
-    if (!self.name) {
-        NSString *composedName = @"";
-        for (DTPerson *person in self.persons) {
-            if (![person isEqual:[DTInstallation me]]) {
-                composedName = [composedName stringByAppendingFormat:@"%@ ", person.firstName];
-            }
-        }
-        return composedName;
-    }
-    return self.name;
-}
-
 - (BOOL)safeNeedSync
 {
     return [self.needSync boolValue];

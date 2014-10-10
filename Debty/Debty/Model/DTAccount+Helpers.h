@@ -10,7 +10,6 @@
 
 @interface DTAccount (Helpers)
 
-- (NSString *)safeName;
 - (BOOL)safeNeedSync;
 
 - (NSDecimalNumber *)myBalance;

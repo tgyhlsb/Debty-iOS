@@ -146,6 +146,11 @@
     return [DTAccountTableViewCell height];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [DTAccountTableViewCell height];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DTAccountVC *destination = [DTAccountVC newController];

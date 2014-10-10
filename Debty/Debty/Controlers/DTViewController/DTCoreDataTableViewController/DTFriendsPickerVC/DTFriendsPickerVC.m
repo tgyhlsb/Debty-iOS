@@ -39,18 +39,6 @@
     self.accountDraft.personList = [self selectedFriends];
 }
 
-- (void)updateDoneButtonTitle
-{
-    if (self.displaySelectedFriendTableView) {
-        NSInteger nbFriend = [self.accountDraft.personList count];
-        if (nbFriend > 1) {
-            self.navigationItem.rightBarButtonItem.title = @"Next";
-        } else {
-            self.navigationItem.rightBarButtonItem.title = @"Done";
-        }
-    }
-}
-
 #pragma mark - View life cycle 
 
 - (void)viewDidLoad
@@ -59,6 +47,8 @@
     
     [self registerToTextFieldNotification];
     [self showSelectedFriendList];
+    
+    self.navigationItem.rightBarButtonItem.title = @"Next";
 }
 
 #pragma mark - Helpers
@@ -166,7 +156,6 @@
     }
     
     [self updateAccountDraft];
-    [self updateDoneButtonTitle];
 }
 
 @end

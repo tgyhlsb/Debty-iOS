@@ -50,11 +50,8 @@
 - (void)updateView
 {
     self.nameTextField.text = self.accountDraft.name;
-    NSString *currentLocale = [[NSLocale currentLocale] localeIdentifier];
-    NSInteger localeRow = [[NSLocale availableLocaleIdentifiers] indexOfObject:currentLocale];
-    if (self.accountDraft.localeCode) {
-        localeRow = [[NSLocale availableLocaleIdentifiers] indexOfObject:self.accountDraft.localeCode];
-    }
+    
+    NSInteger localeRow = [[NSLocale availableLocaleIdentifiers] indexOfObject:self.accountDraft.localeCode];
     [self.currencyPicker selectRow:localeRow inComponent:0 animated:NO];
 }
 
