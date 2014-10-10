@@ -34,10 +34,15 @@
     return controller;
 }
 
+- (void)updateAccountDraft
+{
+    self.accountDraft.personList = [self selectedFriends];
+}
+
 - (void)updateDoneButtonTitle
 {
     if (self.displaySelectedFriendTableView) {
-        NSInteger nbFriend = [[self selectedFriends] count];
+        NSInteger nbFriend = [self.accountDraft.personList count];
         if (nbFriend > 1) {
             self.navigationItem.rightBarButtonItem.title = @"Next";
         } else {
@@ -160,6 +165,7 @@
         [self addSelectedFriend:friend];
     }
     
+    [self updateAccountDraft];
     [self updateDoneButtonTitle];
 }
 

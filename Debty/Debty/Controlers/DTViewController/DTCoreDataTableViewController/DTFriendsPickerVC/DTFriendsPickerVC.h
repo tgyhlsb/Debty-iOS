@@ -7,8 +7,11 @@
 //
 
 #import "DTCoreDataTableViewController.h"
+#import "DTAccountDraft.h"
 
 @interface DTFriendsPickerVC : DTCoreDataTableViewController
+
+@property (strong, nonatomic) DTAccountDraft *accountDraft;
 
 + (DTFriendsPickerVC *)newController;
 

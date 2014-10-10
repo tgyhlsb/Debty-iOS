@@ -16,6 +16,7 @@
 + (DTAccount *)accountWithInfo:(NSDictionary *)info;
 + (NSArray *)accountsWithArray:(NSArray *)arrayInfo;
 + (DTAccount *)accountWithPersons:(NSArray *)persons;
++ (DTAccount *)newAccountWithPersons:(NSArray *)persons;
 
 
 @end

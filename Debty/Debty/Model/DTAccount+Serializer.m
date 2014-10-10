@@ -64,24 +64,39 @@
 + (DTAccount *)accountWithPersons:(NSArray *)persons
            inManagedObjectContext:(NSManagedObjectContext *)context
 {
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_ACCOUNT];
-    request.predicate = [NSPredicate predicateWithFormat:@"(persons.@count == %d) AND (SUBQUERY(persons, $x, $x IN %@).@count == %d)",persons.count, persons, persons.count];
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_ACCOUNT];
+        request.predicate = [NSPredicate predicateWithFormat:@"(persons.@count == %d) AND (SUBQUERY(persons, $x, $x IN %@).@count == %d)",persons.count, persons, persons.count];
     
-    DTAccount *account = nil;
+        DTAccount *account = nil;
     
-    NSError *error = nil;
-    NSArray *matches = [context executeFetchRequest:request error:&error];
+        NSError *error = nil;
+        NSArray *matches = [context executeFetchRequest:request error:&error];
     
-    if (error || !matches || [matches count] > 1) {
-        //handle error
-    } else {
-        if ([matches count] && [persons count] <= 2) { // Only dual-accounts can't be duplicates
-            account = [matches firstObject];
+        if (error || !matches || [matches count] > 1) {
+            //handle error
         } else {
-            account = [NSEntityDescription insertNewObjectForEntityForName:CLASS_NAME_ACCOUNT inManagedObjectContext:context];
-            [account setPersons:[NSSet setWithArray:persons]];
+            if ([matches count] && [persons count] <= 2) { // Only dual-accounts can't be duplicates
+                account = [matches firstObject];
+            } else {
+                account = [NSEntityDescription insertNewObjectForEntityForName:CLASS_NAME_ACCOUNT inManagedObjectContext:context];
+                [account setPersons:[NSSet setWithArray:persons]];
+            }
         }
-    }
+    
+    return account;
+}
+
++ (DTAccount *)newAccountWithPersons:(NSArray *)persons
+{
+    return [DTAccount newAccountWithPersons:persons
+                     inManagedObjectContext:[DTModelManager sharedContext]];
+}
+
++ (DTAccount *)newAccountWithPersons:(NSArray *)persons
+           inManagedObjectContext:(NSManagedObjectContext *)context
+{
+    DTAccount *account = [NSEntityDescription insertNewObjectForEntityForName:CLASS_NAME_ACCOUNT inManagedObjectContext:context];
+    [account setPersons:[NSSet setWithArray:persons]];
     
     return account;
 }

@@ -25,18 +25,19 @@
 + (DTNewAccountNavigationController *)newController
 {
     DTFriendsPickerVC *rootViewController = [DTFriendsPickerVC newController];
-    DTNewAccountNavigationController *navigationController = [[DTNewAccountNavigationController alloc] initWithRootViewController:rootViewController];
     [rootViewController setCloseButtonVisible:YES];
     [rootViewController setNextButtonVisible:YES];
     
+    DTNewAccountNavigationController *navigationController = [[DTNewAccountNavigationController alloc] initWithRootViewController:rootViewController];
     navigationController.navigationBar.translucent = NO;
+    rootViewController.accountDraft = navigationController.accountDraft;
     
     __weak DTViewController *weakRootVC = rootViewController;
     [rootViewController setCloseBlock:^{
         [((DTNewAccountNavigationController *)weakRootVC.navigationController) selfDissmissWithAccount:nil];
     }];
     [rootViewController setNextBlock:^{
-        [((DTNewAccountNavigationController *)weakRootVC.navigationController) nextButtonHandler];
+        [((DTNewAccountNavigationController *)weakRootVC.navigationController) friendPickerDoneButtonHandler];
     }];
     return navigationController;
 }
@@ -73,27 +74,24 @@
     }];
 }
 
-- (void)nextButtonHandler
+- (void)friendPickerDoneButtonHandler
 {
-    NSMutableArray *friends = [[self selectedFriends] mutableCopy];
-    [friends addObject:[DTInstallation me]];
-    self.accountDraft.personList = friends;
-    
-    if ([self.topViewController isMemberOfClass:[DTFriendsPickerVC class]]) {
-        if ([self.accountDraft.personList count] == 1) {
-            [[[UIAlertView alloc] initWithTitle:@"Error"
-                                        message:@"Select friends"
-                                       delegate:self
-                              cancelButtonTitle:@"Ok"
-                              otherButtonTitles:nil] show];
-        } else if ([self.accountDraft.personList count] == 2) {
-            [self createAccount];
-        } else {
-            [self pushToCreateAccountVC];
-        }
-    } else if ([self.topViewController isMemberOfClass:[DTCreateAccountVC class]]) {
+    if ([self.accountDraft.personList count] == 0) {
+        [[[UIAlertView alloc] initWithTitle:@"Error"
+                                    message:@"Select friends"
+                                   delegate:self
+                          cancelButtonTitle:@"Ok"
+                          otherButtonTitles:nil] show];
+    } else if ([self.accountDraft.personList count] == 1) {
         [self createAccount];
+    } else {
+        [self pushToCreateAccountVC];
     }
+}
+
+- (void)createAccountDoneButtonHandler
+{
+    [self createAccount];
 }
 
 - (void)pushToCreateAccountVC
@@ -106,7 +104,7 @@
     
     __weak DTViewController *weakDestination = destination;
     [destination setNextBlock:^{
-        [((DTNewAccountNavigationController *)weakDestination.navigationController) nextButtonHandler];
+        [((DTNewAccountNavigationController *)weakDestination.navigationController) createAccountDoneButtonHandler];
     }];
     
     [self pushViewController:destination animated:YES];
@@ -114,9 +112,14 @@
 
 - (void)createAccount
 {
-    [DTModelManager deselectAllPersons];
-    DTAccount *account = [DTModelManager accountWithPersons:self.accountDraft.personList];
+    NSMutableArray *realPersonList = [[self.accountDraft personList] mutableCopy];
+    [realPersonList addObject:[DTInstallation me]];
+    DTAccount *account = [DTModelManager accountWithPersons:realPersonList];
     account.name = self.accountDraft.name;
+    
+    [DTModelManager deselectAllPersons];
+    [DTModelManager save];
+    
     [self selfDissmissWithAccount:account];
 }
 

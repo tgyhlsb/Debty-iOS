@@ -50,7 +50,8 @@
 - (void)updateView
 {
     self.nameTextField.text = self.accountDraft.name;
-    NSInteger localeRow = 0;
+    NSString *currentLocale = [[NSLocale currentLocale] localeIdentifier];
+    NSInteger localeRow = [[NSLocale availableLocaleIdentifiers] indexOfObject:currentLocale];
     if (self.accountDraft.localeCode) {
         localeRow = [[NSLocale availableLocaleIdentifiers] indexOfObject:self.accountDraft.localeCode];
     }
