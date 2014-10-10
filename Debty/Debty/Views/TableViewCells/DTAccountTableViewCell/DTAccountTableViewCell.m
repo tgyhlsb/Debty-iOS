@@ -10,6 +10,7 @@
 #import "DTPerson+Helpers.h"
 #import "DTOperationManager.h"
 #import "DTGroupPictureView.h"
+#import "DTInstallation.h"
 
 #define NIB_NAME @"DTAccountTableViewCell"
 #define HEIGHT 50.0
@@ -29,11 +30,14 @@
 - (void)updateView
 {
     self.accountNameLabel.text = self.account.safeName;
-    self.balanceLabel.text = [DTOperationManager currencyStringWithDecimalNumber:self.account.cachedBalance];
+    self.balanceLabel.text = [DTOperationManager currencyStringWithDecimalNumber:self.account.cachedBalance
+                                                                withLocaleCode:self.account.localeCode];
     
     [self.pictureView reset];
     for (DTPerson *person in self.account.persons) {
-        [self.pictureView addUserID:person.facebookID withName:person.firstName];
+        if (![person isEqual:[DTInstallation me]]) {
+            [self.pictureView addUserID:person.facebookID withName:person.firstName];
+        }
     }
     [self.pictureView updateLayout];
 }

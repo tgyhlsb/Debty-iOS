@@ -114,8 +114,9 @@
 {
     NSMutableArray *realPersonList = [[self.accountDraft personList] mutableCopy];
     [realPersonList addObject:[DTInstallation me]];
-    DTAccount *account = [DTModelManager accountWithPersons:realPersonList];
+    DTAccount *account = [DTModelManager newAccountWithPersons:realPersonList];
     account.name = self.accountDraft.name;
+    account.localeCode = self.accountDraft.localeCode;
     
     [DTModelManager deselectAllPersons];
     [DTModelManager save];

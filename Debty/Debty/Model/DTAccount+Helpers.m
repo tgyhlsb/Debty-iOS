@@ -9,6 +9,7 @@
 #import "DTAccount+Helpers.h" 
 #import "DTPerson+Helpers.h"
 #import "DTExpense+Helpers.h"
+#import "DTInstallation.h"
 #import "DTOperationManager.h"
 
 @implementation DTAccount (Helpers)
@@ -18,7 +19,9 @@
     if (!self.name) {
         NSString *composedName = @"";
         for (DTPerson *person in self.persons) {
-            composedName = [composedName stringByAppendingFormat:@"%@ ", person.firstName];
+            if (![person isEqual:[DTInstallation me]]) {
+                composedName = [composedName stringByAppendingFormat:@"%@ ", person.firstName];
+            }
         }
         return composedName;
     }

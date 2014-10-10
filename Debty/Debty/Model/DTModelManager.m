@@ -35,6 +35,11 @@ static DTModelManager *sharedManager;
     return account;
 }
 
++ (DTAccount *)newAccountWithPersons:(NSArray *)persons
+{
+    return [DTAccount newAccountWithPersons:persons];
+}
+
 + (DTExpense *)newExpenseWithAccount:(DTAccount *)account
 {
     DTExpense *expense = [DTExpense newExpenseWithAccount:account];

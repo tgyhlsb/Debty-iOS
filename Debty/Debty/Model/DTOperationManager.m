@@ -40,7 +40,6 @@ static BOOL useRoundedNumber = NO;
     if (!sharedNumberFormatter) {
         sharedNumberFormatter = [[NSNumberFormatter alloc] init];
         [sharedNumberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
-        [sharedNumberFormatter setCurrencyCode:@"EUR"];
     }
     return sharedNumberFormatter;
 }
@@ -148,7 +147,25 @@ static BOOL useRoundedNumber = NO;
 
 + (NSString *)currencyStringWithDecimalNumber:(NSDecimalNumber *)decimalNumber
 {
-    return [[DTOperationManager sharedNumberFormatter] stringFromNumber:decimalNumber];
+    return [DTOperationManager currencyStringWithDecimalNumber:decimalNumber
+                                              withLocaleCode:nil];
+}
+
++ (NSString *)currencyStringWithDecimalNumber:(NSDecimalNumber *)decimalNumber withLocaleCode:(NSString *)localeCode
+{
+    NSLocale *locale = [NSLocale localeWithLocaleIdentifier:localeCode];
+    return [DTOperationManager currencyStringWithDecimalNumber:decimalNumber withLocale:locale];
+}
+
++ (NSString *)currencyStringWithDecimalNumber:(NSDecimalNumber *)decimalNumber withLocale:(NSLocale *)locale
+{
+    if (!locale) {
+        locale = [NSLocale currentLocale];
+    }
+    
+    NSNumberFormatter *numberFormatter = [DTOperationManager sharedNumberFormatter];
+    [numberFormatter setLocale:locale];
+    return [numberFormatter stringFromNumber:decimalNumber];
 }
 
 

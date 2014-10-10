@@ -23,6 +23,7 @@ static NSString *DTNotificationMainUserUpdate = @"DTNotificationMainUserUpdate";
 + (void)deselectAllPersons;
 
 + (DTAccount *)accountWithPersons:(NSArray *)persons;
++ (DTAccount *)newAccountWithPersons:(NSArray *)persons;
 + (DTExpense *)newExpenseWithAccount:(DTAccount *)account;
 
 + (NSFetchedResultsController *)fetchResultControllerForPersons;

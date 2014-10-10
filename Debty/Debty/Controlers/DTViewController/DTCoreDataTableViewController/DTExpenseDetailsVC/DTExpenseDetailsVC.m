@@ -35,7 +35,8 @@
 - (void)updateView
 {
     self.titleLabel.text = self.expense.name;
-    self.amountLabel.text = [DTOperationManager currencyStringWithDecimalNumber:self.expense.amount];
+    self.amountLabel.text = [DTOperationManager currencyStringWithDecimalNumber:self.expense.amount
+                                                               withLocaleCode:self.expense.account.localeCode];
     self.whoPayedLabel.text = self.expense.whoPayed.firstName;
     
     
@@ -108,7 +109,8 @@
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     
     DTShare *share = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSString *amount = [DTOperationManager currencyStringWithDecimalNumber:[share balancedAmount]];
+    NSString *amount = [DTOperationManager currencyStringWithDecimalNumber:[share balancedAmount]
+                                                          withLocaleCode:share.expense.account.localeCode];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ | %@", share.person.firstName, amount];
     
     return cell;

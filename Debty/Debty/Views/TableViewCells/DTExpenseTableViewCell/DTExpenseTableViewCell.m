@@ -8,6 +8,7 @@
 
 #import "DTExpenseTableViewCell.h"
 #import "DTOperationManager.h"
+#import "DTAccount+Helpers.h"
 
 #define NIB_NAME @"DTExpenseTableViewCell"
 #define HEIGHT 44
@@ -26,7 +27,8 @@
 - (void)updateView
 {
     self.nameLabel.text = self.expense.name;
-    self.amountLabel.text = [DTOperationManager currencyStringWithDecimalNumber:self.expense.cachedBalance];
+    self.amountLabel.text = [DTOperationManager currencyStringWithDecimalNumber:self.expense.cachedBalance
+                                                               withLocaleCode:self.expense.account.localeCode];
 }
 
 #pragma mark - Setters

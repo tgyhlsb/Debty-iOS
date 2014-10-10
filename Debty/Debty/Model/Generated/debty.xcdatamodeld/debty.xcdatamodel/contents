@@ -47,9 +47,9 @@
         <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DTPerson" inverseName="shares" inverseEntity="DTPerson" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DTAccount" positionX="27" positionY="-0" width="128" height="148"/>
-        <element name="DTExpense" positionX="205" positionY="186" width="128" height="223"/>
-        <element name="DTPerson" positionX="-189" positionY="222" width="128" height="255"/>
-        <element name="DTShare" positionX="-450" positionY="-27" width="128" height="118"/>
+        <element name="DTAccount" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="DTExpense" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="DTPerson" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="DTShare" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

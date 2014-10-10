@@ -31,6 +31,7 @@
 + (NSDecimalNumber *)substract:(NSDecimalNumber *)first toString:(NSString *)second;
 
 + (NSString *)currencyStringWithDecimalNumber:(NSDecimalNumber *)decimalNumber;
++ (NSString *)currencyStringWithDecimalNumber:(NSDecimalNumber *)decimalNumber withLocaleCode:(NSString *)localeCode;
 
 
 @end
